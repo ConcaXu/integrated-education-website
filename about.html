@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - Integrated Education & Business Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .page-banner {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+        .banner-overlay {
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .about-section {
+            padding: 80px 0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .about-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .about-img {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .video-section {
+            padding: 80px 0;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        .values-section {
+            padding: 80px 0;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .value-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+        .value-icon {
+            font-size: 2.5rem;
+            color: #d43030;
+            margin-bottom: 20px;
+        }
+        .value-title {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .value-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">WanderChina.Guide</span>
+                            <span class="logo-subtitle">发 现 美 好 中 国</span>
+                        </div>
+                    </div>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="index.html" class="lang-text" data-key="nav_home">首页</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="lang-text" data-key="nav_discover">产品目录</a>
+                                <i class="fas fa-chevron-down nav-arrow"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html#study-tour" class="lang-text" data-key="nav_study">研学出行</a></li>
+                                    <li><a href="products.html#business" class="lang-text" data-key="nav_business">政企出海</a></li>
+                                    <li><a href="products.html#culture" class="lang-text" data-key="nav_culture">文化旅游</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="activities.html" class="lang-text" data-key="nav_tools">近期活动</a></li>
+                            <li><a href="about.html" class="active lang-text" data-key="nav_about">关于我们</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <div class="lang-switch-pill" id="lang-switch-btn">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang-text">CN 简体中文</span>
+                    </div>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="banner-overlay">
+            <h1 class="banner-title">关于我们</h1>
+            <p style="font-size: 1.2rem;">连接世界，探索无限可能</p>
+        </div>
+    </section>
+
+    <!-- Company Intro -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>企业简介</h2>
+                    <p>
+                        WanderChina.Guide 隶属于综合教育与商业集团（Integrated Education & Business Group），
+                        是一家致力于促进中国与世界各国在文化、教育及商业领域深度交流的综合性服务平台。
+                    </p>
+                    <p>
+                        我们依托丰富的行业资源和专业的服务团队，为全球客户提供研学旅行、政企出海考察、
+                        文化旅游定制等全方位的解决方案。无论是渴望开阔眼界青少年，还是寻求商业机会的企业家，
+                        我们都能为您量身打造最合适的行程。
+                    </p>
+                    <p>
+                        我们的使命是打破地域与文化的隔阂，让世界更了解中国，让中国更好地融入世界。
+                    </p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Company Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Promo -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title center" style="margin-bottom: 40px;">视频宣传片</h2>
+            <div class="video-container">
+                <video controls poster="assets/images/shangrao.webp">
+                    <source src="assets/videos/promotionalVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">我们的核心价值</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">诚信专业</h3>
+                    <p class="value-desc">坚持诚信为本，以专业的态度和技能服务每一位客户。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">创新进取</h3>
+                    <p class="value-desc">不断探索新的服务模式和旅游线路，追求卓越。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">客户至上</h3>
+                    <p class="value-desc">想客户之所想，急客户之所急，提供超越期待的服务。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new" style="background: #333; color: #fff; padding: 60px 0;">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-title">漫游中国指南</h4>
+                    <p class="footer-desc">
+                        我们致力于为全球旅客提供最权威、最便捷的中国旅行服务。从签证政策到行程规划，我们是您的最佳伙伴。
+                    </p>
+                </div>
+                <div class="footer-col links-col">
+                    <h4 class="footer-title">快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="products.html">产品目录</a></li>
+                        <li><a href="activities.html">近期活动</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">联系我们</h4>
+                    <p><i class="fas fa-envelope"></i> contact@wanderchina.guide</p>
+                    <p><i class="fas fa-phone"></i> +86 123 4567 8900</p>
+                </div>
+            </div>
+            <div class="footer-bottom" style="margin-top: 40px; border-top: 1px solid #555; padding-top: 20px; text-align: center;">
+                <p>&copy; 2026 WanderChina.Guide. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple JS to handle mobile dropdown toggle
+        $(document).ready(function() {
+            if ($(window).width() <= 768) {
+                $('.dropdown > a').click(function(e) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

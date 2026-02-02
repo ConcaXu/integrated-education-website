@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品目录 - Integrated Education & Business Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .page-banner {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+        .banner-overlay {
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .product-category-section {
+            padding: 60px 0;
+        }
+        .category-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .category-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .region-group {
+            margin-bottom: 40px;
+        }
+        .region-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #d43030;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .product-link {
+            display: inline-block;
+            color: #d43030;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .product-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">WanderChina.Guide</span>
+                            <span class="logo-subtitle">发 现 美 好 中 国</span>
+                        </div>
+                    </div>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="index.html" class="lang-text" data-key="nav_home">首页</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="active lang-text" data-key="nav_discover">产品目录</a>
+                                <i class="fas fa-chevron-down nav-arrow"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html#study-tour" class="lang-text" data-key="nav_study">研学出行</a></li>
+                                    <li><a href="products.html#business" class="lang-text" data-key="nav_business">政企出海</a></li>
+                                    <li><a href="products.html#culture" class="lang-text" data-key="nav_culture">文化旅游</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="activities.html" class="lang-text" data-key="nav_tools">近期活动</a>
+                            </li>
+                            <li><a href="about.html" class="lang-text" data-key="nav_about">关于我们</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <div class="lang-switch-pill" id="lang-switch-btn">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang-text">CN 简体中文</span>
+                    </div>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="banner-overlay">
+            <h1 class="banner-title">产品目录</h1>
+            <p style="font-size: 1.2rem;">探索我们的研学、政企出海及文化旅游项目</p>
+        </div>
+    </section>
+
+    <!-- Section 1: Study Tours -->
+    <section id="study-tour" class="product-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">研学旅行</h2>
+                <p class="category-subtitle">沉浸式学习体验，开拓国际视野</p>
+            </div>
+
+            <!-- Singapore -->
+            <div class="region-group">
+                <h3 class="region-title">新加坡</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Singapore Study">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">新加坡名校探访</h4>
+                            <p class="product-desc">深入南洋理工大学、新加坡国立大学，体验世界顶尖教育氛围。</p>
+                            <a href="product-detail.html?id=singapore-school-visit" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Science Centre">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">科学探索之旅</h4>
+                            <p class="product-desc">参观新加坡科学中心，参与互动实验，激发科学兴趣。</p>
+                            <a href="product-detail.html?id=science-exploration" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- China -->
+            <div class="region-group">
+                <h3 class="region-title">中国</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Great Wall">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">中华文化寻根</h4>
+                            <p class="product-desc">登长城，游故宫，感受五千年文明的厚重与辉煌。</p>
+                            <a href="product-detail.html?id=chinese-culture-roots" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Shanghai">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">现代科技与创新</h4>
+                            <p class="product-desc">探访上海、深圳高新企业，见证中国科技发展的速度。</p>
+                            <a href="product-detail.html?id=modern-tech-innovation" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Countries -->
+            <div class="region-group">
+                <h3 class="region-title">其他国家</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Global">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">全球视野拓展</h4>
+                            <p class="product-desc">前往欧洲、北美等地，体验多元文化与教育体系。</p>
+                            <a href="product-detail.html?id=global-vision" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Gov/Ent Going Global -->
+    <section id="business" class="product-category-section bg-light">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">政企出海</h2>
+                <p class="category-subtitle">助力政府与企业拓展国际市场，深化国际合作</p>
+            </div>
+
+            <div class="region-group">
+                <h3 class="region-title">新加坡 & 东南亚</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1554232682-b9ef9c92f8de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">新加坡商务考察</h4>
+                            <p class="product-desc">对接当地商会与政府机构，寻找投资与合作机会。</p>
+                            <a href="product-detail.html?id=singapore-business-visit" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="region-group">
+                <h3 class="region-title">中国市场</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="China Business">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">中国产业园区考察</h4>
+                            <p class="product-desc">深入各大产业园区，了解最新招商引资政策。</p>
+                            <a href="product-detail.html?id=china-industrial-park-visit" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Cultural Tourism -->
+    <section id="culture" class="product-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">文化旅游</h2>
+                <p class="category-subtitle">深度体验各地风土人情，享受美好旅程</p>
+            </div>
+
+            <div class="region-group">
+                <h3 class="region-title">新加坡</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Culture Tour">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">新加坡文化遗产之旅</h4>
+                            <p class="product-desc">游览牛车水、小印度，感受多元种族融合的魅力。</p>
+                            <a href="product-detail.html?id=singapore-cultural-heritage" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="region-group">
+                <h3 class="region-title">中国文化</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1548625361-987707755e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jiangnan">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">江南水乡古镇游</h4>
+                            <p class="product-desc">漫步周庄、乌镇，体验小桥流水人家的诗意生活。</p>
+                            <a href="product-detail.html?id=jiangnan-water-town" class="product-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-title">漫游中国指南</h4>
+                    <p class="footer-desc">WanderChina.Guide, 是一个专注于减少中国旅游信息息差，提升入境自由行旅游体验的旅游品牌，致力于向世界传播中国文化，发现真实美好的中国；
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="icon-x">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="x-icon">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4 class="footer-title">核心业务</h4>
+                        <ul>
+                            <li><a href="products.html#study-tour">研学出行</a></li>
+                            <li><a href="products.html#business">政企出海</a></li>
+                            <li><a href="products.html#culture">文化旅游</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">公司</h4>
+                        <ul>
+                            <li><a href="about.html">关于我们</a></li>
+                            <li><a href="activities.html">近期活动</a></li>
+                            <li><a href="#">隐私政策</a></li>
+                            <li><a href="#">意见反馈</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">语言</h4>
+                        <ul>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">简体中文</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2026 Wander China Guide All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple JS to handle mobile dropdown toggle
+        $(document).ready(function() {
+            if ($(window).width() <= 768) {
+                $('.dropdown > a').click(function(e) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

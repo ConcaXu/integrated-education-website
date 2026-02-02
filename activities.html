@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近期活动 - Integrated Education & Business Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .page-banner {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+        .banner-overlay {
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .activities-section {
+            padding: 60px 0;
+        }
+        .activity-card {
+            display: flex;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+        .activity-img {
+            width: 40%;
+            min-height: 250px;
+        }
+        .activity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .activity-content {
+            width: 60%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .activity-date {
+            color: #d43030;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .activity-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .activity-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .read-more-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            align-self: flex-start;
+            transition: background 0.3s;
+        }
+        .read-more-btn:hover {
+            background: #d43030;
+        }
+        @media (max-width: 768px) {
+            .activity-card {
+                flex-direction: column;
+            }
+            .activity-img {
+                width: 100%;
+                height: 200px;
+                min-height: auto;
+            }
+            .activity-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">WanderChina.Guide</span>
+                            <span class="logo-subtitle">发 现 美 好 中 国</span>
+                        </div>
+                    </div>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="index.html" class="lang-text" data-key="nav_home">首页</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="lang-text" data-key="nav_discover">产品目录</a>
+                                <i class="fas fa-chevron-down nav-arrow"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html#study-tour" class="lang-text" data-key="nav_study">研学出行</a></li>
+                                    <li><a href="products.html#business" class="lang-text" data-key="nav_business">政企出海</a></li>
+                                    <li><a href="products.html#culture" class="lang-text" data-key="nav_culture">文化旅游</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="activities.html" class="active lang-text" data-key="nav_tools">近期活动</a></li>
+                            <li><a href="about.html" class="lang-text" data-key="nav_about">关于我们</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <div class="lang-switch-pill" id="lang-switch-btn">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang-text">CN 简体中文</span>
+                    </div>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="banner-overlay">
+            <h1 class="banner-title">近期活动展示</h1>
+            <p style="font-size: 1.2rem;">关注我们的最新动态与精彩瞬间</p>
+        </div>
+    </section>
+
+    <!-- Activities List -->
+    <section class="activities-section">
+        <div class="container">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Activity 1">
+                </div>
+                <div class="activity-content">
+                    <div class="activity-date">2026年 5月 20日</div>
+                    <h3 class="activity-title">2026 中新青少年文化交流周圆满落幕</h3>
+                    <p class="activity-desc">
+                        来自新加坡和中国的300多名青少年齐聚上海，开展了为期一周的文化交流活动。
+                        通过书法、武术、音乐等形式的互动，增进了彼此的了解与友谊。
+                    </p>
+                    <a href="activity-detail.html?id=china-singapore-exchange" class="read-more-btn">阅读更多</a>
+                </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Activity 2">
+                </div>
+                <div class="activity-content">
+                    <div class="activity-date">2026年 4月 15日</div>
+                    <h3 class="activity-title">"一带一路" 政企出海高峰论坛</h3>
+                    <p class="activity-desc">
+                        本次论坛汇聚了500位政商界领袖，共同探讨企业出海面临的机遇与挑战。
+                        重点讨论了东南亚市场的投资环境及政策支持。
+                    </p>
+                    <a href="activity-detail.html?id=belt-and-road-forum" class="read-more-btn">阅读更多</a>
+                </div>
+            </div>
+
+            <!-- Activity 3 -->
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Activity 3">
+                </div>
+                <div class="activity-content">
+                    <div class="activity-date">2026年 3月 10日</div>
+                    <h3 class="activity-title">日本游学团：探索京都古韵</h3>
+                    <p class="activity-desc">
+                        我们的游学团队带领学生深入京都，体验茶道、花道等传统文化。
+                        在古老的寺庙中感受内心的宁静，学习尊师重道的精神。
+                    </p>
+                    <a href="activity-detail.html?id=japan-study-tour" class="read-more-btn">阅读更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new" style="background: #333; color: #fff; padding: 60px 0;">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-title">漫游中国指南</h4>
+                    <p class="footer-desc">
+                        我们致力于为全球旅客提供最权威、最便捷的中国旅行服务。从签证政策到行程规划，我们是您的最佳伙伴。
+                    </p>
+                </div>
+                <div class="footer-col links-col">
+                    <h4 class="footer-title">快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="products.html">产品目录</a></li>
+                        <li><a href="activities.html">近期活动</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">联系我们</h4>
+                    <p><i class="fas fa-envelope"></i> contact@wanderchina.guide</p>
+                    <p><i class="fas fa-phone"></i> +86 123 4567 8900</p>
+                </div>
+            </div>
+            <div class="footer-bottom" style="margin-top: 40px; border-top: 1px solid #555; padding-top: 20px; text-align: center;">
+                <p>&copy; 2026 WanderChina.Guide. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple JS to handle mobile dropdown toggle
+        $(document).ready(function() {
+            if ($(window).width() <= 768) {
+                $('.dropdown > a').click(function(e) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

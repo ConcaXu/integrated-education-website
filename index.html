@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Education & Business Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">WanderChina.Guide</span>
+                            <span class="logo-subtitle">发 现 美 好 中 国</span>
+                        </div>
+                    </div>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="index.html" class="active lang-text" data-key="nav_home">首页</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="lang-text" data-key="nav_discover">产品目录</a>
+                                <i class="fas fa-chevron-down nav-arrow"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html#study-tour" class="lang-text" data-key="nav_study">研学出行</a></li>
+                                    <li><a href="products.html#business" class="lang-text" data-key="nav_business">政企出海</a></li>
+                                    <li><a href="products.html#culture" class="lang-text" data-key="nav_culture">文化旅游</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="activities.html" class="lang-text" data-key="nav_tools">近期活动</a>
+                            </li>
+                            <li><a href="about.html" class="lang-text" data-key="nav_about">关于我们</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <div class="lang-switch-pill" id="lang-switch-btn">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang-text">CN 简体中文</span>
+                    </div>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="assets/videos/promotionalVideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title lang-text" data-key="hero_title">您中国旅行的终极指南</h1>
+            <p class="hero-subtitle lang-text" data-key="hero_subtitle">多语言服务 | 144小时免签 | AI智能工具 | 全方位行程规划</p>
+        </div>
+
+        <div class="hero-search-bar wide">
+            <div class="search-inputs">
+                <div class="input-group">
+                    <span class="label lang-text" data-key="search_dest_label">目的地</span>
+                    <input type="text" class="lang-attr" data-attr="placeholder" data-key="search_dest_ph"
+                        placeholder="请输入目的地">
+                </div>
+                <button class="search-btn lang-text" data-key="search_btn">搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Business Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title lang-text" data-key="core_business_title">核心业务</h2>
+                <div class="section-subtitle lang-text" data-key="core_business_subtitle">连接中国与世界，创造无限价值</div>
+            </div>
+
+            <div class="core-business-grid">
+                <!-- Study Tour -->
+                <div class="core-business-card">
+                    <div class="core-business-bg" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="core-business-overlay"></div>
+                    <div class="core-business-content">
+                        <h3 class="core-business-title lang-text" data-key="biz_study_title">研学出行</h3>
+                        <p class="core-business-desc lang-text" data-key="biz_study_desc">
+                            沉浸式教育体验，探索顶尖学府与科研机构，开阔国际视野，培养未来领袖。
+                        </p>
+                        <a href="products.html#study-tour" class="core-business-btn lang-text" data-key="learn_more">了解更多</a>
+                    </div>
+                </div>
+
+                <!-- Gov & Ent -->
+                <div class="core-business-card">
+                    <div class="core-business-bg" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="core-business-overlay"></div>
+                    <div class="core-business-content">
+                        <h3 class="core-business-title lang-text" data-key="biz_gov_title">政企出海</h3>
+                        <p class="core-business-desc lang-text" data-key="biz_gov_desc">
+                            助力政府与企业拓展全球市场，搭建国际合作桥梁，寻找新的增长机遇。
+                        </p>
+                        <a href="products.html#business" class="core-business-btn lang-text" data-key="learn_more">了解更多</a>
+                    </div>
+                </div>
+
+                <!-- Cultural Tourism -->
+                <div class="core-business-card">
+                    <div class="core-business-bg" style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="core-business-overlay"></div>
+                    <div class="core-business-content">
+                        <h3 class="core-business-title lang-text" data-key="biz_culture_title">文化旅游</h3>
+                        <p class="core-business-desc lang-text" data-key="biz_culture_desc">
+                            深度体验中华文化与世界风情，定制专属旅程，发现不一样的美好。
+                        </p>
+                        <a href="products.html#culture" class="core-business-btn lang-text" data-key="learn_more">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-title">漫游中国指南</h4>
+                    <p class="footer-desc">WanderChina.Guide, 是一个专注于减少中国旅游信息息差，提升入境自由行旅游体验的旅游品牌，致力于向世界传播中国文化，发现真实美好的中国；
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="icon-x">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="x-icon">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4 class="footer-title">核心业务</h4>
+                        <ul>
+                            <li><a href="products.html#study-tour">研学出行</a></li>
+                            <li><a href="products.html#business">政企出海</a></li>
+                            <li><a href="products.html#culture">文化旅游</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">公司</h4>
+                        <ul>
+                            <li><a href="about.html">关于我们</a></li>
+                            <li><a href="activities.html">近期活动</a></li>
+                            <li><a href="#">隐私政策</a></li>
+                            <li><a href="#">意见反馈</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">语言</h4>
+                        <ul>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">简体中文</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2026 Wander China Guide All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple JS to handle mobile dropdown toggle
+        $(document).ready(function() {
+            if ($(window).width() <= 768) {
+                $('.dropdown > a').click(function(e) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

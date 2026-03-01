@@ -104,7 +104,7 @@ $(document).ready(function() {
             <div style="padding: 100px 0; text-align: center;">
                 <h2>未找到相关产品</h2>
                 <p>抱歉，您访问的产品页面不存在或已被移除。</p>
-                <a href="products.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #d43030; color: #fff; border-radius: 5px;">返回产品目录</a>
+                <a href="products.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #215198; color: #fff; border-radius: 5px;">返回产品目录</a>
             </div>
         `);
     }

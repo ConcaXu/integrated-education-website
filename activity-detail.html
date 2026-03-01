@@ -1,3 +1,4 @@
+<!-- 活动详情 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -81,7 +82,7 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             padding-left: 15px;
-            border-left: 4px solid #d43030;
+            border-left: 4px solid #215198;
         }
         .text-content {
             font-size: 1.05rem;
@@ -105,7 +106,7 @@
             gap: 15px;
         }
         .highlights-list li i {
-            color: #d43030;
+            color: #215198;
             font-size: 1.2rem;
             margin-top: 3px;
         }
@@ -138,7 +139,7 @@
             display: block;
             width: 100%;
             padding: 15px;
-            background: #d43030;
+            background: #215198;
             color: #fff;
             text-align: center;
             border-radius: 5px;
@@ -171,13 +172,7 @@
             <div class="header-inner">
                 <div class="header-left">
                     <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-paw"></i>
-                        </div>
-                        <div class="logo-text">
-                            <span class="logo-title">WanderChina.Guide</span>
-                            <span class="logo-subtitle">发 现 美 好 中 国</span>
-                        </div>
+                        <img src="assets/images/logo.png" alt="WanderChina Logo" class="logo-img">
                     </div>
                     <nav class="navbar">
                         <ul>
@@ -214,32 +209,75 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer-new" style="background: #333; color: #fff; padding: 60px 0;">
+    <footer class="footer-new">
         <div class="container">
             <div class="footer-top">
                 <div class="footer-col brand-col">
-                    <h4 class="footer-title">漫游中国指南</h4>
-                    <p class="footer-desc">
-                        我们致力于为全球旅客提供最权威、最便捷的中国旅行服务。从签证政策到行程规划，我们是您的最佳伙伴。
-                    </p>
+                    <img src="assets/images/logo.png" alt="WanderChina Logo" class="footer-logo">
+                    <div class="footer-slogan" style="margin-bottom: 15px;">
+                        <h4 class="lang-text" data-key="footer_slogan_title" style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 5px; font-weight: 700;">连接全球视野 赋能未来成长</h4>
+                        <p class="lang-text" data-key="footer_slogan_desc" style="font-size: 0.9rem; color: #666;">定制化 · 文化融合 · 能力提升</p>
+                    </div>
+                    <p class="footer-desc lang-text" data-key="footer_desc">亚太国际教育交流中心（Integrated Education & Business Group），总部位于新加坡，专注为亚太地区提供高品质的研学旅行、公商务出访、文旅开发及资源对接服务。</p>
+                    <div class="social-icons">
+                        <a href="#" class="icon-x">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="x-icon">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
-                <div class="footer-col links-col">
-                    <h4 class="footer-title">快速链接</h4>
-                    <ul>
-                        <li><a href="index.html">首页</a></li>
-                        <li><a href="products.html">产品目录</a></li>
-                        <li><a href="activities.html">近期活动</a></li>
-                        <li><a href="about.html">关于我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col contact-col">
-                    <h4 class="footer-title">联系我们</h4>
-                    <p><i class="fas fa-envelope"></i> contact@wanderchina.guide</p>
-                    <p><i class="fas fa-phone"></i> +86 123 4567 8900</p>
+
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4 class="footer-title lang-text" data-key="footer_core_biz">核心业务</h4>
+                        <ul>
+                            <li><a href="products.html#study-tour" class="lang-text" data-key="nav_study_tour">研学出行</a></li>
+                            <li><a href="products.html#business" class="lang-text" data-key="nav_business">政企出海</a></li>
+                            <li><a href="products.html#culture" class="lang-text" data-key="nav_culture">文化旅游</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title lang-text" data-key="footer_company">公司</h4>
+                        <ul>
+                            <li><a href="about.html" class="lang-text" data-key="nav_about">关于我们</a></li>
+                            <li><a href="activities.html" class="lang-text" data-key="nav_tools">近期活动</a></li>
+                            <li><a href="#" class="lang-text" data-key="footer_privacy">隐私政策</a></li>
+                            <li><a href="#" class="lang-text" data-key="footer_feedback">意见反馈</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title lang-text" data-key="footer_contact">联系我们</h4>
+                        <ul class="footer-contact-info">
+                            <li style="margin-bottom: 10px; color: #666; font-size: 0.85rem; display: flex; gap: 10px;">
+                                <span class="lang-text" data-key="footer_tel" style="font-weight: 600; white-space: nowrap; color: #333;">电话:</span>
+                                <span>+65 6618 6503</span>
+                            </li>
+                            <li style="margin-bottom: 10px; color: #666; font-size: 0.85rem; display: flex; gap: 10px;">
+                                <span class="lang-text" data-key="footer_email" style="font-weight: 600; white-space: nowrap; color: #333;">邮箱:</span>
+                                <span>info@apimtravel.com</span>
+                            </li>
+                            <li style="color: #666; font-size: 0.85rem; display: flex; gap: 10px; line-height: 1.4;">
+                                <span class="lang-text" data-key="footer_addr" style="font-weight: 600; white-space: nowrap; color: #333;">地址:</span>
+                                <span>10 Anson Road #33-01 International Plaza Singapore 079903</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom" style="margin-top: 40px; border-top: 1px solid #555; padding-top: 20px; text-align: center;">
-                <p>&copy; 2026 WanderChina.Guide. All Rights Reserved.</p>
+
+            <div class="footer-closing" style="text-align: center; margin: 40px 0 20px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                <h3 class="lang-text" data-key="footer_closing_title" style="color: #333; font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">期待与您携手</h3>
+                <p class="lang-text" data-key="footer_closing_desc" style="color: var(--primary-color); font-weight: 700; letter-spacing: 3px; font-size: 1rem;">探索全球机遇</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2026 Wander China Guide All Rights Reserved.</p>
             </div>
         </div>
     </footer>

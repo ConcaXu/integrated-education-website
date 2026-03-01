@@ -80,7 +80,7 @@ $(document).ready(function() {
             <div style="padding: 100px 0; text-align: center;">
                 <h2>未找到相关活动</h2>
                 <p>抱歉，您访问的活动页面不存在或已被移除。</p>
-                <a href="activities.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #d43030; color: #fff; border-radius: 5px;">返回活动列表</a>
+                <a href="activities.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #215198; color: #fff; border-radius: 5px;">返回活动列表</a>
             </div>
         `);
     }

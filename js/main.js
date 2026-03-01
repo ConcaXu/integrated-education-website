@@ -3,9 +3,57 @@ const translations = {
         // Nav
         'nav_home': '首页',
         'nav_discover': '产品目录',
+        'nav_study_tour': '研学出行',
+        'nav_business': '政企出海',
+        'nav_culture': '文化旅游',
         'nav_tools': '近期活动',
         'nav_about': '关于我们',
         'nav_directory': '答疑指南',
+        
+        // About Us
+        'about_banner_subtitle': 'Your Dream, We Deliver — 依托新加坡优势，深耕亚太教育与政商资源',
+        'about_profile_title': '企业简介',
+        'about_profile_desc': '亚太国际交流中心（新加坡）公司始于2016年，公司本着“Your Dream, We Deliver”宗旨，依托新加坡世界级教育体系、多元文化环境及先进产业生态，为全球中小学生、大学生及行业精英提供并执行5-15天的高价值国际教育研学、培训考察活动。',
+        'about_profile_auth': '我们是新加坡中国商会、新加坡-中国科学技术交流促进协会 (SCAAST) 等权威机构单位成员。拥有中国国家外专局境外培训渠道授权及新加坡国家旅游局授权资质。',
+        'about_vision_title': '服务宗旨与核心理念',
+        'about_vision_tenet': '服务宗旨',
+        'about_vision_tenet_desc': '教育无界，成长无限',
+        'about_vision_concept': '核心理念',
+        'about_vision_concept_desc': '通过短期研学与考察，推动跨文化学习与职业发展',
+        'about_vision_values': '我们的价值观',
+        'about_vision_values_desc': '创新 · 专业 · 安全 · 包容',
+        'about_structure_title': '组织框架',
+        'about_structure_mgmt': 'CEO + 各事业部总监',
+        'about_structure_mgmt_label': '核心管理层',
+        'about_structure_dept1': '幼儿园 / 小学 / 中学 / 大学组',
+        'about_structure_dept1_label': '研学项目部',
+        'about_structure_dept2': '商务考察 / 企业内训',
+        'about_structure_dept2_label': '企业培训部',
+        'about_structure_dept3': '签证 / 安全 / 后勤',
+        'about_structure_dept3_label': '运营支持部',
+        'about_structure_dept4': '维护 / 拓展',
+        'about_structure_dept4_label': '市场与客户关系部',
+        'about_business_title': '核心业务介绍',
+        'about_business_item1': '短期研学 (6-15天)',
+        'about_business_item1_desc': '针对小学至大学生，涵盖STEM科技、文化沉浸、名校参访、教授工作坊等沉浸式学习体验。',
+        'about_business_item2': '商务考察与出海考察',
+        'about_business_item2_desc': '为企业家、政府机构提供亚太市场投资趋势、营商环境考察、优秀企业座谈及高端人脉资源对接。',
+        'about_business_item3': '企业短期培训',
+        'about_business_item3_desc': '涵盖跨文化管理、数字化转型、行业对标学习（如金融科技、医疗、律所等）的国际化实战课程。',
+        'about_why_title': '为何选择我们',
+        'about_why_item1': '30年专业积淀',
+        'about_why_item1_desc': '深耕国际教育领域，拥有成熟的研学策划与执行经验，已为上万名学员提供高价值项目。',
+        'about_why_item2': '优质资源网络',
+        'about_why_item2_desc': '与新加坡公立、私立及国际学校深度合作，搭建高端参访与商务对接平台，资源覆盖亚太。',
+        'about_why_item3': '定制化方案设计',
+        'about_why_item3_desc': '根据学员年龄、行业需求一对一精准定制，结合前沿主题确保内容精准匹配客户目标。',
+        'about_why_item4': '资深专家团队',
+        'about_why_item4_desc': '由教育专家、行业领袖及跨文化导师组成核心团队，保障学术专业性与实践指导价值。',
+        'about_why_item5': '全流程服务',
+        'about_why_item5_desc': '从行程规划到安全保障的一站式解决方案，让学员专注成长，合作伙伴省心无忧。',
+        'about_partners_title': '合作伙伴',
+        'about_partners_clients': '服务客户 (部分)',
+        'about_partners_strategic': '战略合作伙伴 (部分)',
         
         // Hero
         'hero_title': '您旅行的终极指南',
@@ -79,6 +127,18 @@ const translations = {
         'footer_contact': '联系',
         'footer_contact_info': '联系方式',
         'footer_copyright': '版权所有 © 2026 Integrated Education & Business Group。保留所有权利。',
+        'footer_slogan_title': '连接全球视野 赋能未来成长',
+        'footer_slogan_desc': '定制化 · 文化融合 · 能力提升',
+        'footer_desc': '亚太国际教育交流中心（Integrated Education & Business Group），总部位于新加坡，专注为亚太地区提供高品质的研学旅行、公商务出访、文旅开发及资源对接服务。',
+        'footer_core_biz': '核心业务',
+        'footer_company': '公司',
+        'footer_privacy': '隐私政策',
+        'footer_feedback': '意见反馈',
+        'footer_tel': '电话',
+        'footer_email': '邮箱',
+        'footer_addr': '地址',
+        'footer_closing_title': '期待与您携手',
+        'footer_closing_desc': '探索全球机遇',
 
         // Activity Detail
         'activity_recap': '活动回顾',
@@ -91,9 +151,57 @@ const translations = {
         // Nav
         'nav_home': 'Home',
         'nav_discover': 'Products',
+        'nav_study_tour': 'Study Tour',
+        'nav_business': 'Business',
+        'nav_culture': 'Culture',
         'nav_tools': 'Activities',
         'nav_about': 'About Us',
         'nav_directory': 'Guide',
+
+        // About Us
+        'about_banner_subtitle': 'Your Dream, We Deliver — Relying on Singapore\'s advantages, deeply cultivating Asia-Pacific education and political and business resources',
+        'about_profile_title': 'Company Profile',
+        'about_profile_desc': 'Asia Pacific International Exchange Centre (Singapore) started in 2016. Adhering to the "Your Dream, We Deliver" mission, we rely on Singapore\'s world-class education system, multicultural environment, and advanced industrial ecosystem to provide 5-15 day high-value international education study tours and training inspections for primary, secondary, university students, and industry elites globally.',
+        'about_profile_auth': 'We are members of authoritative institutions such as the Singapore-China Business Association and the Singapore-China Association for the Advancement of Science and Technology (SCAAST). We hold authorization from the State Administration of Foreign Experts Affairs of China and the Singapore Tourism Board.',
+        'about_vision_title': 'Service Tenet & Core Philosophy',
+        'about_vision_tenet': 'Service Tenet',
+        'about_vision_tenet_desc': 'Education without borders, growth without limits',
+        'about_vision_concept': 'Core Philosophy',
+        'about_vision_concept_desc': 'Promote cross-cultural learning and career development through short-term study tours and inspections',
+        'about_vision_values': 'Our Values',
+        'about_vision_values_desc': 'Innovation · Professionalism · Safety · Inclusiveness',
+        'about_structure_title': 'Organizational Framework',
+        'about_structure_mgmt': 'CEO + Division Directors',
+        'about_structure_mgmt_label': 'Core Management',
+        'about_structure_dept1': 'Kindergarten / Primary / Secondary / University Group',
+        'about_structure_dept1_label': 'Study Tour Dept',
+        'about_structure_dept2': 'Business Inspection / Corporate Training',
+        'about_structure_dept2_label': 'Corporate Training Dept',
+        'about_structure_dept3': 'Visa / Safety / Logistics',
+        'about_structure_dept3_label': 'Operation Support Dept',
+        'about_structure_dept4': 'Maintenance / Expansion',
+        'about_structure_dept4_label': 'Market & CRM Dept',
+        'about_business_title': 'Core Business',
+        'about_business_item1': 'Short-term Study Tour (6-15 Days)',
+        'about_business_item1_desc': 'Targeting students from primary to university, covering STEM technology, cultural immersion, university visits, and professor workshops.',
+        'about_business_item2': 'Business & Overseas Inspection',
+        'about_business_item2_desc': 'Providing entrepreneurs and government agencies with Asia-Pacific market trends, business environment inspections, and high-end networking.',
+        'about_business_item3': 'Short-term Corporate Training',
+        'about_business_item3_desc': 'International practical courses covering cross-cultural management, digital transformation, and industry benchmarking (FinTech, Medical, Legal, etc.).',
+        'about_why_title': 'Why Choose Us',
+        'about_why_item1': '30 Years of Expertise',
+        'about_why_item1_desc': 'Deeply rooted in international education with mature planning and execution experience for over 10,000 students.',
+        'about_why_item2': 'Premium Resource Network',
+        'about_why_item2_desc': 'Deep cooperation with Singapore public, private, and international schools for high-end visits and business matching.',
+        'about_why_item3': 'Customized Solutions',
+        'about_why_item3_desc': 'One-on-one precise customization based on age and industry needs to ensure content matches client goals.',
+        'about_why_item4': 'Senior Expert Team',
+        'about_why_item4_desc': 'Core team composed of education experts, industry leaders, and cross-cultural mentors for academic professionalism.',
+        'about_why_item5': 'Full-process Service',
+        'about_why_item5_desc': 'One-stop solutions from itinerary planning to safety assurance, letting partners grow without worries.',
+        'about_partners_title': 'Partners',
+        'about_partners_clients': 'Service Clients (Partial)',
+        'about_partners_strategic': 'Strategic Partners (Partial)',
         
         // Hero
         'hero_title': 'The Ultimate Guide to Your China Travel',
@@ -167,6 +275,18 @@ const translations = {
         'footer_contact': 'Contact',
         'footer_contact_info': 'Contact Info',
         'footer_copyright': 'Copyright © 2026 Integrated Education & Business Group. All rights reserved.',
+        'footer_slogan_title': 'Connecting Global Vision, Empowering Future Growth',
+        'footer_slogan_desc': 'Customization · Cultural Integration · Capability Enhancement',
+        'footer_desc': 'Integrated Education & Business Group, headquartered in Singapore, focuses on providing high-quality study tours, official business visits, cultural tourism development, and resource matching services for the Asia-Pacific region.',
+        'footer_core_biz': 'Core Business',
+        'footer_company': 'Company',
+        'footer_privacy': 'Privacy Policy',
+        'footer_feedback': 'Feedback',
+        'footer_tel': 'Tel',
+        'footer_email': 'Email',
+        'footer_addr': 'Address',
+        'footer_closing_title': 'Looking Forward to Working with You',
+        'footer_closing_desc': 'Explore Global Opportunities',
 
         // Activity Detail
         'activity_recap': 'Event Recap',
@@ -199,15 +319,6 @@ $(document).ready(function() {
         if ($(window).width() > 768) {
             $('.navbar').removeClass('active');
             $('.mobile-menu-btn i').removeClass('fa-times').addClass('fa-bars');
-        }
-    });
-
-    // Header Scroll Effect
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 50) {
-            $('.header').addClass('scrolled');
-        } else {
-            $('.header').removeClass('scrolled');
         }
     });
 

@@ -1,53 +1,143 @@
-$(document).ready(function() {
+$(document).ready(async function() {
     // 1. Parse URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     const container = $('#product-detail-container');
 
-    // 2. Check if product exists
-    if (productId && productsData[productId]) {
-        const product = productsData[productId];
-        renderProduct(product);
+    // 2. Check if product exists in local data
+    if (productId) {
+        // Prioritize API fetch for detail page to ensure fresh data
+        // Only fallback to local if API fails or if productId looks like a local string key
+        
+        const isLocalKey = isNaN(productId); // Assuming API IDs are numbers, local keys are strings like 'singapore-school-visit'
+
+        if (isLocalKey && typeof productsData !== 'undefined' && productsData[productId]) {
+             // Found in local data
+            const product = productsData[productId];
+            renderProduct(product, true);
+        } else {
+             // Try fetching from API
+            try {
+                // Show loading
+                container.html('<div style="height: 100vh; display: flex; align-items: center; justify-content: center;"><p>正在加载产品信息...</p></div>');
+                
+                // Try fetchActivityDetail if available
+                if (window.fetchActivityDetail) {
+                    const response = await window.fetchActivityDetail(productId);
+                    if (response.code === 200 && response.data) {
+                        renderProduct(response.data, false);
+                        return;
+                    }
+                }
+                
+                // If API fetch fails or returns no data
+                 if (typeof productsData !== 'undefined' && productsData[productId]) {
+                     const product = productsData[productId];
+                     renderProduct(product, true);
+                 } else {
+                     renderError();
+                 }
+            } catch (error) {
+                console.error('Failed to load product detail:', error);
+                 if (typeof productsData !== 'undefined' && productsData[productId]) {
+                     const product = productsData[productId];
+                     renderProduct(product, true);
+                 } else {
+                    renderError();
+                 }
+            }
+        }
     } else {
         renderError();
     }
 
-    function renderProduct(product) {
+    function renderProduct(product, isLocal) {
+        // Handle Multilingual & Field Mapping
+        const lang = 'zh-CN'; // Can be dynamic
+        
+        const title = product.title || (lang === 'en' ? product.titleEn : product.titleZh);
+        // API intro is usually short text, content is HTML
+        const subtitle = product.subtitle || (lang === 'en' ? product.introEn : product.introZh);
+        
+        let image = product.image || product.coverImage || '';
+        if (image && !image.startsWith('http') && window.apiBaseUrl) {
+             const prefix = image.startsWith('/dev-api') ? '' : '/dev-api';
+             image = `${window.apiBaseUrl}${prefix}${image}`;
+        }
+        if (!image) image = 'assets/images/productcatalog.webp';
+
+        const category = product.category || product.type; // Map type code to name if needed
+        const location = product.location || '';
+        const duration = product.duration || ''; 
+        
+        // API contentZh/En is HTML
+        // Important: Replace relative image paths in content with absolute paths
+        let description = product.description || (lang === 'en' ? product.contentEn : product.contentZh) || '';
+        
+        if (!isLocal && description) {
+            // Regex to find img src attributes that are relative (don't start with http or //)
+            description = description.replace(/<img[^>]+src="([^">]+)"/g, function(match, src) {
+                if (src && !src.startsWith('http') && !src.startsWith('//') && !src.startsWith('data:')) {
+                    const prefix = src.startsWith('/dev-api') ? '' : '/dev-api';
+                    const newSrc = `${window.apiBaseUrl}${prefix}${src}`;
+                    return match.replace(src, newSrc);
+                }
+                return match;
+            });
+        }
+
+        // Highlights & Itinerary - API might return JSON string or different structure
+        let highlights = product.highlights || [];
+        if (typeof highlights === 'string') {
+            try { highlights = JSON.parse(highlights); } catch(e) {}
+        }
+
+        let itinerary = product.itinerary || [];
+        if (typeof itinerary === 'string') {
+            try { itinerary = JSON.parse(itinerary); } catch(e) {}
+        }
+
+        // Get content title from backend or fallback to default
+        const contentTitle = product.contentTitle || (lang === 'en' ? product.contentTitleEn : product.contentTitleZh) || '项目概况';
+
         // Update Page Title
-        document.title = `${product.title} - WanderChina.Guide`;
+        document.title = `${title} - WanderChina.Guide`;
 
         // Render HTML
         let highlightsHtml = '';
-        if (product.highlights && product.highlights.length > 0) {
+        if (highlights && highlights.length > 0) {
             highlightsHtml = `<ul class="highlights-list">
-                ${product.highlights.map(item => `<li><i class="fas fa-check-circle"></i> <span>${item}</span></li>`).join('')}
+                ${highlights.map(item => `<li><i class="fas fa-check-circle"></i> <span>${item}</span></li>`).join('')}
             </ul>`;
         }
 
         let itineraryHtml = '';
-        if (product.itinerary && product.itinerary.length > 0) {
+        if (itinerary && itinerary.length > 0) {
             itineraryHtml = `<div class="itinerary-timeline">
-                ${product.itinerary.map(item => `
+                ${itinerary.map(item => `
                     <div class="timeline-item">
-                        <span class="day-tag">${item.day}</span>
-                        <h4 class="day-title">${item.title}</h4>
-                        <p class="day-desc">${item.desc}</p>
+                        <span class="day-tag">${item.day || ''}</span>
+                        <h4 class="day-title">${item.title || ''}</h4>
+                        <p class="day-desc">${item.desc || ''}</p>
                     </div>
                 `).join('')}
             </div>`;
         }
 
+        // If description is HTML (from API), render directly. If plain text, wrap in p.
+        const descHtml = description; 
+
         const html = `
             <!-- Hero Section -->
-            <section class="detail-banner" style="background-image: url('${product.image}');">
+            <section class="detail-banner" style="background-image: url('${image}');">
                 <div class="container banner-content">
                     <div class="product-meta">
-                        <div class="meta-item"><i class="fas fa-map-marker-alt"></i> ${product.location}</div>
-                        <div class="meta-item"><i class="fas fa-clock"></i> ${product.duration}</div>
-                        <div class="meta-item"><i class="fas fa-tag"></i> ${product.category}</div>
+                        <div class="meta-item"><i class="fas fa-map-marker-alt"></i> ${location}</div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> ${duration}</div>
+                        <div class="meta-item"><i class="fas fa-tag"></i> ${category}</div>
                     </div>
-                    <h1 class="detail-title">${product.title}</h1>
-                    <p class="detail-subtitle">${product.subtitle}</p>
+                    <h1 class="detail-title">${title}</h1>
+                    <p class="detail-subtitle">${subtitle || ''}</p>
                 </div>
             </section>
 
@@ -58,16 +148,15 @@ $(document).ready(function() {
                         <!-- Left Column -->
                         <div class="left-col">
                             <div class="section-box">
-                                <h3 class="section-title">项目概况</h3>
-                                <p class="text-content">${product.description}</p>
+                                <div class="text-content">${descHtml}</div>
                             </div>
 
-                            <div class="section-box">
+                            <div class="section-box" style="${highlights && highlights.length > 0 ? '' : 'display:none'}">
                                 <h3 class="section-title">项目亮点</h3>
                                 ${highlightsHtml}
                             </div>
 
-                            <div class="section-box">
+                            <div class="section-box" style="${itinerary && itinerary.length > 0 ? '' : 'display:none'}">
                                 <h3 class="section-title">行程安排</h3>
                                 ${itineraryHtml}
                             </div>

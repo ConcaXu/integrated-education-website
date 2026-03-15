@@ -363,6 +363,10 @@ $(document).ready(function() {
         }
         
         updateLanguage(currentLang);
+        
+        // Dispatch custom event for other scripts
+        const event = new CustomEvent('language-changed', { detail: { lang: currentLang } });
+        document.dispatchEvent(event);
     });
 
     function updateLanguage(lang) {

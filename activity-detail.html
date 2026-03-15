@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/api.js"></script>
     <style>
         .detail-banner {
             height: 400px;
@@ -109,6 +110,41 @@
             color: #215198;
             font-size: 1.2rem;
             margin-top: 3px;
+        }
+        
+        .api-rich-text img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .api-rich-text video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .api-rich-text p > strong:only-child,
+        .api-rich-text h1, .api-rich-text h2, .api-rich-text h3 {
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #215198;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .api-rich-text ol, .api-rich-text ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .api-rich-text li {
+            margin-bottom: 10px;
+            color: #555;
         }
 
         /* Right Column (Sidebar) */
@@ -283,7 +319,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/activities-data.js"></script>
     <script src="js/activity-detail.js"></script>
     <script>
         // Simple JS to handle mobile dropdown toggle

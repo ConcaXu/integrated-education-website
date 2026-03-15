@@ -4,34 +4,71 @@ $(document).ready(function() {
     const activityId = urlParams.get('id');
     const container = $('#activity-detail-container');
 
-    // 2. Check if activity exists
-    if (activityId && activitiesData[activityId]) {
-        const activity = activitiesData[activityId];
-        renderActivity(activity);
+    // 2. Fetch data from API
+    if (activityId) {
+        // We fetch the list and find the corresponding activity, 
+        // since the list data contains the full content as per the user's description.
+        // Alternatively, if there is a detail endpoint, it could be used. 
+        // Here we use fetchActivityList to get the data.
+        fetchActivityList(1, 100, '近期活动')
+            .then(data => {
+                if (data && data.rows) {
+                    const activity = data.rows.find(item => item.id == activityId);
+                    if (activity) {
+                        renderActivity(activity);
+                    } else {
+                        renderError();
+                    }
+                } else {
+                    renderError();
+                }
+            })
+            .catch(error => {
+                console.error('获取详情失败:', error);
+                renderError();
+            });
     } else {
         renderError();
     }
 
     function renderActivity(activity) {
+        // Format date from "2026-03-15" or "2026-03-15 11:36:05" to "2026年 5月 20日" format
+        let formattedDate = activity.dateTime;
+        if (formattedDate) {
+            const d = new Date(formattedDate);
+            if (!isNaN(d.getTime())) {
+                formattedDate = `${d.getFullYear()}年 ${d.getMonth() + 1}月 ${d.getDate()}日`;
+            }
+        } else {
+            formattedDate = '';
+        }
+
+        // Format image url
+        let imageUrl = activity.coverImage || '';
+        if (imageUrl && !imageUrl.startsWith('http')) {
+            imageUrl = baseUrl + (imageUrl.startsWith('/dev-api') ? '' : '/dev-api') + imageUrl;
+        }
+
         // Update Page Title
-        document.title = `${activity.title} - WanderChina.Guide`;
+        document.title = `${activity.titleZh} - WanderChina.Guide`;
 
         // Render HTML
-        let highlightsHtml = '';
-        if (activity.highlights && activity.highlights.length > 0) {
-            highlightsHtml = `<ul class="highlights-list">
-                ${activity.highlights.map(item => `<li><i class="fas fa-check-circle"></i> <span>${item}</span></li>`).join('')}
-            </ul>`;
-        }
+        // The contentZh from the API already contains the HTML for Activity Review and Highlights.
+        // So we can just use activity.contentZh.
+        
+        let richTextHtml = activity.contentZh || activity.contentEn || '';
+        // Replace relative image and video paths in rich text with absolute URLs using baseUrl
+        richTextHtml = richTextHtml.replace(/src="(\/dev-api\/[^"]+)"/g, 'src="' + baseUrl + '$1"');
+        richTextHtml = richTextHtml.replace(/src="(\/profile\/[^"]+)"/g, 'src="' + baseUrl + '/dev-api$1"');
 
         const html = `
             <!-- Hero Section -->
-            <section class="detail-banner" style="background-image: url('${activity.image}');">
+            <section class="detail-banner" style="background-image: url('${imageUrl}');">
                 <div class="container banner-content">
                     <div class="activity-meta">
-                        <div class="meta-item"><i class="fas fa-calendar-alt"></i> ${activity.date}</div>
+                        <div class="meta-item"><i class="fas fa-calendar-alt"></i> ${formattedDate}</div>
                     </div>
-                    <h1 class="detail-title">${activity.title}</h1>
+                    <h1 class="detail-title">${activity.titleZh}</h1>
                 </div>
             </section>
 
@@ -42,13 +79,7 @@ $(document).ready(function() {
                         <!-- Left Column -->
                         <div class="left-col">
                             <div class="section-box">
-                                <h3 class="section-title lang-text" data-key="activity_recap">活动回顾</h3>
-                                <div class="text-content">${activity.content}</div>
-                            </div>
-
-                            <div class="section-box">
-                                <h3 class="section-title lang-text" data-key="activity_highlights">精彩亮点</h3>
-                                ${highlightsHtml}
+                                <div class="text-content api-rich-text">${richTextHtml}</div>
                             </div>
                         </div>
 
@@ -57,7 +88,7 @@ $(document).ready(function() {
                             <div class="sidebar-card">
                                 <div class="info-item">
                                     <span class="info-label lang-text" data-key="activity_date">活动日期</span>
-                                    <span class="info-value">${activity.date}</span>
+                                    <span class="info-value">${formattedDate}</span>
                                 </div>
                                 <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
                                 <a href="about.html#contact" class="contact-consult lang-text" data-key="contact_us"><i class="fas fa-envelope"></i> 联系我们</a>

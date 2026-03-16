@@ -1,12 +1,5 @@
-/**
- * API 请求统一配置
- */
-const baseUrl = 'http://localhost:1024';
+const baseUrl = '';
 
-/**
- * 页面类型映射字典
- * 根据不同的页面，传入对应的类型键值
- */
 const PageTypeMap = {
   '首页': 'HomePage',
   '研学出行': 'studyTour',
@@ -16,26 +9,11 @@ const PageTypeMap = {
   '关于我们': 'aboutUs'
 };
 
-/**
- * 获取活动列表接口
- * @param {number} pageNum - 当前页码
- * @param {number} pageSize - 每页条数
- * @param {string} type - 页面类型（可以传中文键名或者直接传对应的英文字段）
- * @param {string} country - 国家/地区（可选，如：singapore, CN, otherCountries）
- * @returns {Promise<any>} 返回包含活动列表数据的 Promise 对象
- */
 async function fetchActivityList(pageNum = 1, pageSize = 10, type = 'event', country = null) {
-  // 兼容处理：如果传入的是中文，则转换为对应的英文键值
   const typeValue = PageTypeMap[type] || type;
-  
-  // 构建 URL 和查询参数
-  const url = new URL(`${baseUrl}/dev-api/content/activity/list`);
-  url.searchParams.append('pageNum', pageNum);
-  url.searchParams.append('pageSize', pageSize);
-  url.searchParams.append('type', typeValue);
-  
+  let url = `/prod-api/content/activity/list?pageNum=${pageNum}&pageSize=${pageSize}&type=${typeValue}`;
   if (country) {
-    url.searchParams.append('country', country);
+    url += `&country=${country}`;
   }
 
   try {
@@ -45,27 +23,18 @@ async function fetchActivityList(pageNum = 1, pageSize = 10, type = 'event', cou
         'Content-Type': 'application/json'
       }
     });
-
     if (!response.ok) {
       throw new Error(`网络请求错误，状态码: ${response.status}`);
     }
-
-    const res = await response.json();
-    return res;
+    return await response.json();
   } catch (error) {
     console.error('获取活动列表失败:', error);
     throw error;
   }
 }
 
-/**
- * 获取活动详情接口
- * @param {string|number} id - 活动ID
- * @returns {Promise<any>} 返回包含活动详情数据的 Promise 对象
- */
 async function fetchActivityDetail(id) {
-  // 构建 URL
-  const url = new URL(`${baseUrl}/dev-api/content/activity/${id}`);
+  const url = `/prod-api/content/activity/${id}`;
 
   try {
     const response = await fetch(url, {
@@ -74,20 +43,16 @@ async function fetchActivityDetail(id) {
         'Content-Type': 'application/json'
       }
     });
-
     if (!response.ok) {
       throw new Error(`网络请求错误，状态码: ${response.status}`);
     }
-
-    const res = await response.json();
-    return res;
+    return await response.json();
   } catch (error) {
     console.error('获取活动详情失败:', error);
     throw error;
   }
 }
 
-// 将函数和变量挂载到 window 对象，以便在其他脚本中使用
 window.fetchActivityList = fetchActivityList;
 window.fetchActivityDetail = fetchActivityDetail;
 window.apiBaseUrl = baseUrl;

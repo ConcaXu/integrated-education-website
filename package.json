@@ -1,15 +1,16 @@
 {
   "name": "integratededucationofficialwebsite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "这是 Integrated Education & Business Group (WanderChina.Guide) 的官方网站项目。该网站旨在为全球用户提供中国研学旅行、政企出海考察及文化旅游的一站式服务信息。",
   "main": "compress_video.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss src/css/style.css -o css/style.css",
-    "watch:css": "postcss src/css/style.css -o css/style.css --watch"
+    "watch:css": "postcss src/css/style.css -o css/style.css --watch",
+    "build:prod": "npm run build:css && node scripts/build.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ConcaXu",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

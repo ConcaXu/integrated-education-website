@@ -23,9 +23,17 @@ export interface ActivityItem {
   contentZh?: string
   contentEn?: string
   coverImage?: string
+  cover_image?: string
+  coverImg?: string
+  cover_img?: string
+  image?: string
+  img?: string
+  thumbnail?: string
   dateTime?: string
+  date_time?: string
   type?: string
   country?: string
+  [key: string]: unknown
 }
 
 export interface ListResponse {

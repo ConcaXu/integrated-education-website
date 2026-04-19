@@ -17,7 +17,7 @@
         <template v-else>
           <div v-for="item in activities" :key="item.id" class="activity-card">
             <div class="activity-img">
-              <img :src="getImageUrl(item.coverImage)" :alt="item.titleZh" @error="onImgError" />
+              <img :src="getImageUrl(getCoverImage(item))" :alt="item.titleZh" @error="onImgError" />
             </div>
             <div class="activity-content">
               <div class="activity-date">{{ formatDate(item.dateTime) }}</div>
@@ -26,6 +26,19 @@
               <router-link :to="`/activities/${item.id}`" class="read-more-btn">{{ t('read_more') }}</router-link>
             </div>
           </div>
+
+          <!-- Pagination -->
+          <div v-if="totalPages > 1" class="pagination">
+            <button class="page-btn" :disabled="currentPage === 1" @click="loadPage(currentPage - 1)">&lsaquo;</button>
+            <button
+              v-for="p in totalPages"
+              :key="p"
+              class="page-btn"
+              :class="{ active: p === currentPage }"
+              @click="loadPage(p)"
+            >{{ p }}</button>
+            <button class="page-btn" :disabled="currentPage === totalPages" @click="loadPage(currentPage + 1)">&rsaquo;</button>
+          </div>
         </template>
       </div>
     </section>
@@ -33,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { fetchActivityList, type ActivityItem } from '@/apis/content'
 import { useI18n } from '@/composables/useI18n'
 
@@ -41,11 +54,24 @@ const { lang, t } = useI18n()
 const activities = ref<ActivityItem[]>([])
 const loading = ref(true)
 const error = ref(false)
+const currentPage = ref(1)
+const total = ref(0)
+const PAGE_SIZE = 5
+
+const totalPages = computed(() => Math.ceil(total.value / PAGE_SIZE))
 
 const getImageUrl = (img?: string) => {
   if (!img) return '/images/recentactivities.webp'
   if (img.startsWith('http')) return img
-  return img
+  return `/prod-api${img}`
+}
+
+const getCoverImage = (item: ActivityItem) => {
+  const img = item.coverImage || item.cover_image || item.coverImg || item.cover_img || item.image || item.img || item.thumbnail
+  if (!img && import.meta.env.DEV) {
+    console.warn('[ActivitiesView] No coverImage found for item:', item.id, Object.keys(item))
+  }
+  return img as string | undefined
 }
 
 const onImgError = (e: Event) => {
@@ -60,17 +86,25 @@ const formatDate = (dateStr?: string) => {
 }
 
 onMounted(async () => {
+  await loadPage(1)
+})
+
+async function loadPage(page: number) {
+  loading.value = true
+  error.value = false
   try {
-    const res = await fetchActivityList(1, 10, '近期活动')
+    const res = await fetchActivityList(page, PAGE_SIZE, '近期活动')
     if (res.code === 200 && res.rows) {
       activities.value = res.rows
+      total.value = res.total
+      currentPage.value = page
     }
   } catch {
     error.value = true
   } finally {
     loading.value = false
   }
-})
+}
 </script>
 
 <style scoped>
@@ -131,6 +165,43 @@ onMounted(async () => {
   transition: background 0.3s;
 }
 .read-more-btn:hover { background: #215198; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+.page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.2s;
+}
+.page-btn:hover:not(:disabled) {
+  border-color: #215198;
+  color: #215198;
+}
+.page-btn.active {
+  background: #215198;
+  border-color: #215198;
+  color: #fff;
+  font-weight: 600;
+}
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .activity-card { flex-direction: column; }
   .activity-img { width: 100%; height: 200px; min-height: auto; }

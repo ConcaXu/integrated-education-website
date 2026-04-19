@@ -1,3 +1,4 @@
+<!-- 近期活动 -->
 <template>
   <div>
     <div v-if="loading" class="loading-screen"><p>{{ t('loading') }}</p></div>
@@ -8,7 +9,7 @@
     </div>
     <template v-else>
       <!-- Hero Banner -->
-      <section class="detail-banner" :style="`background-image: url('${getImageUrl(activity.coverImage)}')`">
+      <section class="detail-banner" :style="`background-image: url('${getImageUrl(getCoverImage(activity))}')`">
         <div class="container banner-content">
           <div class="activity-meta">
             <div class="meta-item"><i class="fas fa-calendar-alt"></i> {{ formatDate(activity.dateTime) }}</div>
@@ -62,7 +63,15 @@ const loading = ref(true)
 const getImageUrl = (img?: string) => {
   if (!img) return '/images/recentactivities.webp'
   if (img.startsWith('http')) return img
-  return img
+  return `/prod-api${img}`
+}
+
+const getCoverImage = (item: ActivityItem) => {
+  const img = item.coverImage || item.cover_image || item.coverImg || item.cover_img || item.image || item.img || item.thumbnail
+  if (!img && import.meta.env.DEV) {
+    console.warn('[ActivityDetailView] No coverImage found for item:', item.id, Object.keys(item))
+  }
+  return img as string | undefined
 }
 
 const formatDate = (dateStr?: string) => {

@@ -10,7 +10,7 @@
     </div>
     <template v-else>
       <!-- Hero Banner -->
-      <section class="detail-banner" :style="`background-image: url('${getImageUrl(product.coverImage)}')`">
+      <section class="detail-banner" :style="`background-image: url('${getImageUrl(getCoverImage(product))}')`">
         <div class="container banner-content">
           <div class="product-meta">
             <div v-if="product.type" class="meta-item">
@@ -70,7 +70,16 @@ const loading = ref(true)
 const getImageUrl = (img?: string) => {
   if (!img) return '/images/productcatalog.webp'
   if (img.startsWith('http')) return img
-  return img
+  return `/prod-api${img}`
+}
+
+const getCoverImage = (item: ActivityItem | null) => {
+  if (!item) return undefined
+  const img = item.coverImage || item.cover_image || item.coverImg || item.cover_img || item.image || item.img || item.thumbnail
+  if (!img && import.meta.env.DEV) {
+    console.warn('[ProductDetailView] No coverImage found for item:', item.id, Object.keys(item))
+  }
+  return img as string | undefined
 }
 
 const getTitle = () => {

@@ -1,39 +1,79 @@
 <template>
-  <div class="products-grid">
-    <div v-if="loading" class="status-msg">{{ t('loading') }}</div>
-    <div v-else-if="error" class="status-msg error">{{ t('load_failed') }}</div>
-    <div v-else-if="!items.length" class="status-msg">{{ t('no_data') }}</div>
-    <div v-else v-for="item in items" :key="item.id" class="product-card">
-      <div class="product-img">
-        <img :src="getImageUrl(item.coverImage)" :alt="getTitle(item)" @error="onImgError" />
-      </div>
-      <div class="product-info">
-        <h4 class="product-title">{{ getTitle(item) }}</h4>
-        <p class="product-desc">{{ truncate(getDesc(item)) }}</p>
-        <router-link :to="`/products/${item.id}`" class="product-link">
-          {{ t('learn_more_detail') }} <i class="fas fa-arrow-right"></i>
-        </router-link>
-      </div>
+  <div>
+    <div class="products-grid">
+      <div v-if="loading" class="status-msg">{{ t('loading') }}</div>
+      <div v-else-if="error" class="status-msg error">{{ t('load_failed') }}</div>
+      <div v-else-if="!items.length" class="status-msg">{{ t('no_data') }}</div>
+      <template v-else>
+        <div v-for="item in items" :key="item.id" class="product-card">
+          <div class="product-img">
+            <img :src="getImageUrl(getCoverImage(item))" :alt="getTitle(item)" @error="onImgError" />
+          </div>
+          <div class="product-info">
+            <h4 class="product-title">{{ getTitle(item) }}</h4>
+            <p class="product-desc">{{ truncate(getDesc(item)) }}</p>
+            <router-link :to="`/products/${item.id}`" class="product-link">
+              {{ t('learn_more_detail') }} <i class="fas fa-arrow-right"></i>
+            </router-link>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Pagination -->
+    <div v-if="totalPages > 1" class="pagination">
+      <button
+        class="page-btn"
+        :disabled="currentPage === 1"
+        @click="goToPage(currentPage - 1)"
+      >&lsaquo;</button>
+      <button
+        v-for="p in totalPages"
+        :key="p"
+        class="page-btn"
+        :class="{ active: p === currentPage }"
+        @click="goToPage(p)"
+      >{{ p }}</button>
+      <button
+        class="page-btn"
+        :disabled="currentPage === totalPages"
+        @click="goToPage(currentPage + 1)"
+      >&rsaquo;</button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { fetchActivityList, type ActivityItem } from '@/apis/content'
 import { useI18n, type Lang } from '@/composables/useI18n'
 
 const props = defineProps<{ type: string; country: string; lang: Lang }>()
 const { t } = useI18n()
 
+const PAGE_SIZE = 3
+
 const items = ref<ActivityItem[]>([])
 const loading = ref(true)
 const error = ref(false)
+const currentPage = ref(1)
+const total = ref(0)
+
+const totalPages = computed(() => Math.ceil(total.value / PAGE_SIZE))
 
 const getImageUrl = (img?: string) => {
-  if (!img) return '/images/productcatalog.webp'
-  if (img.startsWith('http')) return img
-  return img
+  const src = img || ''
+  if (!src) return '/images/productcatalog.webp'
+  if (src.startsWith('http')) return src
+  return `/prod-api${src}`
+}
+
+const getCoverImage = (item: ActivityItem) => {
+  const img = item.coverImage || item.cover_image || item.coverImg || item.cover_img || item.image || item.img || item.thumbnail
+  if (!img && import.meta.env.DEV) {
+    console.warn('[ProductGrid] No coverImage found for item:', item.id, Object.keys(item))
+  }
+  return img as string | undefined
 }
 
 const onImgError = (e: Event) => {
@@ -49,15 +89,17 @@ const getDesc = (item: ActivityItem) =>
 const truncate = (str?: string) =>
   str && str.length > 60 ? str.substring(0, 60) + '...' : (str || '')
 
-const load = async () => {
+const load = async (page = 1) => {
   loading.value = true
   error.value = false
   try {
-    const res = await fetchActivityList(1, 10, props.type, props.country)
+    const res = await fetchActivityList(page, PAGE_SIZE, props.type, props.country)
     if (res.code === 200 && res.rows) {
       items.value = res.rows
+      total.value = res.total ?? 0
     } else {
       items.value = []
+      total.value = 0
     }
   } catch {
     error.value = true
@@ -66,15 +108,25 @@ const load = async () => {
   }
 }
 
-onMounted(load)
-watch(() => props.type + props.country, load)
+const goToPage = (page: number) => {
+  if (page < 1 || page > totalPages.value) return
+  currentPage.value = page
+  load(page)
+}
+
+onMounted(() => load(1))
+watch(() => props.type + props.country, () => {
+  currentPage.value = 1
+  load(1)
+})
 </script>
 
 <style scoped>
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  min-height: 100px;
 }
 .status-msg {
   text-align: center;
@@ -98,4 +150,39 @@ watch(() => props.type + props.country, load)
 .product-desc { font-size: 0.9rem; color: #666; line-height: 1.5; margin-bottom: 15px; }
 .product-link { display: inline-block; color: #215198; font-weight: 500; text-decoration: none; }
 .product-link:hover { text-decoration: underline; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+}
+.page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.2s;
+}
+.page-btn:hover:not(:disabled) {
+  border-color: #215198;
+  color: #215198;
+}
+.page-btn.active {
+  background: #215198;
+  border-color: #215198;
+  color: #fff;
+  font-weight: 600;
+}
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 </style>

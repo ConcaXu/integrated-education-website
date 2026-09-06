@@ -308,7 +308,7 @@ textarea {
 
 .dark-section {
   background: var(--paper);
-  color: var(--ink);
+  color: #171717;
 }
 
 .dark-section h2 {

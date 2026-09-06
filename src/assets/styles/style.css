@@ -199,7 +199,8 @@ textarea {
 
 .button-light {
   background: #fff;
-  color: var(--ink)
+  color: var(--ink);
+  border: 0.5px solid #1d293b;
 }
 
 .button-outline {
@@ -346,8 +347,8 @@ textarea {
 }
 
 .cta-band {
-  background: var(--dark);
-  color: #fff
+  background: #f4f1eb;
+  color: #000000
 }
 
 .cta-band h2 {

@@ -1,2 +1,66 @@
-<template><footer class="site-footer"><div class="site-shell footer-grid"><div><div class="footer-brand">APIMTC</div><p>{{tx('Singapore-based. Globally connected.','立足新加坡 · 连接全球。')}}</p><p class="muted">{{tx('Connecting people, education, industry and opportunity across borders.','连接人才、教育、产业与跨境发展机遇。')}}</p></div><div><h4>{{tx('Explore','探索')}}</h4><router-link to="/mobility">{{tx('Education Mobility','教育流动')}}</router-link><router-link to="/mice-business">{{tx('MICE & Business','MICE 与商务')}}</router-link><router-link to="/china-gateway">{{tx('China Gateway','中国门户')}}</router-link></div><div><h4>{{tx('Connect','联系')}}</h4><router-link to="/partnerships">{{tx('International Partnerships','国际合作')}}</router-link><router-link to="/contact">{{tx('Contact APIMTC','联系我们')}}</router-link><p class="muted">+65 6618 6503<br>info@apimtravel.com</p></div></div><div class="site-shell footer-bottom">© 2026 APIMTC · {{tx('Singapore is our home. Chengdu is our China gateway.','新加坡是我们的根基，成都是我们的中国门户。')}}</div></footer></template>
-<script setup lang="ts">import {useI18n} from '@/composables/useI18n';const {lang}=useI18n();const tx=(en:string,zh:string)=>lang.value==='en'?en:zh</script>
+<template>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <div>
+        <img
+          class="footer-partner-logo"
+          src="/images/APIEC-logo.png"
+          alt="Asia Pacific International Exchange (Singapore)"
+        />
+        <div class="footer-brand">APIMTC</div>
+        <p>
+          {{
+            tx(
+              "Singapore-based. Globally connected.",
+              "立足新加坡 · 连接全球。",
+            )
+          }}
+        </p>
+        <p class="muted">
+          {{
+            tx(
+              "Connecting people, education, industry and opportunity across borders.",
+              "连接人才、教育、产业与跨境发展机遇。",
+            )
+          }}
+        </p>
+      </div>
+      <div>
+        <h4>{{ tx("Explore", "探索") }}</h4>
+        <router-link to="/mobility">{{
+          tx("Education Mobility", "教育流动")
+        }}</router-link
+        ><router-link to="/mice-business">{{
+          tx("MICE & Business", "MICE 与商务")
+        }}</router-link
+        ><router-link to="/china-gateway">{{
+          tx("China Gateway", "中国门户")
+        }}</router-link>
+      </div>
+      <div>
+        <h4>{{ tx("Connect", "联系") }}</h4>
+        <router-link to="/partnerships">{{
+          tx("International Partnerships", "国际合作")
+        }}</router-link
+        ><router-link to="/contact">{{
+          tx("Contact APIMTC", "联系我们")
+        }}</router-link>
+        <p class="muted">+65 6618 6503<br />info@apimtravel.com</p>
+      </div>
+    </div>
+    <div class="site-shell footer-bottom">
+      © 2026 APIMTC ·
+      {{
+        tx(
+          "Singapore is our home. Chengdu is our China gateway.",
+          "新加坡是我们的根基，成都是我们的中国门户。",
+        )
+      }}
+    </div>
+  </footer>
+</template>
+<script setup lang="ts">
+import { useI18n } from "@/composables/useI18n";
+const { lang } = useI18n();
+const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);
+</script>

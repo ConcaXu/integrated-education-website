@@ -68,8 +68,7 @@ textarea {
 
 .brand img {
   height: 38px;
-  object-fit: contain;
-  filter: grayscale(1)
+  object-fit: contain
 }
 
 .brand span {

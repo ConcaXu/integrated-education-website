@@ -2,9 +2,7 @@
   <header class="site-header">
     <div class="site-shell header-inner">
       <router-link class="brand" to="/"
-        ><img src="/images/logo.webp" alt="APIMTC" /><span
-          ><b>APIMTC</b><small>Singapore · Global</small></span
-        ></router-link
+        ><img src="/images/logo.webp" alt="APIMTC" /></router-link
       ><button class="menu-toggle" @click="open = !open">☰</button>
       <nav :class="{ open }">
         <router-link to="/">{{ tx("Home", "首页") }}</router-link

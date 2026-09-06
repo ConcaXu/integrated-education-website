@@ -198,9 +198,8 @@ textarea {
 }
 
 .button-light {
-  background: #fff;
-  color: var(--ink);
-  border: 0.5px solid #1d293b;
+  color: #fff;
+  background: #5f5a53;
 }
 
 .button-outline {
@@ -308,7 +307,7 @@ textarea {
 }
 
 .dark-section {
-  background: var(--paper);
+  background: var(--warm);
   color: #171717;
 }
 

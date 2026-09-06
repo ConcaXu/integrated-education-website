@@ -1,29 +1,31 @@
 <template>
   <footer class="site-footer">
     <div class="site-shell footer-grid">
-      <div>
+      <div class="footer-identity">
         <img
           class="footer-partner-logo"
           src="/images/APIEC-logo.png"
           alt="Asia Pacific International Exchange (Singapore)"
         />
-        <div class="footer-brand">APIMTC</div>
-        <p>
-          {{
-            tx(
-              "Singapore-based. Globally connected.",
-              "立足新加坡 · 连接全球。",
-            )
-          }}
-        </p>
-        <p class="muted">
-          {{
-            tx(
-              "Connecting people, education, industry and opportunity across borders.",
-              "连接人才、教育、产业与跨境发展机遇。",
-            )
-          }}
-        </p>
+        <div class="footer-identity-copy">
+          <div class="footer-brand">APIMTC</div>
+          <p>
+            {{
+              tx(
+                "Singapore-based. Globally connected.",
+                "立足新加坡 · 连接全球。",
+              )
+            }}
+          </p>
+          <p class="muted">
+            {{
+              tx(
+                "Connecting people, education, industry and opportunity across borders.",
+                "连接人才、教育、产业与跨境发展机遇。",
+              )
+            }}
+          </p>
+        </div>
       </div>
       <div>
         <h4>{{ tx("Explore", "探索") }}</h4>

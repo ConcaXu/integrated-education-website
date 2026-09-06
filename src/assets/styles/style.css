@@ -393,6 +393,16 @@ textarea {
   gap: 60px
 }
 
+.footer-identity {
+  display: flex;
+  align-items: center;
+  gap: 28px
+}
+
+.footer-identity-copy {
+  min-width: 0
+}
+
 .footer-brand {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 30px;
@@ -424,7 +434,8 @@ textarea {
   margin-top: 55px;
   padding-top: 18px;
   color: #8d877f;
-  font-size: 11px
+  font-size: 11px;
+  text-align: center
 }
 
 .contact-layout {

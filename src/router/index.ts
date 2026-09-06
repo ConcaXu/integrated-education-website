@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   { path: '/', name: 'Home', component: () => import('@/views/HomeView.vue') },
-  { path: '/products', name: 'Products', component: () => import('@/views/ProductsView.vue') },
-  { path: '/products/:id', name: 'ProductDetail', component: () => import('@/views/ProductDetailView.vue') },
-  { path: '/activities', name: 'Activities', component: () => import('@/views/ActivitiesView.vue') },
-  { path: '/activities/:id', name: 'ActivityDetail', component: () => import('@/views/ActivityDetailView.vue') },
-  { path: '/about', name: 'About', component: () => import('@/views/AboutView.vue') },
+  { path: '/about', component: () => import('@/views/BrandPageView.vue') },
+  { path: '/mobility', component: () => import('@/views/BrandPageView.vue') },
+  { path: '/mice-business', component: () => import('@/views/BrandPageView.vue') },
+  { path: '/partnerships', component: () => import('@/views/BrandPageView.vue') },
+  { path: '/china-gateway', component: () => import('@/views/BrandPageView.vue') },
+  { path: '/contact', component: () => import('@/views/ContactView.vue') },
   { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 

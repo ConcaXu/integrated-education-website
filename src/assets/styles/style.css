@@ -209,7 +209,8 @@ textarea {
 
 .button-dark {
   background: var(--ink);
-  color: #fff
+  color: #fff;
+  border: 0.5px solid #fff;
 }
 
 .section {
@@ -382,7 +383,7 @@ textarea {
 }
 
 .site-footer {
-  background: #111;
+  background: #1d293b;
   color: #d8d2c9;
   padding: 74px 0 24px
 }

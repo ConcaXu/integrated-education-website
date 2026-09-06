@@ -4,7 +4,7 @@
       <div class="footer-identity">
         <img
           class="footer-partner-logo"
-          src="/images/APIEC-logo.png"
+          src="/images/APIEC-logo-01.png"
           alt="Asia Pacific International Exchange (Singapore)"
         />
         <div class="footer-identity-copy">

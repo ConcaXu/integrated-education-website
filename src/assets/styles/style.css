@@ -307,7 +307,7 @@ textarea {
 }
 
 .dark-section {
-  background: var(--warm);
+  background: var(--paper);
   color: #171717;
 }
 

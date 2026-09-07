@@ -370,6 +370,20 @@ textarea {
   max-width: 560px
 }
 
+.prose p { color: #5f5a53; line-height: 1.7; font-size: 16px; margin: 0 0 18px }
+.prose strong { color: var(--accent); font-size: 15px; line-height: 1.5 }
+.mobility-grid .info-block,
+.advantages-grid .info-block { min-height: 190px }
+.advantages-grid { grid-template-columns: repeat(3, 1fr) }
+.architecture-section { background: var(--warm) }
+.architecture-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px }
+.architecture-grid article { background: #fff; border: 1px solid var(--line); padding: 28px; min-height: 240px }
+.architecture-grid h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; line-height: 1.15; margin: 18px 0 12px }
+.architecture-grid p, .model-copy { color: #716b63; line-height: 1.7; font-size: 15px }
+.mobility-model { background: var(--warm) }
+.programme-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 42px }
+.programme-types span { border-top: 2px solid var(--accent); padding: 18px 0; font-weight: 700; font-size: 14px }
+
 .content-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -529,6 +543,10 @@ textarea {
     grid-template-columns: 1fr;
     gap: 34px
   }
+
+  .advantages-grid,
+  .architecture-grid,
+  .programme-types { grid-template-columns: 1fr }
 
   .section {
     padding: 78px 0

@@ -1,150 +1,27 @@
 <template>
-  <div>
-    <section class="hero hero-home">
-      <div class="hero-media"></div>
-      <div class="site-shell hero-content">
-        <span class="eyebrow">APIMTC DIGITAL ART · 2026</span>
-        <h1>Art that<br />lives online.</h1>
-        <p>
-          {{
-            tx(
-              "A curated NFT gallery for collectors, artists and curious minds.",
-              "为收藏家、艺术家与好奇者打造的精选 NFT 数字画廊。",
-            )
-          }}
-        </p>
-        <div class="actions">
-          <router-link class="button button-light" to="/mobility">{{
-            tx("Explore collection", "探索藏品")
-          }}</router-link
-          ><router-link class="button button-outline" to="/contact">{{
-            tx("Become a collector", "成为收藏家")
-          }}</router-link>
-        </div>
-      </div>
-    </section>
-    <section class="section intro-band">
-      <div class="site-shell split">
-        <div>
-          <span class="eyebrow">CURATED / 01</span>
-          <h2>
-            {{
-              tx(
-                "A slower way to discover digital art.",
-                "以更从容的方式，发现数字艺术。",
-              )
-            }}
-          </h2>
-        </div>
-        <p>
-          {{
-            tx(
-              "We bring together artists working across generative systems, moving image and digital sculpture. Every drop is small, considered and made to be lived with.",
-              "我们汇聚生成艺术、动态影像与数字雕塑创作者。每次发布都克制、精选，并值得长期欣赏。",
-            )
-          }}
-        </p>
-      </div>
-    </section>
-    <section class="section">
-      <div class="site-shell">
-        <div class="section-heading">
-          <span class="eyebrow">FEATURED WORKS</span>
-          <h2>{{ tx("The current exhibition.", "正在展出的作品。") }}</h2>
-        </div>
-        <div class="feature-grid">
-          <router-link
-            v-for="item in features"
-            :key="item.to"
-            class="feature-card"
-            :to="item.to"
-            ><div
-              class="feature-image"
-              :style="{ backgroundImage: `url(${item.image})` }"
-            ></div>
-            <div class="feature-copy">
-              <span class="card-kicker">{{ item.kicker }}</span>
-              <h3>{{ tx(item.en, item.zh) }}</h3>
-              <p>{{ tx(item.descEn, item.descZh) }}</p>
-              <span class="text-link">{{
-                tx("View work →", "查看作品 →")
-              }}</span>
-            </div></router-link
-          >
-        </div>
-      </div>
-    </section>
-    <section class="section dark-section">
-      <div class="site-shell platform">
-        <div>
-          <span class="eyebrow">THE GALLERY</span>
-          <h2>
-            {{tx('One gallery.<br />Many points of view.','一个画廊。多种观看方式。')}}
-          </h2>
-        </div>
-        <div class="platform-steps">
-          <div>
-            <strong>01</strong><b>{{ tx("Collect", "收藏") }}</b
-            ><span>{{
-              tx("Own a piece of the story", "拥有故事的一部分")
-            }}</span>
-          </div>
-          <div>
-            <strong>02</strong><b>{{ tx("Meet artists", "认识艺术家") }}</b
-            ><span>{{ tx("Follow the process", "追踪创作过程") }}</span>
-          </div>
-          <div>
-            <strong>03</strong><b>{{ tx("Join drops", "参与发行") }}</b
-            ><span>{{
-              tx("Exhibitions, live and online", "线上线下展览")
-            }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section cta-band">
-      <div class="site-shell split">
-        <h2>
-          {{ tx("The next piece could be yours.", "下一件作品，或许属于你。") }}
-        </h2>
-        <router-link class="button button-dark" to="/contact">{{
-          tx("Enter the mint room", "进入铸造空间")
-        }}</router-link>
-      </div>
-    </section>
+  <div class="landing-page">
+    <section class="hero hero-home"><div class="hero-media"></div><div class="site-shell hero-content"><span class="eyebrow">APIMTC · SINGAPORE</span><h1>Singapore-based.<br />Globally connected.</h1><p class="hero-lead">{{ tx('Connecting people, education, skills and business across borders.', '让人才、教育、技能与商务跨越国界，实现交流与合作。') }}</p><div class="actions"><router-link class="button button-light" to="/mobility">{{ tx('Explore education mobility', '探索教育流动') }}</router-link><router-link class="button button-outline" to="/contact">{{ tx('Start a conversation', '开始洽谈') }}</router-link></div></div></section>
+    <section class="section intro-band"><div class="site-shell split"><div><span class="eyebrow">WHO WE ARE</span><h2>{{ tx('Connecting people, cities, education, industry and opportunity.', '连接人才、城市、教育、产业与机遇。') }}</h2></div><div class="prose"><p>{{ tx('APIMTC (Asia Pacific International MICE & Travel Centre) is an international platform headquartered in Singapore. Our work has expanded from MICE and destination management into education mobility, skills development and cross-border exchange.', 'APIMTC（亚太国际会议会展中心）是总部设于新加坡的国际化平台，业务从会展旅游延伸至国际教育流动、技能发展与跨境交流。') }}</p><p>{{ tx('API EduVoyage is our Chengdu-based China gateway. Together, Singapore and Chengdu connect talents, institutions and enterprises across China and the world.', 'API EduVoyage 亚太国际智航是我们位于成都的中国门户。新加坡与成都协同，打通中国与全球的人才、院校和企业资源。') }}</p><strong>{{ tx('We do not merely arrange travel — we build connections.', '我们不止是出行，而是搭建连接。') }}</strong></div></div></section>
+    <section class="section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">TWO-WAY MOBILITY</span><h2>{{ tx('Movement in both directions.', '双向流动，连接世界。') }}</h2></div><div class="content-grid mobility-grid"><article v-for="item in mobility" :key="item.num" class="info-block"><span class="block-number">{{ item.num }}</span><h3>{{ tx(item.enTitle, item.zhTitle) }}</h3><p>{{ tx(item.en, item.zh) }}</p></article></div></div></section>
+    <section class="section dark-section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">WHY APIMTC</span><h2>{{ tx('Built for meaningful exchange.', '为有意义的交流而生。') }}</h2></div><div class="content-grid advantages-grid"><article v-for="item in advantages" :key="item.num" class="info-block"><span class="block-number">{{ item.num }}</span><h3>{{ tx(item.enTitle, item.zhTitle) }}</h3><p>{{ tx(item.en, item.zh) }}</p></article></div></div></section>
+    <section class="section cta-band"><div class="site-shell split"><div><span class="eyebrow">WHAT WE DO</span><h2>{{ tx('Educate · Experience · Explore · Exchange.', '学习 · 体验 · 探索 · 交流。') }}</h2><p>{{ tx('Our programmes follow the 4E model and combine academic learning, industry exposure, cultural immersion and international peer exchange.', '我们的项目遵循 4E 模型，融合学术学习、产业体验、文化探索与国际同伴交流。') }}</p></div><div class="actions"><router-link class="button button-dark" to="/mobility">{{ tx('Education Mobility', '教育流动') }}</router-link><router-link class="button button-dark" to="/mice-business">{{ tx('MICE & Business', 'MICE 与商务') }}</router-link></div></div></section>
   </div>
 </template>
 <script setup lang="ts">
-import { useI18n } from "@/composables/useI18n";
-const { lang } = useI18n();
-const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);
-const features = [
-  {
-    to: "/mobility",
-    kicker: "SERIES 01 · 1/12",
-    en: "Soft Geometry",
-    zh: "柔性几何",
-    descEn: "A study in light, rhythm and imperfect symmetry.",
-    descZh: "关于光线、节奏与不完美对称的研究。",
-    image: "/images/gaotie.webp",
-  },
-  {
-    to: "/mice-business",
-    kicker: "SERIES 02 · 1/08",
-    en: "Transit / Memory",
-    zh: "迁徙与记忆",
-    descEn: "Moving through places that refuse to stay still.",
-    descZh: "穿行于拒绝静止的地点之间。",
-    image: "/images/enterprise_img01.webp",
-  },
-  {
-    to: "/partnerships",
-    kicker: "SERIES 03 · 1/05",
-    en: "Common Ground",
-    zh: "共同之地",
-    descEn: "Where culture, code and human hands meet.",
-    descZh: "文化、代码与人的双手相遇之处。",
-    image: "/images/partnerLogo3.webp",
-  },
-];
+import { useI18n } from '@/composables/useI18n'
+const { lang } = useI18n()
+const tx = (en: string, zh: string) => lang.value === 'en' ? en : zh
+const mobility = [
+  { num: '01', enTitle: 'China Beyond the Classroom', zhTitle: '中国课堂之外', en: 'Immersive China programmes for Singapore students and schools.', zh: '面向新加坡师生的沉浸式中国教育项目。' },
+  { num: '02', enTitle: 'Singapore Future Explorers', zhTitle: '新加坡未来探索者', en: 'Immersive Singapore programmes for global youth.', zh: '面向全球青少年的新加坡主题研学营。' },
+  { num: '03', enTitle: 'API EduVoyage · Chengdu', zhTitle: '亚太国际智航 · 成都', en: 'A China-focused platform for education mobility and global exchange.', zh: '中国国际教育流动与全球交流平台。' },
+]
+const advantages = [
+  { num: '01', enTitle: 'Singapore-based', zhTitle: '新加坡总部背景', en: 'International perspective and regional connectivity.', zh: '拥有国际化视野与成熟的区域链接能力。' },
+  { num: '02', enTitle: 'China access', zhTitle: '中国专属运营门户', en: 'Dedicated local operation team based in Chengdu.', zh: '成都本土团队，深度对接中国教育与产业资源。' },
+  { num: '03', enTitle: 'Global partnerships', zhTitle: '全球合作网络', en: 'Schools, universities, enterprises and organisations.', zh: '联动海内外学校、高校、企业与机构。' },
+  { num: '04', enTitle: 'Education + industry', zhTitle: '教育 + 产业融合', en: 'Bridge classroom knowledge with real-world exposure.', zh: '把课堂知识和真实产业场景相结合。' },
+  { num: '05', enTitle: 'End-to-end delivery', zhTitle: '全链路项目落地', en: 'Design, coordination, management and execution.', zh: '项目设计、合作对接、人员管理与跨境执行一站式交付。' },
+  { num: '06', enTitle: 'Customised programmes', zhTitle: '高度定制化服务', en: 'Tailored for age groups, objectives and institutions.', zh: '匹配不同年龄、院校目标与机构需求定制方案。' },
+]
 </script>

@@ -52,7 +52,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { fetchActivityList, type ActivityItem } from '@/apis/content'
+import { fetchActivityDetail, type ActivityItem } from '@/apis/content'
 import { useI18n } from '@/composables/useI18n'
 
 const route = useRoute()
@@ -92,9 +92,9 @@ onMounted(async () => {
   const id = route.params.id as string
   if (!id) { loading.value = false; return }
   try {
-    const res = await fetchActivityList(1, 100, '近期活动')
-    if (res.code === 200 && res.rows) {
-      activity.value = res.rows.find(item => String(item.id) === id) || null
+    const res = await fetchActivityDetail(id)
+    if (res.code === 200 && res.data) {
+      activity.value = res.data
     }
   } catch {
     activity.value = null

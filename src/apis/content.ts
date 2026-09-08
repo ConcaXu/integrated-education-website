@@ -5,14 +5,11 @@ const http = axios.create({
   headers: { 'Content-Type': 'application/json' }
 })
 
-const PageTypeMap: Record<string, string> = {
-  '首页': 'HomePage',
-  '研学出行': 'studyTour',
-  '政企出海': 'goingGlobalForGovernmentAndEnterprises',
-  '文化旅游': 'culturalTourism',
-  '近期活动': 'event',
-  '关于我们': 'aboutUs'
-}
+http.interceptors.request.use((config) => {
+  const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null
+  if (token) config.headers.Authorization = token.startsWith('Bearer ') ? token : `Bearer ${token}`
+  return config
+})
 
 export interface ActivityItem {
   id: number | string
@@ -32,7 +29,7 @@ export interface ActivityItem {
   dateTime?: string
   date_time?: string
   type?: string
-  country?: string
+  _country?: string
   [key: string]: unknown
 }
 
@@ -50,17 +47,31 @@ export interface DetailResponse {
 export async function fetchActivityList(
   pageNum = 1,
   pageSize = 10,
-  type = 'event',
-  country?: string
+  type?: string,
+  _country?: string
 ): Promise<ListResponse> {
-  const typeValue = PageTypeMap[type] || type
-  let url = `/prod-api/content/activity/list?pageNum=${pageNum}&pageSize=${pageSize}&type=${typeValue}`
-  if (country) url += `&country=${country}`
-  const res = await http.get<ListResponse>(url)
-  return res.data
+  const params: Record<string, string | number> = { pageNum, pageSize }
+  // Legacy callers may pass a type/country; the documented API only supports activityType.
+  if (type && /^\d+$/.test(type)) params.activityType = Number(type)
+  const res = await http.get<ListResponse>('/prod-api/content/activity/list', { params })
+  const payload = res.data as ListResponse
+  return { ...payload, rows: (payload.rows || []).map(normalizeActivity) }
 }
 
 export async function fetchActivityDetail(id: number | string): Promise<DetailResponse> {
   const res = await http.get<DetailResponse>(`/prod-api/content/activity/${id}`)
-  return res.data
+  const payload = res.data as DetailResponse
+  return { ...payload, data: payload.data ? normalizeActivity(payload.data) : payload.data }
+}
+
+function normalizeActivity(item: ActivityItem): ActivityItem {
+  const source = item as ActivityItem & Record<string, unknown>
+  return {
+    ...item,
+    id: source.id ?? source.activityId ?? '',
+    titleZh: String(source.titleZh ?? source.activityTitle ?? ''),
+    introZh: String(source.introZh ?? source.activityDesc ?? ''),
+    contentZh: String(source.contentZh ?? source.activityDesc ?? ''),
+    dateTime: String(source.dateTime ?? source.startDate ?? ''),
+  }
 }

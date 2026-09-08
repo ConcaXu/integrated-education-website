@@ -21,6 +21,9 @@
         ><router-link to="/china-gateway">{{
           tx("China Gateway", "中国门户")
         }}</router-link
+        ><router-link to="/activities">{{
+          tx("Activities", "近期活动")
+        }}</router-link
         ><router-link class="header-cta" to="/contact">{{
           tx("Contact Us", "联系我们")
         }}</router-link

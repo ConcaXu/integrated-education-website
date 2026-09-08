@@ -8,6 +8,9 @@ const routes = [
   { path: '/partnerships', component: () => import('@/views/BrandPageView.vue') },
   { path: '/china-gateway', component: () => import('@/views/BrandPageView.vue') },
   { path: '/contact', component: () => import('@/views/ContactView.vue') },
+  { path: '/activities', component: () => import('@/views/ActivitiesView.vue') },
+  { path: '/activities/:id', component: () => import('@/views/ActivityDetailView.vue') },
+  { path: '/products/:id', component: () => import('@/views/ProductDetailView.vue') },
   { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 

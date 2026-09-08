@@ -3,6 +3,7 @@
     <AppHeader />
     <main>
       <router-view></router-view>
+      <ActivityPromo v-if="$route.path !== '/activities' && !$route.path.startsWith('/activities/')" />
     </main>
     <AppFooter />
   </div>
@@ -11,6 +12,7 @@
 <script lang="ts" setup>
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import ActivityPromo from '@/components/ActivityPromo.vue'
 </script>
 
 <style lang="scss">

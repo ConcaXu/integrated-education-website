@@ -165,6 +165,11 @@ textarea {
   margin: 22px 0
 }
 
+.hero h1 .hero-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .hero p {
   font-size: 17px;
   max-width: 470px

@@ -4,7 +4,10 @@
       <div class="hero-media"></div>
       <div class="site-shell hero-content">
         <span class="eyebrow">APIMTC · SINGAPORE</span>
-        <h1>Singapore-Based<br />Globally-Connected</h1>
+        <h1>
+          <span class="hero-line">Singapore-Based</span>
+          <span class="hero-line">Globally-Connected</span>
+        </h1>
         <p class="hero-lead">
           {{
             tx(

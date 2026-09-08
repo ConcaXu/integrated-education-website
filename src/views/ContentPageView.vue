@@ -1,6 +1,6 @@
 <template>
   <div class="content-page">
-    <section class="content-hero">
+    <section class="content-hero" :style="{ backgroundImage: `url(${heroImage})` }">
       <div class="site-shell">
         <span class="eyebrow">APIMTC</span>
         <h1>{{ pageTitle }}</h1>
@@ -62,6 +62,13 @@ import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchActivityDetail, fetchActivityList, type ActivityItem, type ActivityType } from '@/apis/content'
 import { useI18n } from '@/composables/useI18n'
+import aboutApimtcHero from '@/assets/images/关于 APIMTC.png'
+import chinaGatewayHero from '@/assets/images/中国门户.png'
+import contactHero from '@/assets/images/联系我们.png'
+import homeHero from '@/assets/images/首页.png'
+import internationalCooperationHero from '@/assets/images/国际合作.png'
+import miceBusinessHero from '@/assets/images/MICE 与商务.png'
+import educationMobilityHero from '@/assets/images/教育流动.png'
 
 const route = useRoute()
 const { lang } = useI18n()
@@ -76,6 +83,16 @@ const imageErrors = ref<Record<string, boolean>>({})
 const activityType = computed(() => route.meta.activityType as ActivityType)
 const pageTitle = computed(() => lang.value === 'en' ? route.meta.titleEn : route.meta.titleZh)
 const pageSubtitle = computed(() => lang.value === 'en' ? 'Explore our latest information and services.' : '了解我们的最新资讯与服务内容。')
+const heroImages: Record<string, string> = {
+  '首页': homeHero,
+  '关于 APIMTC': aboutApimtcHero,
+  '教育流动': educationMobilityHero,
+  'MICE 与商务': miceBusinessHero,
+  '国际合作': internationalCooperationHero,
+  '中国门户': chinaGatewayHero,
+  '联系我们': contactHero,
+}
+const heroImage = computed(() => heroImages[route.meta.titleZh as string] || homeHero)
 const tx = (en: string, zh: string) => lang.value === 'en' ? en : zh
 
 const itemTitle = (item: ActivityItem) => lang.value === 'en'
@@ -141,7 +158,9 @@ watch(activityType, loadList, { immediate: true })
 </script>
 
 <style scoped>
-.content-hero { background: #16243a; color: #fff; padding: 150px 0 84px; }
+.content-hero { background-color: #16243a; background-position: center; background-repeat: no-repeat; background-size: cover; color: #fff; min-height: 329px; padding: 110px 0 56px; position: relative; }
+.content-hero::before { background: rgba(10, 23, 42, .7); content: ''; inset: 0; position: absolute; }
+.content-hero .site-shell { position: relative; z-index: 1; }
 .content-hero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 4.25rem); margin: 14px 0; }
 .content-hero p { color: #d8e0ea; font-size: 1.1rem; }
 .content-section { min-height: 48vh; }
@@ -173,6 +192,6 @@ watch(activityType, loadList, { immediate: true })
 .rich-content { color: #4b5563; font-size: 1.05rem; line-height: 1.85; max-width: 70ch; overflow-wrap: anywhere; white-space: pre-line; }
 :deep(.rich-content img), :deep(.rich-content video) { display: block; height: auto; margin: 28px 0; max-width: 100%; }
 @media (max-width: 900px) { .content-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .content-hero { padding: 120px 0 60px; }.content-list { grid-template-columns: 1fr; gap: 28px; }.detail-cover { margin-bottom: 24px; }.detail-header { margin-bottom: 22px; padding-bottom: 20px; } }
+@media (max-width: 600px) { .content-hero { min-height: 270px; padding: 105px 0 48px; }.content-list { grid-template-columns: 1fr; gap: 28px; }.detail-cover { margin-bottom: 24px; }.detail-header { margin-bottom: 22px; padding-bottom: 20px; } }
 @media (prefers-reduced-motion: reduce) { .content-cover::after, .content-cover img { transition: none; } }
 </style>

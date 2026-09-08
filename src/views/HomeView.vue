@@ -65,6 +65,7 @@
         </div>
       </div>
     </section>
+    <ActivityPromo activity-type="HomePage" show-all-link />
     <section class="section">
       <div class="site-shell">
         <div class="section-heading">
@@ -138,6 +139,7 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from "@/composables/useI18n";
+import ActivityPromo from '@/components/ActivityPromo.vue'
 import homeBanner from "@/assets/images/新加坡-图3.png";
 const { lang } = useI18n();
 const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);

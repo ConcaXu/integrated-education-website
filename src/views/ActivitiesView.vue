@@ -93,7 +93,7 @@ async function loadPage(page: number) {
   loading.value = true
   error.value = false
   try {
-    const res = await fetchActivityList(page, PAGE_SIZE, '近期活动')
+    const res = await fetchActivityList(page, PAGE_SIZE)
     if (res.code === 200 && res.rows) {
       activities.value = res.rows
       total.value = res.total

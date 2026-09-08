@@ -8,7 +8,7 @@
 
 ## 接口列表
 
-### 1. 查询活动列表
+### 1. 查询列表
 
 **接口地址**: `GET /content/activity/list`
 
@@ -23,7 +23,7 @@
 | pageNum | Integer | 否 | 页码（默认1） |
 | pageSize | Integer | 否 | 每页数量（默认10） |
 | activityTitle | String | 否 | 活动标题（模糊查询） |
-| activityType | Integer | 否 | 活动类型 |
+| activityType | String | 否 | 活动类型 |
 | startDate | Date | 否 | 开始时间（范围查询起始） |
 | endDate | Date | 否 | 结束时间（范围查询结束） |
 
@@ -36,7 +36,7 @@
     {
       "activityId": 1,
       "activityTitle": "春季促销活动",
-      "activityType": 1,
+      "activityType": "MICE",
       "activityDesc": "活动描述内容",
       "startDate": "2024-03-01 00:00:00",
       "endDate": "2024-03-31 23:59:59",
@@ -66,7 +66,7 @@
 
 ---
 
-### 3. 查询活动详情
+### 3. 查询详情
 
 **接口地址**: `GET /content/activity/{activityId}`
 
@@ -88,7 +88,7 @@
   "data": {
     "activityId": 1,
     "activityTitle": "春季促销活动",
-    "activityType": 1,
+    "activityType": "MICE",
     "activityDesc": "活动描述内容",
     "startDate": "2024-03-01 00:00:00",
     "endDate": "2024-03-31 23:59:59",
@@ -115,7 +115,7 @@
 ```json
 {
   "activityTitle": "春季促销活动",
-  "activityType": 1,
+  "activityType": "MICE",
   "activityDesc": "活动描述内容",
   "startDate": "2024-03-01 00:00:00",
   "endDate": "2024-03-31 23:59:59",
@@ -128,7 +128,7 @@
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
 | activityTitle | String | 是 | 活动标题 |
-| activityType | Integer | 是 | 活动类型 |
+| activityType | String | 是 | 活动类型 |
 | activityDesc | String | 否 | 活动描述 |
 | startDate | Date | 是 | 开始时间 |
 | endDate | Date | 是 | 结束时间 |
@@ -159,7 +159,7 @@
 {
   "activityId": 1,
   "activityTitle": "春季促销活动（更新）",
-  "activityType": 1,
+  "activityType": "MICE",
   "activityDesc": "更新后的活动描述",
   "startDate": "2024-03-01 00:00:00",
   "endDate": "2024-04-30 23:59:59",
@@ -173,7 +173,7 @@
 |--------|------|------|------|
 | activityId | Long | 是 | 活动ID |
 | activityTitle | String | 是 | 活动标题 |
-| activityType | Integer | 是 | 活动类型 |
+| activityType | String | 是 | 活动类型 |
 | activityDesc | String | 否 | 活动描述 |
 | startDate | Date | 是 | 开始时间 |
 | endDate | Date | 是 | 结束时间 |

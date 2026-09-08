@@ -13,6 +13,7 @@ http.interceptors.request.use((config) => {
 
 export interface ActivityItem {
   id: number | string
+  activityType?: ActivityType
   titleZh: string
   titleEn?: string
   introZh?: string
@@ -33,6 +34,14 @@ export interface ActivityItem {
   [key: string]: unknown
 }
 
+export type ActivityType =
+  | 'MICE'
+  | 'International_Cooperation'
+  | 'Chine_Content'
+  | 'HomePage'
+  | 'ABOUT_APIMTC'
+  | 'Educationtype'
+
 export interface ListResponse {
   code: number
   rows: ActivityItem[]
@@ -47,15 +56,25 @@ export interface DetailResponse {
 export async function fetchActivityList(
   pageNum = 1,
   pageSize = 10,
-  type?: string,
-  _country?: string
+  activityType?: ActivityType | string,
+  _legacyCountry?: string
 ): Promise<ListResponse> {
   const params: Record<string, string | number> = { pageNum, pageSize }
-  // Legacy callers may pass a type/country; the documented API only supports activityType.
-  if (type && /^\d+$/.test(type)) params.activityType = Number(type)
+  if (isActivityType(activityType)) params.activityType = activityType
   const res = await http.get<ListResponse>('/prod-api/content/activity/list', { params })
   const payload = res.data as ListResponse
   return { ...payload, rows: (payload.rows || []).map(normalizeActivity) }
+}
+
+function isActivityType(value?: string): value is ActivityType {
+  return [
+    'MICE',
+    'International_Cooperation',
+    'Chine_Content',
+    'HomePage',
+    'ABOUT_APIMTC',
+    'Educationtype',
+  ].includes(value as ActivityType)
 }
 
 export async function fetchActivityDetail(id: number | string): Promise<DetailResponse> {
@@ -69,6 +88,7 @@ function normalizeActivity(item: ActivityItem): ActivityItem {
   return {
     ...item,
     id: source.id ?? source.activityId ?? '',
+    activityType: source.activityType as ActivityType | undefined,
     titleZh: String(source.titleZh ?? source.activityTitle ?? ''),
     introZh: String(source.introZh ?? source.activityDesc ?? ''),
     contentZh: String(source.contentZh ?? source.activityDesc ?? ''),

@@ -135,7 +135,7 @@
 |----|------|
 | HomePage | 首页 |
 | ABOUT_APIMTC | 关于APIMTC |
-| Educationtype | 教育流动 |
+| Education | 教育流动 |
 | MICE | MICE与商务 |
 | International_Cooperation | 国际合作 |
 | Chine_Content | 中国门户 |

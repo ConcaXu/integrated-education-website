@@ -45,7 +45,7 @@ export type ActivityType =
   | 'Chine_Content'
   | 'HomePage'
   | 'ABOUT_APIMTC'
-  | 'Educationtype'
+  | 'Education'
   | 'aboutUs'
 
 export interface ListResponse {
@@ -79,7 +79,7 @@ function isActivityType(value?: string): value is ActivityType {
     'Chine_Content',
     'HomePage',
     'ABOUT_APIMTC',
-    'Educationtype',
+    'Education',
     'aboutUs',
   ].includes(value as ActivityType)
 }

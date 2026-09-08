@@ -6,7 +6,7 @@
     >
       <div class="site-shell">
         <span class="eyebrow">APIMTC</span>
-        <h1>
+        <h1 :class="{ 'contact-hero-title-zh': lang === 'zh-CN' }">
           {{ tx("Let’s build something together.", "携手，共创国际未来。") }}
         </h1>
         <p>

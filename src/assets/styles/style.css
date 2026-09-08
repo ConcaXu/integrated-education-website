@@ -390,6 +390,11 @@ textarea {
   max-width: 950px
 }
 
+.page-hero h1.contact-hero-title-zh {
+  max-width: none;
+  white-space: nowrap;
+}
+
 .page-hero p {
   font-size: 20px;
   color: rgba(255, 255, 255, .88);

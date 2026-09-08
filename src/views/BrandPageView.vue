@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from '@/composables/useI18n'
 import aboutBanner from '@/assets/images/关于我们.png'
 import mobilityBanner from '@/assets/images/教育流动.png'
-import miceBanner from '@/assets/images/新加坡-图5.jpg'
+import miceBanner from '@/assets/images/商务.png'
 import partnershipsBanner from '@/assets/images/国际合作.png'
 import chinaGatewayBanner from '@/assets/images/成都.png'
 

@@ -66,7 +66,7 @@ export async function fetchActivityList(
   _legacyCountry?: string
 ): Promise<ListResponse> {
   const params: Record<string, string | number> = { pageNum, pageSize }
-  if (isActivityType(activityType)) params.activityType = activityType
+  if (isActivityType(activityType)) params.type = activityType
   const res = await http.get<ListResponse>('/prod-api/content/activity/list', { params })
   const payload = res.data as ListResponse
   return { ...payload, rows: (payload.rows || []).map(normalizeActivity) }

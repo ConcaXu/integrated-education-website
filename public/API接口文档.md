@@ -23,7 +23,7 @@
 | pageNum | Integer | 否 | 页码（默认1） |
 | pageSize | Integer | 否 | 每页数量（默认10） |
 | activityTitle | String | 否 | 活动标题（模糊查询） |
-| activityType | String | 否 | 活动类型 |
+| type | String | 否 | 活动类型 |
 | startDate | Date | 否 | 开始时间（范围查询起始） |
 | endDate | Date | 否 | 结束时间（范围查询结束） |
 
@@ -93,7 +93,7 @@
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
 | activityTitle | String | 是 | 活动标题 |
-| activityType | String | 是 | 活动类型 |
+| type | String | 是 | 活动类型 |
 | activityDesc | String | 否 | 活动描述 |
 | startDate | Date | 是 | 开始时间 |
 | endDate | Date | 是 | 结束时间 |
@@ -129,7 +129,7 @@
 
 ## 数据字典
 
-### 页面类型 (activityType)
+### 页面类型 (type)
 
 | 值 | 说明 |
 |----|------|

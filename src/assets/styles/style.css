@@ -135,7 +135,7 @@ textarea {
 .hero-media {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, .78), rgba(0, 0, 0, .1)), url('/images/aboutus.webp') center/cover;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .72), rgba(0, 0, 0, .18)), var(--home-hero-image, url('/images/aboutus.webp')) center/cover;
   filter: saturate(.7)
 }
 
@@ -359,9 +359,30 @@ textarea {
 }
 
 .page-hero {
+  position: relative;
   padding: 190px 0 110px;
-  background: var(--warm);
-  color: #000000
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  background-color: var(--warm);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  isolation: isolate
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, .38)
+}
+
+.page-hero .site-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%
 }
 
 .page-hero h1 {
@@ -371,7 +392,7 @@ textarea {
 
 .page-hero p {
   font-size: 20px;
-  color: #5f5a53;
+  color: rgba(255, 255, 255, .88);
   max-width: 560px
 }
 

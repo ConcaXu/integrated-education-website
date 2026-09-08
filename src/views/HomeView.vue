@@ -1,6 +1,6 @@
 <template>
   <div class="landing-page">
-    <section class="hero hero-home">
+    <section class="hero hero-home" :style="{ '--home-hero-image': `url(${homeBanner})` }">
       <div class="hero-media"></div>
       <div class="site-shell hero-content">
         <span class="eyebrow">APIMTC · SINGAPORE</span>
@@ -138,6 +138,7 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from "@/composables/useI18n";
+import homeBanner from "@/assets/images/新加坡-图3.png";
 const { lang } = useI18n();
 const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);
 const mobility = [

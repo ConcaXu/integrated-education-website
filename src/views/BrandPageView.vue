@@ -1,12 +1,18 @@
-<template><div class="brand-page"><section class="page-hero"><div class="site-shell"><span class="eyebrow">APIMTC</span><h1>{{data.title}}</h1><p>{{data.lead}}</p></div></section><section class="section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">{{data.kicker}}</span><h2>{{data.heading}}</h2></div><div class="content-grid"><article v-for="item in data.items" :key="item.num" class="info-block"><span class="block-number">{{item.num}}</span><h3>{{item.title}}</h3><p>{{item.text}}</p></article></div></div></section><section v-if="route.path === '/about'" class="section architecture-section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">BRAND ARCHITECTURE</span><h2>{{tx('One group. Three connected layers.','品牌架构｜一个集团，三层连接。')}}</h2></div><div class="architecture-grid"><article><span class="block-number">01</span><h3>APIMTC | Singapore Headquarters</h3><p>{{tx('Master corporate brand and global operating entity covering MICE & travel, education mobility and cross-border business.','母品牌与集团国际运营主体，承载 MICE 会展旅游、国际教育流动与跨境商务业务。')}}</p></article><article><span class="block-number">02</span><h3>API EduVoyage | Chengdu, China</h3><p>{{tx('Our China gateway for student mobility, institutional exchange, vocational skills and China-global partnerships.','中国业务运营门户，聚焦学生流动、院校交流、技能职业教育与中外教育合作。')}}</p></article><article><span class="block-number">03</span><h3>{{tx('Global Partner Network','全球合作伙伴网络')}}</h3><p>{{tx('Schools, universities, vocational institutions, enterprises, government bodies and international education organisations.','覆盖学校、高校、职业院校、企业、政府机构、行业协会与国际教育组织。')}}</p></article></div></div></section><section v-if="route.path === '/mobility'" class="section mobility-model"><div class="site-shell split"><div><span class="eyebrow">4E MODEL</span><h2>{{tx('Educate · Experience · Explore · Exchange.','学习 · 体验 · 探索 · 交流。')}}</h2></div><p class="model-copy">{{tx('Not merely travel. Not only classroom study. Every programme integrates academic learning, real-world industry exposure, social-cultural immersion and peer-to-peer international interaction.','不只是旅游，不只是听课，也不只是简单交换。每一个项目融合学术学习、产业实地体验、社会文化探索与国际同伴交流。')}}</p></div><div class="site-shell programme-types"><span>{{tx('Specialist Camps','专题探索营')}}</span><span>{{tx('Integrated Camps','综合主题营')}}</span><span>{{tx('International Challenge Camps','国际创新挑战营')}}</span></div></section><section class="section dark-section"><div class="site-shell split"><div><span class="eyebrow">{{tx('OUR PURPOSE','我们的使命')}}</span><h2>{{tx('Connecting people, places, education, industry and opportunity.','连接人才、城市、教育、产业与机会。')}}</h2></div><router-link class="button button-light" to="/contact">{{tx('Start a conversation','开始洽谈')}}</router-link></div></section></div></template>
+<template><div class="brand-page"><section class="page-hero" :style="{ backgroundImage: `url('${data.image}')` }"><div class="site-shell"><span class="eyebrow">APIMTC</span><h1>{{data.title}}</h1><p>{{data.lead}}</p></div></section><section class="section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">{{data.kicker}}</span><h2>{{data.heading}}</h2></div><div class="content-grid"><article v-for="item in data.items" :key="item.num" class="info-block"><span class="block-number">{{item.num}}</span><h3>{{item.title}}</h3><p>{{item.text}}</p></article></div></div></section><section v-if="route.path === '/about'" class="section architecture-section"><div class="site-shell"><div class="section-heading"><span class="eyebrow">BRAND ARCHITECTURE</span><h2>{{tx('One group. Three connected layers.','品牌架构｜一个集团，三层连接。')}}</h2></div><div class="architecture-grid"><article><span class="block-number">01</span><h3>APIMTC | Singapore Headquarters</h3><p>{{tx('Master corporate brand and global operating entity covering MICE & travel, education mobility and cross-border business.','母品牌与集团国际运营主体，承载 MICE 会展旅游、国际教育流动与跨境商务业务。')}}</p></article><article><span class="block-number">02</span><h3>API EduVoyage | Chengdu, China</h3><p>{{tx('Our China gateway for student mobility, institutional exchange, vocational skills and China-global partnerships.','中国业务运营门户，聚焦学生流动、院校交流、技能职业教育与中外教育合作。')}}</p></article><article><span class="block-number">03</span><h3>{{tx('Global Partner Network','全球合作伙伴网络')}}</h3><p>{{tx('Schools, universities, vocational institutions, enterprises, government bodies and international education organisations.','覆盖学校、高校、职业院校、企业、政府机构、行业协会与国际教育组织。')}}</p></article></div></div></section><section v-if="route.path === '/mobility'" class="section mobility-model"><div class="site-shell split"><div><span class="eyebrow">4E MODEL</span><h2>{{tx('Educate · Experience · Explore · Exchange.','学习 · 体验 · 探索 · 交流。')}}</h2></div><p class="model-copy">{{tx('Not merely travel. Not only classroom study. Every programme integrates academic learning, real-world industry exposure, social-cultural immersion and peer-to-peer international interaction.','不只是旅游，不只是听课，也不只是简单交换。每一个项目融合学术学习、产业实地体验、社会文化探索与国际同伴交流。')}}</p></div><div class="site-shell programme-types"><span>{{tx('Specialist Camps','专题探索营')}}</span><span>{{tx('Integrated Camps','综合主题营')}}</span><span>{{tx('International Challenge Camps','国际创新挑战营')}}</span></div></section><section class="section dark-section"><div class="site-shell split"><div><span class="eyebrow">{{tx('OUR PURPOSE','我们的使命')}}</span><h2>{{tx('Connecting people, places, education, industry and opportunity.','连接人才、城市、教育、产业与机会。')}}</h2></div><router-link class="button button-light" to="/contact">{{tx('Start a conversation','开始洽谈')}}</router-link></div></section></div></template>
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from '@/composables/useI18n'
+import aboutBanner from '@/assets/images/关于我们.png'
+import mobilityBanner from '@/assets/images/教育流动.png'
+import miceBanner from '@/assets/images/新加坡-图5.jpg'
+import partnershipsBanner from '@/assets/images/新加坡-图1.png'
+import chinaGatewayBanner from '@/assets/images/新加坡-图2.png'
 
 type LocalizedText = { en: string; zh: string }
 type BrandItem = { num: string; title: LocalizedText; text: LocalizedText }
 type BrandPage = {
+  image: string
   title: LocalizedText
   lead: LocalizedText
   kicker: LocalizedText
@@ -20,6 +26,7 @@ const tx = (en: string, zh: string) => lang.value === 'en' ? en : zh
 
 const sets: Record<string, BrandPage> = {
   about: {
+    image: aboutBanner,
     title: { en: 'About APIMTC', zh: '关于 APIMTC' },
     lead: { en: 'Connecting people. Connecting worlds.', zh: '连接人才 · 连接世界' },
     kicker: { en: 'OUR STORY', zh: '我们的故事' },
@@ -31,6 +38,7 @@ const sets: Record<string, BrandPage> = {
     ]
   },
   mobility: {
+    image: mobilityBanner,
     title: { en: 'Education Mobility', zh: '教育流动' },
     lead: { en: 'Beyond borders. Beyond the classroom.', zh: '超越国界 · 超越课堂' },
     kicker: { en: 'THE 4E MODEL', zh: 'APIMTC 4E 模型' },
@@ -42,6 +50,7 @@ const sets: Record<string, BrandPage> = {
     ]
   },
   'mice-business': {
+    image: miceBanner,
     title: { en: 'MICE & Business', zh: 'MICE 与商务' },
     lead: { en: 'Connecting business with experience.', zh: '让商务连接真实体验' },
     kicker: { en: 'WHAT WE DO', zh: '我们提供' },
@@ -53,6 +62,7 @@ const sets: Record<string, BrandPage> = {
     ]
   },
   partnerships: {
+    image: partnershipsBanner,
     title: { en: 'International Partnerships', zh: '国际合作' },
     lead: { en: 'Build international programmes together.', zh: '携手打造国际项目' },
     kicker: { en: 'WHO WE PARTNER WITH', zh: '我们的合作伙伴' },
@@ -64,6 +74,7 @@ const sets: Record<string, BrandPage> = {
     ]
   },
   'china-gateway': {
+    image: chinaGatewayBanner,
     title: { en: 'Chengdu · Connecting China', zh: '成都 · 连接中国' },
     lead: { en: 'API EduVoyage · Our China gateway.', zh: 'API EduVoyage · 我们的中国门户' },
     kicker: { en: 'CHINA GATEWAY', zh: '中国门户' },
@@ -81,6 +92,7 @@ const data = computed(() => {
   const page = sets[key] || sets.about
   return {
     title: tx(page.title.en, page.title.zh),
+    image: page.image,
     lead: tx(page.lead.en, page.lead.zh),
     kicker: tx(page.kicker.en, page.kicker.zh),
     heading: tx(page.heading.en, page.heading.zh),

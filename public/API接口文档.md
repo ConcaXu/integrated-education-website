@@ -1,4 +1,4 @@
-# 活动管理接口文档
+# 页面接口文档
 
 ## 基础信息
 
@@ -50,23 +50,9 @@
 
 ---
 
-### 2. 导出活动列表
 
-**接口地址**: `POST /content/activity/export`
 
-**接口描述**: 导出活动列表为 Excel 文件
-
-**请求权限**: `content:activity:export`
-
-**请求参数**: 同查询列表接口，用于筛选导出数据
-
-**响应**: Excel 文件流（`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`）
-
-**文件名格式**: `活动_yyyyMMddHHmmss.xlsx`
-
----
-
-### 3. 查询详情
+### 2. 查询详情
 
 **接口地址**: `GET /content/activity/{activityId}`
 
@@ -101,27 +87,6 @@
 
 ---
 
-### 4. 新增活动
-
-**接口地址**: `POST /content/activity`
-
-**接口描述**: 创建新的活动
-
-**请求权限**: `content:activity:add`
-
-**日志记录**: 是（业务类型：新增）
-
-**请求体**:
-```json
-{
-  "activityTitle": "春季促销活动",
-  "activityType": "MICE",
-  "activityDesc": "活动描述内容",
-  "startDate": "2024-03-01 00:00:00",
-  "endDate": "2024-03-31 23:59:59",
-  "activityStatus": "1"
-}
-```
 
 **请求参数说明**:
 
@@ -144,80 +109,6 @@
 
 ---
 
-### 5. 修改活动
-
-**接口地址**: `PUT /content/activity`
-
-**接口描述**: 更新已有活动信息
-
-**请求权限**: `content:activity:edit`
-
-**日志记录**: 是（业务类型：修改）
-
-**请求体**:
-```json
-{
-  "activityId": 1,
-  "activityTitle": "春季促销活动（更新）",
-  "activityType": "MICE",
-  "activityDesc": "更新后的活动描述",
-  "startDate": "2024-03-01 00:00:00",
-  "endDate": "2024-04-30 23:59:59",
-  "activityStatus": "1"
-}
-```
-
-**请求参数说明**:
-
-| 参数名 | 类型 | 必填 | 说明 |
-|--------|------|------|------|
-| activityId | Long | 是 | 活动ID |
-| activityTitle | String | 是 | 活动标题 |
-| activityType | String | 是 | 活动类型 |
-| activityDesc | String | 否 | 活动描述 |
-| startDate | Date | 是 | 开始时间 |
-| endDate | Date | 是 | 结束时间 |
-| activityStatus | String | 否 | 活动状态 |
-
-**响应示例**:
-```json
-{
-  "code": 200,
-  "msg": "修改成功"
-}
-```
-
----
-
-### 6. 删除活动
-
-**接口地址**: `DELETE /content/activity/{activityIds}`
-
-**接口描述**: 批量删除活动（支持单个或多个ID）
-
-**请求权限**: `content:activity:remove`
-
-**日志记录**: 是（业务类型：删除）
-
-**路径参数**:
-
-| 参数名 | 类型 | 必填 | 说明 |
-|--------|------|------|------|
-| activityIds | Long[] | 是 | 活动ID数组（多个ID用逗号分隔，如：1,2,3） |
-
-**请求示例**:
-- 删除单个: `DELETE /content/activity/1`
-- 删除多个: `DELETE /content/activity/1,2,3`
-
-**响应示例**:
-```json
-{
-  "code": 200,
-  "msg": "删除成功"
-}
-```
-
----
 
 ## 通用响应码
 
@@ -238,16 +129,17 @@
 
 ## 数据字典
 
-### 活动类型 (activityType)
+### 页面类型 (activityType)
 
 | 值 | 说明 |
 |----|------|
-| MICE | MICE活动 |
-| International_Cooperation | 国际合作 |
-| Chine_Content | 中国内容 |
-| HomePage | 首页活动 |
+| HomePage | 首页 |
 | ABOUT_APIMTC | 关于APIMTC |
-| Educationtype | 教育类型 |
+| Educationtype | 教育流动 |
+| MICE | MICE与商务 |
+| International_Cooperation | 国际合作 |
+| Chine_Content | 中国门户 |
+| aboutUs | 联系我们 |
 
 ### 活动状态 (activityStatus)
 

@@ -27,6 +27,11 @@ export interface ActivityItem {
   image?: string
   img?: string
   thumbnail?: string
+  activityId?: number | string
+  activityTitle?: string
+  activityDesc?: string
+  startDate?: string
+  endDate?: string
   dateTime?: string
   date_time?: string
   type?: string
@@ -41,6 +46,7 @@ export type ActivityType =
   | 'HomePage'
   | 'ABOUT_APIMTC'
   | 'Educationtype'
+  | 'aboutUs'
 
 export interface ListResponse {
   code: number
@@ -74,6 +80,7 @@ function isActivityType(value?: string): value is ActivityType {
     'HomePage',
     'ABOUT_APIMTC',
     'Educationtype',
+    'aboutUs',
   ].includes(value as ActivityType)
 }
 
@@ -93,5 +100,8 @@ function normalizeActivity(item: ActivityItem): ActivityItem {
     introZh: String(source.introZh ?? source.activityDesc ?? ''),
     contentZh: String(source.contentZh ?? source.activityDesc ?? ''),
     dateTime: String(source.dateTime ?? source.startDate ?? ''),
+    titleEn: String(source.titleEn ?? source.activityTitleEn ?? ''),
+    introEn: String(source.introEn ?? source.activityDescEn ?? ''),
+    contentEn: String(source.contentEn ?? source.activityDescEn ?? ''),
   }
 }

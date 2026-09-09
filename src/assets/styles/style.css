@@ -54,7 +54,7 @@ textarea {
 }
 
 .header-inner {
-  height: 44px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between
@@ -67,8 +67,8 @@ textarea {
 }
 
 .brand img {
-  height: 36px;
-  width: 166px;
+  height: 66px;
+  width: 266px;
   object-fit: contain
 }
 

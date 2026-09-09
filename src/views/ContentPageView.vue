@@ -1,197 +1,70 @@
 <template>
-  <div class="content-page">
-    <section class="content-hero" :style="{ backgroundImage: `url(${heroImage})` }">
-      <div class="site-shell">
-        <span class="eyebrow">APIMTC</span>
-        <h1>{{ pageTitle }}</h1>
-        <p>{{ pageSubtitle }}</p>
+  <div class="portal-page">
+    <section class="portal-hero" :style="{ backgroundImage: `url(${heroImage})` }">
+      <div class="portal-shell portal-hero__copy">
+        <p class="hero-kicker">{{ page.kicker }}</p><h1>{{ tx(page.title, page.titleEn) }}</h1>
+        <p class="hero-lead">{{ tx(page.lead, page.leadEn) }}</p><p v-if="page.description" class="hero-description">{{ tx(page.description, page.descriptionEn || page.description) }}</p>
+        <router-link class="hero-action" to="/contact">{{ tx(page.action || '了解更多', page.actionEn || 'Learn more') }}</router-link>
       </div>
     </section>
-
-    <section class="section content-section">
-      <div class="site-shell">
-        <div v-if="loading" class="page-status">{{ tx('Loading...', '加载中...') }}</div>
-        <div v-else-if="error" class="page-status">
-          <p>{{ tx('Unable to load content. Please try again later.', '内容加载失败，请稍后重试。') }}</p>
-          <button class="button button-dark" type="button" @click="loadList">{{ tx('Retry', '重新加载') }}</button>
-        </div>
-        <div v-else-if="selectedItem" class="content-detail">
-          <button class="back-button" type="button" @click="selectedItem = null">
-            {{ tx('Back to list', '返回列表') }}
-          </button>
-          <div v-if="detailLoading" class="page-status">{{ tx('Loading...', '加载中...') }}</div>
-          <div v-else-if="detailError" class="page-status">
-            <p>{{ tx('Unable to load details. Please try again later.', '详情加载失败，请稍后重试。') }}</p>
-            <button class="button button-dark" type="button" @click="loadDetail(selectedItem.id)">{{ tx('Retry', '重新加载') }}</button>
-          </div>
-          <article v-else class="detail-article">
-            <div v-if="coverImage(selectedItem) && !imageErrors[String(selectedItem.id)]" class="detail-cover">
-              <img :src="imageUrl(coverImage(selectedItem))" :alt="itemTitle(selectedItem)" @error="markImageError(selectedItem.id)">
-            </div>
-            <header class="detail-header">
-              <p v-if="formatDate(selectedItem.dateTime)" class="content-date">{{ formatDate(selectedItem.dateTime) }}</p>
-              <h2>{{ itemTitle(selectedItem) }}</h2>
-            </header>
-            <div class="rich-content" v-html="itemContent(selectedItem)" />
-          </article>
-        </div>
-        <div v-else-if="!items.length" class="page-status">{{ tx('No content is available yet.', '暂无内容。') }}</div>
-        <div v-else class="content-list">
-          <article v-for="item in items" :key="item.id" class="content-card">
-            <button class="content-card-trigger" type="button" @click="loadDetail(item.id)">
-              <div v-if="coverImage(item) && !imageErrors[String(item.id)]" class="content-cover">
-                <img :src="imageUrl(coverImage(item))" :alt="itemTitle(item)" loading="lazy" @error="markImageError(item.id)">
-              </div>
-              <div v-else class="content-cover content-cover-placeholder" aria-hidden="true" />
-              <div class="content-card-body">
-                <p v-if="formatDate(item.dateTime)" class="content-date">{{ formatDate(item.dateTime) }}</p>
-                <h2>{{ itemTitle(item) }}</h2>
-                <p class="content-summary">{{ itemSummary(item) }}</p>
-                <span class="text-button">{{ tx('Read more', '查看详情') }}</span>
-              </div>
-            </button>
-          </article>
-        </div>
-      </div>
-    </section>
+    <main class="portal-main">
+      <section v-for="section in page.sections" :key="section.title" class="portal-section" :class="section.variant"><div class="portal-shell">
+        <div class="portal-heading"><p v-if="section.kicker" class="section-kicker">{{ section.kicker }}</p><h2>{{ tx(section.title, section.titleEn) }}</h2><p v-if="section.intro" class="section-intro">{{ tx(section.intro, section.introEn || section.intro) }}</p></div>
+        <div v-if="section.feature" class="feature-panel"><img :src="section.feature.image" :alt="section.feature.title"><div class="feature-panel__copy"><p class="section-kicker">{{ section.feature.kicker }}</p><h3>{{ tx(section.feature.title, section.feature.titleEn || section.feature.title) }}</h3><p>{{ tx(section.feature.text, section.feature.textEn || section.feature.text) }}</p><router-link v-if="section.feature.action" to="/contact" class="text-link">{{ section.feature.action }} <span>+</span></router-link></div></div>
+        <div v-if="section.cards?.length" class="portal-grid" :class="`portal-grid--${section.columns || 3}`"><article v-for="card in section.cards" :key="card.title" class="portal-card" :class="{ 'portal-card--image': card.image }"><img v-if="card.image" :src="card.image" :alt="card.title"><div class="portal-card__body"><span v-if="card.icon" class="portal-card__icon">{{ card.icon }}</span><h3>{{ tx(card.title, card.titleEn || card.title) }}</h3><p>{{ tx(card.text, card.textEn || card.text) }}</p><router-link v-if="card.action" to="/contact" class="card-more">+</router-link></div></article></div>
+        <div v-if="section.steps?.length" class="step-row"><template v-for="(step, index) in section.steps" :key="step"><span>{{ step }}</span><b v-if="index < section.steps.length - 1">→</b></template></div>
+      </div></section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { fetchActivityDetail, fetchActivityList, type ActivityItem, type ActivityType } from '@/apis/content'
 import { useI18n } from '@/composables/useI18n'
-import aboutApimtcHero from '@/assets/images/关于 APIMTC.png'
-import chinaGatewayHero from '@/assets/images/中国门户.png'
-import contactHero from '@/assets/images/联系我们.png'
-import homeHero from '@/assets/images/首页.png'
-import internationalCooperationHero from '@/assets/images/国际合作.png'
-import miceBusinessHero from '@/assets/images/MICE 与商务.png'
-import educationMobilityHero from '@/assets/images/教育流动.png'
-
-const route = useRoute()
-const { lang } = useI18n()
-const items = ref<ActivityItem[]>([])
-const selectedItem = ref<ActivityItem | null>(null)
-const loading = ref(true)
-const detailLoading = ref(false)
-const error = ref(false)
-const detailError = ref(false)
-const imageErrors = ref<Record<string, boolean>>({})
-
-const activityType = computed(() => route.meta.activityType as ActivityType)
-const pageTitle = computed(() => lang.value === 'en' ? route.meta.titleEn : route.meta.titleZh)
-const pageSubtitle = computed(() => lang.value === 'en' ? 'Explore our latest information and services.' : '了解我们的最新资讯与服务内容。')
-const heroImages: Record<string, string> = {
-  '首页': homeHero,
-  '关于 APIMTC': aboutApimtcHero,
-  '教育流动': educationMobilityHero,
-  'MICE 与商务': miceBusinessHero,
-  '国际合作': internationalCooperationHero,
-  '中国门户': chinaGatewayHero,
-  '联系我们': contactHero,
+import aboutHero from '@/assets/images/关于 APIMTC.png'; import chinaHero from '@/assets/images/中国门户.png'; import contactHero from '@/assets/images/联系我们.png'; import homeHero from '@/assets/images/首页.png'; import intlHero from '@/assets/images/国际合作.png'; import miceHero from '@/assets/images/MICE 与商务.png'; import mobilityHero from '@/assets/images/教育流动.png'
+import home01 from '@/assets/content-images/首页-01.jpeg'; import home02 from '@/assets/content-images/首页-02.jpeg'; import mobility01 from '@/assets/content-images/教育流动-01.jpeg'; import mobility02 from '@/assets/content-images/教育流动-02.jpeg'; import mobility03 from '@/assets/content-images/教育流动-03.jpeg'; import mice01 from '@/assets/content-images/MICE 与商务-01.jpeg'; import mice02 from '@/assets/content-images/MICE 与商务-02.jpeg'; import intl01 from '@/assets/content-images/国际合作-01.jpeg'; import china01 from '@/assets/content-images/中国门户-01.jpeg'; import china02 from '@/assets/content-images/中国门户-02.jpeg'; import china03 from '@/assets/content-images/中国门户-03.jpeg'; import china04 from '@/assets/content-images/中国门户-04.jpeg'; import china05 from '@/assets/content-images/中国门户-05.jpeg'; import china06 from '@/assets/content-images/中国门户-06.jpeg'; import contact01 from '@/assets/content-images/联系我们-01.jpeg'
+type Card = { title: string; text: string; icon?: string; image?: string; action?: string; titleEn?: string; textEn?: string }; type Feature = { kicker: string; title: string; text: string; image: string; action?: string; titleEn?: string; textEn?: string }; type Section = { title: string; titleEn: string; kicker?: string; intro?: string; introEn?: string; cards?: Card[]; columns?: number; feature?: Feature; steps?: string[]; variant?: string }; type Page = { kicker: string; title: string; titleEn: string; lead: string; leadEn: string; description?: string; descriptionEn?: string; action?: string; actionEn?: string; sections: Section[] }
+const route = useRoute(); const { lang } = useI18n(); const tx = (zh: string, en: string) => lang.value === 'en' ? en : zh; const card = (title: string, text: string, icon?: string): Card => ({ title, text, icon })
+const pages: Record<string, Page> = {
+  首页: { kicker: 'APIMTC · HOME', title: '立足新加坡 · 连接全球', titleEn: 'Singapore-based · Globally connected', lead: '教育 · 技能 · 流动 · 交流 · 商务', leadEn: 'Education · Skills · Mobility · Exchange · Business', description: '连接人才、教育与全球发展机遇。', descriptionEn: 'Connecting people, education and opportunity across borders.', action: '探索项目', actionEn: 'Explore projects', sections: [
+    { title: '我们的业务', titleEn: 'What we do', cards: [card('国际教育流动', '走出课堂，探索真实世界。', '◎'), card('MICE 与商务', '连接产业、人才与商业机会。', '▦'), card('国际合作', '与全球伙伴建立有意义的连接。', '↗')], columns: 3 },
+    { title: '超越国界 · 超越课堂', titleEn: 'Beyond borders · Beyond classrooms', intro: '连接人才、教育、产业、商务的国际项目平台。', feature: { kicker: 'INTERNATIONAL PLATFORM', title: '双向国际流动', text: '新加坡 → 中国及世界；中国及全球 → 新加坡。学习、体验、探索真实世界。', image: home01 }, cards: [{ title: '新加坡未来探索者', text: '学习 · 体验 · 探索新加坡', image: mobility01, action: '探索' }, { title: '中国课堂之外', text: '学习 · 体验 · 探索中国', image: mobility02, action: '探索' }], columns: 2 },
+    { title: 'APIMTC 4E 模型', titleEn: 'The APIMTC 4E model', intro: '不只是参观。更要真正连接。', cards: [card('学习', '从大学、专家及专业机构获得知识。', '◈'), card('体验', '走进企业、实验室及真实产业环境。', '◉'), card('探索', '了解城市、文化、社会与环境。', '◌'), card('交流', '与不同国家的学生及伙伴共同学习。', '⌁')], columns: 4, variant: 'portal-section--tint' }
+  ] },
+  '关于 APIMTC': { kicker: 'ABOUT APIMTC', title: '连接人才 · 连接世界', titleEn: 'Connecting people · Connecting worlds', lead: 'APIMTC 是一家立足新加坡的国际化平台，连接教育、技能、人才流动、MICE 与商务。', leadEn: 'An international platform based in Singapore.', action: '了解更多', actionEn: 'Learn more', sections: [
+    { title: '新加坡是我们的根基', titleEn: 'Singapore is our foundation', feature: { kicker: 'OUR ROOTS', title: '从新加坡出发', text: '新加坡是我们的企业总部，也是连接亚洲与全球的国际平台。我们连接中国、亚洲及世界。', image: home01 }, cards: [card('MICE 与旅游', '凭借多年目的地管理经验，连接国际项目。', '◌'), card('教育与国际流动', '连接教育、技能、人才与产业。', '◇'), card('全球合作网络', '学校、大学、机构、企业与国际组织。', '⌘')], columns: 3 },
+    { title: '我们的品牌架构', titleEn: 'Our brand architecture', cards: [card('APIMTC', '新加坡。母公司及国际化平台。MICE · 旅游 · 教育 · 商务', '◈'), card('API EduVoyage', '中国 · 成都。中国教育流动平台。教育 · 技能 · 学生流动', '▣'), card('全球合作网络', '学校 · 大学 · 教育机构 · 企业 · 国际组织', '◎')], columns: 3, variant: 'portal-section--tint' },
+    { title: '我们相信', titleEn: 'What we believe', intro: '学习，应该走得更远。超越课堂，超越国界，超越期待。', feature: { kicker: 'OUR MISSION', title: '连接，创造更多可能', text: '连接人才、城市、教育、产业与机会。新加坡是我们的根基，成都是我们的中国门户。', image: home02 } }
+  ] },
+  教育流动: { kicker: 'EDUCATION MOBILITY', title: '超越国界 · 超越课堂', titleEn: 'Beyond borders · Beyond classrooms', lead: '让学习走出课堂，走进大学、产业、科技、文化与真实世界。', leadEn: 'Learning beyond the classroom and into the real world.', description: '打造具有国际视野的沉浸式教育项目。', descriptionEn: 'Immersive programmes with an international perspective.', action: '探索教育项目', actionEn: 'Explore programmes', sections: [
+    { title: '我们的两大教育项目', titleEn: 'Our two flagship programmes', cards: [{ title: '新加坡未来探索者', text: '中国及全球 → 新加坡。探索教育、科技、产业、文化与未来发展。', image: mobility01, action: '探索新加坡' }, { title: '中国课堂之外', text: '新加坡 → 中国。走进城市、大学、企业、科技与文化。', image: mobility02, action: '探索中国' }], columns: 2 },
+    { title: 'APIMTC 4E 模型', titleEn: 'The APIMTC 4E model', cards: [card('生命与健康', '走近科技、医学与未来生活。', '♡'), card('太空与航空', '探索前沿科技与工程实践。', '↗'), card('可持续发展', '理解人与自然的长期关系。', '◌'), card('人工智能', '体验数字技术与未来产业。', '☼'), card('新兴产业', '走进真实的创新现场。', '✳')], columns: 5, variant: 'portal-section--tint' },
+    { title: '为不同年龄而设计', titleEn: 'Designed for every age', cards: [card('小学', '激发好奇心，探索科学、科技与世界。', '○'), card('初中 / 中学', '连接学术、产业、科技与全球议题。', '◇'), card('高中 / JC', '聚焦未来、创新、领导力与新兴产业。', '◈')], columns: 3, feature: { kicker: 'CUSTOM PROGRAMMES', title: '定制你的国际学习之旅', text: '根据年龄、学习目标、主题及学校需求，打造适合每一个团队的国际项目。', image: mobility03, action: '定制项目' } }
+  ] },
+  'MICE 与商务': { kicker: 'MICE & BUSINESS', title: '让商务连接真实体验', titleEn: 'Connecting business with real experience', lead: 'APIMTC 结合 MICE 专业能力、目的地经验及国际合作网络。', leadEn: 'MICE expertise, destination knowledge and international connections.', description: '打造有价值的商务与专业交流项目。', descriptionEn: 'Purposeful business and professional exchange programmes.', action: '了解更多', actionEn: 'Learn more', sections: [
+    { title: '我们提供', titleEn: 'What we provide', cards: [card('MICE', '会议 · 奖励旅游 · 大型会议 · 活动', '▣'), card('专业学习', '让商务之旅成为真正的学习体验。', '◇'), card('高管项目', '为企业领导者及专业人士打造定制项目。', '●'), card('商务代表团', '连接企业、机构、市场及潜在伙伴。', '♟'), card('产业参访', '走进科技、创新与产业现场。', '▥'), card('标杆考察', '了解领先企业与优秀实践。', '◎'), card('商务交流', '建立关系、交流观点、探索合作机会。', '▱')], columns: 4 },
+    { title: '不只是一次商务之旅', titleEn: 'More than a business trip', intro: '学习 · 连接 · 体验', feature: { kicker: 'APIMTC', title: '让交流产生价值', text: '连接人才、产业、机构与思想，打造有目标的国际交流项目。', image: mice01 }, cards: [card('目的地专业能力', '深入了解目的地及当地资源。', '◌'), card('MICE 项目能力', '专业策划与项目执行。', '◇'), card('国际合作网络', '连接教育、商务及产业伙伴。', '◎'), card('一站式执行', '从项目策划、协调到落地执行。', '▣')], columns: 4, variant: 'portal-section--tint' },
+    { title: '有项目想法？', titleEn: 'Have a project in mind?', intro: '让我们将您的目标，转化为真正有价值的国际体验。', feature: { kicker: 'CONNECT', title: '企业 · 政府 · 教育机构 · 行业协会 · 国际组织', text: '与 APIMTC 一起打造专业、有价值的国际交流。', image: mice02, action: '与我们洽谈' } }
+  ] },
+  国际合作: { kicker: 'INTERNATIONAL COOPERATION', title: '携手打造国际项目', titleEn: 'Building international projects together', lead: '我们与教育、商务、政府及产业伙伴合作，共同打造有价值的跨境交流项目。', leadEn: 'Cross-border programmes built with education, business, government and industry partners.', action: '了解更多', actionEn: 'Learn more', sections: [
+    { title: '我们的合作伙伴', titleEn: 'Our partners', cards: [card('学校', '国际学习、学生流动与交流项目。', '▣'), card('大学', '学术合作、学生交流与产业互动。', '◇'), card('职业院校', '技能发展、科技与产业体验。', '▤'), card('政府及机构', '国际交流、代表团及标杆考察。', '▥'), card('企业与产业伙伴', '商务交流、专业学习与人才发展。', '▦'), card('教育及培训机构', '跨市场、跨教育体系的合作项目。', '◎')], columns: 6 },
+    { title: '我们可以共同打造', titleEn: 'What we can build together', cards: [card('学生国际流动', '国际学习与交流。', '◉'), card('院校及机构交流', '连接学校、大学与国际机构。', '↗'), card('专业学习', '考察、研学、高管及技能发展项目。', '▣'), card('产业交流', '企业参访、创新及真实产业体验。', '♧'), card('国际代表团', '教育、商务及机构交流项目。', '✳'), card('MICE 与国际活动', '会议、大型活动及国际交流。', '▤')], columns: 6, variant: 'portal-section--tint' },
+    { title: '从想法到落地', titleEn: 'From idea to delivery', steps: ['了解', '设计', '连接', '执行'], feature: { kicker: 'PARTNER WITH US', title: '携手，共创国际未来', text: '有项目、合作或国际交流想法？我们从项目构思到落地执行，为您提供一站式支持。', image: intl01, action: '开始洽谈' } }
+  ] },
+  中国门户: { kicker: 'CHINA GATEWAY', title: '成都 · 连接中国', titleEn: 'Chengdu · Connecting China', lead: '通过位于成都的 API EduVoyage，连接中国的教育、技能、产业、文化与国际合作资源。', leadEn: 'Our Chengdu gateway connects China with the world.', action: '了解更多', actionEn: 'Learn more', sections: [
+    { title: 'API EDUVOYAGE', titleEn: 'API EduVoyage', intro: '亚太国际智航 · 中国 · 成都。APIMTC 在中国的教育流动平台。', feature: { kicker: 'CHINA GATEWAY', title: '从新加坡，连接中国', text: '我们将新加坡的国际视野与中国不断发展的教育及产业资源连接起来。', image: china01 }, steps: ['新加坡', '成都', '中国各地', '世界'] },
+    { title: '中国 · 不只是目的地', titleEn: 'China beyond the destination', intro: '每一座城市，都是一间课堂。', cards: [{ title: '上海', text: 'AI · 金融 · 创新', image: china02 }, { title: '深圳', text: '科技 · 机器人 · 创新', image: china03 }, { title: '杭州', text: '数字经济 · 创业', image: china04 }, { title: '苏州', text: '智慧城市 · 中新合作', image: china05 }, { title: '北京', text: '领导力 · 文化 · 历史', image: china06 }, { title: '西安', text: 'STEM · 丝绸之路 · 文化遗产', image: china02 }, { title: '成都', text: '可持续发展 · 四川文化', image: china03 }, { title: '广州', text: '国际贸易 · 大湾区', image: china04 }], columns: 4 },
+    { title: '走进真实的中国', titleEn: 'China beyond the classroom', intro: '面向新加坡学校及学生，打造融合学习、科技、产业、文化与交流的沉浸式中国教育项目。', feature: { kicker: 'CHINA BEYOND THE CLASSROOM', title: '中国与世界', text: '学生流动 · 技能发展 · 院校交流 · 专业学习 · 国际合作', image: china06, action: '探索中国项目' }, variant: 'portal-section--tint' }
+  ] },
+  联系我们: { kicker: 'CONTACT APIMTC', title: '让我们连接世界', titleEn: 'Let us connect the world', lead: '无论您正在寻找国际教育项目、学生交流、商务交流、MICE 服务，还是国际合作机会，我们都期待与您交流。', leadEn: 'Tell us what you want to build across borders.', action: '开始洽谈', actionEn: 'Start a conversation', sections: [
+    { title: '您想探索什么？', titleEn: 'What are you exploring?', cards: [card('教育流动', '国际学生项目、学校交流及沉浸式学习。', '◇'), card('MICE 与商务', '会议、活动、商务代表团及产业参访。', '▣'), card('国际合作', '院校、企业、政府及机构合作。', '♧'), card('中国项目', '通过成都平台连接中国教育与产业资源。', '▤')], columns: 4 },
+    { title: '与我们联系', titleEn: 'Connect with us', cards: [card('APIMTC', 'Asia Pacific International MICE & Travel Centre\nSingapore\n我们的企业总部及国际平台', '◎'), card('API EduVoyage', 'Asia Pacific International EduVoyage\nChengdu, China\n我们的中国教育流动平台', '◇')], columns: 2, feature: { kicker: 'LET’S CONNECT', title: '有一个想法？', text: '告诉我们您希望实现的目标，我们的团队将与您一起探索合适的项目、合作伙伴与发展机会。', image: contact01, action: '提交咨询' }, variant: 'portal-section--tint' }
+  ] }
 }
-const heroImage = computed(() => heroImages[route.meta.titleZh as string] || homeHero)
-const tx = (en: string, zh: string) => lang.value === 'en' ? en : zh
-
-const itemTitle = (item: ActivityItem) => lang.value === 'en'
-  ? item.titleEn || item.titleZh
-  : item.titleZh || item.titleEn || ''
-const stripHtml = (value: string) => value
-  .replace(/<[^>]*>/g, ' ')
-  .replace(/&nbsp;/gi, ' ')
-  .replace(/&amp;/gi, '&')
-  .replace(/&lt;/gi, '<')
-  .replace(/&gt;/gi, '>')
-  .replace(/\s+/g, ' ')
-  .trim()
-const itemSummary = (item: ActivityItem) => {
-  const content = lang.value === 'en'
-    ? item.introEn || item.introZh || item.contentEn || item.contentZh || ''
-    : item.introZh || item.introEn || item.contentZh || item.contentEn || ''
-  const summary = stripHtml(content)
-  return summary.length > 150 ? `${summary.slice(0, 150)}...` : summary
-}
-const itemContent = (item: ActivityItem) => lang.value === 'en'
-  ? item.contentEn || item.contentZh || item.introEn || item.introZh || ''
-  : item.contentZh || item.contentEn || item.introZh || item.introEn || ''
-const formatDate = (value?: string) => value?.slice(0, 10).replace(/-/g, '.') || ''
-const coverImage = (item: ActivityItem) => item.coverImage || item.cover_image || item.coverImg || item.cover_img || item.image || item.img || item.thumbnail
-const imageUrl = (image?: string) => {
-  if (!image || image.startsWith('http') || image.startsWith('data:')) return image || ''
-  return `/prod-api${image}`
-}
-const markImageError = (id: ActivityItem['id']) => { imageErrors.value[String(id)] = true }
-
-async function loadList() {
-  loading.value = true
-  error.value = false
-  selectedItem.value = null
-  try {
-    const response = await fetchActivityList(1, 100, activityType.value)
-    if (response.code === 200) items.value = response.rows || []
-    else error.value = true
-  } catch {
-    error.value = true
-  } finally {
-    loading.value = false
-  }
-}
-
-async function loadDetail(id: ActivityItem['id']) {
-  detailLoading.value = true
-  detailError.value = false
-  selectedItem.value = items.value.find(item => item.id === id) || null
-  try {
-    const response = await fetchActivityDetail(id)
-    if (response.code === 200 && response.data) selectedItem.value = { ...selectedItem.value, ...response.data }
-    else detailError.value = true
-  } catch {
-    detailError.value = true
-  } finally {
-    detailLoading.value = false
-  }
-}
-
-watch(activityType, loadList, { immediate: true })
+const key = computed(() => String(route.meta.titleZh || '首页')); const page = computed(() => pages[key.value] || pages.首页); const heroImages: Record<string, string> = { 首页: homeHero, '关于 APIMTC': aboutHero, 教育流动: mobilityHero, 'MICE 与商务': miceHero, 国际合作: intlHero, 中国门户: chinaHero, 联系我们: contactHero }; const heroImage = computed(() => heroImages[key.value] || homeHero)
 </script>
 
 <style scoped>
-.content-hero { background-color: #16243a; background-position: center; background-repeat: no-repeat; background-size: cover; color: #fff; min-height: 329px; padding: 110px 0 56px; position: relative; }
-.content-hero::before { background: rgba(10, 23, 42, .7); content: ''; inset: 0; position: absolute; }
-.content-hero .site-shell { position: relative; z-index: 1; }
-.content-hero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 4.25rem); margin: 14px 0; }
-.content-hero p { color: #d8e0ea; font-size: 1.1rem; }
-.content-section { min-height: 48vh; }
-.page-status { color: #667085; text-align: center; padding: 52px 20px; }
-.page-status .button { margin-top: 14px; }
-.content-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
-.content-card { min-width: 0; }
-.content-card-trigger { appearance: none; background: transparent; border: 0; color: inherit; cursor: pointer; display: block; padding: 0; text-align: left; width: 100%; }
-.content-cover { aspect-ratio: 4 / 3; background: #e2ddd4; overflow: hidden; position: relative; }
-.content-cover::after { background: linear-gradient(180deg, transparent 62%, rgba(23, 23, 23, .16)); content: ''; inset: 0; opacity: 0; position: absolute; transition: opacity .24s ease; }
-.content-cover img { display: block; height: 100%; object-fit: cover; transition: transform .45s ease; width: 100%; }
-.content-cover-placeholder { background: linear-gradient(135deg, #ded8ce 0%, #f0ece4 48%, #c5c2b9 100%); }
-.content-card-body { border-top: 2px solid #d45d43; padding: 16px 4px 6px; }
-.content-card h2, .detail-article h2 { color: #1f2937; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.45rem, 2.2vw, 1.85rem); font-weight: 600; line-height: 1.2; margin: 8px 0 14px; overflow-wrap: anywhere; }
-.content-card p { color: #667085; line-height: 1.7; margin: 0; white-space: pre-line; }
-.content-summary { -webkit-box-orient: vertical; -webkit-line-clamp: 3; display: -webkit-box; overflow: hidden; }
-.content-date { color: #a64735 !important; font-size: .83rem; letter-spacing: .06em; }
-.text-button, .back-button { background: transparent; border: 0; color: #215198; cursor: pointer; font: inherit; font-weight: 700; padding: 0; text-align: left; }
-.text-button { display: inline-block; margin-top: 20px; }
-.content-card-trigger:hover .content-cover img, .content-card-trigger:focus-visible .content-cover img { transform: scale(1.035); }
-.content-card-trigger:hover .content-cover::after, .content-card-trigger:focus-visible .content-cover::after { opacity: 1; }
-.content-card-trigger:focus-visible, .back-button:focus-visible { outline: 2px solid #215198; outline-offset: 5px; }
-.back-button { margin-bottom: 30px; min-height: 44px; }
-.detail-article { margin: 0 auto; max-width: 900px; }
-.detail-cover { aspect-ratio: 16 / 9; background: #e2ddd4; margin-bottom: 34px; overflow: hidden; }
-.detail-cover img { display: block; height: 100%; object-fit: cover; width: 100%; }
-.detail-header { border-bottom: 1px solid #d9d2c7; margin-bottom: 30px; padding-bottom: 26px; }
-.detail-header h2 { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 0; max-width: 15ch; }
-.rich-content { color: #4b5563; font-size: 1.05rem; line-height: 1.85; max-width: 70ch; overflow-wrap: anywhere; white-space: pre-line; }
-:deep(.rich-content img), :deep(.rich-content video) { display: block; height: auto; margin: 28px 0; max-width: 100%; }
-@media (max-width: 900px) { .content-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .content-hero { min-height: 270px; padding: 105px 0 48px; }.content-list { grid-template-columns: 1fr; gap: 28px; }.detail-cover { margin-bottom: 24px; }.detail-header { margin-bottom: 22px; padding-bottom: 20px; } }
-@media (prefers-reduced-motion: reduce) { .content-cover::after, .content-cover img { transition: none; } }
+.portal-page{color:#17416d;background:#fff}.portal-shell{width:min(1360px,calc(100% - 64px));margin:0 auto}.portal-hero{min-height:446px;padding:126px 0 52px;display:flex;align-items:flex-end;background-position:center;background-size:cover;color:#fff;position:relative;isolation:isolate}.portal-hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,41,85,.9),rgba(5,51,99,.55) 48%,rgba(4,35,78,.1));z-index:-1}.hero-kicker,.section-kicker{margin:0 0 9px;color:#71aaf0;font-size:11px;font-weight:700;letter-spacing:.12em}.portal-hero h1{margin:0 0 12px;color:#fff;font-size:clamp(33px,4vw,55px);line-height:1.1;font-weight:700}.hero-lead{max-width:630px;margin:0 0 10px;font-size:18px;font-weight:600;line-height:1.45;color:#fff}.hero-description{max-width:650px;margin:0 0 23px;color:rgba(255,255,255,.89);font-size:14px;line-height:1.7}.hero-action{display:inline-flex;justify-content:center;align-items:center;min-width:100px;height:35px;padding:0 19px;border-radius:18px;background:#1479e7;color:#fff;font-size:12px;font-weight:600}.portal-section{padding:42px 0}.portal-section--tint{background:#f4f9fe}.portal-heading{margin-bottom:23px}.portal-heading h2{margin:0;color:#103f70;font-size:23px;font-weight:700;line-height:1.3}.section-intro{margin:7px 0 0;color:#5b7591;font-size:13px;line-height:1.7}.feature-panel{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(260px,.94fr);align-items:stretch;margin-bottom:24px;border:1px solid #d8e7f5;background:#fff;box-shadow:0 8px 20px rgba(24,73,119,.07);overflow:hidden}.feature-panel img{width:100%;height:218px;object-fit:cover;display:block}.feature-panel__copy{padding:25px 28px;align-self:center}.feature-panel__copy h3{margin:0 0 10px;color:#10487f;font-size:19px;font-weight:700}.feature-panel__copy p:not(.section-kicker){margin:0;color:#5b7591;font-size:13px;line-height:1.75;white-space:pre-line}.text-link{display:inline-flex;gap:12px;margin-top:18px;color:#0b70dd;font-size:12px;font-weight:700}.portal-grid{display:grid;gap:14px}.portal-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}.portal-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}.portal-grid--5{grid-template-columns:repeat(5,minmax(0,1fr))}.portal-grid--6{grid-template-columns:repeat(6,minmax(0,1fr))}.portal-card{position:relative;min-width:0;background:#f3f8fd;border:1px solid #e0ecf7;min-height:131px;overflow:hidden}.portal-card__body{padding:18px}.portal-card__icon{display:block;height:23px;margin-bottom:10px;color:#0871de;font-size:22px;line-height:23px}.portal-card h3{margin:0 0 7px;color:#124d86;font-size:14px;font-weight:700;line-height:1.35}.portal-card p{margin:0;color:#66809b;font-size:11px;line-height:1.65;white-space:pre-line}.portal-card--image{background:#fff;min-height:0;box-shadow:0 4px 10px rgba(24,73,119,.05)}.portal-card--image img{display:block;width:100%;height:123px;object-fit:cover}.portal-card--image .portal-card__body{padding:12px 14px 15px}.card-more{position:absolute;right:14px;bottom:13px;width:18px;height:18px;border:1px solid #9dc4ed;border-radius:50%;color:#0b70dd;line-height:16px;text-align:center;font-size:15px}.step-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px;min-height:64px;padding:16px;background:#f2f8ff;color:#2776bc;font-size:14px;font-weight:700}.step-row b{color:#8bb9e8;font-size:20px;font-weight:400}@media(max-width:1000px){.portal-grid--5,.portal-grid--6{grid-template-columns:repeat(3,minmax(0,1fr))}.portal-shell{width:min(100% - 40px,1360px)}}@media(max-width:720px){.portal-hero{min-height:390px;padding:110px 0 42px}.feature-panel{grid-template-columns:1fr}.feature-panel img{height:190px}.portal-grid--3,.portal-grid--4,.portal-grid--5,.portal-grid--6{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.portal-shell{width:min(100% - 28px,1360px)}.portal-section{padding:32px 0}.portal-grid--2,.portal-grid--3,.portal-grid--4,.portal-grid--5,.portal-grid--6{grid-template-columns:1fr}.portal-hero h1{font-size:32px}.hero-lead{font-size:16px}}
 </style>

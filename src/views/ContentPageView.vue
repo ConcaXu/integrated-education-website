@@ -1,5 +1,5 @@
 <template>
-  <div class="portal-page">
+  <div class="portal-page" :class="{ 'portal-page--home': key === '首页' }">
     <section class="portal-hero" :style="{ backgroundImage: `url(${heroImage})` }">
       <div class="portal-shell portal-hero__copy">
         <p class="hero-kicker">{{ page.kicker }}</p><h1>{{ tx(page.title, page.titleEn) }}</h1>

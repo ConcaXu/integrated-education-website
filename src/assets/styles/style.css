@@ -45,16 +45,16 @@ textarea {
 }
 
 .site-header {
-  position: fixed;
+  position: absolute;
   z-index: 30;
   inset: 0 0 auto;
-  background: rgba(244, 241, 235, .9);
+  background: rgba(255,255,255,.96);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(23, 23, 23, .12)
+  border-bottom: 1px solid #e6edf5
 }
 
 .header-inner {
-  height: 82px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between
@@ -67,7 +67,8 @@ textarea {
 }
 
 .brand img {
-  height: 38px;
+  height: 36px;
+  width: 166px;
   object-fit: contain
 }
 
@@ -91,11 +92,12 @@ textarea {
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: 24px
+  gap: 25px
 }
 
 .site-header nav a {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .04em
 }
 
@@ -104,8 +106,10 @@ textarea {
 }
 
 .header-cta {
-  border: 1px solid var(--ink);
-  padding: 11px 16px
+  border: 1px solid #2584dc;
+  padding: 5px 12px;
+  border-radius: 5px;
+  color: #15569a !important
 }
 
 .lang-button,

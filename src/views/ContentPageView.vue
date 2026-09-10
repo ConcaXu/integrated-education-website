@@ -66,12 +66,6 @@
             </div>
             <div class="why-layout__visual">
               <img :src="home02" :alt="tx('APIMTC 国际连接场景', 'APIMTC global connections')" />
-              <div class="why-layout__marker why-layout__marker--top">
-                <b>01</b><span>{{ tx('教育', 'Education') }}</span>
-              </div>
-              <div class="why-layout__marker why-layout__marker--bottom">
-                <b>02</b><span>{{ tx('产业', 'Industry') }}</span>
-              </div>
               <p class="why-layout__caption">Singapore · Chengdu · World</p>
             </div>
           </div>
@@ -184,6 +178,7 @@
               'portal-section__action--centered':
                 (key === '教育流动' && section.action === '探索教育项目') ||
                 (key === 'MICE 与商务' && section.action === '与 APIMTC 合作') ||
+                (key === '国际合作' && section.action === '联系 APIMTC') ||
                 (key === '联系我们' && section.title === '与我们联系'),
             }"
             to="/contact"
@@ -208,6 +203,7 @@ import intlHero from "@/assets/images/国际合作.png";
 import miceHero from "@/assets/images/MICE 与商务.png";
 import mobilityHero from "@/assets/images/教育流动.png";
 import home01 from "@/assets/content-images/首页-01.jpeg";
+import homeEducationMobility from "@/assets/content-images/首页-教育流动.png";
 import home02 from "@/assets/images/首页-内容图/首页-新加坡01.png";
 import homeContent03 from "@/assets/images/首页-内容图/首页-03.png";
 import homeContent05 from "@/assets/images/首页-内容图/首页-05.png";
@@ -218,7 +214,7 @@ import platformWorld from "@/assets/images/首页-内容图/首页-世界.png";
 import mobility01 from "@/assets/content-images/教育流动-01.jpeg";
 import mobility02 from "@/assets/content-images/教育流动-02.jpeg";
 import mobility03 from "@/assets/content-images/教育流动-03.jpeg";
-import mice01 from "@/assets/content-images/MICE 与商务-01.jpeg";
+import mice01 from "@/assets/images/首页-内容图/首页-商务.png";
 import mice02 from "@/assets/content-images/MICE 与商务-02.jpeg";
 import intl01 from "@/assets/content-images/国际合作-01.jpeg";
 import china01 from "@/assets/content-images/中国门户-01.jpeg";
@@ -330,7 +326,7 @@ const pages: Record<string, Page> = {
             text: "走出课堂，探索真实世界。",
             textEn: "Learn beyond the classroom.",
             icon: "◎",
-            image: mobility01,
+            image: homeEducationMobility,
           },
           {
             title: "MICE 与商务",

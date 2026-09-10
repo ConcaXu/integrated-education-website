@@ -101,7 +101,7 @@ textarea {
   letter-spacing: .04em
 }
 
-.site-header nav a.router-link-active {
+.site-header nav a.is-active {
   color: var(--accent)
 }
 
@@ -110,6 +110,11 @@ textarea {
   padding: 5px 12px;
   border-radius: 5px;
   color: #15569a !important
+}
+
+.site-header nav .header-cta.is-active {
+  border-color: var(--accent);
+  color: var(--accent) !important
 }
 
 .lang-button,

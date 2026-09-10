@@ -35,6 +35,8 @@
           {
             'portal-section--business':
               key === '首页' && section.title === '我们的业务',
+            'portal-section--four-e':
+              ['首页', '教育流动'].includes(key) && section.title === 'APIMTC 4E 模型',
             'portal-section--why':
               key === '首页' && section.title === '为什么选择 APIMTC？',
           },
@@ -125,12 +127,21 @@
             class="portal-grid"
             :class="`portal-grid--${section.columns || 3}`"
           >
-            <article
-              v-for="card in section.cards"
-              :key="card.title"
-              class="portal-card"
-              :class="{ 'portal-card--image': card.image }"
-            >
+            <template v-for="card in section.cards" :key="card.title">
+              <div
+                v-if="key === '首页' && section.title === 'APIMTC 4E 模型'"
+                class="four-e-message"
+              >
+                <h3>{{ tx(card.title, card.titleEn || card.title) }}</h3>
+              </div>
+              <article
+                v-else
+                class="portal-card"
+                :class="{
+                  'portal-card--image': card.image,
+                  'portal-card--platform': card.platform,
+                }"
+              >
               <img v-if="card.image" :src="card.image" :alt="card.title" />
               <div class="portal-card__body">
                 <i
@@ -140,18 +151,23 @@
                   aria-hidden="true"
                 ></i>
                 <h3>{{ tx(card.title, card.titleEn || card.title) }}</h3>
-                <p>{{ tx(card.text, card.textEn || card.text) }}</p>
+                <p v-if="card.text">{{ tx(card.text, card.textEn || card.text) }}</p>
                 <router-link v-if="card.action" to="/contact" class="card-more"
                   >+</router-link
                 >
               </div>
               <i
-                v-if="card.icon"
+                v-if="
+                  card.icon &&
+                  !card.platform &&
+                  !(key === '首页' && ['我们的业务', '双向国际流动'].includes(section.title))
+                "
                 class="portal-card__side-icon"
                 :class="getCardIcon(card.title)"
                 aria-hidden="true"
               ></i>
-            </article>
+              </article>
+            </template>
           </div>
           <div v-if="section.steps?.length" class="step-row">
             <template
@@ -192,10 +208,13 @@ import intlHero from "@/assets/images/国际合作.png";
 import miceHero from "@/assets/images/MICE 与商务.png";
 import mobilityHero from "@/assets/images/教育流动.png";
 import home01 from "@/assets/content-images/首页-01.jpeg";
-import home02 from "@/assets/content-images/首页-02.png";
+import home02 from "@/assets/images/首页-内容图/首页-新加坡01.png";
 import homeContent03 from "@/assets/images/首页-内容图/首页-03.png";
 import homeContent05 from "@/assets/images/首页-内容图/首页-05.png";
 import homeContent06 from "@/assets/images/首页-内容图/首页-06.png";
+import platformSingapore from "@/assets/images/首页-内容图/首页-新加坡.png";
+import platformChengdu from "@/assets/images/首页-内容图/首页-成都.png";
+import platformWorld from "@/assets/images/首页-内容图/首页-世界.png";
 import mobility01 from "@/assets/content-images/教育流动-01.jpeg";
 import mobility02 from "@/assets/content-images/教育流动-02.jpeg";
 import mobility03 from "@/assets/content-images/教育流动-03.jpeg";
@@ -219,6 +238,7 @@ type Card = {
   text: string;
   icon?: string;
   image?: string;
+  platform?: boolean;
   action?: string;
   actionEn?: string;
   titleEn?: string;
@@ -362,10 +382,10 @@ const pages: Record<string, Page> = {
         introEn: "Educate · Experience · Explore · Exchange",
         cards: [
           {
-            title: "不只是参观。",
-            titleEn: "Don't just visit.",
-            text: "更要真正连接。",
-            textEn: "Connect.",
+            title: "不只是参观。更要真正连接。",
+            titleEn: "Don't just visit. Connect.",
+            text: "",
+            textEn: "",
             icon: "⌁",
           },
         ],
@@ -382,20 +402,26 @@ const pages: Record<string, Page> = {
             text: "我们的总部",
             textEn: "Our home",
             icon: "◎",
+            image: platformSingapore,
+            platform: true,
           },
           {
-            title: "→ 成都",
-            titleEn: "→ Chengdu",
+            title: "成都",
+            titleEn: "Chengdu",
             text: "我们的中国门户",
             textEn: "Our China gateway",
             icon: "◎",
+            image: platformChengdu,
+            platform: true,
           },
           {
-            title: "→ 世界",
-            titleEn: "→ The world",
+            title: "世界",
+            titleEn: "The world",
             text: "我们的全球网络",
             textEn: "Our global network",
             icon: "◎",
+            image: platformWorld,
+            platform: true,
           },
         ],
         columns: 3,
@@ -470,16 +496,16 @@ const pages: Record<string, Page> = {
         cards: [
           {
             title: "APIMTC",
-            text: "新加坡\n我们的母公司及国际化平台。\nMICE · 旅游 · 教育 · 商务\n↓",
+            text: "新加坡\n我们的母公司及国际化平台。\nMICE · 旅游 · 教育 · 商务\n",
             textEn:
-              "Singapore\nOur parent company and international platform.\nMICE · Travel · Education · Business\n↓",
+              "Singapore\nOur parent company and international platform.\nMICE · Travel · Education · Business\n",
             icon: "◈",
           },
           {
             title: "API EduVoyage",
-            text: "中国 · 成都\n我们的中国教育流动平台。\n教育 · 技能 · 学生流动 · 国际交流\n↓",
+            text: "中国 · 成都\n我们的中国教育流动平台。\n教育 · 技能 · 学生流动 · 国际交流\n",
             textEn:
-              "Chengdu, China\nOur China education mobility platform.\nEducation · Skills · Student Mobility · Exchange\n↓",
+              "Chengdu, China\nOur China education mobility platform.\nEducation · Skills · Student Mobility · Exchange\n",
             icon: "▣",
           },
           {
@@ -1297,11 +1323,15 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: #0b426f !important;
   color: #fff;
 }
+.portal-section--tint > .portal-shell {
+  position: relative;
+  z-index: 1;
+}
 .portal-section--tint::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   background:
     linear-gradient(105deg, rgba(4, 46, 91, 0.88), rgba(8, 89, 153, 0.72)),
     var(--model-bg) center / cover no-repeat;
@@ -2264,6 +2294,46 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: rgba(15, 139, 120, 0.25);
   color: #9af0dd;
 }
+
+/* Keep the homepage and education 4E model sections aligned on desktop. */
+.portal-section--four-e {
+  min-height: 504px;
+}
+
+/* The homepage 4E model is one concise message, without a card container. */
+.portal-page--home .portal-section.portal-section--four-e .portal-grid {
+  display: block;
+}
+.portal-page--home .portal-section.portal-section--four-e .four-e-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 26px 24px;
+  text-align: center;
+}
+.portal-page--home .portal-section.portal-section--four-e .four-e-message h3 {
+  max-width: 920px;
+  margin: 0;
+  color: #e6fffa;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 800;
+  line-height: 1.32;
+  text-shadow: 0 3px 20px rgba(2, 34, 72, 0.38);
+}
+@media (max-width: 720px) {
+  .portal-section--four-e {
+    min-height: 0;
+  }
+
+  .portal-page--home .portal-section.portal-section--four-e .four-e-message {
+    min-height: 140px;
+    padding: 22px 18px;
+  }
+  .portal-page--home .portal-section.portal-section--four-e .four-e-message h3 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+}
 .portal-page--home .portal-section:nth-child(5) .portal-grid {
   position: relative;
   gap: 0;
@@ -2289,6 +2359,30 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-page--home .portal-section:nth-child(5) .portal-card:nth-child(3) {
   border-top-color: #5479a3;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card--platform {
+  overflow: hidden;
+  isolation: isolate;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card--platform > img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 62%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 25%, #000 54%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 25%, #000 54%);
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card--platform .portal-card__body {
+  position: relative;
+  z-index: 1;
+  max-width: 64%;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card--platform:hover > img {
+  transform: scale(1.04);
 }
 .portal-page--home .portal-section--why {
   padding: 96px 0 !important;
@@ -2484,6 +2578,12 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   }
   .portal-page--home .portal-section:nth-child(5) .portal-card {
     margin: 0;
+  }
+  .portal-page--home .portal-section:nth-child(5) .portal-card--platform > img {
+    width: 58%;
+  }
+  .portal-page--home .portal-section:nth-child(5) .portal-card--platform .portal-card__body {
+    max-width: 69%;
   }
   .portal-page--home .portal-section--why {
     padding: 68px 0 !important;

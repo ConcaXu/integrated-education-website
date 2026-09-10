@@ -2,7 +2,7 @@
   <header class="site-header" :class="{ 'site-header--en': lang === 'en' }">
     <div class="site-shell header-inner">
       <router-link class="brand" to="/"
-        ><img src="/images/logo.webp" alt="APIMTC" /></router-link
+        ><img :src="siteLogo" alt="APIMTC" /></router-link
       ><button class="menu-toggle" @click="open = !open">☰</button>
       <nav :class="{ open }">
         <router-link to="/" exact-active-class="is-active">{{ tx("Home", "首页") }}</router-link
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useI18n } from "@/composables/useI18n";
+import siteLogo from "@/assets/images/logo.webp";
 const { lang, toggleLang } = useI18n();
 const open = ref(false);
 const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);

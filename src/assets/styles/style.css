@@ -186,7 +186,7 @@ textarea {
 .hero-media {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, .72), rgba(0, 0, 0, .18)), var(--home-hero-image, url('/images/aboutus.webp')) center/cover;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .72), rgba(0, 0, 0, .18)), var(--home-hero-image, var(--dark)) center/cover;
   filter: saturate(.7)
 }
 

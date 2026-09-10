@@ -4,7 +4,7 @@
       <div class="footer-identity">
         <img
           class="footer-partner-logo"
-          src="/images/APIEC-logo-01.png"
+          :src="partnerLogo"
           alt="Asia Pacific International Exchange (Singapore)"
         />
         <div class="footer-identity-copy">
@@ -63,6 +63,7 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from "@/composables/useI18n";
+import partnerLogo from "@/assets/images/APIEC-logo-01.png";
 const { lang } = useI18n();
 const tx = (en: string, zh: string) => (lang.value === "en" ? en : zh);
 </script>

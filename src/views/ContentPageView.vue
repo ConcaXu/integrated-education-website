@@ -9,15 +9,20 @@
       :style="{ backgroundImage: `url(${heroImage})` }"
     >
       <div class="portal-shell portal-hero__copy">
-        <p class="hero-kicker">{{ page.kicker }}</p>
+        <p class="hero-kicker">{{ tx(page.kicker, page.kickerEn || page.kicker) }}</p>
         <h1>{{ tx(page.title, page.titleEn) }}</h1>
         <p class="hero-lead">{{ tx(page.lead, page.leadEn) }}</p>
         <p v-if="page.description" class="hero-description">
           {{ tx(page.description, page.descriptionEn || page.description) }}
         </p>
-        <router-link class="hero-action" to="/contact">{{
-          tx(page.action || "了解更多", page.actionEn || "Learn more")
-        }}</router-link>
+        <div v-if="page.action || page.secondaryAction" class="hero-actions">
+          <router-link v-if="page.action" class="hero-action" to="/contact">{{
+            tx(page.action, page.actionEn || page.action)
+          }}</router-link>
+          <router-link v-if="page.secondaryAction" class="hero-action" to="/contact">{{
+            tx(page.secondaryAction, page.secondaryActionEn || page.secondaryAction)
+          }}</router-link>
+        </div>
       </div>
     </section>
     <main class="portal-main">
@@ -30,11 +35,45 @@
           {
             'portal-section--business':
               key === '首页' && section.title === '我们的业务',
+            'portal-section--why':
+              key === '首页' && section.title === '为什么选择 APIMTC？',
           },
         ]"
+        v-show="!(key === '首页' && section.title === 'APIMTC')"
       >
         <div class="portal-shell">
-          <div class="portal-heading">
+          <div
+            v-if="key === '首页' && section.title === '为什么选择 APIMTC？'"
+            class="why-layout"
+          >
+            <div class="why-layout__copy">
+              <p class="section-kicker">WHY APIMTC</p>
+              <h2>{{ tx(section.title, section.titleEn) }}</h2>
+              <p class="why-layout__intro">
+                {{ tx(section.intro || '', section.introEn || section.intro || '') }}
+              </p>
+              <div class="why-layout__rules" aria-label="APIMTC platform strengths">
+                <span>{{ tx('新加坡总部', 'Singapore base') }}</span>
+                <span>{{ tx('中国门户', 'China gateway') }}</span>
+                <span>{{ tx('全球网络', 'Global network') }}</span>
+              </div>
+              <router-link class="why-layout__action" to="/contact">
+                {{ tx('与我们合作', 'Partner with us') }}
+                <span aria-hidden="true">→</span>
+              </router-link>
+            </div>
+            <div class="why-layout__visual">
+              <img :src="home02" :alt="tx('APIMTC 国际连接场景', 'APIMTC global connections')" />
+              <div class="why-layout__marker why-layout__marker--top">
+                <b>01</b><span>{{ tx('教育', 'Education') }}</span>
+              </div>
+              <div class="why-layout__marker why-layout__marker--bottom">
+                <b>02</b><span>{{ tx('产业', 'Industry') }}</span>
+              </div>
+              <p class="why-layout__caption">Singapore · Chengdu · World</p>
+            </div>
+          </div>
+          <div v-else class="portal-heading">
             <p v-if="section.kicker" class="section-kicker">
               {{ section.kicker }}
             </p>
@@ -46,7 +85,12 @@
           <div v-if="section.feature" class="feature-panel">
             <img :src="section.feature.image" :alt="section.feature.title" />
             <div class="feature-panel__copy">
-              <p class="section-kicker">{{ section.feature.kicker }}</p>
+              <p class="section-kicker">{{
+                tx(
+                  section.feature.kicker,
+                  section.feature.kickerEn || section.feature.kicker,
+                )
+              }}</p>
               <h3>
                 {{
                   tx(
@@ -67,7 +111,12 @@
                 v-if="section.feature.action"
                 to="/contact"
                 class="text-link"
-                >{{ section.feature.action }} <span>+</span></router-link
+                >{{
+                  tx(
+                    section.feature.action,
+                    section.feature.actionEn || section.feature.action,
+                  )
+                }} <span>+</span></router-link
               >
             </div>
           </div>
@@ -105,11 +154,26 @@
             </article>
           </div>
           <div v-if="section.steps?.length" class="step-row">
-            <template v-for="(step, index) in section.steps" :key="step"
+            <template
+              v-for="(step, index) in lang === 'en' ? section.stepsEn || section.steps : section.steps"
+              :key="step"
               ><span>{{ step }}</span
               ><b v-if="index < section.steps.length - 1">→</b></template
             >
           </div>
+          <router-link
+            v-if="section.action"
+            class="hero-action"
+            :class="{
+              'portal-section__action--centered':
+                (key === '教育流动' && section.action === '探索教育项目') ||
+                (key === 'MICE 与商务' && section.action === '与 APIMTC 合作') ||
+                (key === '联系我们' && section.title === '与我们联系'),
+            }"
+            to="/contact"
+          >{{
+            tx(section.action, section.actionEn || section.action)
+          }}</router-link>
         </div>
       </section>
     </main>
@@ -128,7 +192,10 @@ import intlHero from "@/assets/images/国际合作.png";
 import miceHero from "@/assets/images/MICE 与商务.png";
 import mobilityHero from "@/assets/images/教育流动.png";
 import home01 from "@/assets/content-images/首页-01.jpeg";
-import home02 from "@/assets/content-images/首页-02.jpeg";
+import home02 from "@/assets/content-images/首页-02.png";
+import homeContent03 from "@/assets/images/首页-内容图/首页-03.png";
+import homeContent05 from "@/assets/images/首页-内容图/首页-05.png";
+import homeContent06 from "@/assets/images/首页-内容图/首页-06.png";
 import mobility01 from "@/assets/content-images/教育流动-01.jpeg";
 import mobility02 from "@/assets/content-images/教育流动-02.jpeg";
 import mobility03 from "@/assets/content-images/教育流动-03.jpeg";
@@ -146,22 +213,25 @@ import cityBeijing from "@/assets/city-images/北京.png";
 import cityXiAn from "@/assets/city-images/西安.png";
 import cityChengdu from "@/assets/city-images/成都.png";
 import cityGuangzhou from "@/assets/city-images/广州.png";
-import modelBackground from "@/assets/images/bj-01.png";
+import modelBackground from "@/assets/images/细长横图.png";
 type Card = {
   title: string;
   text: string;
   icon?: string;
   image?: string;
   action?: string;
+  actionEn?: string;
   titleEn?: string;
   textEn?: string;
 };
 type Feature = {
   kicker: string;
+  kickerEn?: string;
   title: string;
   text: string;
   image: string;
   action?: string;
+  actionEn?: string;
   titleEn?: string;
   textEn?: string;
 };
@@ -175,10 +245,14 @@ type Section = {
   columns?: number;
   feature?: Feature;
   steps?: string[];
+  stepsEn?: string[];
   variant?: string;
+  action?: string;
+  actionEn?: string;
 };
 type Page = {
   kicker: string;
+  kickerEn?: string;
   title: string;
   titleEn: string;
   lead: string;
@@ -187,19 +261,16 @@ type Page = {
   descriptionEn?: string;
   action?: string;
   actionEn?: string;
+  secondaryAction?: string;
+  secondaryActionEn?: string;
   sections: Section[];
 };
 const route = useRoute();
 const { lang } = useI18n();
 const tx = (zh: string, en: string) => (lang.value === "en" ? en : zh);
-const card = (title: string, text: string, icon?: string): Card => ({
-  title,
-  text,
-  icon,
-});
 const pages: Record<string, Page> = {
   首页: {
-    kicker: "APIMTC · HOME",
+    kicker: "APIMTC",
     title: "立足新加坡 · 连接全球",
     titleEn: "Singapore-based · Globally connected",
     lead: "教育 · 技能 · 流动 · 交流 · 商务",
@@ -208,142 +279,313 @@ const pages: Record<string, Page> = {
     descriptionEn:
       "Connecting people, education and opportunity across borders.",
     action: "探索项目",
-    actionEn: "Explore projects",
+    actionEn: "Explore",
+    secondaryAction: "与我们合作",
+    secondaryActionEn: "Partner with us",
     sections: [
+      {
+        title: "超越国界 · 超越课堂",
+        titleEn: "Beyond borders. Beyond the classroom.",
+        intro: "连接人才 · 教育 · 产业 · 商务的国际项目平台。",
+        introEn:
+          "International programmes connecting people · education · industry · business.",
+        feature: {
+          kicker: "国际项目平台",
+          kickerEn: "International programme platform",
+          title: "从新加坡出发，连接真实世界",
+          titleEn: "From Singapore, into the real world",
+          text: "我们把学习、交流与产业体验带到课堂之外，连接中国、亚洲与全球机会。",
+          textEn:
+            "We take learning, exchange and industry experience beyond the classroom, connecting China, Asia and global opportunities.",
+          image: homeContent03,
+        },
+      },
       {
         title: "我们的业务",
         titleEn: "What we do",
         cards: [
-          card("国际教育流动", "走出课堂，探索真实世界。", "◎"),
-          card("MICE 与商务", "连接产业、人才与商业机会。", "▦"),
-          card("国际合作", "与全球伙伴建立有意义的连接。", "↗"),
+          {
+            title: "国际教育流动",
+            titleEn: "Education mobility",
+            text: "走出课堂，探索真实世界。",
+            textEn: "Learn beyond the classroom.",
+            icon: "◎",
+            image: mobility01,
+          },
+          {
+            title: "MICE 与商务",
+            titleEn: "MICE & business",
+            text: "连接产业、人才与商业机会。",
+            textEn: "Connect with industry and opportunity.",
+            icon: "▦",
+            image: mice01,
+          },
+          {
+            title: "国际合作",
+            titleEn: "International partnerships",
+            text: "与全球伙伴建立有意义的连接。",
+            textEn: "Build meaningful connections across borders.",
+            icon: "↗",
+            image: intl01,
+          },
         ],
         columns: 3,
       },
       {
-        title: "超越国界 · 超越课堂",
-        titleEn: "Beyond borders · Beyond classrooms",
-        intro: "连接人才、教育、产业、商务的国际项目平台。",
-        feature: {
-          kicker: "INTERNATIONAL PLATFORM",
-          title: "双向国际流动",
-          text: "新加坡 → 中国及世界；中国及全球 → 新加坡。学习、体验、探索真实世界。",
-          image: home01,
-        },
+        title: "双向国际流动",
+        titleEn: "Two-way mobility",
         cards: [
           {
-            title: "新加坡未来探索者",
-            text: "学习 · 体验 · 探索新加坡",
-            image: mobility01,
-            action: "探索",
+            title: "新加坡 → 中国",
+            titleEn: "Singapore → China",
+            text: "中国课堂之外\n学习 · 体验 · 探索中国",
+            textEn: "China beyond the classroom\nLearn. Experience. Explore China.",
+            icon: "◎",
+            image: homeContent05,
           },
           {
-            title: "中国课堂之外",
-            text: "学习 · 体验 · 探索中国",
-            image: mobility02,
-            action: "探索",
+            title: "中国及全球 → 新加坡",
+            titleEn: "China & the world → Singapore",
+            text: "新加坡未来探索者\n学习 · 体验 · 探索新加坡",
+            textEn:
+              "Singapore future explorers\nLearn. Experience. Discover Singapore.",
+            icon: "◎",
+            image: homeContent06,
           },
         ],
         columns: 2,
       },
       {
         title: "APIMTC 4E 模型",
-        titleEn: "The APIMTC 4E model",
-        intro: "不只是参观。更要真正连接。",
+        titleEn: "Our 4E model",
+        intro: "学习 · 体验 · 探索 · 交流",
+        introEn: "Educate · Experience · Explore · Exchange",
         cards: [
-          card("学习", "从大学、专家及专业机构获得知识。", "◈"),
-          card("体验", "走进企业、实验室及真实产业环境。", "◉"),
-          card("探索", "了解城市、文化、社会与环境。", "◌"),
-          card("交流", "与不同国家的学生及伙伴共同学习。", "⌁"),
+          {
+            title: "不只是参观。",
+            titleEn: "Don't just visit.",
+            text: "更要真正连接。",
+            textEn: "Connect.",
+            icon: "⌁",
+          },
         ],
-        columns: 4,
+        columns: 1,
         variant: "portal-section--tint",
+      },
+      {
+        title: "我们的国际平台",
+        titleEn: "Our platform",
+        cards: [
+          {
+            title: "新加坡",
+            titleEn: "Singapore",
+            text: "我们的总部",
+            textEn: "Our home",
+            icon: "◎",
+          },
+          {
+            title: "→ 成都",
+            titleEn: "→ Chengdu",
+            text: "我们的中国门户",
+            textEn: "Our China gateway",
+            icon: "◎",
+          },
+          {
+            title: "→ 世界",
+            titleEn: "→ The world",
+            text: "我们的全球网络",
+            textEn: "Our global network",
+            icon: "◎",
+          },
+        ],
+        columns: 3,
+      },
+      {
+        title: "为什么选择 APIMTC？",
+        titleEn: "Why APIMTC?",
+        intro: "立足新加坡 · 连接中国 · 面向全球\n教育 + 产业 · 一站式项目执行",
+        introEn:
+          "Singapore-based · China-connected · Globally networked\nEducation + Industry · End-to-end delivery",
+      },
+      {
+        title: "APIMTC",
+        titleEn: "APIMTC",
+        intro: "立足新加坡 · 连接全球",
+        introEn: "Singapore-based. Globally connected.",
+        action: "与我们合作",
+        actionEn: "Partner with us",
       },
     ],
   },
   "关于 APIMTC": {
-    kicker: "ABOUT APIMTC",
+    kicker: "关于 APIMTC",
+    kickerEn: "ABOUT APIMTC",
     title: "连接人才 · 连接世界",
-    titleEn: "Connecting people · Connecting worlds",
-    lead: "APIMTC 是一家立足新加坡的国际化平台，连接教育、技能、人才流动、MICE 与商务。",
-    leadEn: "An international platform based in Singapore.",
-    action: "了解更多",
-    actionEn: "Learn more",
+    titleEn: "Connecting people. Connecting worlds.",
+    lead:
+      "APIMTC 是一家立足新加坡的国际化平台，连接教育、技能、人才流动、MICE 与商务，推动跨境交流与合作。",
+    leadEn:
+      "APIMTC is a Singapore-based international platform connecting education, skills, mobility, MICE and business across borders.",
     sections: [
       {
         title: "新加坡是我们的根基",
-        titleEn: "Singapore is our foundation",
+        titleEn: "Singapore is our home.",
         feature: {
-          kicker: "OUR ROOTS",
+          kicker: "新加坡是我们的根基",
+          kickerEn: "Singapore is our home.",
           title: "从新加坡出发",
-          text: "新加坡是我们的企业总部，也是连接亚洲与全球的国际平台。我们连接中国、亚洲及世界。",
+          titleEn: "From Singapore",
+          text:
+            "新加坡是我们的企业总部，也是连接亚洲与全球的国际平台。\n从新加坡出发，我们连接中国、亚洲及世界。",
+          textEn:
+            "Singapore is our corporate base and international platform.\nFrom Singapore, we connect partners across China, Asia and the world.",
           image: home01,
         },
+      },
+      {
+        title: "从 MICE 与旅游，走向教育与国际流动",
+        titleEn: "From MICE & travel to education & mobility",
         cards: [
-          card("MICE 与旅游", "凭借多年目的地管理经验，连接国际项目。", "◌"),
-          card("教育与国际流动", "连接教育、技能、人才与产业。", "◇"),
-          card("全球合作网络", "学校、大学、机构、企业与国际组织。", "⌘"),
+          {
+            title: "国际平台",
+            titleEn: "International platform",
+            text: "凭借多年旅游、MICE 及目的地管理经验，我们不断拓展国际业务。",
+            textEn:
+              "Our experience in travel, MICE and destination management has evolved into a broader international platform.",
+            icon: "◌",
+          },
+          {
+            title: "今天，我们连接：",
+            titleEn: "Today, we connect:",
+            text: "教育 · 技能 · 人才 · 产业 · 商务",
+            textEn: "Education · Skills · People · Industry · Business",
+            icon: "◇",
+          },
         ],
-        columns: 3,
+        columns: 2,
       },
       {
         title: "我们的品牌架构",
-        titleEn: "Our brand architecture",
+        titleEn: "Our brand structure",
         cards: [
-          card(
-            "APIMTC",
-            "新加坡。母公司及国际化平台。MICE · 旅游 · 教育 · 商务",
-            "◈",
-          ),
-          card(
-            "API EduVoyage",
-            "中国 · 成都。中国教育流动平台。教育 · 技能 · 学生流动",
-            "▣",
-          ),
-          card("全球合作网络", "学校 · 大学 · 教育机构 · 企业 · 国际组织", "◎"),
+          {
+            title: "APIMTC",
+            text: "新加坡\n我们的母公司及国际化平台。\nMICE · 旅游 · 教育 · 商务\n↓",
+            textEn:
+              "Singapore\nOur parent company and international platform.\nMICE · Travel · Education · Business\n↓",
+            icon: "◈",
+          },
+          {
+            title: "API EduVoyage",
+            text: "中国 · 成都\n我们的中国教育流动平台。\n教育 · 技能 · 学生流动 · 国际交流\n↓",
+            textEn:
+              "Chengdu, China\nOur China education mobility platform.\nEducation · Skills · Student Mobility · Exchange\n↓",
+            icon: "▣",
+          },
+          {
+            title: "全球合作网络",
+            titleEn: "Global partner network",
+            text: "学校 · 大学 · 教育机构 · 企业 · 国际组织",
+            textEn:
+              "Schools · Universities · Institutions · Businesses · Organisations",
+            icon: "◎",
+          },
         ],
         columns: 3,
         variant: "portal-section--tint",
       },
       {
+        title: "双向国际连接",
+        titleEn: "Two-way connections",
+        cards: [
+          {
+            title: "新加坡 → 中国及世界",
+            titleEn: "Singapore → China & the world",
+            text: "国际学习、学生交流及商务合作。",
+            textEn: "International learning, exchange and business opportunities.",
+            icon: "◎",
+          },
+          {
+            title: "中国及世界 → 新加坡",
+            titleEn: "China & the world → Singapore",
+            text: "教育、技能、文化及产业体验。",
+            textEn: "Education, skills, culture and industry experiences.",
+            icon: "◎",
+          },
+        ],
+        columns: 2,
+      },
+      {
         title: "我们相信",
         titleEn: "What we believe",
-        intro: "学习，应该走得更远。超越课堂，超越国界，超越期待。",
+        intro: "学习，应该走得更远。\n超越课堂。超越国界。超越期待。",
+        introEn:
+          "Learning should go further.\nBeyond the classroom. Beyond borders. Beyond expectations.",
         feature: {
-          kicker: "OUR MISSION",
+          kicker: "我们的使命",
+          kickerEn: "Our purpose",
           title: "连接，创造更多可能",
-          text: "连接人才、城市、教育、产业与机会。新加坡是我们的根基，成都是我们的中国门户。",
+          titleEn: "Connection creates opportunity.",
+          text: "让人才、机构与产业相互连接，创造真正有价值的国际体验。",
+          textEn:
+            "We bring people, institutions and industry together to create meaningful international experiences.",
           image: home02,
         },
+      },
+      {
+        title: "我们的使命",
+        titleEn: "Our purpose",
+        intro:
+          "连接人才、城市、教育、产业与机会。\n新加坡是我们的根基。成都是我们的中国门户。世界是我们的合作网络。",
+        introEn:
+          "Connecting people, places, education, industry and opportunity.\nSingapore is our home. Chengdu is our China gateway. The world is our network.",
+      },
+      {
+        title: "APIMTC",
+        titleEn: "APIMTC",
+        intro: "立足新加坡 · 连接全球",
+        introEn: "Singapore-based. Globally connected.",
       },
     ],
   },
   教育流动: {
-    kicker: "EDUCATION MOBILITY",
+    kicker: "教育流动",
+    kickerEn: "Education mobility",
     title: "超越国界 · 超越课堂",
-    titleEn: "Beyond borders · Beyond classrooms",
+    titleEn: "Beyond borders. Beyond the classroom.",
     lead: "让学习走出课堂，走进大学、产业、科技、文化与真实世界。",
-    leadEn: "Learning beyond the classroom and into the real world.",
-    description: "打造具有国际视野的沉浸式教育项目。",
-    descriptionEn: "Immersive programmes with an international perspective.",
-    action: "探索教育项目",
-    actionEn: "Explore programmes",
+    leadEn:
+      "Take learning beyond the classroom — into universities, industry, technology, culture and the real world.",
+    description:
+      "APIMTC 打造具有国际视野的沉浸式教育项目，连接学生、学校、教育机构与产业。",
+    descriptionEn:
+      "APIMTC creates immersive international education programmes connecting students, schools, institutions and industry.",
     sections: [
       {
         title: "我们的两大教育项目",
-        titleEn: "Our two flagship programmes",
+        titleEn: "Our two signature programmes",
         cards: [
           {
             title: "新加坡未来探索者",
-            text: "中国及全球 → 新加坡。探索教育、科技、产业、文化与未来发展。",
+            titleEn: "Singapore future explorers",
+            text:
+              "中国及全球 → 新加坡\n探索新加坡的教育、科技、产业、文化与未来发展。\n生命与健康 · 太空与航空 · 可持续发展 · 人工智能 · 新兴产业\n探索新加坡",
+            textEn:
+              "China & the world → Singapore\nDiscover Singapore through education, technology, industry, culture and future-focused experiences.\nLife & Health · Space & Aviation · Sustainability · AI · Emerging Industries\nExplore Singapore",
             image: mobility01,
             action: "探索新加坡",
+            actionEn: "Explore Singapore",
           },
           {
             title: "中国课堂之外",
-            text: "新加坡 → 中国。走进城市、大学、企业、科技与文化。",
+            titleEn: "China beyond the classroom",
+            text:
+              "新加坡 → 中国\n走进中国的城市、大学、企业、科技与文化，体验真实的中国。\n人工智能 · 创新创业 · 智慧城市 · 可持续发展 · 中新合作\n探索中国",
+            textEn:
+              "Singapore → China\nExperience China's cities, universities, technology, industries and culture beyond the classroom.\nAI · Innovation · Smart Cities · Sustainability · China–Singapore Cooperation\nExplore China",
             image: mobility02,
             action: "探索中国",
+            actionEn: "Explore China",
           },
         ],
         columns: 2,
@@ -352,57 +594,165 @@ const pages: Record<string, Page> = {
         title: "APIMTC 4E 模型",
         titleEn: "The APIMTC 4E model",
         cards: [
-          card("生命与健康", "走近科技、医学与未来生活。", "♡"),
-          card("太空与航空", "探索前沿科技与工程实践。", "↗"),
-          card("可持续发展", "理解人与自然的长期关系。", "◌"),
-          card("人工智能", "体验数字技术与未来产业。", "☼"),
-          card("新兴产业", "走进真实的创新现场。", "✳"),
+          {
+            title: "EDUCATE · 学习",
+            titleEn: "Educate · Learn",
+            text: "从大学、专家及专业机构获得知识。",
+            textEn: "Learn from universities, experts and specialist institutions.",
+            icon: "♡",
+          },
+          {
+            title: "EXPERIENCE · 体验",
+            titleEn: "Experience · Experience",
+            text: "走进企业、实验室及真实产业环境。",
+            textEn: "See technology, industry and innovation in action.",
+            icon: "↗",
+          },
+          {
+            title: "EXPLORE · 探索",
+            titleEn: "Explore · Discover",
+            text: "了解城市、文化、社会与环境。",
+            textEn: "Explore cities, cultures, communities and environments.",
+            icon: "◌",
+          },
+          {
+            title: "EXCHANGE · 交流",
+            titleEn: "Exchange · Connect",
+            text: "与不同国家的学生及伙伴共同学习。",
+            textEn: "Learn and collaborate with students from around the world.",
+            icon: "☼",
+          },
         ],
-        columns: 5,
+        columns: 4,
         variant: "portal-section--tint",
+      },
+      {
+        title: "不只是游学",
+        titleEn: "More than a study tour",
+        intro: "不只是参观。 不只是学习。 不只是交流。",
+        introEn: "Not just travel. Not just study. Not just exchange.",
+        cards: [
+          {
+            title: "学习 · 体验 · 探索 · 交流",
+            titleEn: "Learn · Experience · Explore · Exchange",
+            text: "",
+            textEn: "",
+            icon: "⌁",
+          },
+        ],
+        columns: 1,
       },
       {
         title: "为不同年龄而设计",
         titleEn: "Designed for every age",
         cards: [
-          card("小学", "激发好奇心，探索科学、科技与世界。", "○"),
-          card("初中 / 中学", "连接学术、产业、科技与全球议题。", "◇"),
-          card("高中 / JC", "聚焦未来、创新、领导力与新兴产业。", "◈"),
+          {
+            title: "小学",
+            titleEn: "Primary",
+            text: "激发好奇心，探索科学、科技与世界。",
+            textEn: "Discover science, technology and the world.",
+            icon: "○",
+          },
+          {
+            title: "初中 / 中学",
+            titleEn: "Junior high / secondary",
+            text: "连接学术、产业、科技与全球议题。",
+            textEn:
+              "Connect learning with industry, technology and global issues.",
+            icon: "◇",
+          },
+          {
+            title: "高中 / JC",
+            titleEn: "Senior high / JC",
+            text: "聚焦未来、创新、领导力与新兴产业。",
+            textEn:
+              "Explore innovation, leadership, future industries and deeper learning.",
+            icon: "◈",
+          },
         ],
         columns: 3,
         feature: {
-          kicker: "CUSTOM PROGRAMMES",
+          kicker: "定制项目",
+          kickerEn: "Custom programmes",
           title: "定制你的国际学习之旅",
+          titleEn: "Build your international learning journey",
           text: "根据年龄、学习目标、主题及学校需求，打造适合每一个团队的国际项目。",
+          textEn:
+            "Every programme can be tailored around age, learning objectives, themes and school requirements.",
           image: mobility03,
           action: "定制项目",
+          actionEn: "Request a custom programme",
         },
+        action: "探索教育项目",
+        actionEn: "Explore programmes",
       },
     ],
   },
   "MICE 与商务": {
-    kicker: "MICE & BUSINESS",
+    kicker: "MICE 与商务",
+    kickerEn: "MICE & business",
     title: "让商务连接真实体验",
-    titleEn: "Connecting business with real experience",
-    lead: "APIMTC 结合 MICE 专业能力、目的地经验及国际合作网络。",
+    titleEn: "Connecting business with experience.",
+    lead:
+      "APIMTC 结合 MICE 专业能力、目的地经验及国际合作网络，打造有价值的商务与专业交流项目。",
     leadEn:
-      "MICE expertise, destination knowledge and international connections.",
-    description: "打造有价值的商务与专业交流项目。",
-    descriptionEn: "Purposeful business and professional exchange programmes.",
-    action: "了解更多",
-    actionEn: "Learn more",
+      "APIMTC combines MICE expertise, destination knowledge and international networks to create meaningful business and professional experiences.",
     sections: [
       {
         title: "我们提供",
-        titleEn: "What we provide",
+        titleEn: "What we do",
         cards: [
-          card("MICE", "会议 · 奖励旅游 · 大型会议 · 活动", "▣"),
-          card("专业学习", "让商务之旅成为真正的学习体验。", "◇"),
-          card("高管项目", "为企业领导者及专业人士打造定制项目。", "●"),
-          card("商务代表团", "连接企业、机构、市场及潜在伙伴。", "♟"),
-          card("产业参访", "走进科技、创新与产业现场。", "▥"),
-          card("标杆考察", "了解领先企业与优秀实践。", "◎"),
-          card("商务交流", "建立关系、交流观点、探索合作机会。", "▱"),
+          {
+            title: "MICE",
+            text:
+              "会议 · 奖励旅游 · 大型会议 · 活动\n覆盖新加坡、中国及国际目的地的专业活动与项目执行。",
+            textEn:
+              "Meetings · Incentives · Conferences · Events\nProfessional events and experiences across Singapore, China and international destinations.",
+            icon: "▣",
+          },
+          {
+            title: "专业学习",
+            titleEn: "Professional learning",
+            text: "让商务之旅成为真正的学习体验。",
+            textEn: "Turn business travel into meaningful learning experiences.",
+            icon: "◇",
+          },
+          {
+            title: "高管项目",
+            titleEn: "Executive programmes",
+            text: "为企业领导者及专业人士打造定制化学习与交流。",
+            textEn:
+              "Purpose-built learning and engagement for leaders and professionals.",
+            icon: "●",
+          },
+          {
+            title: "商务代表团",
+            titleEn: "Business delegations",
+            text: "连接企业、机构、市场及潜在合作伙伴。",
+            textEn: "Connect with companies, institutions, markets and potential partners.",
+            icon: "♟",
+          },
+          {
+            title: "产业参访",
+            titleEn: "Industry visits",
+            text: "走进科技、创新与产业现场。",
+            textEn: "See technology, innovation and industry in action.",
+            icon: "▥",
+          },
+          {
+            title: "标杆考察",
+            titleEn: "Benchmarking",
+            text: "了解领先企业与优秀实践。",
+            textEn: "Learn from leading organisations and best practices.",
+            icon: "◎",
+          },
+          {
+            title: "商务交流",
+            titleEn: "Business exchange",
+            text: "建立关系、交流观点、探索合作机会。",
+            textEn: "Build relationships, exchange ideas and explore opportunities.",
+            icon: "▱",
+          },
         ],
         columns: 4,
       },
@@ -410,68 +760,174 @@ const pages: Record<string, Page> = {
         title: "不只是一次商务之旅",
         titleEn: "More than a business trip",
         intro: "学习 · 连接 · 体验",
+        introEn: "Learn · Connect · Experience",
         feature: {
           kicker: "APIMTC",
-          title: "让交流产生价值",
-          text: "连接人才、产业、机构与思想，打造有目标的国际交流项目。",
+          title: "连接人才、产业、机构与思想",
+          titleEn: "We bring together people, industry, institutions and ideas",
+          text: "打造有目标的国际交流项目。",
+          textEn: "to create purposeful international programmes.",
           image: mice01,
         },
         cards: [
-          card("目的地专业能力", "深入了解目的地及当地资源。", "◌"),
-          card("MICE 项目能力", "专业策划与项目执行。", "◇"),
-          card("国际合作网络", "连接教育、商务及产业伙伴。", "◎"),
-          card("一站式执行", "从项目策划、协调到落地执行。", "▣"),
+          {
+            title: "目的地专业能力",
+            titleEn: "Destination expertise",
+            text: "深入了解目的地及当地资源。",
+            textEn: "Deep knowledge of destinations and local environments.",
+            icon: "◌",
+          },
+          {
+            title: "MICE 项目能力",
+            titleEn: "MICE capability",
+            text: "专业策划与项目执行。",
+            textEn: "Professional programme planning and execution.",
+            icon: "◇",
+          },
+          {
+            title: "国际合作网络",
+            titleEn: "International networks",
+            text: "连接教育、商务及产业伙伴。",
+            textEn: "Connections across education, business and industry.",
+            icon: "◎",
+          },
+          {
+            title: "一站式执行",
+            titleEn: "End-to-end delivery",
+            text: "从项目策划、协调到落地执行。",
+            textEn: "From concept and coordination to on-the-ground execution.",
+            icon: "▣",
+          },
         ],
         columns: 4,
         variant: "portal-section--tint",
       },
       {
-        title: "有项目想法？",
-        titleEn: "Have a project in mind?",
-        intro: "让我们将您的目标，转化为真正有价值的国际体验。",
+        title: "我们服务的伙伴",
+        titleEn: "Who we work with",
+        intro: "企业 · 政府 · 教育机构 · 行业协会 · 国际组织",
+        introEn:
+          "Corporations · Governments · Education Institutions · Industry Associations · Organisations",
         feature: {
-          kicker: "CONNECT",
-          title: "企业 · 政府 · 教育机构 · 行业协会 · 国际组织",
-          text: "与 APIMTC 一起打造专业、有价值的国际交流。",
+          kicker: "APIMTC",
+          title: "有项目想法？",
+          titleEn: "Have a project in mind?",
+          text: "让我们将您的目标，转化为真正有价值的国际体验。",
+          textEn: "Let us turn your objectives into a meaningful international experience.",
           image: mice02,
           action: "与我们洽谈",
+          actionEn: "Discuss your project",
         },
+        action: "与 APIMTC 合作",
+        actionEn: "Partner with APIMTC",
       },
     ],
   },
   国际合作: {
-    kicker: "INTERNATIONAL COOPERATION",
+    kicker: "国际合作",
+    kickerEn: "International partnerships",
     title: "携手打造国际项目",
-    titleEn: "Building international projects together",
+    titleEn: "Build international programmes together.",
     lead: "我们与教育、商务、政府及产业伙伴合作，共同打造有价值的跨境交流项目。",
     leadEn:
-      "Cross-border programmes built with education, business, government and industry partners.",
-    action: "了解更多",
-    actionEn: "Learn more",
+      "We work with organisations across education, business, government and industry to create meaningful cross-border programmes.",
     sections: [
       {
         title: "我们的合作伙伴",
-        titleEn: "Our partners",
+        titleEn: "Who we partner with",
         cards: [
-          card("学校", "国际学习、学生流动与交流项目。", "▣"),
-          card("大学", "学术合作、学生交流与产业互动。", "◇"),
-          card("职业院校", "技能发展、科技与产业体验。", "▤"),
-          card("政府及机构", "国际交流、代表团及标杆考察。", "▥"),
-          card("企业与产业伙伴", "商务交流、专业学习与人才发展。", "▦"),
-          card("教育及培训机构", "跨市场、跨教育体系的合作项目。", "◎"),
+          {
+            title: "学校",
+            titleEn: "Schools",
+            text: "国际学习、学生流动与交流项目。",
+            textEn: "International learning, student mobility and exchange.",
+            icon: "▣",
+          },
+          {
+            title: "大学",
+            titleEn: "Universities",
+            text: "学术合作、学生交流与产业互动。",
+            textEn: "Academic collaboration, exchange and industry engagement.",
+            icon: "◇",
+          },
+          {
+            title: "职业院校",
+            titleEn: "Vocational institutions",
+            text: "技能发展、科技与产业体验。",
+            textEn: "Skills development, technology and industry exposure.",
+            icon: "▤",
+          },
+          {
+            title: "政府及机构",
+            titleEn: "Governments & organisations",
+            text: "国际交流、代表团及标杆考察。",
+            textEn: "International exchange, delegations and benchmarking.",
+            icon: "▥",
+          },
+          {
+            title: "企业与产业伙伴",
+            titleEn: "Companies & industry",
+            text: "商务交流、专业学习与人才发展。",
+            textEn: "Business exchange, professional learning and talent development.",
+            icon: "▦",
+          },
+          {
+            title: "教育及培训机构",
+            titleEn: "Education & training providers",
+            text: "跨市场、跨教育体系的合作项目。",
+            textEn:
+              "Collaborative programmes across markets and education systems.",
+            icon: "◎",
+          },
         ],
         columns: 6,
       },
       {
         title: "我们可以共同打造",
-        titleEn: "What we can build together",
+        titleEn: "What we can build",
         cards: [
-          card("学生国际流动", "国际学习与交流。", "◉"),
-          card("院校及机构交流", "连接学校、大学与国际机构。", "↗"),
-          card("专业学习", "考察、研学、高管及技能发展项目。", "▣"),
-          card("产业交流", "企业参访、创新及真实产业体验。", "♧"),
-          card("国际代表团", "教育、商务及机构交流项目。", "✳"),
-          card("MICE 与国际活动", "会议、大型活动及国际交流。", "▤"),
+          {
+            title: "学生国际流动",
+            titleEn: "Student mobility",
+            text: "国际学习与交流。",
+            textEn: "International learning and exchange.",
+            icon: "◉",
+          },
+          {
+            title: "院校及机构交流",
+            titleEn: "Institutional exchange",
+            text: "连接学校、大学与国际机构。",
+            textEn: "Connect schools, universities and organisations.",
+            icon: "↗",
+          },
+          {
+            title: "专业学习",
+            titleEn: "Professional learning",
+            text: "考察、研学、高管及技能发展项目。",
+            textEn: "Study visits, executive programmes and skills development.",
+            icon: "▣",
+          },
+          {
+            title: "产业交流",
+            titleEn: "Industry engagement",
+            text: "企业参访、创新及真实产业体验。",
+            textEn: "Company visits, innovation and real-world experiences.",
+            icon: "♧",
+          },
+          {
+            title: "国际代表团",
+            titleEn: "International delegations",
+            text: "教育、商务及机构交流项目。",
+            textEn: "Education, business and institutional programmes.",
+            icon: "✳",
+          },
+          {
+            title: "MICE 与国际活动",
+            titleEn: "MICE & events",
+            text: "会议、大型活动及国际交流。",
+            textEn: "Meetings, conferences and international events.",
+            icon: "▤",
+          },
         ],
         columns: 6,
         variant: "portal-section--tint",
@@ -479,117 +935,281 @@ const pages: Record<string, Page> = {
       {
         title: "从想法到落地",
         titleEn: "From idea to delivery",
-        steps: ["了解", "设计", "连接", "执行"],
+        steps: [
+          "了解 · 明确您的目标。",
+          "设计 · 打造合适的项目。",
+          "连接 · 匹配合适的国际伙伴。",
+          "执行 · 协调并落地整个项目。",
+        ],
+        stepsEn: [
+          "Discover · Understand your goals.",
+          "Design · Build the right programme.",
+          "Connect · Bring the right partners together.",
+          "Deliver · Coordinate the experience.",
+        ],
+      },
+      {
+        title: "为什么选择 APIMTC？",
+        titleEn: "Why APIMTC?",
+        cards: [
+          {
+            title: "立足新加坡",
+            titleEn: "Singapore-based",
+            text: "连接亚洲与世界的国际平台。",
+            textEn: "An international platform connecting Asia and the world.",
+            icon: "◌",
+          },
+          {
+            title: "连接中国",
+            titleEn: "China access",
+            text: "成都中国教育流动平台。",
+            textEn: "A dedicated Chengdu education mobility platform.",
+            icon: "◇",
+          },
+          {
+            title: "全球网络",
+            titleEn: "Global network",
+            text: "学校、大学、机构、企业及国际组织。",
+            textEn: "Schools, universities, institutions, businesses and organisations.",
+            icon: "◎",
+          },
+          {
+            title: "一站式支持",
+            titleEn: "End-to-end support",
+            text: "从项目构思到落地执行。",
+            textEn: "From concept to programme delivery.",
+            icon: "▣",
+          },
+        ],
+        columns: 4,
         feature: {
-          kicker: "PARTNER WITH US",
+          kicker: "APIMTC",
           title: "携手，共创国际未来",
-          text: "有项目、合作或国际交流想法？我们从项目构思到落地执行，为您提供一站式支持。",
+          titleEn: "Let's build something together.",
+          text: "有项目、合作或国际交流想法？",
+          textEn: "Have an idea, programme or partnership in mind?",
           image: intl01,
           action: "开始洽谈",
+          actionEn: "Start a conversation",
         },
+        action: "联系 APIMTC",
+        actionEn: "Contact APIMTC",
       },
     ],
   },
   中国门户: {
-    kicker: "CHINA GATEWAY",
+    kicker: "中国门户",
+    kickerEn: "China gateway",
     title: "成都 · 连接中国",
     titleEn: "Chengdu · Connecting China",
-    lead: "通过位于成都的 API EduVoyage，连接中国的教育、技能、产业、文化与国际合作资源。",
-    leadEn: "Our Chengdu gateway connects China with the world.",
-    action: "了解更多",
-    actionEn: "Learn more",
+    lead: "成都，是 APIMTC 连接中国的重要门户。",
+    leadEn: "Chengdu is APIMTC’s gateway to China.",
+    description:
+      "通过位于成都的 API EduVoyage 亚太国际智航，我们连接中国的教育、技能、产业、文化与国际合作资源。",
+    descriptionEn:
+      "Through API EduVoyage, our Chengdu-based China platform, we connect education, skills, industry, culture and international opportunities.",
     sections: [
       {
         title: "API EDUVOYAGE",
         titleEn: "API EduVoyage",
-        intro: "亚太国际智航 · 中国 · 成都。APIMTC 在中国的教育流动平台。",
+        intro:
+          "亚太国际智航\n中国 · 成都\nAPIMTC 在中国的教育流动平台\n专注于：\n教育流动 · 技能发展 · 学生交流 · 院校合作 · 国际交流",
+        introEn:
+          "Asia Pacific International EduVoyage\nChengdu, China\nAPIMTC’s China education mobility platform.\nEducation · Skills · Student Mobility · Institutional Exchange",
         feature: {
-          kicker: "CHINA GATEWAY",
+          kicker: "从新加坡，连接中国",
+          kickerEn: "From Singapore to China",
           title: "从新加坡，连接中国",
+          titleEn: "From Singapore to China",
           text: "我们将新加坡的国际视野与中国不断发展的教育及产业资源连接起来。",
+          textEn:
+            "We connect Singapore’s international perspective with China’s education, industry and innovation ecosystems.",
           image: china01,
         },
         steps: ["新加坡", "成都", "中国各地", "世界"],
+        stepsEn: ["Singapore", "Chengdu", "China", "The World"],
       },
       {
         title: "中国 · 不只是目的地",
-        titleEn: "China beyond the destination",
-        intro: "每一座城市，都是一间课堂。",
+        titleEn: "China · Beyond the destination",
+        intro:
+          "每一座城市，都是一间课堂。\n我们将中国不同城市转化为具有主题和学习价值的教育目的地。",
+        introEn:
+          "Every city is a classroom.\nWe turn China’s cities into meaningful learning environments.",
         cards: [
-          { title: "上海", text: "AI · 金融 · 创新", image: cityShanghai },
-          { title: "深圳", text: "科技 · 机器人 · 创新", image: cityShenzhen },
-          { title: "杭州", text: "数字经济 · 创业", image: cityHangzhou },
-          { title: "苏州", text: "智慧城市 · 中新合作", image: citySuzhou },
-          { title: "北京", text: "领导力 · 文化 · 历史", image: cityBeijing },
+          {
+            title: "上海",
+            titleEn: "Shanghai",
+            text: "AI · 金融 · 创新",
+            textEn: "AI · Finance · Innovation",
+            image: cityShanghai,
+          },
+          {
+            title: "深圳",
+            titleEn: "Shenzhen",
+            text: "科技 · 机器人 · 创新",
+            textEn: "Technology · Robotics · Innovation",
+            image: cityShenzhen,
+          },
+          {
+            title: "杭州",
+            titleEn: "Hangzhou",
+            text: "数字经济 · 创业",
+            textEn: "Digital Economy · Entrepreneurship",
+            image: cityHangzhou,
+          },
+          {
+            title: "苏州",
+            titleEn: "Suzhou",
+            text: "智慧城市 · 中新合作",
+            textEn: "Smart Cities · China–Singapore Cooperation",
+            image: citySuzhou,
+          },
+          {
+            title: "北京",
+            titleEn: "Beijing",
+            text: "领导力 · 文化 · 历史",
+            textEn: "Leadership · Culture · History",
+            image: cityBeijing,
+          },
           {
             title: "西安",
+            titleEn: "Xi’an",
             text: "STEM · 丝绸之路 · 文化遗产",
+            textEn: "STEM · Silk Road · Heritage",
             image: cityXiAn,
           },
-          { title: "成都", text: "可持续发展 · 四川文化", image: cityChengdu },
-          { title: "广州", text: "国际贸易 · 大湾区", image: cityGuangzhou },
+          {
+            title: "成都",
+            titleEn: "Chengdu",
+            text: "可持续发展 · 四川文化 · 熊猫保护",
+            textEn: "Sustainability · Sichuan Culture · Conservation",
+            image: cityChengdu,
+          },
+          {
+            title: "广州",
+            titleEn: "Guangzhou",
+            text: "国际贸易 · 大湾区",
+            textEn: "International Trade · Greater Bay Area",
+            image: cityGuangzhou,
+          },
         ],
         columns: 4,
       },
       {
-        title: "走进真实的中国",
+        title: "CHINA BEYOND THE CLASSROOM",
         titleEn: "China beyond the classroom",
-        intro:
-          "面向新加坡学校及学生，打造融合学习、科技、产业、文化与交流的沉浸式中国教育项目。",
+        intro: "走进真实的中国",
+        introEn: "Experience the real China.",
         feature: {
-          kicker: "CHINA BEYOND THE CLASSROOM",
-          title: "中国与世界",
-          text: "学生流动 · 技能发展 · 院校交流 · 专业学习 · 国际合作",
+          kicker: "走进真实的中国",
+          kickerEn: "Experience the real China.",
+          title: "探索中国项目",
+          titleEn: "Explore China programmes",
+          text:
+            "面向新加坡学校及学生，打造融合学习、科技、产业、文化与交流的沉浸式中国教育项目。",
+          textEn:
+            "Immersive programmes combining learning, technology, industry, culture and exchange for Singapore schools and students.",
           image: china06,
           action: "探索中国项目",
+          actionEn: "Explore China programmes",
         },
         variant: "portal-section--tint",
+      },
+      {
+        title: "中国与世界",
+        titleEn: "China to the world",
+        intro:
+          "API EduVoyage 连接中国与全球教育伙伴，共同推动：\n学生流动 · 技能发展 · 院校交流 · 专业学习 · 国际合作\n新加坡是我们的家。成都是我们的中国门户。世界是我们的合作网络。",
+        introEn:
+          "API EduVoyage connects Chinese education partners with international opportunities through:\nStudent Mobility · Skills Development · Institutional Exchange · Professional Learning · Global Partnerships\nSingapore is our home.\nChengdu is our China gateway.\nThe world is our network.",
+        action: "与我们合作",
+        actionEn: "Partner with us",
       },
     ],
   },
   联系我们: {
-    kicker: "CONTACT APIMTC",
+    kicker: "联系我们",
+    kickerEn: "Contact",
     title: "让我们连接世界",
-    titleEn: "Let us connect the world",
+    titleEn: "Let's connect the world.",
     lead: "无论您正在寻找国际教育项目、学生交流、商务交流、MICE 服务，还是国际合作机会，我们都期待与您交流。",
-    leadEn: "Tell us what you want to build across borders.",
-    action: "开始洽谈",
-    actionEn: "Start a conversation",
+    leadEn:
+      "Whether you are looking for an international education programme, student exchange, business experience, MICE services or partnership opportunities, we would love to hear from you.",
     sections: [
       {
         title: "您想探索什么？",
-        titleEn: "What are you exploring?",
+        titleEn: "What are you looking for?",
         cards: [
-          card("教育流动", "国际学生项目、学校交流及沉浸式学习。", "◇"),
-          card("MICE 与商务", "会议、活动、商务代表团及产业参访。", "▣"),
-          card("国际合作", "院校、企业、政府及机构合作。", "♧"),
-          card("中国项目", "通过成都平台连接中国教育与产业资源。", "▤"),
+          {
+            title: "教育流动",
+            titleEn: "Education mobility",
+            text: "国际学生项目、学校交流及沉浸式学习。",
+            textEn: "Student programmes, school exchange and immersive learning.",
+            icon: "◇",
+          },
+          {
+            title: "MICE 与商务",
+            titleEn: "MICE & business",
+            text: "会议、活动、商务代表团及产业参访。",
+            textEn: "Meetings, events, business delegations and industry visits.",
+            icon: "▣",
+          },
+          {
+            title: "国际合作",
+            titleEn: "International partnerships",
+            text: "院校、企业、政府及机构合作。",
+            textEn:
+              "Collaboration with schools, institutions, companies and organisations.",
+            icon: "♧",
+          },
+          {
+            title: "中国项目",
+            titleEn: "China programmes",
+            text: "通过成都平台连接中国教育与产业资源。",
+            textEn: "Connect with China through our Chengdu platform.",
+            icon: "▤",
+          },
         ],
         columns: 4,
       },
       {
         title: "与我们联系",
-        titleEn: "Connect with us",
+        titleEn: "Our platforms",
         cards: [
-          card(
-            "APIMTC",
-            "Asia Pacific International MICE & Travel Centre\nSingapore\n我们的企业总部及国际平台",
-            "◎",
-          ),
-          card(
-            "API EduVoyage",
-            "Asia Pacific International EduVoyage\nChengdu, China\n我们的中国教育流动平台",
-            "◇",
-          ),
+          {
+            title: "APIMTC",
+            text:
+              "Asia Pacific International MICE & Travel Centre\nSingapore\n亚太国际会议会展中心\n新加坡\n我们的企业总部及国际平台",
+            textEn:
+              "Asia Pacific International MICE & Travel Centre Pte Ltd\nSingapore\nOur corporate headquarters and international platform.",
+            icon: "◎",
+          },
+          {
+            title: "API EduVoyage",
+            titleEn: "API EduVoyage",
+            text:
+              "Asia Pacific International EduVoyage\nChengdu, China\n亚太国际智航\n中国 · 成都\n我们的中国教育流动平台。",
+            textEn:
+              "Asia Pacific International EduVoyage\nChengdu, China\nOur China education mobility platform.",
+            icon: "◇",
+          },
         ],
         columns: 2,
         feature: {
-          kicker: "LET’S CONNECT",
-          title: "有一个想法？",
+          kicker: "有一个想法？",
+          kickerEn: "Have an idea?",
+          title: "让我们一起把它变成现实。",
+          titleEn: "Let's build it together.",
           text: "告诉我们您希望实现的目标，我们的团队将与您一起探索合适的项目、合作伙伴与发展机会。",
+          textEn:
+            "Tell us what you want to achieve. We will explore the right programme, partners and opportunities with you.",
           image: contact01,
           action: "提交咨询",
+          actionEn: "Send an enquiry",
         },
+        action: "与我们合作",
+        actionEn: "Partner with us",
         variant: "portal-section--tint",
       },
     ],
@@ -723,8 +1343,9 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   opacity: 0.78;
 }
 .portal-hero {
-  min-height: 446px;
-  padding: 126px 0 52px;
+  box-sizing: border-box;
+  min-height: 470px;
+  padding: 118px 0 54px;
   display: flex;
   align-items: flex-end;
   background-position: center;
@@ -732,6 +1353,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   color: #fff;
   position: relative;
   isolation: isolate;
+}
+.portal-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .portal-hero:before {
   content: "";
@@ -745,35 +1371,43 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   );
   z-index: -1;
 }
-.hero-kicker,
+.portal-hero .hero-kicker,
 .section-kicker {
   margin: 0 0 10px;
   color: var(--cyan);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.16em;
+  line-height: 1.4;
 }
 .portal-hero h1 {
-  margin: 0 0 12px;
+  max-width: 880px;
+  margin: 0 0 16px;
   color: #fff;
-  font-size: clamp(33px, 4vw, 55px);
-  line-height: 1.1;
+  font-size: 56px;
+  line-height: 1.2;
   font-weight: 700;
 }
 .hero-lead {
-  max-width: 630px;
-  margin: 0 0 10px;
-  font-size: 18px;
+  max-width: none;
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.45;
-  color: #fff;
+  line-height: 1.6;
+  white-space: nowrap;
 }
 .hero-description {
-  max-width: 650px;
-  margin: 0 0 23px;
-  color: rgba(255, 255, 255, 0.89);
-  font-size: 14px;
-  line-height: 1.7;
+  max-width: 820px;
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .hero-action {
   display: inline-flex;
@@ -795,6 +1429,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .hero-action:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 25px rgba(255, 138, 76, 0.36);
+}
+.portal-section__action--centered {
+  display: flex;
+  width: fit-content;
+  margin: 32px auto 0;
 }
 .portal-heading {
   max-width: 760px;
@@ -1205,8 +1844,16 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 @media (max-width: 720px) {
   .portal-hero {
-    min-height: 390px;
-    padding: 110px 0 42px;
+    min-height: 420px;
+    padding: 104px 0 44px;
+  }
+  .portal-hero h1 {
+    font-size: 42px;
+    line-height: 1.2;
+  }
+  .hero-lead {
+    font-size: 18px;
+    white-space: normal;
   }
   .feature-panel {
     grid-template-columns: 1fr;
@@ -1242,10 +1889,16 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
     grid-template-columns: 1fr;
   }
   .portal-hero h1 {
-    font-size: 32px;
+    font-size: 34px;
   }
   .hero-lead {
     font-size: 16px;
+  }
+  .portal-hero .hero-kicker {
+    font-size: 12px;
+  }
+  .hero-description {
+    font-size: 15px;
   }
   .feature-panel img {
     height: 180px;
@@ -1448,5 +2101,451 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   height: 3px;
   border-radius: 2px;
   background: #168fe5;
+}
+
+/* Homepage middle content: a compact, trust-led product showcase. The hero and
+   final CTA retain their existing treatment through the scoped exclusions below. */
+.portal-page--home {
+  --home-ink: #123b5d;
+  --home-blue: #1676b8;
+  --home-blue-soft: #eaf4fb;
+  --home-teal: #0f8b78;
+  --home-line: #c9deed;
+  --home-muted: #506f88;
+}
+.portal-page--home .portal-main {
+  background: #f7fafc;
+}
+.portal-page--home .portal-section:not(:last-child) {
+  padding: 88px 0;
+  background: #fff;
+}
+.portal-page--home .portal-section:not(:last-child):nth-child(even) {
+  background: #f2f7fb;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-heading {
+  max-width: 820px;
+  margin-bottom: 36px;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-heading h2 {
+  padding-bottom: 15px;
+  color: var(--home-ink);
+  font-size: clamp(28px, 3.2vw, 42px);
+  letter-spacing: 0;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-heading h2::after {
+  width: 44px;
+  height: 3px;
+  border-radius: 0;
+  background: var(--home-teal);
+}
+.portal-page--home .portal-section:not(:last-child) .section-intro {
+  max-width: 700px;
+  margin-top: 16px;
+  color: var(--home-muted);
+  font-size: 16px;
+  line-height: 1.75;
+  white-space: pre-line;
+}
+.portal-page--home .portal-section:first-child {
+  padding: 96px 0 88px;
+  background: #f7fafc;
+}
+.portal-page--home .portal-section:first-child .portal-heading {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+.portal-page--home .portal-section:first-child .portal-heading h2 {
+  max-width: 650px;
+  font-size: clamp(32px, 3.8vw, 48px);
+}
+.portal-page--home .portal-section--business {
+  padding: 84px 0 88px !important;
+  background: #fff !important;
+}
+.portal-page--home .portal-section--business .portal-grid {
+  gap: 20px;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card,
+.portal-page--home .portal-section--business .portal-card,
+.portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) {
+  min-height: 192px;
+  border: 1px solid var(--home-line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
+  overflow: visible;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card::before,
+.portal-page--home .portal-section--business .portal-card::before {
+  right: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  border-color: #a8c8df;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--home-blue);
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--home-blue);
+  box-shadow: 0 12px 24px rgba(18, 59, 93, 0.1);
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card__body,
+.portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) .portal-card__body,
+.portal-page--home .portal-section--business .portal-card__body {
+  padding: 26px 60px 26px 26px;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card__icon,
+.portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) .portal-card__icon,
+.portal-page--home .portal-section--business .portal-card__icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border: 1px solid #abd1e8;
+  border-radius: 8px;
+  background: var(--home-blue-soft);
+  box-shadow: none;
+  color: var(--home-blue);
+  font-size: 19px;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card h3,
+.portal-page--home .portal-section--business .portal-card h3,
+.portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) h3 {
+  margin-bottom: 8px;
+  /* color: var(--home-ink); */
+  font-size: 17px;
+  line-height: 1.35;
+}
+.portal-page--home .portal-section:not(:last-child) .portal-card p,
+.portal-page--home .portal-section--business .portal-card p,
+.portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) p {
+  /* color: var(--home-muted); */
+  font-size: 13px;
+  line-height: 1.7;
+}
+.portal-page--home .portal-section:nth-child(3) .portal-card {
+  border-top: 3px solid var(--home-blue);
+}
+.portal-page--home .portal-section:nth-child(3) .portal-card:nth-child(2) {
+  border-top-color: var(--home-teal);
+}
+.portal-page--home .portal-section:nth-child(4) {
+  padding: 84px 0 !important;
+  background: #123b5d !important;
+  color: #fff;
+}
+
+.portal-page--home .portal-section:nth-child(4) .portal-heading h2,
+.portal-page--home .portal-section:nth-child(4) .section-intro,
+.portal-page--home .portal-section:nth-child(4) .portal-card h3 {
+  color: #fff;
+}
+.portal-page--home .portal-section:nth-child(4) .portal-heading h2::after {
+  background: #55d1bb;
+}
+.portal-page--home .portal-section:nth-child(4) .section-intro,
+.portal-page--home .portal-section:nth-child(4) .portal-card p {
+  color: rgba(255, 255, 255, 0.82);
+}
+.portal-page--home .portal-section:nth-child(4) .portal-card,
+.portal-page--home .portal-section:nth-child(4) .portal-card:not(.portal-card--image) {
+  min-height: 212px;
+  border-color: rgba(192, 228, 243, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+.portal-page--home .portal-section:nth-child(4) .portal-card__icon,
+.portal-page--home .portal-section:nth-child(4) .portal-card:not(.portal-card--image) .portal-card__icon {
+  border-color: rgba(126, 224, 204, 0.65);
+  background: rgba(15, 139, 120, 0.25);
+  color: #9af0dd;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-grid {
+  position: relative;
+  gap: 0;
+  padding: 20px 0;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-grid::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 11%;
+  left: 11%;
+  height: 2px;
+  background: #bad4e5;
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card {
+  z-index: 1;
+  min-height: 206px;
+  margin: 0 10px;
+  border-top: 3px solid var(--home-blue);
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card:nth-child(2) {
+  border-top-color: var(--home-teal);
+}
+.portal-page--home .portal-section:nth-child(5) .portal-card:nth-child(3) {
+  border-top-color: #5479a3;
+}
+.portal-page--home .portal-section--why {
+  padding: 96px 0 !important;
+  overflow: hidden;
+  background: #eaf2f8 !important;
+}
+.portal-page--home .portal-section--why::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 51%;
+  width: 1px;
+  background: rgba(18, 59, 93, 0.13);
+}
+.why-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 1.06fr);
+  gap: clamp(44px, 7vw, 112px);
+  align-items: center;
+}
+.why-layout__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
+.why-layout__copy .section-kicker {
+  margin-bottom: 15px;
+  color: var(--home-teal);
+}
+.why-layout__copy h2 {
+  position: relative;
+  margin: 0;
+  padding-bottom: 18px;
+  color: var(--home-ink);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+.why-layout__copy h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--home-teal);
+}
+.why-layout__intro {
+  max-width: 430px;
+  margin: 25px 0 0;
+  color: var(--home-muted);
+  font-size: 17px;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+.why-layout__rules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 27px;
+}
+.why-layout__rules span {
+  position: relative;
+  padding-left: 14px;
+  color: #234f70;
+  font-size: 13px;
+  font-weight: 700;
+}
+.why-layout__rules span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--home-teal);
+  transform: translateY(-50%);
+}
+.why-layout__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 48px;
+  margin-top: 34px;
+  padding: 0 20px 0 22px;
+  border: 1px solid #0f8b78;
+  background: #0f8b78;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.why-layout__action span {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+.why-layout__action:hover {
+  background: #0b7566;
+  box-shadow: 0 12px 24px rgba(15, 139, 120, 0.2);
+  transform: translateY(-2px);
+}
+.why-layout__visual {
+  position: relative;
+  min-height: 420px;
+  padding: 24px 0 20px 34px;
+}
+.why-layout__visual::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid rgba(23, 101, 144, 0.24);
+  background: #d8e8f2;
+}
+.why-layout__visual img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 376px;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.86) contrast(1.03);
+}
+.why-layout__marker {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 22px rgba(18, 59, 93, 0.14);
+  color: #174a6e;
+  font-size: 12px;
+  font-weight: 700;
+}
+.why-layout__marker b {
+  color: var(--home-teal);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.why-layout__marker--top {
+  top: 48px;
+  left: 0;
+}
+.why-layout__marker--bottom {
+  right: 20px;
+  bottom: 0;
+}
+.why-layout__caption {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 48px;
+  margin: 0;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 8px rgba(1, 32, 58, 0.65);
+}
+.portal-page--home .hero-action:focus-visible,
+.portal-page--home .text-link:focus-visible,
+.portal-page--home .card-more:focus-visible {
+  outline: 3px solid #4bc4c4;
+  outline-offset: 3px;
+}
+@media (max-width: 720px) {
+  .portal-page--home .portal-section:not(:last-child),
+  .portal-page--home .portal-section:first-child,
+  .portal-page--home .portal-section--business,
+  .portal-page--home .portal-section:nth-child(4) {
+    padding: 60px 0 !important;
+  }
+  .portal-page--home .portal-section:not(:last-child) .portal-card,
+  .portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) {
+    min-height: 176px;
+  }
+  .portal-page--home .portal-section:nth-child(5) .portal-grid {
+    gap: 14px;
+    padding: 0;
+  }
+  .portal-page--home .portal-section:nth-child(5) .portal-grid::before {
+    display: none;
+  }
+  .portal-page--home .portal-section:nth-child(5) .portal-card {
+    margin: 0;
+  }
+  .portal-page--home .portal-section--why {
+    padding: 68px 0 !important;
+  }
+  .portal-page--home .portal-section--why::before {
+    display: none;
+  }
+  .why-layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .why-layout__copy {
+    max-width: 620px;
+  }
+}
+@media (max-width: 480px) {
+  .portal-page--home .portal-section:not(:last-child) .portal-heading h2 {
+    font-size: 28px;
+  }
+  .portal-page--home .portal-section:not(:last-child) .section-intro {
+    font-size: 15px;
+  }
+  .portal-page--home .portal-section:not(:last-child) .portal-card__body,
+  .portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) .portal-card__body {
+    padding: 22px 54px 22px 22px;
+  }
+  .portal-page--home .portal-section--why {
+    padding: 52px 0 !important;
+  }
+  .why-layout__copy h2 {
+    font-size: 32px;
+  }
+  .why-layout__intro {
+    font-size: 15px;
+  }
+  .why-layout__visual {
+    min-height: 290px;
+    padding: 18px 0 16px 18px;
+  }
+  .why-layout__visual img {
+    height: 256px;
+  }
+  .why-layout__marker {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .why-layout__marker--top {
+    top: 36px;
+  }
+  .why-layout__marker--bottom {
+    right: 12px;
+  }
+  .why-layout__caption {
+    right: 14px;
+    bottom: 36px;
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-page--home .portal-card,
+  .portal-page--home .portal-card__icon {
+    transition: none;
+  }
+  .portal-page--home .portal-card:hover {
+    transform: none;
+  }
 }
 </style>

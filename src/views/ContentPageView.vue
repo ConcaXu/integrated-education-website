@@ -1353,11 +1353,13 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   color: #fff;
   position: relative;
   isolation: isolate;
+  overflow: hidden;
 }
 .portal-hero__copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
 }
 .portal-hero:before {
   content: "";
@@ -1389,13 +1391,14 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 700;
 }
 .hero-lead {
-  max-width: none;
+  max-width: min(1040px, 100%);
   margin: 0 0 12px;
   color: rgba(255, 255, 255, 0.94);
   font-size: 20px;
   font-weight: 600;
   line-height: 1.6;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .hero-description {
   max-width: 820px;

@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'site-header--en': lang === 'en' }">
     <div class="site-shell header-inner">
       <router-link class="brand" to="/"
         ><img src="/images/logo.webp" alt="APIMTC" /></router-link

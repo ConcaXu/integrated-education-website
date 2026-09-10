@@ -101,6 +101,48 @@ textarea {
   letter-spacing: .04em
 }
 
+/* English labels are substantially longer than their Chinese counterparts.
+   Keep all desktop labels on one line while preserving breathing room. */
+.site-header--en .header-inner {
+  gap: 24px
+}
+
+.site-header--en nav {
+  flex: 1;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.2vw, 20px)
+}
+
+.site-header--en nav a {
+  font-size: 12px;
+  line-height: 1.25;
+  letter-spacing: .025em;
+  white-space: nowrap;
+}
+
+.site-header--en nav .header-cta {
+  min-width: 94px;
+  padding: 6px 12px;
+}
+
+@media (min-width: 901px) and (max-width: 1150px) {
+  .site-header--en .brand img {
+    width: 205px;
+  }
+
+  .site-header--en .header-inner {
+    gap: 10px;
+  }
+
+  .site-header--en nav {
+    gap: 9px;
+  }
+
+  .site-header--en nav a {
+    font-size: 11px;
+  }
+}
+
 .site-header nav a.is-active {
   color: var(--accent)
 }
@@ -558,6 +600,10 @@ textarea {
 
   .site-header nav.open {
     display: flex
+  }
+
+  .site-header--en nav a {
+    font-size: 14px;
   }
 
   .menu-toggle {

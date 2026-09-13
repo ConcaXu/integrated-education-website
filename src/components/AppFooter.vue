@@ -12,7 +12,7 @@
           <p>
             {{
               tx(
-                "Singapore-based. Globally connected.",
+                "Singapore-Based. Globally Connected.",
                 "立足新加坡 · 连接全球。",
               )
             }}

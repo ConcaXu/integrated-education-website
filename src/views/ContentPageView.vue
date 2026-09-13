@@ -39,6 +39,8 @@
               ['首页', '教育流动'].includes(key) && section.title === 'APIMTC 4E 模型',
             'portal-section--why':
               key === '首页' && section.title === '为什么选择 APIMTC？',
+            'portal-section--partners':
+              key === '国际合作' && section.title === '我们的合作伙伴',
           },
         ]"
         v-show="!(key === '首页' && section.title === 'APIMTC')"
@@ -139,6 +141,44 @@
                 <span>{{ lang === 'en' ? section.introEn || section.intro : section.intro }}</span>
                 <span v-if="lang !== 'en'" class="four-e-intro-en">{{ section.introEn || section.intro }}</span>
               </template>
+              <template
+                v-else-if="
+                  key === '中国门户' && section.title === '中国 · 不只是目的地'
+                "
+              >
+                <template v-if="lang === 'en'">
+                  {{ section.introEn || section.intro }}
+                </template>
+                <template v-else>
+                  <strong class="china-city-intro__headline">每一座城市，都是一间课堂。</strong>
+                  <br />
+                  <span>我们将中国不同城市转化为具有主题和学习价值的教育目的地。</span>
+                </template>
+              </template>
+              <template
+                v-else-if="
+                  key === '关于 APIMTC' && section.title === '我们相信'
+                "
+              >
+                <template v-if="lang === 'en'">
+                  <strong class="belief-intro__headline">Learning should go further.</strong>
+                  <br />
+                  <span class="belief-intro__beyond">
+                    Beyond the classroom.<br />
+                    Beyond borders.<br />
+                    Beyond expectations.
+                  </span>
+                </template>
+                <template v-else>
+                  <strong class="belief-intro__headline">学习，应该走得更远。</strong>
+                  <br />
+                  <span class="belief-intro__beyond">
+                    超越课堂。<br />
+                    超越国界。<br />
+                    超越期待。
+                  </span>
+                </template>
+              </template>
               <template v-else>{{ tx(section.intro, section.introEn || section.intro) }}</template>
             </p>
           </div>
@@ -191,7 +231,7 @@
             class="portal-grid"
             :class="`portal-grid--${section.columns || 3}`"
           >
-            <template v-for="card in section.cards" :key="card.title">
+            <template v-for="(card, cardIndex) in section.cards" :key="card.title">
               <div
                 v-if="key === '首页' && section.title === 'APIMTC 4E 模型'"
                 class="four-e-message"
@@ -219,7 +259,39 @@
                   :class="getCardIcon(card.title)"
                   aria-hidden="true"
                 ></i>
-                <h3>{{ tx(card.title, card.titleEn || card.title) }}</h3>
+                <h3
+                  v-if="key === '教育流动' && section.title === 'APIMTC 4E 模型'"
+                  class="four-e-card-title"
+                >
+                  <span class="four-e-card-title__primary">{{ splitFourETitle(card, true, true) }}</span>
+                  <span class="four-e-card-title__secondary">{{ splitFourETitle(card, lang === 'en', false) }}</span>
+                </h3>
+                <h3
+                  v-else-if="
+                    key === '国际合作' &&
+                    section.title === '我们的合作伙伴' &&
+                    lang === 'en' &&
+                    (card.titleEn || card.title).includes(' & ')
+                  "
+                  class="partner-card-title"
+                >
+                  <span class="partner-card-title__first"
+                    >{{ splitPartnerTitle(card)[0] }} &amp;</span
+                  ><span class="partner-card-title__rest">{{ splitPartnerTitle(card)[1] }}</span>
+                </h3>
+                <h3 v-else>{{ tx(card.title, card.titleEn || card.title) }}</h3>
+                <div
+                  v-if="
+                    card.text &&
+                    key === 'MICE 与商务' &&
+                    section.title === '我们提供' &&
+                    cardIndex === 0
+                  "
+                  class="mice-primary-copy"
+                >
+                  <strong>{{ tx(card.text, card.textEn || card.text).split('\n')[0] }}</strong>
+                  <p>{{ tx(card.text, card.textEn || card.text).split('\n').slice(1).join('\n') }}</p>
+                </div>
                 <div
                   v-if="
                     card.text &&
@@ -240,7 +312,12 @@
                     {{ line }}
                   </p>
                 </div>
-                <p v-else-if="card.text">{{ tx(card.text, card.textEn || card.text) }}</p>
+                <p
+                  v-else-if="
+                    card.text &&
+                    !(key === 'MICE 与商务' && section.title === '我们提供' && cardIndex === 0)
+                  "
+                >{{ tx(card.text, card.textEn || card.text) }}</p>
                 <a
                   v-if="card.action && card.actionHref"
                   class="card-action"
@@ -401,7 +478,7 @@ const pages: Record<string, Page> = {
   首页: {
     kicker: "APIMTC",
     title: "立足新加坡 · 连接全球",
-    titleEn: "Singapore-based · Globally connected",
+    titleEn: "Singapore-Based · Globally Connected",
     lead: "教育 · 技能 · 流动 · 交流 · 商务",
     leadEn: "Education · Skills · Mobility · Exchange · Business",
     description: "连接人才、教育与全球发展机遇。",
@@ -443,7 +520,7 @@ const pages: Record<string, Page> = {
           },
           {
             title: "MICE 与商务",
-            titleEn: "MICE & business",
+            titleEn: "MICE & Business",
             text: "连接产业、人才与商业机会。",
             textEn: "Connect with industry and opportunity.",
             icon: "▦",
@@ -546,7 +623,7 @@ const pages: Record<string, Page> = {
         title: "APIMTC",
         titleEn: "APIMTC",
         intro: "立足新加坡 · 连接全球",
-        introEn: "Singapore-based. Globally connected.",
+        introEn: "Singapore-Based. Globally Connected.",
         action: "与我们合作",
         actionEn: "Partner with us",
       },
@@ -560,7 +637,7 @@ const pages: Record<string, Page> = {
     lead:
       "APIMTC 是一家立足新加坡的国际化平台，连接教育、技能、人才流动、MICE 与商务，推动跨境交流与合作。",
     leadEn:
-      "APIMTC is a Singapore-based international platform connecting education, skills, mobility, MICE and business across borders.",
+      "APIMTC is a Singapore-Based international platform connecting education, skills, mobility, MICE and business across borders.",
     sections: [
       {
         title: "新加坡是我们的根基",
@@ -658,7 +735,7 @@ const pages: Record<string, Page> = {
           "Learning should go further.\nBeyond the classroom. Beyond borders. Beyond expectations.",
         feature: {
           kicker: "我们的使命",
-          kickerEn: "Our purpose",
+          kickerEn: "Our Mission",
           title: "连接，创造更多可能",
           titleEn: "Connection creates opportunity.",
           text: "让人才、机构与产业相互连接，创造真正有价值的国际体验。",
@@ -669,7 +746,7 @@ const pages: Record<string, Page> = {
       },
       {
         title: "我们的使命",
-        titleEn: "Our purpose",
+        titleEn: "Our Mission",
         intro:
           "连接人才、城市、教育、产业与机会。\n新加坡是我们的根基。成都是我们的中国门户。世界是我们的合作网络。",
         introEn:
@@ -679,7 +756,7 @@ const pages: Record<string, Page> = {
         title: "APIMTC",
         titleEn: "APIMTC",
         intro: "立足新加坡 · 连接全球",
-        introEn: "Singapore-based. Globally connected.",
+        introEn: "Singapore-Based. Globally Connected.",
       },
     ],
   },
@@ -690,7 +767,7 @@ const pages: Record<string, Page> = {
     titleEn: "Beyond borders. Beyond the classroom.",
     lead: "让学习走出课堂，走进大学、产业、科技、文化与真实世界。",
     leadEn:
-      "Take learning beyond the classroom — into universities, industry, technology, culture and the real world.",
+      "Take learning beyond the classroom — into universities,  technology, culture, industry and the real world.",
     description:
       "APIMTC 打造具有国际视野的沉浸式教育项目，连接学生、学校、教育机构与产业。",
     descriptionEn:
@@ -825,7 +902,7 @@ const pages: Record<string, Page> = {
   },
   "MICE 与商务": {
     kicker: "MICE 与商务",
-    kickerEn: "MICE & business",
+    kickerEn: "MICE & Business",
     title: "让商务连接真实体验",
     titleEn: "Connecting business with experience.",
     lead:
@@ -1089,7 +1166,7 @@ const pages: Record<string, Page> = {
         cards: [
           {
             title: "立足新加坡",
-            titleEn: "Singapore-based",
+            titleEn: "Singapore-Based",
             text: "连接亚洲与世界的国际平台。",
             textEn: "An international platform connecting Asia and the world.",
             icon: "◌",
@@ -1285,7 +1362,7 @@ const pages: Record<string, Page> = {
           },
           {
             title: "MICE 与商务",
-            titleEn: "MICE & business",
+            titleEn: "MICE & Business",
             text: "会议、活动、商务代表团及产业参访。",
             textEn: "Meetings, events, business delegations and industry visits.",
             icon: "▣",
@@ -1386,6 +1463,14 @@ const getCardIcon = (title: string) => {
   ];
   const match = iconMap.find(([keyword]) => title.includes(keyword));
   return ["fas", match?.[1] || "fa-sitemap"];
+};
+const splitFourETitle = (card: Card, english: boolean, primary: boolean) => {
+  const title = english ? card.titleEn || card.title : card.title;
+  return title.split("·").map((part) => part.trim())[primary ? 0 : 1] || title;
+};
+const splitPartnerTitle = (card: Card) => {
+  const [first, ...rest] = (card.titleEn || card.title).split(" & ");
+  return [first, rest.join(" & ")];
 };
 const key = computed(() => String(route.meta.titleZh || "首页"));
 const page = computed(() => pages[key.value] || pages.首页);
@@ -1697,6 +1782,10 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-size: 14px;
   line-height: 1.75;
 }
+.china-city-intro__headline {
+  color: var(--blue-900);
+  font-weight: 800;
+}
 .feature-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
@@ -1789,6 +1878,25 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-grid--6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.portal-section--partners .portal-card:not(.portal-card--image) .portal-card__body {
+  padding-right: 60px;
+}
+.partner-card-title__first {
+  display: inline-block;
+  white-space: nowrap;
+}
+.portal-section--partners .portal-card h3.partner-card-title {
+  margin: 0 0 5px;
+  color: #073b66;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: inherit;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+.partner-card-title__rest {
+  display: block;
 }
 .portal-card {
   position: relative;
@@ -1986,6 +2094,17 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-size: 14px;
   line-height: 1.7;
   white-space: pre-line;
+}
+.mice-primary-copy strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #073b66;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.mice-primary-copy p {
+  margin: 0;
 }
 .portal-section--tint .portal-card p {
   color: rgba(255, 255, 255, 0.76);
@@ -2386,6 +2505,23 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-section--tint .portal-card:not(.portal-card--image) h3 {
   color: #fff;
+}
+.portal-section--tint .portal-card .four-e-card-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.four-e-card-title__primary,
+.four-e-card-title__secondary {
+  display: block;
+  font-weight: 800;
+}
+.four-e-card-title__primary {
+  text-transform: uppercase;
 }
 .portal-section--tint .portal-card:not(.portal-card--image) p {
   color: rgba(255, 255, 255, 0.76);

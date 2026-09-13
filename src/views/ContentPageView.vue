@@ -117,6 +117,12 @@
             </div>
           </div>
           <div
+            v-if="key === 'MICE 与商务' && section.title === '不只是一次商务之旅' && section.cards?.length"
+            class="mice-advantages-heading"
+          >
+            <h3>{{ tx('我们的优势', 'Our advantages') }}</h3>
+          </div>
+          <div
             v-if="section.cards?.length"
             class="portal-grid"
             :class="`portal-grid--${section.columns || 3}`"
@@ -1540,6 +1546,25 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .portal-grid {
   display: grid;
   gap: 16px;
+}
+.mice-advantages-heading {
+  margin: 4px 0 18px;
+}
+.mice-advantages-heading h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.mice-advantages-heading h3::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin-top: 9px;
+  background: #37d8e3;
+  box-shadow: 0 0 12px rgba(55, 216, 227, 0.65);
 }
 .portal-grid--2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));

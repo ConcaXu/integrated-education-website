@@ -9,6 +9,7 @@ const routes = [
   { path: '/partnerships', component: () => import('@/views/ContentPageView.vue'), meta: { activityType: 'International_Cooperation' as ActivityType, titleZh: '国际合作', titleEn: 'International Cooperation' } },
   { path: '/china-gateway', component: () => import('@/views/ContentPageView.vue'), meta: { activityType: 'Chine_Content' as ActivityType, titleZh: '中国门户', titleEn: 'China Gateway' } },
   { path: '/contact', component: () => import('@/views/ContentPageView.vue'), meta: { activityType: 'aboutUs' as ActivityType, titleZh: '联系我们', titleEn: 'Contact Us' } },
+  { path: '/singapore-explorers', name: 'SingaporeExplorers', component: () => import('@/views/SingaporeExplorersView.vue'), meta: { titleZh: '新加坡未来探索系列', titleEn: 'Singapore Future Explorers' } },
   { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 

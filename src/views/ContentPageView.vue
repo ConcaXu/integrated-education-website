@@ -328,6 +328,14 @@
                   {{ tx(card.action, card.actionEn || card.action) }}
                   <span aria-hidden="true">→</span>
                 </a>
+                <router-link
+                  v-if="card.action === '探索新加坡'"
+                  class="card-action"
+                  to="/singapore-explorers"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </router-link>
                 <button
                   v-else-if="card.action"
                   type="button"

@@ -321,6 +321,9 @@
                 <a
                   v-if="card.action && card.actionHref"
                   class="card-action"
+                  :class="{
+                    'card-action--orange': key === '教育流动' && section.title === '我们的两大教育项目',
+                  }"
                   :href="card.actionHref"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -331,6 +334,9 @@
                 <router-link
                   v-if="card.action === '探索新加坡'"
                   class="card-action"
+                  :class="{
+                    'card-action--orange': key === '教育流动' && section.title === '我们的两大教育项目',
+                  }"
                   to="/singapore-explorers"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
@@ -340,6 +346,9 @@
                   v-else-if="card.action"
                   type="button"
                   class="card-action"
+                  :class="{
+                    'card-action--orange': key === '教育流动' && section.title === '我们的两大教育项目',
+                  }"
                   disabled
                   :aria-label="`${tx(card.action, card.actionEn || card.action)} (${tx('链接待定', 'Link to be confirmed')})`"
                 >
@@ -2189,6 +2198,36 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: #f5f8fa;
   color: #7c95a8;
   opacity: 1;
+  transform: none;
+}
+.card-action--orange,
+.card-action--orange:disabled {
+  min-width: 122px;
+  height: 42px;
+  min-height: 42px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--orange);
+  box-shadow: 0 8px 20px rgba(255, 138, 76, 0.28);
+  color: #fff;
+  font-weight: 800;
+  transform: none;
+}
+.card-action--orange {
+  cursor: pointer;
+}
+.card-action--orange:disabled {
+  cursor: not-allowed;
+}
+.card-action--orange:hover {
+  border-color: transparent;
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 12px 25px rgba(255, 138, 76, 0.36);
+  transform: translateY(-2px);
+}
+.card-action--orange:disabled:hover {
   transform: none;
 }
 .step-row {

@@ -45,7 +45,41 @@
       >
         <div class="portal-shell">
           <div
-            v-if="key === '首页' && section.title === '为什么选择 APIMTC？'"
+            v-if="key === '中国门户' && section.title === '中国与世界'"
+            class="portal-heading china-world-heading"
+          >
+            <h2>{{ lang === 'en' ? 'CHINA TO THE WORLD' : '中国与世界' }}</h2>
+            <div class="china-world-heading__content">
+              <p>
+                {{
+                  lang === 'en'
+                    ? 'API EduVoyage connects Chinese education partners with international opportunities through:'
+                    : 'API EduVoyage 连接中国与全球教育伙伴，共同推动：'
+                }}
+              </p>
+              <strong>
+                {{
+                  lang === 'en'
+                    ? 'Student Mobility · Skills Development · Institutional Exchange · Professional Learning · Global Partnerships'
+                    : '学生流动 · 技能发展 · 院校交流 · 专业学习 · 国际合作'
+                }}
+              </strong>
+              <hr />
+              <div class="china-world-heading__statements">
+                <strong v-if="lang === 'en'">SINGAPORE IS OUR HOME.</strong>
+                <strong v-else>新加坡是我们的家。</strong>
+                <strong v-if="lang === 'en'">CHENGDU IS OUR CHINA GATEWAY.</strong>
+                <strong v-else>成都是我们的中国门户。</strong>
+                <strong v-if="lang === 'en'">THE WORLD IS OUR NETWORK.</strong>
+                <strong v-else>世界是我们的合作网络。</strong>
+              </div>
+              <router-link class="china-world-heading__action" to="/contact">
+                [ {{ lang === 'en' ? 'PARTNER WITH US' : '与我们合作' }} ]
+              </router-link>
+            </div>
+          </div>
+          <div
+            v-else-if="key === '首页' && section.title === '为什么选择 APIMTC？'"
             class="why-layout"
           >
             <div class="why-layout__copy">
@@ -67,6 +101,26 @@
             <div class="why-layout__visual">
               <img :src="home02" :alt="tx('APIMTC 国际连接场景', 'APIMTC global connections')" />
               <p class="why-layout__caption">Singapore · Chengdu · World</p>
+            </div>
+          </div>
+          <div
+            v-else-if="key === '中国门户' && section.title === 'API EDUVOYAGE'"
+            class="portal-heading api-eduvoyage-heading"
+          >
+            <h2>API EDUVOYAGE</h2>
+            <div class="api-eduvoyage-heading__lines">
+              <template v-if="lang === 'en'">
+                <p>ASIA PACIFIC INTERNATIONAL EDUVOYAGE</p>
+                <p>Chengdu, China</p>
+                <p>APIMTC’s China education mobility platform.</p>
+                <strong>Education · Skills · Student Mobility · Institutional Exchange</strong>
+              </template>
+              <template v-else>
+                <p>亚太国际智航</p>
+                <p>中国 · 成都</p>
+                <p>APIMTC 在中国的教育流动平台</p>
+                <strong>教育流动 · 技能发展 · 学生交流 · 院校合作 · 国际交流</strong>
+              </template>
             </div>
           </div>
           <div v-else class="portal-heading">
@@ -153,6 +207,8 @@
                 :class="{
                   'portal-card--image': card.image,
                   'portal-card--platform': card.platform,
+                  'portal-card--contact-platform':
+                    key === '联系我们' && section.title === '与我们联系',
                 }"
               >
               <img v-if="card.image" :src="card.image" :alt="card.title" />
@@ -164,10 +220,47 @@
                   aria-hidden="true"
                 ></i>
                 <h3>{{ tx(card.title, card.titleEn || card.title) }}</h3>
-                <p v-if="card.text">{{ tx(card.text, card.textEn || card.text) }}</p>
-                <router-link v-if="card.action" to="/contact" class="card-more"
-                  >+</router-link
+                <div
+                  v-if="
+                    card.text &&
+                    key === '联系我们' &&
+                    section.title === '与我们联系'
+                  "
+                  class="contact-platform-copy"
                 >
+                  <p
+                    v-for="(line, lineIndex) in tx(
+                      card.text,
+                      card.textEn || card.text,
+                    ).split('\n')"
+                    :key="line"
+                    class="contact-platform-copy__line"
+                    :class="`contact-platform-copy__line--${lineIndex}`"
+                  >
+                    {{ line }}
+                  </p>
+                </div>
+                <p v-else-if="card.text">{{ tx(card.text, card.textEn || card.text) }}</p>
+                <a
+                  v-if="card.action && card.actionHref"
+                  class="card-action"
+                  :href="card.actionHref"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </a>
+                <button
+                  v-else-if="card.action"
+                  type="button"
+                  class="card-action"
+                  disabled
+                  :aria-label="`${tx(card.action, card.actionEn || card.action)} (${tx('链接待定', 'Link to be confirmed')})`"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </button>
               </div>
               <i
                 v-if="
@@ -191,7 +284,7 @@
             >
           </div>
           <router-link
-            v-if="section.action"
+            v-if="section.action && !(key === '中国门户' && section.title === '中国与世界')"
             class="hero-action"
             :class="{
               'portal-section__action--centered':
@@ -256,6 +349,7 @@ type Card = {
   platform?: boolean;
   action?: string;
   actionEn?: string;
+  actionHref?: string;
   titleEn?: string;
   textEn?: string;
 };
@@ -1221,7 +1315,7 @@ const pages: Record<string, Page> = {
           {
             title: "APIMTC",
             text:
-              "Asia Pacific International MICE & Travel Centre\nSingapore\n亚太国际会议会展中心\n新加坡\n我们的企业总部及国际平台",
+              "亚太国际会议会展中心\n新加坡\n我们的企业总部及国际平台",
             textEn:
               "Asia Pacific International MICE & Travel Centre Pte Ltd\nSingapore\nOur corporate headquarters and international platform.",
             icon: "◎",
@@ -1230,7 +1324,7 @@ const pages: Record<string, Page> = {
             title: "API EduVoyage",
             titleEn: "API EduVoyage",
             text:
-              "Asia Pacific International EduVoyage\nChengdu, China\n亚太国际智航\n中国 · 成都\n我们的中国教育流动平台。",
+              "亚太国际智航\n中国 · 成都\n我们的中国教育流动平台。",
             textEn:
               "Asia Pacific International EduVoyage\nChengdu, China\nOur China education mobility platform.",
             icon: "◇",
@@ -1468,7 +1562,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: var(--orange);
   box-shadow: 0 8px 20px rgba(255, 138, 76, 0.28);
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   transition:
     transform 0.2s ease,
@@ -1494,6 +1588,108 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 800;
   line-height: 1.16;
   letter-spacing: -0.01em;
+}
+.api-eduvoyage-heading {
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+.api-eduvoyage-heading h2 {
+  margin-bottom: 12px;
+}
+.api-eduvoyage-heading__lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  color: #5c7690;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.api-eduvoyage-heading__lines p {
+  margin: 0;
+}
+.api-eduvoyage-heading__lines strong {
+  margin-top: 2px;
+  color: var(--blue-900);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.china-world-heading {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+.china-world-heading h2 {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.china-world-heading__content {
+  max-width: 1050px;
+  color: #5c7690;
+  font-size: 18px;
+  line-height: 1.45;
+}
+.china-world-heading__content p {
+  margin: 0;
+}
+.china-world-heading__content > strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--blue-900);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.china-world-heading__content hr {
+  margin: 8px 0 42px;
+  border: 0;
+  border-top: 2px solid rgba(92, 118, 144, 0.45);
+}
+.china-world-heading__statements {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.china-world-heading__statements strong {
+  color: var(--blue-900);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.china-world-heading__action {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--blue-900);
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.china-world-heading__action:hover {
+  color: var(--blue-700);
+}
+@media (max-width: 700px) {
+  .china-world-heading__content {
+    font-size: 16px;
+  }
+  .china-world-heading__content > strong {
+    font-size: 18px;
+  }
+  .china-world-heading__content hr {
+    margin-bottom: 26px;
+  }
+  .china-world-heading__statements strong {
+    font-size: 27px;
+  }
+  .china-world-heading__action {
+    font-size: 22px;
+  }
+}
+.portal-section--tint .api-eduvoyage-heading__lines {
+  color: rgba(255, 255, 255, 0.82);
+}
+.portal-section--tint .api-eduvoyage-heading__lines strong {
+  color: #fff;
 }
 .section-intro {
   margin: 10px 0 0;
@@ -1541,7 +1737,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .feature-panel__copy p:not(.section-kicker) {
   margin: 0;
   color: #53718e;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
   white-space: pre-line;
 }
@@ -1550,7 +1746,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   gap: 10px;
   margin-top: 20px;
   color: var(--blue-700);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
 }
 .portal-section--tint .text-link {
@@ -1738,7 +1934,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-section--business .portal-card p {
   color: #7290aa;
-  font-size: 12px;
+  font-size: 14px;
 }
 .portal-section--business .card-more {
   right: 24px;
@@ -1787,7 +1983,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .portal-card p {
   margin: 0;
   color: #65819c;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
   white-space: pre-line;
 }
@@ -1830,6 +2026,43 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .card-more:hover {
   background: var(--blue-500);
   color: #fff;
+}
+.card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 38px;
+  margin-top: 16px;
+  padding: 0 15px;
+  border: 1px solid rgba(22, 143, 229, 0.5);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--blue-700);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+.card-action span {
+  font-size: 16px;
+  line-height: 1;
+}
+.card-action:hover {
+  border-color: var(--blue-500);
+  background: var(--blue-500);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.card-action:disabled {
+  cursor: not-allowed;
+  border-color: rgba(126, 159, 184, 0.42);
+  background: #f5f8fa;
+  color: #7c95a8;
+  opacity: 1;
+  transform: none;
 }
 .step-row {
   --step-accent: #168fe5;
@@ -1876,7 +2109,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   border-radius: 8px;
   background: var(--step-accent-soft);
   color: var(--step-accent);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.04em;
 }
@@ -1940,6 +2173,12 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   .portal-heading {
     margin-bottom: 24px;
   }
+  .api-eduvoyage-heading__lines {
+    font-size: 16px;
+  }
+  .api-eduvoyage-heading__lines strong {
+    font-size: 19px;
+  }
 }
 @media (max-width: 480px) {
   .portal-shell {
@@ -1962,7 +2201,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
     font-size: 16px;
   }
   .portal-hero .hero-kicker {
-    font-size: 12px;
+    font-size: 14px;
   }
   .hero-description {
     font-size: 15px;
@@ -2131,7 +2370,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-card:not(.portal-card--image) p {
   color: #7290aa;
-  font-size: 12px;
+  font-size: 14px;
 }
 .portal-card:not(.portal-card--image):hover {
   border-color: rgba(21, 151, 229, 0.62);
@@ -2150,6 +2389,33 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .portal-section--tint .portal-card:not(.portal-card--image) p {
   color: rgba(255, 255, 255, 0.76);
+}
+.portal-section--tint .portal-card--contact-platform h3 {
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.portal-section--tint .portal-card--contact-platform .contact-platform-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.portal-section--tint .portal-card--contact-platform .contact-platform-copy__line {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  white-space: normal;
+}
+.portal-section--tint .portal-card--contact-platform .contact-platform-copy__line--0 {
+  font-size: 16px;
+  font-weight: 800;
+}
+.portal-section--tint .portal-card--contact-platform .contact-platform-copy__line--2 {
+  font-weight: 400;
 }
 .portal-section--tint .portal-card:not(.portal-card--image) .portal-card__side-icon {
   color: rgba(177, 237, 255, 0.14);
@@ -2289,7 +2555,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .portal-page--home .portal-section--business .portal-card p,
 .portal-page--home .portal-section:not(:last-child) .portal-card:not(.portal-card--image) p {
   /* color: var(--home-muted); */
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
 }
 .portal-page--home .portal-section:nth-child(3) .portal-card {
@@ -2371,7 +2637,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   display: block;
   margin-top: 6px;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 0.82em;
+  font-size: max(14px, 0.82em);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -2510,7 +2776,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   position: relative;
   padding-left: 14px;
   color: #234f70;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 .why-layout__rules span::before {
@@ -2534,7 +2800,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   border: 1px solid #0f8b78;
   background: #0f8b78;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
@@ -2584,12 +2850,12 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 10px 22px rgba(18, 59, 93, 0.14);
   color: #174a6e;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 .why-layout__marker b {
   color: var(--home-teal);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.08em;
 }
 .why-layout__marker--top {
@@ -2607,7 +2873,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   bottom: 48px;
   margin: 0;
   color: #fff;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-shadow: 0 1px 8px rgba(1, 32, 58, 0.65);
@@ -2688,7 +2954,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   }
   .why-layout__marker {
     padding: 8px 10px;
-    font-size: 11px;
+    font-size: 14px;
   }
   .why-layout__marker--top {
     top: 36px;
@@ -2699,7 +2965,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   .why-layout__caption {
     right: 14px;
     bottom: 36px;
-    font-size: 9px;
+    font-size: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -23,6 +23,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
+  font-size: 14px;
   font-family: 'DM Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased
 }
@@ -83,7 +84,7 @@ textarea {
 }
 
 .brand small {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .12em;
   color: var(--muted);
   text-transform: uppercase
@@ -114,7 +115,7 @@ textarea {
 }
 
 .site-header--en nav a {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.25;
   letter-spacing: .025em;
   white-space: nowrap;
@@ -139,7 +140,7 @@ textarea {
   }
 
   .site-header--en nav a {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 
@@ -165,7 +166,7 @@ textarea {
   background: none;
   cursor: pointer;
   color: var(--ink);
-  font-size: 12px
+  font-size: 14px
 }
 
 .menu-toggle {
@@ -198,7 +199,7 @@ textarea {
 
 .eyebrow {
   display: inline-block;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .22em;
   color: var(--accent);
@@ -242,7 +243,7 @@ textarea {
   align-items: center;
   justify-content: center;
   padding: 14px 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -332,7 +333,7 @@ textarea {
 
 .card-kicker,
 .block-number {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .2em;
   color: var(--accent);
   font-weight: 700
@@ -356,7 +357,7 @@ textarea {
 .text-link {
   display: block;
   margin-top: 22px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase
@@ -387,7 +388,7 @@ textarea {
 
 .platform-steps strong {
   color: var(--accent);
-  font-size: 11px
+  font-size: 14px
 }
 
 .platform-steps b {
@@ -396,7 +397,7 @@ textarea {
 }
 
 .platform-steps span {
-  font-size: 12px;
+  font-size: 14px;
   color: #aaa39a
 }
 
@@ -506,7 +507,7 @@ textarea {
 }
 
 .site-footer h4 {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .18em;
   color: var(--accent);
   text-transform: uppercase;
@@ -515,13 +516,13 @@ textarea {
 
 .site-footer a {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   margin: 10px 0
 }
 
 .muted {
   color: #9b948a;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7
 }
 
@@ -530,7 +531,7 @@ textarea {
   margin-top: 55px;
   padding-top: 18px;
   color: #8d877f;
-  font-size: 11px;
+  font-size: 14px;
   text-align: center
 }
 
@@ -556,7 +557,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .1em;
   text-transform: uppercase
 }

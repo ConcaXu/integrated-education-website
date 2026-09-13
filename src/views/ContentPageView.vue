@@ -73,9 +73,19 @@
             <p v-if="section.kicker" class="section-kicker">
               {{ section.kicker }}
             </p>
-            <h2>{{ tx(section.title, section.titleEn) }}</h2>
+            <template v-if="key === '首页' && section.title === 'APIMTC 4E 模型'">
+              <h2 class="four-e-heading">{{ lang === 'en' ? section.titleEn : section.title }}</h2>
+              <p v-if="lang !== 'en'" class="section-intro four-e-title-en">
+                {{ section.titleEn }}
+              </p>
+            </template>
+            <h2 v-else>{{ tx(section.title, section.titleEn) }}</h2>
             <p v-if="section.intro" class="section-intro">
-              {{ tx(section.intro, section.introEn || section.intro) }}
+              <template v-if="key === '首页' && section.title === 'APIMTC 4E 模型'">
+                <span>{{ lang === 'en' ? section.introEn || section.intro : section.intro }}</span>
+                <span v-if="lang !== 'en'" class="four-e-intro-en">{{ section.introEn || section.intro }}</span>
+              </template>
+              <template v-else>{{ tx(section.intro, section.introEn || section.intro) }}</template>
             </p>
           </div>
           <div v-if="section.feature" class="feature-panel">
@@ -132,7 +142,10 @@
                 v-if="key === '首页' && section.title === 'APIMTC 4E 模型'"
                 class="four-e-message"
               >
-                <h3>{{ tx(card.title, card.titleEn || card.title) }}</h3>
+                <h3>
+                  <span>{{ lang === 'en' ? card.titleEn || card.title : card.title }}</span>
+                  <span v-if="lang !== 'en'" class="four-e-message-en">{{ card.titleEn || card.title }}</span>
+                </h3>
               </div>
               <article
                 v-else
@@ -2342,6 +2355,29 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   line-height: 1.32;
   text-shadow: 0 3px 20px rgba(2, 34, 72, 0.38);
 }
+.portal-page--home .portal-section.portal-section--four-e .four-e-heading,
+.portal-page--home .portal-section.portal-section--four-e .four-e-title-en {
+  text-transform: uppercase;
+}
+.portal-page--home .portal-section.portal-section--four-e .four-e-title-en {
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(18px, 2vw, 28px);
+  letter-spacing: 0.04em;
+}
+.portal-page--home .portal-section.portal-section--four-e .four-e-intro-en,
+.portal-page--home .portal-section.portal-section--four-e .four-e-message-en {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.portal-page--home .portal-section.portal-section--four-e .four-e-message-en {
+  margin-top: 12px;
+}
 @media (max-width: 720px) {
   .portal-section--four-e {
     min-height: 0;
@@ -2353,6 +2389,9 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   }
   .portal-page--home .portal-section.portal-section--four-e .four-e-message h3 {
     font-size: clamp(28px, 8vw, 40px);
+  }
+  .portal-page--home .portal-section.portal-section--four-e .four-e-title-en {
+    font-size: clamp(16px, 4.5vw, 22px);
   }
 }
 .portal-page--home .portal-section:nth-child(5) .portal-grid {

@@ -76,7 +76,7 @@
                 <strong v-else>世界是我们的合作网络。</strong>
               </div>
               <router-link class="china-world-heading__action" to="/contact">
-                [ {{ lang === 'en' ? 'PARTNER WITH US' : '与我们合作' }} ]
+                {{ lang === 'en' ? 'PARTNER WITH US' : '与我们合作' }}
               </router-link>
             </div>
           </div>
@@ -318,6 +318,13 @@
                     !(key === 'MICE 与商务' && section.title === '我们提供' && cardIndex === 0)
                   "
                 >{{ tx(card.text, card.textEn || card.text) }}</p>
+                <router-link
+                  v-if="key === 'MICE 与商务' && section.title === '我们提供' && cardIndex === 1"
+                  class="card-action card-action--orange"
+                  to="/china-industry-study-programmes"
+                >
+                  {{ tx('中国产业考察项目', 'China Industry Study Programmes') }}
+                </router-link>
                 <a
                   v-if="card.action && card.actionHref"
                   class="card-action"
@@ -1761,14 +1768,26 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .china-world-heading__action {
   display: inline-block;
-  margin-top: 10px;
-  color: var(--blue-900);
-  font-size: clamp(22px, 2.2vw, 32px);
-  font-weight: 800;
-  line-height: 1.25;
+  margin-top: 18px;
+  padding: 13px 22px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: 0 6px 14px rgba(255, 138, 76, 0.24);
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 .china-world-heading__action:hover {
-  color: var(--blue-700);
+  background: #f47738;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255, 138, 76, 0.3);
+  transform: translateY(-1px);
+}
+.china-world-heading__action:focus-visible {
+  outline: 3px solid rgba(255, 138, 76, 0.35);
+  outline-offset: 3px;
 }
 @media (max-width: 700px) {
   .china-world-heading__content {
@@ -1784,7 +1803,9 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
     font-size: 27px;
   }
   .china-world-heading__action {
-    font-size: 22px;
+    margin-top: 16px;
+    padding: 12px 18px;
+    font-size: 15px;
   }
 }
 .portal-section--tint .api-eduvoyage-heading__lines {

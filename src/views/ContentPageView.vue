@@ -41,6 +41,8 @@
               key === '首页' && section.title === '为什么选择 APIMTC？',
             'portal-section--partners':
               key === '国际合作' && section.title === '我们的合作伙伴',
+            'portal-section--mice-provide':
+              key === 'MICE 与商务' && section.title === '我们提供',
           },
         ]"
         v-show="!(key === '首页' && section.title === 'APIMTC')"
@@ -2250,6 +2252,13 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .card-action--orange:disabled:hover {
   transform: none;
+}
+
+.portal-section--mice-provide .portal-card::before {
+  display: none;
+}
+.portal-section--mice-provide .portal-card:nth-child(2) .card-action--orange {
+  margin-top: 26px;
 }
 .step-row {
   --step-accent: #168fe5;

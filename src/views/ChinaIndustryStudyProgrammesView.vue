@@ -1,3 +1,4 @@
+<!-- 中国产业考察项目系列 -->
 <template>
   <div class="industry-page">
     <section class="industry-hero" :style="{ backgroundImage: `linear-gradient(90deg, rgba(8, 48, 78, .78), rgba(8, 48, 78, .28)), url(${heroBackground})` }">
@@ -57,4 +58,10 @@ const content = computed(() => (isEnglish.value ? en : zh).map(([type, text, ico
 
 <style scoped>
 .industry-page{background:#f5f8fb;color:#18324a;min-height:100vh}.industry-shell{max-width:1180px;margin:0 auto;padding:0 28px}.industry-hero{padding:150px 0 100px;background:linear-gradient(135deg,#123b5d,#1d6d86);color:#fff}.industry-eyebrow,.industry-label{letter-spacing:.16em;font-size:12px;font-weight:800;text-transform:uppercase}.industry-hero h1{font:600 clamp(42px,7vw,82px)/1.02 'Playfair Display',Georgia,serif;margin:20px 0}.industry-hero p:last-child{font-size:17px;max-width:650px}.industry-main{padding-top:42px;padding-bottom:100px}.industry-toolbar{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:#fff;border:1px solid #d8e7f2;box-shadow:0 16px 40px rgba(24,56,80,.08)}.industry-toolbar div{display:flex;gap:16px;align-items:center}.industry-toolbar span:last-child{color:#7390a7}.industry-language{border:0;background:#ff8249;color:#fff;padding:11px 18px;border-radius:5px;font-weight:800;cursor:pointer}.industry-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px 0 36px}.industry-gallery figure{margin:0;background:#fff;border:1px solid #d8e7f2;box-shadow:0 10px 24px rgba(24,56,80,.08)}.industry-gallery img{display:block;width:100%;aspect-ratio:1.55;object-fit:cover}.industry-gallery figcaption{padding:10px 12px;font-size:12px;color:#67839a}.industry-document{background:rgba(255,255,255,.72);border:1px solid #d8e7f2;padding:42px 48px;box-shadow:0 18px 50px rgba(24,56,80,.08)}.industry-document h2{font:600 28px/1.2 'Playfair Display',Georgia,serif;color:#123b5d;margin:28px 0 12px}.industry-document h2:first-child{margin-top:0}.industry-document p{white-space:pre-line;line-height:1.85;margin:0 0 14px;color:#49677e}@media(max-width:760px){.industry-shell{padding:0 18px}.industry-hero{padding:120px 0 72px}.industry-toolbar div{display:block}.industry-toolbar span{display:block}.industry-toolbar span:last-child{margin-top:5px}.industry-gallery{grid-template-columns:repeat(2,1fr)}.industry-document{padding:28px 22px}.industry-document h2{font-size:23px}}
+/* Keep decorative Element Plus icons subordinate to the document text. */
+.industry-document h2{display:flex;align-items:center;gap:10px}
+.industry-document__icon{width:20px;height:20px;flex:0 0 20px;color:#e06f3d}
+.industry-document p{display:flex;align-items:flex-start;gap:8px}
+.industry-document__inline-icon{width:15px;height:15px;flex:0 0 15px;margin-top:.4em;color:#e06f3d}
+@media(max-width:760px){.industry-document h2{gap:8px}.industry-document__icon{width:18px;height:18px;flex-basis:18px}.industry-document__inline-icon{width:14px;height:14px;flex-basis:14px}}
 </style>

@@ -386,20 +386,27 @@
               ><b v-if="index < section.steps.length - 1">→</b></template
             >
           </div>
-          <router-link
+          <div
             v-if="section.action && !(key === '中国门户' && section.title === '中国与世界')"
-            class="hero-action"
-            :class="{
-              'portal-section__action--centered':
-                (key === '教育流动' && section.action === '探索教育项目') ||
-                (key === 'MICE 与商务' && section.action === '与 APIMTC 合作') ||
-                (key === '国际合作' && section.action === '联系 APIMTC') ||
-                (key === '联系我们' && section.title === '与我们联系'),
-            }"
-            to="/contact"
-          >{{
-            tx(section.action, section.actionEn || section.action)
-          }}</router-link>
+            class="portal-section__actions"
+          >
+            <router-link
+              class="hero-action"
+              :class="{
+                'portal-section__action--centered':
+                  (key === '教育流动' && section.action === '探索教育项目') ||
+                  (key === 'MICE 与商务' && section.action === '与 APIMTC 合作') ||
+                  (key === '国际合作' && section.action === '联系 APIMTC') ||
+                  (key === '联系我们' && section.title === '与我们联系'),
+              }"
+              to="/contact"
+            >{{ tx(section.action, section.actionEn || section.action) }}</router-link>
+            <router-link
+              v-if="section.secondaryAction"
+              class="hero-action"
+              to="/china-industry-study-programmes"
+            >{{ tx(section.secondaryAction, section.secondaryActionEn || section.secondaryAction) }}</router-link>
+          </div>
         </div>
       </section>
     </main>
@@ -481,6 +488,8 @@ type Section = {
   variant?: string;
   action?: string;
   actionEn?: string;
+  secondaryAction?: string;
+  secondaryActionEn?: string;
 };
 type Page = {
   kicker: string;
@@ -1058,6 +1067,8 @@ const pages: Record<string, Page> = {
         },
         action: "与 APIMTC 合作",
         actionEn: "Partner with APIMTC",
+        secondaryAction: "中国产业考察项目",
+        secondaryActionEn: "China Industry Study Programmes",
       },
     ],
   },
@@ -1683,10 +1694,16 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   transform: translateY(-2px);
   box-shadow: 0 12px 25px rgba(255, 138, 76, 0.36);
 }
-.portal-section__action--centered {
+.portal-section__actions {
   display: flex;
-  width: fit-content;
-  margin: 32px auto 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+.portal-section__action--centered {
+  margin: 0;
 }
 .portal-heading {
   max-width: 760px;

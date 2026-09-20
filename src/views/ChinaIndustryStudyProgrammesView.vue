@@ -83,10 +83,10 @@ import {
   Van,
 } from "@element-plus/icons-vue";
 import { useI18n } from "@/composables/useI18n";
-import image00 from "@/assets/chineseIndustryInspectionProject-images/图片-00.png";
-import image01 from "@/assets/chineseIndustryInspectionProject-images/图片-01.png";
-import image02 from "@/assets/chineseIndustryInspectionProject-images/图片-02.png";
-import image03 from "@/assets/chineseIndustryInspectionProject-images/图片-03.png";
+import executiveIndustryStudy from "@/assets/chineseIndustryInspectionProject-images/高管产业参访.png";
+import technologyBenchmarking from "@/assets/chineseIndustryInspectionProject-images/技术标杆学习.png";
+import businessExchange from "@/assets/chineseIndustryInspectionProject-images/商务交流.png";
+import culturalExperience from "@/assets/chineseIndustryInspectionProject-images/文化体验.png";
 import heroBackground from "@/assets/chineseIndustryInspectionProject-images/bj.png";
 
 const { lang } = useI18n();
@@ -94,16 +94,16 @@ const isEnglish = computed(() => lang.value === "en");
 const images = computed(() =>
   isEnglish.value
     ? [
-        { src: image00, alt: "China industry study programme" },
-        { src: image01, alt: "Executive industry visit" },
-        { src: image02, alt: "Technology benchmarking" },
-        { src: image03, alt: "Business exchange" },
+        { src: executiveIndustryStudy, alt: "Executive industrial study" },
+        { src: technologyBenchmarking, alt: "Technology benchmarking" },
+        { src: businessExchange, alt: "Business exchange" },
+        { src: culturalExperience, alt: "Cultural experience" },
       ]
     : [
-        { src: image00, alt: "中国产业考察项目" },
-        { src: image01, alt: "高管产业参访" },
-        { src: image02, alt: "技术标杆学习" },
-        { src: image03, alt: "商务交流体验" },
+        { src: executiveIndustryStudy, alt: "高管产业考察" },
+        { src: technologyBenchmarking, alt: "技术标杆学习" },
+        { src: businessExchange, alt: "商务交流" },
+        { src: culturalExperience, alt: "文化体验" },
       ],
 );
 

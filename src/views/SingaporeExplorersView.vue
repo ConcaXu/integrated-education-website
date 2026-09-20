@@ -19,9 +19,7 @@
             }}
           </p>
           <h1>
-            SINGAPORE<br /><span>FUTURE</span><br />{{
-              isEn ? "DISCOVERY" : "EXPLORERS"
-            }}
+            Singapore<br /><span>Discovery Series</span>
           </h1>
           <p class="hero-sub">
             {{
@@ -251,9 +249,13 @@
                 :is="themeIcons[index]"
                 class="theme-icon"
                 aria-hidden="true"
-              />{{ isEn ? theme.enLead : theme.zhLead }}
+              /><strong>{{ isEn ? theme.enLead : theme.zhLead }}</strong>
             </p>
-            <p>{{ isEn ? theme.enIntro : theme.zhIntro }}</p>
+            <p class="theme-intro-copy">
+              <span class="theme-intro-prefix">{{ isEn ? "Through" : "通过" }}</span>
+              <b>4Es: Educate · Experience · Explore · Exchange</b>
+              <span>{{ isEn ? theme.enIntroAfter4Es : theme.zhIntroAfter4Es }}</span>
+            </p>
             <p v-if="theme.note">{{ isEn ? theme.note.en : theme.note.zh }}</p>
           </div>
           <section class="theme-block">
@@ -264,8 +266,11 @@
             </h3>
             <div class="es-list">
               <p v-for="item in theme.es" :key="item.en">
-                <b>{{ isEn ? item.labelEn : item.labelZh }}</b
-                ><span>{{ isEn ? item.en : item.zh }}</span>
+                <span class="es-heading">
+                  <b>{{ item.labelEn }}</b><i aria-hidden="true">|</i
+                  ><strong>{{ isEn ? item.actionEn : item.actionZh }}</strong>
+                </span>
+                <span class="es-detail">{{ isEn ? item.en : item.zh }}</span>
               </p>
             </div>
           </section>
@@ -351,10 +356,16 @@ type Theme = {
   tagline: string;
   zhLead: string;
   enLead: string;
-  zhIntro: string;
-  enIntro: string;
+  zhIntroAfter4Es: string;
+  enIntroAfter4Es: string;
   note?: { zh: string; en: string };
-  es: { labelZh: string; labelEn: string; zh: string; en: string }[];
+  es: {
+    labelEn: string;
+    actionZh: string;
+    actionEn: string;
+    zh: string;
+    en: string;
+  }[];
   journeyTitle: { zh: string; en: string };
   journey: { zh: string; en: string }[];
   schedule: { day: string; zh: string; en: string }[];
@@ -503,8 +514,23 @@ const realLearning = [
     enDesc: "Universal Studios Singapore",
   },
 ];
+const esActions = {
+  EDUCATE: { zh: "启发学习", en: "Inspire Learning" },
+  EXPERIENCE: { zh: "真实体验", en: "Real-World Experience" },
+  EXPLORE: { zh: "主动探索", en: "Active Discovery" },
+  EXCHANGE: { zh: "国际交流", en: "International Exchange" },
+} as const;
 const baseEs = (rows: [string, string, string, string][]) =>
-  rows.map(([labelZh, labelEn, zh, en]) => ({ labelZh, labelEn, zh, en }));
+  rows.map(([, labelEn, zh, en]) => {
+    const action = esActions[labelEn as keyof typeof esActions];
+    return {
+      labelEn,
+      actionZh: action.zh,
+      actionEn: action.en,
+      zh: zh.replace(action.zh, ""),
+      en: en.replace(`${action.en}s`, "").replace(action.en, ""),
+    };
+  });
 const schedules = (rows: [string, string, string][]) =>
   rows.map(([day, zh, en]) => ({ day, zh, en }));
 const themes: Theme[] = [
@@ -517,10 +543,9 @@ const themes: Theme[] = [
     tagline: "Explore Life · Discover Health · Experience Singapore",
     zhLead: "探索生命 · 发现健康 · 认识真实的新加坡",
     enLead: "Explore Life · Discover Health · Experience the Real Singapore",
-    zhIntro:
-      "通过 4Es：Educate · Experience · Explore · Exchange，孩子将在科学、健康、教育、社区与文化的真实场景中学习与探索。",
-    enIntro:
-      "Through the 4Es: Educate · Experience · Explore · Exchange, students will learn and explore through real-world experiences across science, health, education, community and culture.",
+    zhIntroAfter4Es: "，孩子将在科学、健康、教育、社区与文化的真实场景中学习与探索。",
+    enIntroAfter4Es:
+      ", students will learn and explore through real-world experiences across science, health, education, community and culture.",
     es: baseEs([
       [
         "学习",
@@ -620,10 +645,9 @@ const themes: Theme[] = [
     tagline: "Explore Flight · Discover Space · Imagine the Future",
     zhLead: "从飞机起飞，到探索太空",
     enLead: "From Taking Flight to Exploring Space",
-    zhIntro:
-      "通过 4Es：Educate · Experience · Explore · Exchange，孩子将探索飞行原理、航空科技、太空科学，并亲手完成未来太空任务挑战。",
-    enIntro:
-      "Through the 4Es: Educate · Experience · Explore · Exchange, students will discover the principles of flight, aviation technology and space science, while taking on hands-on challenges inspired by future space missions.",
+    zhIntroAfter4Es: "，孩子将探索飞行原理、航空科技、太空科学，并亲手完成未来太空任务挑战。",
+    enIntroAfter4Es:
+      ", students will discover the principles of flight, aviation technology and space science, while taking on hands-on challenges inspired by future space missions.",
     es: baseEs([
       [
         "学习",
@@ -692,10 +716,10 @@ const themes: Theme[] = [
     tagline: "Discover Sustainability · Build a Greener Future",
     zhLead: "一座城市，如何变得更绿色、更宜居？",
     enLead: "How can a city become greener and more liveable?",
-    zhIntro:
-      "通过 4Es：Educate · Experience · Explore · Exchange，孩子将探索新加坡如何利用科学、科技、自然与城市规划，建设一个更绿色、更可持续的未来。",
-    enIntro:
-      "Through the 4Es: Educate · Experience · Explore · Exchange, students will discover how Singapore harnesses science, technology, nature and urban planning to build a greener and more sustainable future.",
+    zhIntroAfter4Es:
+      "，孩子将探索新加坡如何利用科学、科技、自然与城市规划，建设一个更绿色、更可持续的未来。",
+    enIntroAfter4Es:
+      ", students will discover how Singapore harnesses science, technology, nature and urban planning to build a greener and more sustainable future.",
     es: baseEs([
       [
         "学习",
@@ -764,10 +788,10 @@ const themes: Theme[] = [
     tagline: "Discover Tomorrow · Create the Future",
     zhLead: "科技，将如何改变未来的新加坡？",
     enLead: "How will technology transform the Singapore of tomorrow?",
-    zhIntro:
-      "通过 4Es：Educate · Experience · Explore · Exchange，孩子将探索机器人、AI与自动化、3D打印、电动车、智能制造及食品科技，发现科技如何从创意变成真实应用。",
-    enIntro:
-      "Through the 4Es: Educate · Experience · Explore · Exchange, students will explore robotics, AI and automation, 3D printing, electric vehicles, smart manufacturing and food technology, discovering how technology turns ideas into real-world applications.",
+    zhIntroAfter4Es:
+      "，孩子将探索机器人、AI与自动化、3D打印、电动车、智能制造及食品科技，发现科技如何从创意变成真实应用。",
+    enIntroAfter4Es:
+      ", students will explore robotics, AI and automation, 3D printing, electric vehicles, smart manufacturing and food technology, discovering how technology turns ideas into real-world applications.",
     es: baseEs([
       [
         "学习",
@@ -836,10 +860,10 @@ const themes: Theme[] = [
     tagline: "Discover Earth · Explore Life · Protect Our Planet",
     zhLead: "我们的地球是如何运作的？",
     enLead: "How does our planet work?",
-    zhIntro:
-      "从地球科学到野生动物，从海洋到湿地，孩子将通过 4Es：Educate · Experience · Explore · Exchange，亲身探索地球、生命与自然世界的奇妙联系。",
-    enIntro:
-      "From Earth Science to wildlife, from oceans to wetlands, students will use the 4Es to discover firsthand the fascinating connections between Earth, life and the natural world.",
+    zhIntroAfter4Es:
+      "，孩子将从地球科学到野生动物、从海洋到湿地，亲身探索地球、生命与自然世界的奇妙联系。",
+    enIntroAfter4Es:
+      ", students will discover firsthand the fascinating connections between Earth, life and the natural world, from Earth science and wildlife to oceans and wetlands.",
     es: baseEs([
       [
         "学习",
@@ -914,10 +938,10 @@ const themes: Theme[] = [
     zhLead: "AI，不只是未来科技，更是创造未来的工具",
     enLead:
       "AI Is More Than Future Technology — It’s a Tool for Creating the Future",
-    zhIntro:
-      "孩子将通过 4Es：Educate · Experience · Explore · Exchange，探索人工智能、机器人、3D打印与智能科技，并亲手把创意变成作品。",
-    enIntro:
-      "Through the 4Es — Educate · Experience · Explore · Exchange, students discover Artificial Intelligence, robotics, 3D printing and smart technologies, while turning their ideas into real creations through hands-on experiences.",
+    zhIntroAfter4Es:
+      "，孩子将探索人工智能、机器人、3D打印与智能科技，并亲手把创意变成作品。",
+    enIntroAfter4Es:
+      ", students discover Artificial Intelligence, robotics, 3D printing and smart technologies, while turning their ideas into real creations through hands-on experiences.",
     note: {
       zh: "无需编程或AI经验 · 无需自带电脑",
       en: "No prior coding or AI experience required · No personal laptops required",
@@ -1225,6 +1249,10 @@ themes.forEach((theme, index) => {
 .hero-meta {
   justify-self: end;
 }
+.hero-index,
+.hero-meta {
+  font-size: 18px;
+}
 .hero-copy {
   align-self: end;
 }
@@ -1235,7 +1263,7 @@ themes.forEach((theme, index) => {
 }
 .hero-copy h1 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(52px, 10vw, 150px);
+  font-size: clamp(42px, 6.5vw, 96px);
   line-height: 0.87;
   letter-spacing: -0.07em;
   margin: 0 0 30px;
@@ -1459,46 +1487,87 @@ themes.forEach((theme, index) => {
   margin: 28px 0 0;
 }
 .theme-age {
-  font-size: 11px;
+  font-size: 16px;
   color: #aaa;
   margin-top: 25px;
 }
 .theme-intro {
-  border-left: 3px solid #d6ff45;
-  padding: 10px 0 10px 25px;
-  max-width: 790px;
-  font-size: 18px;
-  line-height: 1.8;
+  border-left: 4px solid #d6ff45;
+  padding: 28px 34px;
+  max-width: 1040px;
+  font-size: 20px;
+  line-height: 1.75;
 }
 .theme-intro p {
   white-space: pre-line;
 }
 .theme-lead {
-  font: 700 25px/1.4 "Space Mono";
-  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font: 700 clamp(26px, 3vw, 36px)/1.35 "DM Sans", Arial, sans-serif;
+  margin: 0 0 14px;
+}
+.theme-lead .theme-icon {
+  margin-right: 0;
+}
+.theme-intro-copy {
+  margin: 0;
+  color: #e8eef1;
+}
+.theme-intro-copy b {
+  color: #d5ff5b;
+  font-family: "Space Mono", monospace;
+  font-size: 0.92em;
+}
+.theme-intro-prefix {
+  margin-right: 0.35em;
 }
 .theme-block {
   margin-top: 95px;
 }
 .theme-block h3 {
-  font: 700 28px "Space Mono";
+  font: 700 clamp(28px, 3vw, 38px) "DM Sans", Arial, sans-serif;
   margin: 0 0 30px;
 }
 .es-list {
   border-top: 1px solid #ffffff44;
+  max-width: 1040px;
 }
 .es-list p {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 30px;
+  display: block;
   border-bottom: 1px solid #ffffff22;
-  padding: 18px 0;
+  padding: 27px 0 25px;
   margin: 0;
-  line-height: 1.6;
+}
+.es-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 16px;
+  line-height: 1.2;
 }
 .es-list b {
-  font: 13px "Space Mono";
+  font: 700 clamp(24px, 3vw, 34px) "Space Mono", monospace;
   color: #d6ff45;
+}
+.es-heading i {
+  color: #b9c6ce;
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-style: normal;
+  font-weight: 300;
+}
+.es-heading strong {
+  color: #fff;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+}
+.es-detail {
+  display: block;
+  margin-top: 10px;
+  color: #d4dee3;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.55;
 }
 .journey-title {
   font: 700 18px "Space Mono";
@@ -1545,10 +1614,13 @@ themes.forEach((theme, index) => {
     min-height: 450px;
   }
   .hero-meta {
-    font-size: 9px;
+    font-size: 12px;
+  }
+  .hero-index {
+    font-size: 12px;
   }
   .hero-copy h1 {
-    font-size: clamp(44px, 14vw, 80px);
+    font-size: clamp(38px, 12vw, 64px);
   }
   .hero-sub {
     font-size: 15px;
@@ -1603,14 +1675,26 @@ themes.forEach((theme, index) => {
     font-size: clamp(36px, 12vw, 72px);
   }
   .theme-intro {
+    padding: 22px 20px;
     font-size: 16px;
   }
+  .theme-age {
+    font-size: 14px;
+  }
   .theme-lead {
-    font-size: 20px;
+    font-size: 24px;
   }
   .es-list p {
-    grid-template-columns: 1fr;
-    gap: 5px;
+    padding: 21px 0;
+  }
+  .es-heading {
+    gap: 0 10px;
+  }
+  .es-heading strong {
+    font-size: 25px;
+  }
+  .es-detail {
+    font-size: 17px;
   }
   .journey-list {
     grid-template-columns: 1fr;
@@ -1694,7 +1778,7 @@ themes.forEach((theme, index) => {
   border-top-color: #b8e9dc;
 }
 .hero-copy h1 {
-  font-size: clamp(44px, 7.8vw, 118px);
+  font-size: clamp(42px, 6vw, 92px);
   text-shadow: 0 10px 35px #07142566;
 }
 .hero-copy h1 span,

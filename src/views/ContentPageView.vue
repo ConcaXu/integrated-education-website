@@ -351,6 +351,14 @@
                   {{ tx(card.action, card.actionEn || card.action) }}
                   <span aria-hidden="true">→</span>
                 </router-link>
+                <router-link
+                  v-else-if="card.action === '初中课程'"
+                  class="card-action card-action--orange"
+                  to="/singapore-explorers-junior-high"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </router-link>
                 <button
                   v-else-if="card.action"
                   type="button"
@@ -907,6 +915,8 @@ const pages: Record<string, Page> = {
             textEn:
               "Connect learning with industry, technology and global issues.",
             icon: "◇",
+            action: "初中课程",
+            actionEn: "Junior high courses",
           },
           {
             title: "高中 / JC",

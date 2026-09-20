@@ -31,6 +31,10 @@
           <p class="hero-en">
             Explore Singapore · Discover the World · Imagine the Future
           </p>
+          <router-link class="junior-course-link" to="/singapore-explorers-junior-high">
+            {{ isEn ? "Junior High Courses" : "初中课程" }}
+            <span aria-hidden="true">→</span>
+          </router-link>
         </div>
         <div class="hero-stamp" aria-hidden="true">
           06<br /><small>THEMES</small>
@@ -2064,11 +2068,11 @@ themes.forEach((theme, index) => {
 }
 .journey-list p {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-width: 0;
 }
 .journey-list p {
-  white-space: nowrap;
+  white-space: normal;
 }
 .theme-header h2 {
   max-width: 100%;
@@ -2302,4 +2306,24 @@ themes.forEach((theme, index) => {
 .theme-header h2 {
   font-size: 32px;
 }
+
+.junior-course-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 42px;
+  margin-top: 26px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  background: #ff8147;
+  box-shadow: 0 12px 23px rgba(255, 129, 71, .26);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.junior-course-link span { font-size: 19px; line-height: .7; }
+.junior-course-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
+.junior-course-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
 </style>

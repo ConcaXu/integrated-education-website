@@ -282,6 +282,12 @@
                 isEn ? "6-Day / 5-Night Discovery Journey" : "6天5夜探索之旅"
               }}
             </h3>
+            <div class="schedule-list">
+              <p v-for="day in theme.schedule" :key="day.day">
+                <b>{{ day.day }}</b
+                ><span>{{ isEn ? day.en : day.zh }}</span>
+              </p>
+            </div>
             <p class="journey-title">
               <component
                 :is="themeIcons[index]"
@@ -293,12 +299,6 @@
               <p v-for="(line, li) in theme.journey" :key="line.en">
                 <i class="journey-icon">{{ String(li + 1).padStart(2, "0") }}</i
                 >{{ isEn ? line.en : line.zh }}
-              </p>
-            </div>
-            <div class="schedule-list">
-              <p v-for="day in theme.schedule" :key="day.day">
-                <b>{{ day.day }}</b
-                ><span>{{ isEn ? day.en : day.zh }}</span>
               </p>
             </div>
           </section>
@@ -1417,6 +1417,7 @@ themes.forEach((theme, index) => {
   padding: 55px 0 15px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 13px;
 }
 .overview-close span {
@@ -1590,9 +1591,10 @@ themes.forEach((theme, index) => {
   border-top: 1px solid #ffffff55;
   padding-top: 30px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   flex-direction: column;
+  text-align: center;
 }
 .theme-footer strong {
   font: 700 25px "Space Mono";
@@ -2062,8 +2064,11 @@ themes.forEach((theme, index) => {
   }
 }
 .schedule-list {
-  margin-top: 36px;
+  margin-top: 0;
   border-top: 1px solid #ffffff44;
+}
+.journey h3 {
+  margin-bottom: 0;
 }
 .schedule-list p {
   display: grid;
@@ -2080,6 +2085,9 @@ themes.forEach((theme, index) => {
 }
 .schedule-list span {
   font-size: 14px;
+}
+.schedule-list + .journey-title {
+  margin-top: 34px;
 }
 .theme-overview {
   background: transparent;

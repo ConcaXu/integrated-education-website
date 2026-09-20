@@ -1,71 +1,46 @@
-<!-- 中国产业考察项目系列 -->
 <template>
   <div class="industry-page">
-    <section
-      class="industry-hero"
-      :style="{
-        backgroundImage: `linear-gradient(90deg, rgba(8, 48, 78, .78), rgba(8, 48, 78, .28)), url(${heroBackground})`,
-      }"
-    >
+    <section class="industry-hero" :style="{ backgroundImage: `linear-gradient(90deg, rgba(7, 37, 61, .9), rgba(7, 37, 61, .38)), url(${heroBackground})` }">
       <div class="industry-shell industry-hero__inner">
-        <p class="industry-eyebrow">APIMTC · MICE &amp; BUSINESS</p>
-        <h1>
-          {{
-            isEnglish
-              ? "China Industry Study Programmes"
-              : "中国产业考察项目系列"
-          }}
-        </h1>
-        <p>
-          {{
-            isEnglish
-              ? "Executive Industrial Study · Technology Benchmarking · Business Exchange · Cultural Experience"
-              : "高管产业考察 · 技术标杆学习 · 商务交流 · 文化体验"
-          }}
-        </p>
+        <p class="industry-eyebrow">APIMTC / EXECUTIVE STUDY MISSIONS</p>
+        <h1>{{ isEnglish ? "China Industry Study Programmes" : "中国产业考察项目系列" }}</h1>
+        <p>{{ isEnglish ? "Executive industry study · Technology benchmarking · Business exchange · Cultural experience" : "高管产业考察 · 技术标杆学习 · 商务交流 · 文化体验" }}</p>
       </div>
     </section>
-    <main class="industry-shell industry-main">
-      <div class="industry-toolbar">
-        <div>
-          <span class="industry-label">{{
-            isEnglish ? "PROGRAMME BROCHURE" : "项目宣传册"
-          }}</span
-          ><span>{{
-            isEnglish ? "Complete programme content" : "完整项目内容"
-          }}</span>
+    <main>
+      <section class="industry-intro industry-shell">
+        <div class="industry-intro__copy">
+          <span class="section-index">01 / PROGRAMME OVERVIEW</span>
+          <h2>{{ isEnglish ? "See China's industry in motion." : "走进中国领先产业的真实现场。" }}</h2>
+          <p>{{ isEnglish ? "Curated 7-day / 6-night executive missions for business leaders and professional delegations. Each journey combines company visits, technical exchange and on-the-ground industry insight to explore meaningful commercial connections." : "为国际企业家、产业高管及专业代表团精心设计的 7天6夜高端产业考察项目。通过企业参访、专业交流与产业标杆学习，深入了解中国领先的产业、制造及科技生态，探索潜在合作机会。" }}</p>
         </div>
-      </div>
-      <div class="industry-gallery">
-        <figure v-for="image in images" :key="image.src">
-          <img :src="image.src" :alt="image.alt" />
-          <figcaption>{{ image.alt }}</figcaption>
-        </figure>
-      </div>
-      <article class="industry-document">
-        <template v-for="(block, index) in content" :key="index">
-          <h2
-            v-if="block.type === 'heading'"
-            class="industry-document__heading"
-          >
-            <component
-              v-if="block.icon"
-              :is="block.icon"
-              class="industry-document__icon"
-              aria-hidden="true"
-            />
-            <span>{{ block.text }}</span>
-          </h2>
-          <p v-else class="industry-document__paragraph">
-            <component
-              v-if="block.icon"
-              :is="block.icon"
-              class="industry-document__inline-icon"
-              aria-hidden="true"
-            />
-            <span>{{ block.text }}</span>
-          </p>
-        </template>
+        <div class="industry-pillars"><div v-for="pillar in pillars" :key="pillar.title" class="industry-pillar"><component :is="pillar.icon" aria-hidden="true" /><span>{{ pillar.title }}</span></div></div>
+      </section>
+      <section class="industry-gallery industry-shell" aria-label="Programme experience"><figure v-for="image in images" :key="image.src"><img :src="image.src" :alt="image.alt" /><figcaption>{{ image.alt }}</figcaption></figure></section>
+      <section class="programme-overview">
+        <div class="industry-shell">
+          <div class="section-heading"><div><span class="section-index">02 / SELECT A JOURNEY</span><h2>{{ isEnglish ? "Three executive industry studies" : "三大产业考察项目" }}</h2></div><p>{{ isEnglish ? "Select a programme to move directly to its full study brief." : "点击相关学习之旅，即可查看对应项目详情。" }}</p></div>
+          <div class="industry-table-wrap">
+            <table class="industry-table"><thead><tr><th>{{ isEnglish ? "Programme" : "项目" }}</th><th>{{ isEnglish ? "Route" : "路线" }}</th><th>{{ isEnglish ? "Study focus" : "重点考察领域" }}</th><th>{{ isEnglish ? "Suitable industries" : "适合产业领域" }}</th><th><span class="sr-only">{{ isEnglish ? "View details" : "查看详情" }}</span></th></tr></thead>
+              <tbody><tr v-for="programme in programmes" :key="programme.id" class="industry-table__row" @click="scrollToProgramme(programme.id)">
+                <th scope="row"><button :aria-label="`${isEnglish ? 'View details for ' : '查看'}${programme.title}`" @click.stop="scrollToProgramme(programme.id)"><component :is="programme.icon" aria-hidden="true" /><span>{{ programme.title }}</span></button></th>
+                <td>{{ programme.route }}</td><td>{{ programme.focus }}</td><td>{{ programme.industries }}</td><td class="industry-table__action"><button :aria-label="`${isEnglish ? 'View details for ' : '查看'}${programme.title}`" @click.stop="scrollToProgramme(programme.id)"><Right aria-hidden="true" /></button></td>
+              </tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <article v-for="(programme, index) in programmes" :id="programme.id" :key="programme.id" class="programme-detail" :class="`programme-detail--${index + 1}`">
+        <div class="industry-shell">
+          <div class="programme-topline"><span>{{ String(index + 1).padStart(2, "0") }} / 03</span><span>{{ isEnglish ? "CHINA INDUSTRY STUDY PROGRAMMES" : "中国产业考察项目系列" }}</span></div>
+          <header class="programme-header"><component :is="programme.icon" class="programme-header__icon" aria-hidden="true" /><div><p>{{ programme.kicker }}</p><h2>{{ programme.detailTitle }}</h2><span>{{ programme.duration }} · {{ programme.shortFocus }}</span></div></header>
+          <div class="programme-facts"><div><span>{{ isEnglish ? "Route" : "考察路线" }}</span><strong>{{ programme.route }}</strong></div><div><span>{{ isEnglish ? "Duration" : "行程" }}</span><strong>{{ programme.duration }}</strong></div><div><span>{{ isEnglish ? "Core theme" : "核心主题" }}</span><strong>{{ programme.shortFocus }}</strong></div></div>
+          <p class="programme-lead">{{ programme.intro }}</p>
+          <div class="programme-layout"><section><h3>{{ isEnglish ? "Programme highlights" : "项目亮点" }}</h3><ul class="check-list"><li v-for="item in programme.highlights" :key="item">{{ item }}</li></ul></section><section><h3>{{ programme.pathwayTitle }}</h3><p class="programme-pathway">{{ programme.pathway }}</p><div class="city-list"><div v-for="city in programme.cities" :key="city.name"><strong>{{ city.name }}</strong><span>{{ city.detail }}</span></div></div></section></div>
+          <section class="focus-section"><h3>{{ isEnglish ? "Key study areas" : "重点考察领域" }}</h3><div class="focus-grid"><div v-for="area in programme.areas" :key="area.title"><strong>{{ area.title }}</strong><p>{{ area.detail }}</p></div></div></section>
+          <div class="programme-layout programme-layout--bottom"><section><h3>{{ isEnglish ? "Executive exchange" : "高管商务与技术交流" }}</h3><p>{{ programme.exchange }}</p></section><section><h3>{{ isEnglish ? "Expected outcomes" : "预期成果" }}</h3><p>{{ programme.outcomes }}</p></section></div>
+          <p class="programme-note">{{ programme.note }}</p>
+        </div>
       </article>
     </main>
   </div>
@@ -73,15 +48,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  Connection,
-  Cpu,
-  DataAnalysis,
-  Lightning,
-  Location as Globe,
-  Promotion as Rocket,
-  Van,
-} from "@element-plus/icons-vue";
+import { Connection, Cpu, DataAnalysis, Lightning, Promotion as Rocket, Right, Van } from "@element-plus/icons-vue";
 import { useI18n } from "@/composables/useI18n";
 import executiveIndustryStudy from "@/assets/chineseIndustryInspectionProject-images/高管产业参访.png";
 import technologyBenchmarking from "@/assets/chineseIndustryInspectionProject-images/技术标杆学习.png";
@@ -91,297 +58,23 @@ import heroBackground from "@/assets/chineseIndustryInspectionProject-images/bj.
 
 const { lang } = useI18n();
 const isEnglish = computed(() => lang.value === "en");
-const images = computed(() =>
-  isEnglish.value
-    ? [
-        { src: executiveIndustryStudy, alt: "Executive industrial study" },
-        { src: technologyBenchmarking, alt: "Technology benchmarking" },
-        { src: businessExchange, alt: "Business exchange" },
-        { src: culturalExperience, alt: "Cultural experience" },
-      ]
-    : [
-        { src: executiveIndustryStudy, alt: "高管产业考察" },
-        { src: technologyBenchmarking, alt: "技术标杆学习" },
-        { src: businessExchange, alt: "商务交流" },
-        { src: culturalExperience, alt: "文化体验" },
-      ],
-);
+const scrollToProgramme = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); window.history.replaceState(null, "", `#${id}`); };
+const images = computed(() => [
+  { src: executiveIndustryStudy, alt: isEnglish.value ? "Executive industry study" : "高管产业考察" }, { src: technologyBenchmarking, alt: isEnglish.value ? "Technology benchmarking" : "技术标杆学习" }, { src: businessExchange, alt: isEnglish.value ? "Business exchange" : "商务交流" }, { src: culturalExperience, alt: isEnglish.value ? "Cultural experience" : "文化体验" },
+]);
+const pillars = computed(() => [
+  { icon: Van, title: isEnglish.value ? "Corporate & factory visits" : "企业及工厂参访" }, { icon: Connection, title: isEnglish.value ? "Executive & technical exchange" : "高管及技术交流" }, { icon: DataAnalysis, title: isEnglish.value ? "Industry benchmarking" : "产业及制造标杆学习" }, { icon: Rocket, title: isEnglish.value ? "Business networking" : "国际商务交流与人脉拓展" },
+]);
 
-const zh = [
-  ["heading", "中国产业考察项目系列"],
-  ["p", "高管产业考察 · 技术标杆学习 · 商务交流 · 文化体验"],
-  [
-    "p",
-    "为国际企业家、产业高管及专业代表团精心设计的7天6夜高端产业考察项目，深入了解中国领先的产业、制造及科技生态，并通过企业参访与专业交流，探索潜在合作机会。",
-  ],
-  ["heading", "项目亮点", Rocket],
-  [
-    "p",
-    "每项考察项目均结合：企业及工厂参访；高管及技术交流；产业及制造标杆学习；国际商务交流与人脉拓展；精选文化体验。",
-  ],
-  ["heading", "三大产业考察项目", DataAnalysis],
-  [
-    "p",
-    "汽车与先进制造产业考察｜成都 → 重庆 → 北京｜汽车制造 · 新能源汽车 · 智能工厂 · 汽车零部件 · 电池与动力系统 · 汽车研发 · 智能汽车",
-    Van,
-  ],
-  [
-    "p",
-    "新能源与能源科技产业考察｜成都 → 宜宾｜光伏 · 储能 · 锂资源 · 电池材料 · 动力电池 · 智能制造 · 绿色制造 · 新能源产业集群",
-    Lightning,
-  ],
-  [
-    "p",
-    "AI与智能制造产业考察｜上海 → 苏州 → 无锡 → 杭州｜人工智能与数字化 · 医药与医疗器械 · 新能源与光伏 · 矿业与工业设备 · 机器人 · 智能制造",
-    Cpu,
-  ],
-  ["heading", "参与者将获得", Connection],
-  [
-    "p",
-    "产业洞察 · 技术标杆学习 · 制造最佳实践 · 供应商与合作伙伴连接 · 商业机会 · 专业人脉拓展",
-  ],
-  ["heading", "商务 + 文化体验", Globe],
-  [
-    "p",
-    "精选文化体验为产业项目增添深度，帮助参与者更全面地了解中国的营商环境、区域发展与商业文化，同时创造非正式交流和关系建立的机会。",
-  ],
-  ["heading", "三大项目 · 一个目标"],
-  ["p", "了解中国 · 对标产业 · 探索技术 · 连接伙伴 · 拓展全球商业机会"],
-  ["p", "最终企业参访、接待机构及项目内容将根据代表团需求及接待企业确认。"],
+const zhProgrammes = [
+  { id: "automotive", icon: Van, title: "汽车与先进制造产业考察", detailTitle: "中国汽车产业高管商务考察项目", kicker: "AUTOMOTIVE & ADVANCED MANUFACTURING", route: "成都 → 重庆 → 北京", duration: "7天6夜", shortFocus: "汽车制造 · 新能源汽车 · 智能制造 · 汽车科技", focus: "汽车制造 · 新能源汽车 · 智能工厂 · 汽车零部件 · 电池与动力系统 · 汽车研发 · 智能汽车", industries: "汽车OEM · 新能源汽车 · 零部件 · 电池与动力系统 · Tier 1 / Tier 2供应商 · 汽车科技", intro: "为印度汽车行业企业高管量身打造，深入了解中国汽车制造、新能源汽车、智能工厂及汽车科技生态。", highlights: ["汽车企业及工厂参访", "高管及技术交流", "汽车制造标杆考察", "新能源汽车与智能工厂体验", "中印商务交流与合作对接", "精选文化体验"], pathwayTitle: "七天产业学习路径", pathway: "整车制造 → 新能源转型 → 智能工厂 → 供应链 → 汽车研发 → 智能汽车 → 全球化", cities: [{ name: "成都", detail: "整车制造 · 新能源汽车 · 零部件 · 智能制造 · 供应链生态" }, { name: "重庆", detail: "智能工厂 · 工业4.0 · 新能源汽车 · 汽车研发 · 智能驾驶" }, { name: "北京", detail: "智能汽车 · AI+汽车 · 汽车科技 · 软件与电子 · 创新生态" }], areas: [{ title: "新能源汽车", detail: "EV平台 · 动力电池 · 电驱系统 · 车辆电子 · 新能源制造" }, { title: "智能制造", detail: "工业机器人 · 数字化工厂 · 自动化 · AI质检 · 智能物流" }, { title: "汽车供应链", detail: "Tier 1 / Tier 2 · 本地化 · 战略采购 · 零部件制造 · 供应链协同" }, { title: "汽车科技", detail: "智能驾驶 · 汽车软件 · 智能座舱 · AI · 汽车电子" }], exchange: "企业介绍 → 技术展示 → 工厂参访 → 高管交流 → 技术问答 → 商务合作洽谈。重点探讨制造效率、新能源转型、智能制造、供应链、技术合作及全球化。", outcomes: "了解中国汽车产业生态 · 学习新能源及智能制造实践 · 考察先进汽车技术与研发 · 寻找供应链及技术合作伙伴 · 探索中印汽车产业合作机会。", note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团行业背景、战略重点及企业实际接待情况确认。" },
+  { id: "new-energy", icon: Lightning, title: "新能源与能源科技产业考察", detailTitle: "中国四川新能源高管产业考察与技术交流项目", kicker: "NEW ENERGY & ENERGY TECHNOLOGY", route: "成都 → 宜宾 → 成都", duration: "7天6夜", shortFocus: "新能源 · 锂电池 · 先进制造 · 技术交流", focus: "光伏 · 储能 · 锂资源 · 电池材料 · 动力电池 · 智能制造 · 绿色制造 · 新能源产业集群", industries: "可再生能源 · 光伏 · 电池与储能 · 新能源汽车 · 锂及电池材料 · 先进制造", intro: "为印度能源及工业领域企业高管量身打造，深入了解中国新能源、锂电池及先进制造产业生态。", highlights: ["新能源及光伏企业参访", "锂资源、电池材料及动力电池制造考察", "智能工厂与先进制造标杆学习", "技术及高管交流", "绿色制造与产业集群考察", "中印专业交流与商务对接"], pathwayTitle: "新能源产业链", pathway: "太阳能光伏 → 储能 → 锂资源与电池材料 → 动力电池 → 智能制造 → 绿色制造 → 产业集群", cities: [{ name: "成都", detail: "光伏 · 储能 · 锂资源 · 科技研发 · 先进制造" }, { name: "宜宾", detail: "动力电池 · 电池材料 · 智能工厂 · 绿色制造 · 新能源产业集群" }], areas: [{ title: "光伏与新能源", detail: "高效光伏电池 · 智能生产 · 自动化 · 质量管理" }, { title: "储能技术", detail: "储能系统 · 安全技术 · 热管理 · 能源管理 · 综合解决方案" }, { title: "锂资源与电池材料", detail: "锂资源 · 锂化学品 · 电池级材料 · 加工技术 · 产业链" }, { title: "动力电池制造", detail: "电芯生产 · 自动化 · 数字化制造 · 质量与安全 · 低碳生产" }], exchange: "产业介绍 → 技术展示 → 工厂/设施参访 → 高管交流 → 技术问答 → 专业交流。重点探讨技术、制造、供应链、自动化、质量管理、绿色制造及产业发展。", outcomes: "了解中国新能源产业生态 · 学习光伏及电池制造 · 考察智能与绿色制造 · 深入了解产业链与供应链 · 发掘技术及商务合作机会。", note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据企业接待情况及代表团需求确认。" },
+  { id: "ai-manufacturing", icon: Cpu, title: "AI与智能制造产业考察", detailTitle: "中国长三角AI与智能制造高管产业考察交流项目", kicker: "AI & SMART MANUFACTURING", route: "上海 → 苏州 → 无锡 → 杭州", duration: "7天6夜", shortFocus: "先进制造 · 智能制造 · 技术交流 · 商务交流", focus: "AI与数字化 · 医药与医疗器械 · 新能源与光伏 · 矿业与工业装备 · 工业机器人 · 智能制造", industries: "医药与医疗器械 · 新能源 · 工业装备 · 机器人 · 自动化 · 先进制造", intro: "为印度企业及产业领域高管量身打造，深入了解中国先进制造、智能制造、科技创新及产业生态。", highlights: ["企业及工厂参访", "高管及技术交流", "智能制造标杆学习", "产业及供应链考察", "中印商务交流与合作对接", "精选文化体验"], pathwayTitle: "四城产业考察", pathway: "上海 → 苏州 → 无锡 → 杭州，连接国际商务、先进制造与创新科技生态。", cities: [{ name: "上海", detail: "国际商务 · 医药产业 · 医疗科技" }, { name: "苏州", detail: "新能源 · 光伏 · 智能制造" }, { name: "无锡", detail: "矿业装备 · 重工业 · 先进制造" }, { name: "杭州", detail: "工业机器人 · 医疗器械 · 新能源 · 创新科技" }], areas: [{ title: "医药与医疗器械", detail: "医药研发 · CRO/CDMO · 医疗器械 · 精密制造" }, { title: "新能源与光伏", detail: "光伏制造 · 智能生产 · 数字化工厂 · 新能源技术" }, { title: "矿业与工业装备", detail: "矿山机械 · 重型装备 · 工业电气化 · 智能装备" }, { title: "工业机器人与智能制造", detail: "机器人 · 自动化 · 智能感知 · 智慧工厂" }], exchange: "企业介绍 → 技术展示 → 工厂/研发中心参访 → 管理层交流 → 技术问答 → 中印商务对接。重点探讨技术合作、供应链、设备采购、本地化制造、联合研发、市场拓展及投资合作。", outcomes: "了解中国先进制造生态 · 探索前沿技术 · 标杆学习智能制造 · 对接供应商与合作伙伴 · 发掘中印合作机会 · 建立产业商务网络。", note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团需求及企业实际接待情况确认。" },
 ];
-const en = [
-  ["heading", "CHINA INDUSTRY STUDY PROGRAMMES"],
-  [
-    "p",
-    "Executive Industrial Study · Technology Benchmarking · Business Exchange · Cultural Experience",
-  ],
-  [
-    "p",
-    "A curated series of 7-day / 6-night executive study missions for international business leaders, industry executives and professional delegations seeking first-hand exposure to China’s leading industrial, manufacturing and technology ecosystems.",
-  ],
-  ["heading", "Programme Highlights", Rocket],
-  [
-    "p",
-    "Each programme combines: Corporate & factory visits; Executive & technology exchanges; Industry and manufacturing benchmarking; International business networking; Selected cultural experiences.",
-  ],
-  ["heading", "Three Executive Industry Studies", DataAnalysis],
-  [
-    "p",
-    "Automotive & Advanced Manufacturing｜Chengdu → Chongqing → Beijing｜Automotive Manufacturing · NEVs · Smart Factories · Components · Batteries & Powertrain · Automotive R&D · Intelligent Vehicles",
-    Van,
-  ],
-  [
-    "p",
-    "New Energy & Energy Technology｜Chengdu → Yibin｜Solar PV · Energy Storage · Lithium · Battery Materials · EV Batteries · Smart Manufacturing · Green Manufacturing · Industrial Clusters",
-    Lightning,
-  ],
-  [
-    "p",
-    "AI & Smart Manufacturing｜Shanghai → Suzhou → Wuxi → Hangzhou｜AI & Digitalisation · Pharmaceuticals & Medical Devices · New Energy & PV · Mining & Industrial Equipment · Robotics · Smart Manufacturing",
-    Cpu,
-  ],
-  ["heading", "What Participants Gain", Connection],
-  [
-    "p",
-    "Industrial Insights · Technology Benchmarking · Manufacturing Best Practices · Supplier & Partner Connections · Business Opportunities · Professional Networking",
-  ],
-  ["heading", "Business + Cultural Experience", Globe],
-  [
-    "p",
-    "Selected cultural experiences complement the industrial programme, providing participants with a broader understanding of China’s business environment, regional development and commercial culture, while creating opportunities for informal networking and relationship building.",
-  ],
-  ["heading", "THREE PROGRAMMES · ONE OBJECTIVE"],
-  [
-    "p",
-    "Understand China · Benchmark Industry · Discover Technology · Connect with Partners · Explore Global Business Opportunities",
-  ],
-  [
-    "p",
-    "Final corporate visits, host organisations and programme content are subject to delegation requirements and host-company confirmation.",
-  ],
-];
-const content = computed(() =>
-  (isEnglish.value ? en : zh).map(([type, text, icon]) => ({
-    type,
-    text,
-    icon,
-  })),
-);
+const enProgrammes = zhProgrammes.map((programme) => ({ ...programme, duration: "7 Days / 6 Nights" }));
+const programmes = computed(() => isEnglish.value ? enProgrammes : zhProgrammes);
 </script>
 
 <style scoped>
-.industry-page {
-  background: #f5f8fb;
-  color: #18324a;
-  min-height: 100vh;
-}
-.industry-shell {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 28px;
-}
-.industry-hero {
-  padding: 150px 0 100px;
-  background: linear-gradient(135deg, #123b5d, #1d6d86);
-  color: #fff;
-}
-.industry-eyebrow,
-.industry-label {
-  letter-spacing: 0.16em;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-.industry-hero h1 {
-  font:
-    600 clamp(42px, 7vw, 82px)/1.02 "Playfair Display",
-    Georgia,
-    serif;
-  margin: 20px 0;
-}
-.industry-hero p:last-child {
-  font-size: 17px;
-  max-width: 650px;
-}
-.industry-main {
-  padding-top: 42px;
-  padding-bottom: 100px;
-}
-.industry-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 22px;
-  background: #fff;
-  border: 1px solid #d8e7f2;
-  box-shadow: 0 16px 40px rgba(24, 56, 80, 0.08);
-}
-.industry-toolbar div {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-.industry-toolbar span:last-child {
-  color: #7390a7;
-}
-.industry-language {
-  border: 0;
-  background: #ff8249;
-  color: #fff;
-  padding: 11px 18px;
-  border-radius: 5px;
-  font-weight: 800;
-  cursor: pointer;
-}
-.industry-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin: 26px 0 36px;
-}
-.industry-gallery figure {
-  margin: 0;
-  background: #fff;
-  border: 1px solid #d8e7f2;
-  box-shadow: 0 10px 24px rgba(24, 56, 80, 0.08);
-}
-.industry-gallery img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1.55;
-  object-fit: cover;
-}
-.industry-gallery figcaption {
-  padding: 10px 12px;
-  font-size: 12px;
-  color: #67839a;
-}
-.industry-document {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid #d8e7f2;
-  padding: 42px 48px;
-  box-shadow: 0 18px 50px rgba(24, 56, 80, 0.08);
-}
-.industry-document h2 {
-  font:
-    600 28px/1.2 "Playfair Display",
-    Georgia,
-    serif;
-  color: #123b5d;
-  margin: 28px 0 12px;
-}
-.industry-document h2:first-child {
-  margin-top: 0;
-}
-.industry-document p {
-  white-space: pre-line;
-  line-height: 1.85;
-  margin: 0 0 14px;
-  color: #49677e;
-}
-@media (max-width: 760px) {
-  .industry-shell {
-    padding: 0 18px;
-  }
-  .industry-hero {
-    padding: 120px 0 72px;
-  }
-  .industry-toolbar div {
-    display: block;
-  }
-  .industry-toolbar span {
-    display: block;
-  }
-  .industry-toolbar span:last-child {
-    margin-top: 5px;
-  }
-  .industry-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .industry-document {
-    padding: 28px 22px;
-  }
-  .industry-document h2 {
-    font-size: 23px;
-  }
-}
-/* Keep decorative Element Plus icons subordinate to the document text. */
-.industry-document h2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.industry-document__icon {
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
-  color: #e06f3d;
-}
-.industry-document p {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.industry-document__inline-icon {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
-  margin-top: 0.4em;
-  color: #e06f3d;
-}
-@media (max-width: 760px) {
-  .industry-document h2 {
-    gap: 8px;
-  }
-  .industry-document__icon {
-    width: 18px;
-    height: 18px;
-    flex-basis: 18px;
-  }
-  .industry-document__inline-icon {
-    width: 14px;
-    height: 14px;
-    flex-basis: 14px;
-  }
-}
+.industry-page{background:#f4f7f4;color:#19394b;min-height:100vh}.industry-shell{width:min(1240px,calc(100% - 48px));margin:0 auto}.industry-hero{min-height:530px;display:grid;align-items:end;padding:130px 0 84px;color:#fff;background-color:#173f58;background-position:center;background-size:cover}.industry-eyebrow,.section-index{color:#e89a58;font-size:12px;font-weight:800;letter-spacing:.12em}.industry-hero h1{max-width:900px;margin:15px 0 17px;font:600 clamp(42px,6vw,76px)/1.08 Georgia,serif}.industry-hero p:last-child{max-width:620px;margin:0;font-size:17px;line-height:1.7}.industry-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;padding:90px 0}.industry-intro h2,.section-heading h2,.programme-header h2{font:600 clamp(30px,4vw,48px)/1.18 Georgia,serif;color:#153c56}.industry-intro h2{margin:13px 0 20px}.industry-intro__copy>p{max-width:650px;color:#507080;font-size:16px;line-height:1.95}.industry-pillars{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #cbd9d4;border-left:1px solid #cbd9d4;align-self:center}.industry-pillar{min-height:124px;padding:22px;display:grid;align-content:center;gap:12px;border-right:1px solid #cbd9d4;border-bottom:1px solid #cbd9d4;background:#fff;font-weight:700}.industry-pillar svg{width:23px;color:#db7443}.programme-overview{padding:82px 0 92px;background:#e6efed;border-block:1px solid #cadbd8}.section-heading{display:flex;justify-content:space-between;gap:38px;align-items:end;margin-bottom:28px}.section-heading h2{margin:10px 0 0}.section-heading>p{max-width:320px;margin:0 0 7px;color:#507080;line-height:1.65}.industry-table-wrap{overflow-x:auto;border:1px solid #b9cfcc;background:#fff;box-shadow:0 18px 35px rgb(21 60 86 / 8%)}.industry-table{width:100%;min-width:980px;border-collapse:collapse;text-align:left}.industry-table th,.industry-table td{padding:21px 18px;vertical-align:top;border-right:1px solid #d9e5e1;border-bottom:1px solid #d9e5e1;color:#476776;font-size:14px;line-height:1.7}.industry-table tr>:last-child{border-right:0}.industry-table tbody tr:last-child>*{border-bottom:0}.industry-table thead th{padding-block:14px;background:#153c56;color:#fff;font-size:13px;letter-spacing:.04em}.industry-table thead th:nth-child(1){width:20%}.industry-table thead th:nth-child(2){width:17%}.industry-table thead th:nth-child(3){width:32%}.industry-table thead th:nth-child(4){width:28%}.industry-table__row{cursor:pointer;transition:background-color .18s ease}.industry-table__row:hover{background:#f0f7f5}.industry-table tbody th button{display:flex;gap:11px;align-items:flex-start;padding:0;color:#153c56;text-align:left;font:800 16px/1.45 inherit;background:transparent;border:0;cursor:pointer}.industry-table tbody th svg{width:23px;flex:0 0 23px;margin-top:1px;color:#dd7946}.industry-table__action button{display:grid;place-items:center;width:37px;height:37px;padding:0;color:#fff;background:#d87142;border:0;border-radius:50%;cursor:pointer}.industry-table__action svg{width:18px}.industry-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:54px 0}.industry-gallery figure{margin:0;overflow:hidden;background:#fff;border:1px solid #d2e0dc}.industry-gallery img{display:block;width:100%;aspect-ratio:1.43;object-fit:cover;transition:transform .25s ease}.industry-gallery figure:hover img{transform:scale(1.04)}.industry-gallery figcaption{padding:11px 13px;color:#587482;font-size:12px}.programme-detail{scroll-margin-top:74px;padding:76px 0 82px;background:#173f58;color:#eaf3f1}.programme-detail--2{background:#244d45}.programme-detail--3{background:#263e60}.programme-topline{display:flex;justify-content:space-between;padding-bottom:19px;border-bottom:1px solid rgb(255 255 255 / 28%);color:#c4d8d5;font-size:12px;font-weight:800;letter-spacing:.1em}.programme-header{display:flex;gap:22px;align-items:flex-start;padding:38px 0 30px}.programme-header__icon{flex:0 0 44px;width:44px;height:44px;color:#efa569}.programme-header p{margin:0 0 9px;color:#efa569;font-size:12px;font-weight:800;letter-spacing:.1em}.programme-header h2{margin:0 0 10px;color:#fff}.programme-header span{color:#c8d8d9;line-height:1.6}.programme-facts{display:grid;grid-template-columns:1fr .6fr 1.45fr;border-top:1px solid rgb(255 255 255 / 23%);border-left:1px solid rgb(255 255 255 / 23%)}.programme-facts div{min-height:105px;padding:19px 22px;display:grid;align-content:center;gap:7px;border-right:1px solid rgb(255 255 255 / 23%);border-bottom:1px solid rgb(255 255 255 / 23%)}.programme-facts span{color:#a6c3c5;font-size:12px;font-weight:700;letter-spacing:.07em}.programme-facts strong{color:#fff;line-height:1.55}.programme-lead{max-width:900px;margin:36px 0 46px;color:#f4f8f7;font:500 19px/1.8 Georgia,serif}.programme-layout{display:grid;grid-template-columns:1fr 1fr;gap:58px}.programme-detail h3{margin:0 0 19px;color:#fff;font:600 25px/1.25 Georgia,serif}.programme-layout p{margin:0;color:#d6e3e1;line-height:1.85}.check-list{display:grid;gap:11px;padding:0;margin:0;list-style:none}.check-list li{color:#d6e3e1;line-height:1.55}.check-list li::before{content:"";display:inline-block;width:7px;height:7px;margin:0 10px 2px 0;background:#efa569;border-radius:50%}.programme-pathway{padding:16px 18px;background:rgb(255 255 255 / 8%);border-left:3px solid #efa569}.city-list{display:grid;gap:11px;margin-top:17px}.city-list div{display:grid;grid-template-columns:88px 1fr;gap:12px;color:#d6e3e1;font-size:14px;line-height:1.65}.city-list strong{color:#efa569}.focus-section{margin:55px 0;padding:41px 0;border-block:1px solid rgb(255 255 255 / 20%)}.focus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgb(255 255 255 / 20%)}.focus-grid div{min-height:152px;padding:22px;background:rgb(255 255 255 / 7%)}.focus-grid strong{color:#efa569}.focus-grid p{margin:13px 0 0;color:#d6e3e1;font-size:14px;line-height:1.7}.programme-layout--bottom{gap:80px}.programme-note{margin:58px 0 0;padding-top:19px;border-top:1px solid rgb(255 255 255 / 20%);color:#aec6c8;font-size:13px;line-height:1.75}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}@media(max-width:800px){.industry-shell{width:min(100% - 36px,1240px)}.industry-hero{min-height:440px;padding:105px 0 58px}.industry-intro{grid-template-columns:1fr;gap:36px;padding:58px 0}.section-heading,.programme-topline{display:grid;gap:14px}.programme-overview{padding:58px 0}.industry-gallery{grid-template-columns:repeat(2,1fr);padding:32px 0}.programme-detail{padding:52px 0}.programme-header{padding:28px 0}.programme-header__icon{width:33px;height:33px;flex-basis:33px}.programme-facts,.programme-layout,.focus-grid{grid-template-columns:1fr}.programme-facts div{min-height:0}.programme-layout,.programme-layout--bottom{gap:38px}.focus-section{margin:40px 0;padding:34px 0}.focus-grid{gap:1px}.focus-grid div{min-height:0}.programme-lead{font-size:17px}.industry-table th,.industry-table td{padding:16px}}
 </style>

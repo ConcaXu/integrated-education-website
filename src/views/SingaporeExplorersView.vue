@@ -283,9 +283,15 @@
               }}
             </h3>
             <div class="schedule-list">
+              <div class="schedule-heading">
+                <span>{{ isEn ? "Day" : "日程" }}</span>
+                <span>{{ isEn ? "Exploration Theme" : "探索主题" }}</span>
+                <span>{{ isEn ? "Highlights" : "精彩体验" }}</span>
+              </div>
               <p v-for="day in theme.schedule" :key="day.day">
-                <b>{{ day.day }}</b
-                ><span>{{ isEn ? day.en : day.zh }}</span>
+                <b>{{ day.day }}</b>
+                <span>{{ isEn ? day.enTheme : day.zhTheme }}</span>
+                <span>{{ isEn ? day.enHighlights : day.zhHighlights }}</span>
               </p>
             </div>
             <p class="journey-title">
@@ -368,7 +374,13 @@ type Theme = {
   }[];
   journeyTitle: { zh: string; en: string };
   journey: { zh: string; en: string }[];
-  schedule: { day: string; zh: string; en: string }[];
+  schedule: {
+    day: string;
+    zhTheme: string;
+    enTheme: string;
+    zhHighlights: string;
+    enHighlights: string;
+  }[];
   close: { zh: string; en: string; enSub: string };
 };
 const themeIcons = [
@@ -531,8 +543,23 @@ const baseEs = (rows: [string, string, string, string][]) =>
       en: en.replace(`${action.en}s`, "").replace(action.en, ""),
     };
   });
+const splitSchedule = (entry: string) => {
+  const [theme, ...highlights] = entry.split(" · ");
+  return { theme, highlights: highlights.join(" · ") };
+};
 const schedules = (rows: [string, string, string][]) =>
-  rows.map(([day, zh, en]) => ({ day, zh, en }));
+  rows.map(([day, zh, en]) => {
+    const zhSchedule = splitSchedule(zh);
+    const enSchedule = splitSchedule(en);
+
+    return {
+      day,
+      zhTheme: zhSchedule.theme,
+      enTheme: enSchedule.theme,
+      zhHighlights: zhSchedule.highlights,
+      enHighlights: enSchedule.highlights,
+    };
+  });
 const themes: Theme[] = [
   {
     id: "amazing-life",
@@ -2070,11 +2097,20 @@ themes.forEach((theme, index) => {
 .journey h3 {
   margin-bottom: 0;
 }
+.schedule-heading,
 .schedule-list p {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: minmax(62px, 0.55fr) minmax(130px, 1.25fr) minmax(0, 3fr);
   gap: 18px;
   margin: 0;
+}
+.schedule-heading {
+  padding: 12px 0;
+  color: #d5ff5b;
+  font: 700 11px "Space Mono";
+  border-bottom: 1px solid #ffffff22;
+}
+.schedule-list p {
   padding: 14px 0;
   border-bottom: 1px solid #ffffff22;
   line-height: 1.5;
@@ -2085,6 +2121,7 @@ themes.forEach((theme, index) => {
 }
 .schedule-list span {
   font-size: 14px;
+  min-width: 0;
 }
 .schedule-list + .journey-title {
   margin-top: 34px;

@@ -289,6 +289,13 @@
               }}
             </p>
           </section>
+          <section
+            v-if="programme.closingSummary"
+            class="programme-closing-summary"
+          >
+            <h3>{{ programme.closingSummary.title }}</h3>
+            <p>{{ programme.closingSummary.description }}</p>
+          </section>
           <p class="programme-note">{{ programme.note }}</p>
         </div>
       </article>
@@ -447,6 +454,11 @@ const zhProgrammes = [
       "企业介绍 → 技术展示 → 工厂参访 → 高管交流 → 技术问答 → 商务合作洽谈。重点探讨制造效率、新能源转型、智能制造、供应链、技术合作及全球化。",
     outcomes:
       "了解中国汽车产业生态 · 学习新能源及智能制造实践 · 考察先进汽车技术与研发 · 寻找供应链及技术合作伙伴 · 探索汽车产业合作机会。",
+    closingSummary: {
+      title: "中国汽车制造标杆 · 新能源转型 · 智能工厂 · 汽车科技 · 商务合作",
+      description:
+        "以7天高管考察深入了解中国汽车产业转型，连接制造、技术、供应链与潜在合作伙伴。",
+    },
     note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团行业背景、战略重点及企业实际接待情况确认。",
   },
   {
@@ -569,6 +581,22 @@ const zhProgrammes = [
       "企业介绍 → 技术展示 → 工厂/研发中心参访 → 管理层交流 → 技术问答 → 商务对接。重点探讨技术合作、供应链、设备采购、本地化制造、联合研发、市场拓展及投资合作。",
     outcomes:
       "了解中国先进制造生态 · 探索前沿技术 · 标杆学习智能制造 · 对接供应商与合作伙伴 · 发掘合作机会 · 建立产业商务网络。",
+    customization: {
+      title: "适合产业领域",
+      companyTypes: [
+        "医药与医疗器械",
+        "新能源与光伏",
+        "矿业与工业装备",
+        "工业机器人",
+        "智能制造",
+        "自动化",
+        "工业科技",
+        "先进制造",
+        "科研与技术机构",
+      ],
+      description:
+        "可根据代表团的行业背景、技术重点及战略需求，定制参访企业、技术交流及商务对接方向。",
+    },
     note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团需求及企业实际接待情况确认。",
   },
 ];
@@ -604,6 +632,10 @@ const enProgrammeContent = [
     ],
     exchange: "Company introduction → Technology showcase → Factory visit → Executive exchange → Technical Q&A → Business cooperation discussion. Discussions focus on manufacturing efficiency, new energy transition, smart manufacturing, supply chains, technology cooperation and globalisation.",
     outcomes: "Understand China's automotive industry ecosystem · Learn new energy and smart manufacturing practices · Examine advanced automotive technologies and R&D · Identify supply-chain and technology partners · Explore international automotive cooperation opportunities.",
+    closingSummary: {
+      title: "China Automotive Manufacturing Benchmark · New Energy Transition · Smart Factories · Automotive Technology · Business Cooperation",
+      description: "A seven-day executive study mission to understand China's automotive industry transformation, connecting manufacturing, technology, supply chains and potential partners.",
+    },
     note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to the delegation's industry background, strategic priorities and host-company availability.",
   },
   {
@@ -667,6 +699,21 @@ const enProgrammeContent = [
     ],
     exchange: "Company introduction → Technology showcase → Factory or R&D centre visit → Management exchange → Technical Q&A → International business matching. Discussions focus on technology cooperation, supply chains, equipment procurement, localised manufacturing, joint R&D, market expansion and investment cooperation.",
     outcomes: "Understand China's advanced manufacturing ecosystem · Explore frontier technologies · Benchmark smart manufacturing · Connect with suppliers and partners · Identify international cooperation opportunities · Build an industry and business network.",
+    customization: {
+      title: "Suitable industries",
+      companyTypes: [
+        "Pharmaceuticals & Medical Devices",
+        "New Energy & Solar PV",
+        "Mining & Industrial Equipment",
+        "Industrial Robotics",
+        "Smart Manufacturing",
+        "Automation",
+        "Industrial Technology",
+        "Advanced Manufacturing",
+        "Research & Technical Institutions",
+      ],
+      description: "Company visits, technical exchanges and business-matching directions can be customised according to the delegation's industry background, technology priorities and strategic needs.",
+    },
     note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to delegation requirements and host-company availability.",
   },
 ];

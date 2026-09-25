@@ -1,3 +1,4 @@
+<!-- 新加坡未来探索系列初中课程宣传册 -->
 <template>
   <div class="junior-page">
     <section class="junior-hero">

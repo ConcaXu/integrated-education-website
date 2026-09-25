@@ -1,3 +1,4 @@
+<!-- 内容页面模板 -->
 <template>
   <div
     class="portal-page"
@@ -355,6 +356,14 @@
                   v-else-if="card.action === '初中课程'"
                   class="card-action card-action--orange"
                   to="/singapore-explorers-junior-high"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </router-link>
+                <router-link
+                  v-else-if="card.action === '高中课程'"
+                  class="card-action card-action--orange"
+                  to="/singapore-future-leaders-senior-high"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
                   <span aria-hidden="true">→</span>
@@ -919,12 +928,14 @@ const pages: Record<string, Page> = {
             actionEn: "Junior high courses",
           },
           {
-            title: "高中 / JC",
-            titleEn: "Senior high / JC",
+            title: "高中 / 初级学院",
+            titleEn: "Senior high / Junior College",
             text: "聚焦未来、创新、领导力与新兴产业。",
             textEn:
               "Explore innovation, leadership, future industries and deeper learning.",
             icon: "◈",
+            action: "高中课程",
+            actionEn: "Senior high courses",
           },
         ],
         columns: 3,

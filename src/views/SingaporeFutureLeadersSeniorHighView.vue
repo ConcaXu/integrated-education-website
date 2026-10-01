@@ -60,7 +60,7 @@
           {{
             tx(
               "A 6-day, 5-night themed educational experience in Singapore, specially designed for international and overseas senior high / JC students. Through Educate · Experience · Explore · Exchange, students connect academic knowledge with real-world experiences across biomedical science, space, mobility, sustainability, advanced industry, Earth systems, AI and innovation.",
-              "一项为海外及国际高中 / JC 学生特别设计的6天5夜主题式教育体验。通过学习 · 体验 · 探索 · 交流，学生将课堂知识与真实世界连接起来，深入接触生物医学科学、太空科技、未来移动、可持续发展、气候创新、工业4.0、地球系统、人工智能与未来创新。",
+              "一项为海外及国际高中 / 初级学院学生特别设计的6天5夜主题式教育体验。通过学习 · 体验 · 探索 · 交流，学生将课堂知识与真实世界连接起来，深入接触生物医学科学、太空科技、未来移动、可持续发展、气候创新、工业4.0、地球系统、人工智能与未来创新。",
             )
           }}
         </p>
@@ -296,9 +296,21 @@
               <p class="senior-programme__series">
                 {{ tx("SINGAPORE FUTURE LEADERS", "新加坡未来领袖系列") }}
               </p>
-              <h2>{{ tx(programme.en.title, programme.zh.title) }}</h2>
+              <h2>{{
+                  tx(titleParts(programme.en.title)[0], titleParts(programme.zh.title)[0])
+                }}<span :class="{ 'senior-programme__name--nowrap': !isEn }">{{
+                  tx(titleParts(programme.en.title)[1], titleParts(programme.zh.title)[1])
+                }}</span></h2>
               <p class="senior-programme__strap">
                 {{ tx(programme.en.strap, programme.zh.strap) }}
+              </p>
+              <p class="senior-programme__ages">
+                {{
+                  tx(
+                    "SENIOR HIGH / JUNIOR COLLEGE | AGES 16-18",
+                    "高中 / 初级学院｜16-18 岁",
+                  )
+                }}
               </p>
             </div>
             <span class="senior-programme__badge">{{
@@ -318,9 +330,10 @@
               </p>
               <div class="senior-programme__experiences">
                 <div
-                  v-for="experience in programme.experiences"
+                  v-for="(experience, esIndex) in programme.experiences"
                   :key="experience.en.title"
                 >
+                  <em>{{ esWords[esIndex] }}</em>
                   <strong>{{
                     tx(experience.en.title, experience.zh.title)
                   }}</strong>
@@ -394,6 +407,11 @@ import image06 from "@/assets/images/highSchoolCurriculum/图6.png";
 const { lang } = useI18n();
 const isEn = computed(() => lang.value === "en");
 const tx = (en: string, zh: string) => (isEn.value ? en : zh);
+// 拆分标题：前缀（高中 / 初级学院 #N｜）+ 项目名称，保证项目名称不断行
+const titleParts = (title: string): [string, string] => {
+  const idx = title.indexOf("｜") >= 0 ? title.indexOf("｜") : title.indexOf("|");
+  return idx >= 0 ? [title.slice(0, idx + 1), title.slice(idx + 1)] : [title, ""];
+};
 const experience = (
   enTitle: string,
   enDetail: string,
@@ -433,6 +451,8 @@ const programmeDays = (items: [string, string, string, string, string][]) =>
     en: { title: enTitle, detail: enDetail },
     zh: { title: zhTitle, detail: zhDetail },
   }));
+
+const esWords = ["Educate", "Explore", "Experience", "Exchange"];
 
 const programmes = [
   programme(
@@ -845,34 +865,34 @@ const programmes = [
     ],
     [
       experience(
-        "ADVANCED MANUFACTURING",
-        "Smart Factories · Digital Production · Industry 4.0",
+        "SMART MANUFACTURING",
+        "Smart Factories · Automation · Robotics · Digital Manufacturing",
         "智能制造",
         "智能工厂 · 自动化 · 机器人 · 数字制造",
       ),
       experience(
-        "ROBOTICS & AUTOMATION",
-        "Robotic Systems · Sensors · Automation · Human-Machine Interaction",
-        "机器人与自动化",
-        "机器人系统 · 传感器 · 自动化 · 人机互动",
+        "ENGINEERING & TECHNOLOGY",
+        "3D Printing · Prototyping · Engineering Solutions · Product Innovation",
+        "工程与技术",
+        "3D打印 · 原型设计 · 工程解决方案 · 产品创新",
       ),
       experience(
-        "DIGITAL FABRICATION",
-        "3D Printing · CAD · Prototyping · Additive Manufacturing",
-        "数字制造",
-        "3D打印 · CAD · 原型设计 · 增材制造",
+        "FUTURE INDUSTRIES",
+        "Electric Vehicles · Intelligent Systems · Industrial Digitalisation · Future Careers",
+        "未来产业",
+        "电动车 · 智能系统 · 工业数字化 · 未来职业",
       ),
       experience(
-        "FUTURE MOBILITY",
-        "Electric Vehicles · Smart Manufacturing · Connected Technologies",
-        "未来移动",
-        "电动车 · 智能制造 · 互联技术",
+        "EDUCATION",
+        "Applied Learning · Singapore Schools · Student Exchange",
+        "教育",
+        "应用型学习 · 新加坡学校 · 学生交流",
       ),
       experience(
-        "INNOVATION",
-        "Design Thinking · Problem Solving · Product Development · Entrepreneurship",
-        "创新",
-        "设计思维 · 问题解决 · 产品开发 · 创业",
+        "COMMUNITY & SOCIETY",
+        "Housing · Transport · Community Facilities · Technology in Daily Life",
+        "社区与社会",
+        "住房 · 交通 · 社区设施 · 日常生活中的科技应用",
       ),
     ],
     programmeDays([
@@ -967,33 +987,33 @@ const programmes = [
     [
       experience(
         "EARTH SCIENCE",
-        "Geology · Earth Systems · Natural Processes · Scientific Observation",
+        "Earth Systems · Geology · Natural History · Climate",
         "地球科学",
         "地球系统 · 地质 · 自然历史 · 气候",
       ),
       experience(
-        "PLANETARY SCIENCE",
-        "Planetary Systems · Space Environment · Comparative Planetary Science",
-        "行星科学",
-        "行星系统 · 太空环境 · 比较行星科学",
+        "ECOLOGY & BIODIVERSITY",
+        "Ecosystems · Wildlife · Wetlands · Biodiversity",
+        "生态与生物多样性",
+        "生态系统 · 野生动物 · 湿地 · 生物多样性",
       ),
       experience(
-        "CLIMATE SCIENCE",
-        "Atmosphere · Climate Systems · Climate Change · Resilience",
-        "气候科学",
-        "大气 · 气候系统 · 气候变化 · 韧性",
+        "MARINE SCIENCE",
+        "Marine Ecology · Marine Life · Marine Conservation",
+        "海洋科学",
+        "海洋生态 · 海洋生物 · 海洋保育",
       ),
       experience(
-        "OCEAN & ECOSYSTEMS",
-        "Marine Science · Wetlands · Biodiversity · Conservation",
-        "海洋与生态系统",
-        "海洋科学 · 湿地 · 生物多样性 · 保育",
+        "ENVIRONMENT & SUSTAINABILITY",
+        "Climate Change · Environmental Challenges · Conservation · Sustainable Cities",
+        "环境与可持续发展",
+        "气候变化 · 环境挑战 · 保育 · 可持续城市",
       ),
       experience(
-        "RESEARCH & FIELD SCIENCE",
-        "Observation · Evidence · Data · Investigation · Scientific Thinking",
-        "研究与野外科学",
-        "观察 · 证据 · 数据 · 探究 · 科学思维",
+        "EDUCATION & COMMUNITY",
+        "Universities / Science Institutions · Singapore Schools · Community & Daily Life",
+        "教育与社区",
+        "大学 / 科学机构 · 新加坡学校 · 社区与日常生活",
       ),
     ],
     programmeDays([
@@ -1046,7 +1066,7 @@ const programmes = [
       title:
         "SENIOR HIGH / Junior College #6 | GENERATIVE AI & FUTURE INNOVATION",
       strap: "Generative AI, Digital Innovation & Future Business",
-      lead: "Understand AI · Create with Technology · Innovate for the Future",
+      lead: "Explore AI · Learn to Innovate · Create the Future",
       context:
         "Through Learn · Experience · Explore · Exchange, students explore how Generative AI, machine learning, digital technologies and human creativity are transforming education, business, industry and society. The programme connects AI literacy with innovation, design thinking, entrepreneurship and responsible technology, encouraging students to move from understanding AI to creating meaningful solutions.",
       close: "More Than a Study Tour — A Future Innovation Learning Journey",
@@ -1054,7 +1074,7 @@ const programmes = [
     {
       title: "高中 / 初级学院 #6｜生成式AI与未来创新",
       strap: "人工智能、数字创新与未来社会",
-      lead: "探索AI · 创造未来 · 负责任地创新",
+      lead: "探索AI · 学习创新 · 创造未来",
       context:
         "通过4E：教育（Educate）·体验（Experience）·探索（Explore）·交流（Exchange），学生认识人工智能、机器学习、生成式AI与智能系统，并进一步学习如何将AI应用于真实问题、创新项目与未来商业。",
       close: "不只是学习AI，而是学习如何用AI创造未来",
@@ -1088,33 +1108,33 @@ const programmes = [
     [
       experience(
         "ARTIFICIAL INTELLIGENCE",
-        "Machine Learning · Generative AI · Computer Vision · AI Applications",
+        "AI · Machine Learning · Computer Vision · Generative AI",
         "人工智能",
         "AI · Machine Learning · Computer Vision · Generative AI",
       ),
       experience(
-        "DIGITAL TECHNOLOGY",
-        "Data · Automation · Digital Transformation · Smart Systems",
+        "DIGITAL INNOVATION",
+        "Data · Digital Technologies · Intelligent Systems · Digital Transformation",
         "数字创新",
         "数据 · 数字技术 · 智能系统 · 数字化转型",
       ),
       experience(
-        "CREATIVE TECHNOLOGY",
-        "Prompting · AI-Assisted Creation · Digital Content · Prototyping",
-        "创意科技",
-        "Prompting · AI辅助创作 · 数字内容 · 原型设计",
+        "REAL-WORLD INDUSTRIES",
+        "Smart Manufacturing · AI Applications · Robotics · Smart Cities",
+        "真实产业",
+        "智能制造 · AI应用 · 机器人 · 智慧城市",
       ),
       experience(
         "INNOVATION & ENTREPRENEURSHIP",
-        "Design Thinking · Problem Solving · Ideation · Future Business",
+        "Design Thinking · Prototyping · Problem Solving · Future Business",
         "创新与创业",
         "Design Thinking · 原型设计 · 问题解决 · Future Business",
       ),
       experience(
-        "RESPONSIBLE AI",
-        "Privacy · Bias · Accuracy · Human Oversight · Responsible Innovation",
-        "负责任的AI",
-        "隐私 · 偏见 · 准确性 · 人类监督 · 负责任创新",
+        "EDUCATION & SOCIETY",
+        "Singapore Schools · Student Exchange · Community · Responsible AI",
+        "教育与社会",
+        "新加坡学校 · 学生交流 · 社区 · Responsible AI",
       ),
     ],
     programmeDays([
@@ -1559,10 +1579,10 @@ const proofPoints = [
   position: absolute;
   top: 136px;
   right: 0;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0;
   color: #e6f0f4;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-align: right;
@@ -1831,8 +1851,9 @@ const proofPoints = [
   .senior-hero__meta {
     top: 88px;
     right: 0;
-    max-width: 160px;
+    max-width: 200px;
     margin: 0;
+    font-size: 13px;
     text-align: right;
     line-height: 1.5;
   }
@@ -2365,11 +2386,21 @@ const proofPoints = [
   font-size: clamp(32px, 4vw, 58px);
   line-height: 1.05;
 }
+.senior-programme__name--nowrap {
+  white-space: nowrap;
+}
 .senior-programme__strap {
   margin: 14px 0 0;
   color: var(--orange-dark);
   font-size: 14px;
   font-weight: 700;
+}
+.senior-programme__ages {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }
 .senior-programme__badge {
   flex: none;
@@ -2414,6 +2445,14 @@ const proofPoints = [
 .senior-programme__environments > div {
   display: grid;
   gap: 5px;
+}
+.senior-programme__experiences em {
+  color: var(--orange);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1;
 }
 .senior-programme__experiences strong,
 .senior-programme__environments strong {
@@ -2559,6 +2598,9 @@ const proofPoints = [
   .senior-programme__header,
   .senior-programme__journey-heading {
     display: block;
+  }
+  .senior-programme__name--nowrap {
+    white-space: normal;
   }
   .senior-programme__image {
     width: 100%;

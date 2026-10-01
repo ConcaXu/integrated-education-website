@@ -597,6 +597,11 @@ const zhProgrammes = [
       description:
         "可根据代表团的行业背景、技术重点及战略需求，定制参访企业、技术交流及商务对接方向。",
     },
+    closingSummary: {
+      title: "中国先进制造 · 智能制造 · 技术创新 · 商务交流 · 中印合作",
+      description:
+        "7天深入探索中国长三角先进制造生态，连接技术、产业链、供应链及潜在中印合作伙伴。",
+    },
     note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团需求及企业实际接待情况确认。",
   },
 ];
@@ -713,6 +718,10 @@ const enProgrammeContent = [
         "Research & Technical Institutions",
       ],
       description: "Company visits, technical exchanges and business-matching directions can be customised according to the delegation's industry background, technology priorities and strategic needs.",
+    },
+    closingSummary: {
+      title: "China's Advanced Manufacturing · Smart Manufacturing · Technology Innovation · Business Exchange · China-India Cooperation",
+      description: "A seven-day immersion in the Yangtze River Delta's advanced manufacturing ecosystem, connecting technology, industrial chains, supply chains and potential China-India cooperation partners.",
     },
     note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to delegation requirements and host-company availability.",
   },

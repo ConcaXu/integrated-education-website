@@ -5,7 +5,7 @@
       <img class="junior-hero__image" :src="heroImage" alt="" />
       <div class="junior-shell junior-hero__content">
         <p class="junior-hero__eyebrow">APIMTC / 2025-26</p>
-        <p class="junior-hero__meta">{{ tx('JUNIOR HIGH / SECONDARY | AGES 13-16', '初中 / 中学生｜13-16 岁') }}</p>
+        <p class="junior-hero__meta">{{ tx('JUNIOR HIGH / SECONDARY | AGES 13-15', '初中 / 中学生｜13-15 岁') }}</p>
         <div class="junior-hero__copy">
           <span class="junior-chip">{{ tx('JUNIOR HIGH PROGRAMME', '初中课程') }}</span>
           <h1>{{ tx('Singapore Future', '新加坡未来') }} <em>{{ tx('Explorers', '探索系列') }}</em></h1>
@@ -47,7 +47,7 @@
       <section class="junior-four-es junior-shell">
         <div class="junior-four-es__heading"><p class="junior-index">02 / 4Es</p><h2>{{ tx('Every Theme Includes the 4Es Learning Experience', '每个主题都融入 4Es 学习体验') }}</h2><p>EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE</p></div>
         <div class="junior-four-es__grid">
-          <div v-for="item in overviewEs" :key="item.en.name"><b>{{ item.mark }}</b><strong>{{ tx(item.en.name, item.zh.name) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div>
+          <div v-for="item in overviewEs" :key="item.en.name"><b>{{ item.mark }}</b><em>{{ item.es }}</em><strong>{{ tx(item.en.name, item.zh.name) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div>
         </div>
       </section>
 
@@ -56,13 +56,13 @@
       <article v-for="(theme, index) in themes" :id="theme.id" :key="theme.id" class="junior-detail" :class="`junior-detail--${index + 1}`">
         <div class="junior-shell">
           <div class="junior-detail__top"><span>{{ String(index + 1).padStart(2, '0') }} / 06</span><span>{{ tx('SINGAPORE FUTURE EXPLORERS', '新加坡未来探索系列') }}</span></div>
-          <header class="junior-detail__header"><p>{{ theme.icon }} {{ tx(`JUNIOR HIGH / SECONDARY SCHOOL #${index + 1}`, `初中 / 中学 #${index + 1}`) }}</p><h2>{{ tx(theme.en.title, theme.zh.title) }}</h2><strong>{{ tx(theme.en.category, theme.zh.category) }} · {{ tx('6 Days / 5 Nights', '6 天 5 夜') }}</strong><span>{{ tx(theme.en.tagline, theme.zh.tagline) }}</span><small>{{ tx('Junior High / Secondary | Ages 13-16', '初中 / 中学生｜13-16 岁') }}</small></header>
+          <header class="junior-detail__header"><p>{{ theme.icon }} {{ tx(`JUNIOR HIGH / SECONDARY SCHOOL #${index + 1}`, `初中 / 中学 #${index + 1}`) }}</p><h2>{{ tx(theme.en.title, theme.zh.title) }}</h2><strong>{{ tx(theme.en.category, theme.zh.category) }} · {{ tx('6 Days / 5 Nights', '6 天 5 夜') }}</strong><span>{{ tx(theme.en.tagline, theme.zh.tagline) }}</span><small>{{ tx('Junior High / Secondary | Ages 13-15', '初中 / 中学生｜13-15 岁') }}</small></header>
           <img class="junior-detail__image" :src="themeImages[index]" :alt="tx(theme.en.title, theme.zh.title)" />
           <div class="junior-detail__lead"><strong>{{ theme.icon }} {{ tx(theme.en.lead, theme.zh.lead) }}</strong><p>{{ tx(theme.en.intro, theme.zh.intro) }}</p></div>
           <section class="junior-detail__section"><p class="junior-index">04 / 4Es LEARNING EXPERIENCE</p><h3>4Es {{ tx('Learning Experience', '学习体验') }}</h3><div class="detail-es"><div v-for="item in theme.es" :key="item.key"><strong>{{ item.key }} <i>|</i> {{ tx(item.en.action, item.zh.action) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div></div></section>
           <section class="junior-detail__section"><p class="junior-index">05 / 6 DAYS / 5 NIGHTS</p><h3>{{ tx('6-Day / 5-Night Discovery Journey', '6 天 5 夜探索之旅') }}</h3><div class="journey-table"><div class="journey-table__head"><span>Day</span><span>{{ tx('Exploration Theme', '探索主题') }}</span><span>{{ tx('Highlights', '主要体验') }}</span></div><div v-for="day in theme.days" :key="day.day"><b>{{ day.day }}</b><strong>{{ tx(day.en.theme, day.zh.theme) }}</strong><span>{{ tx(day.en.highlight, day.zh.highlight) }}</span></div></div></section>
           <section class="junior-detail__section"><p class="junior-index">06 / LEARNING ENVIRONMENTS</p><h3>{{ theme.icon }} {{ tx('Five Real-World Learning Environments', '五大真实学习环境') }}</h3><div class="learning-grid"><p v-for="place in theme.environments" :key="place.en.title"><strong>{{ tx(place.en.title, place.zh.title) }}</strong><span>{{ tx(place.en.detail, place.zh.detail) }}</span></p></div></section>
-          <footer class="junior-detail__footer"><strong>{{ tx('More Than a Trip - A Real-World Learning Journey', '不只是一次旅行 · 一场真实世界的学习之旅') }}</strong><span>{{ tx(theme.en.close, theme.zh.close) }}</span><small>{{ tx('6 DAYS · 5 NIGHTS | JUNIOR HIGH / SECONDARY | AGES 13-16', '6 天 5 夜｜初中 / 中学生｜13-16 岁') }}</small></footer>
+          <footer class="junior-detail__footer"><strong>{{ tx('More Than a Trip - A Real-World Learning Journey', '不只是一次旅行 · 一场真实世界的学习之旅') }}</strong><span>{{ tx(theme.en.close, theme.zh.close) }}</span><small>{{ tx('6 DAYS · 5 NIGHTS | JUNIOR HIGH / SECONDARY | AGES 13-15', '6 天 5 夜｜初中 / 中学生｜13-15 岁') }}</small></footer>
         </div>
       </article>
     </main>
@@ -88,10 +88,10 @@ const pair = (action: string, detail: string) => ({ action, detail })
 const entry = (enTitle: string, enDetail: string, zhTitle: string, zhDetail: string) => ({ en: { title: enTitle, detail: enDetail }, zh: { title: zhTitle, detail: zhDetail } })
 const day = (day: string, enTheme: string, enHighlight: string, zhTheme: string, zhHighlight: string) => ({ day, en: { theme: enTheme, highlight: enHighlight }, zh: { theme: zhTheme, highlight: zhHighlight } })
 const overviewEs = [
-  { mark: '01', en: { name: 'LEARN', detail: 'STEM · Science · Technology · Future Knowledge' }, zh: { name: '学习', detail: 'STEM · 科学 · 科技 · 未来知识' } },
-  { mark: '02', en: { name: 'EXPERIENCE', detail: 'Experiments · Workshops · Applied Learning · Industry' }, zh: { name: '体验', detail: '科学实验 · 专题工作坊 · 应用型学习 · 产业体验' } },
-  { mark: '03', en: { name: 'EXPLORE', detail: 'Singapore · Nature · Technology · Industries · Communities' }, zh: { name: '探索', detail: '新加坡 · 自然 · 科技 · 产业 · 社区' } },
-  { mark: '04', en: { name: 'EXCHANGE', detail: 'Singapore Students · School Life · Teamwork · Cross-Cultural Experiences' }, zh: { name: '交流', detail: '新加坡学生 · 校园生活 · 团队合作 · 跨文化交流' } },
+  { mark: '01', es: 'Educate', en: { name: 'LEARN', detail: 'STEM · Science · Technology · Future Knowledge' }, zh: { name: '学习', detail: 'STEM · 科学 · 科技 · 未来知识' } },
+  { mark: '02', es: 'Explore', en: { name: 'EXPERIENCE', detail: 'Experiments · Workshops · Applied Learning · Industry' }, zh: { name: '体验', detail: '科学实验 · 专题工作坊 · 应用型学习 · 产业体验' } },
+  { mark: '03', es: 'Experience', en: { name: 'EXPLORE', detail: 'Singapore · Nature · Technology · Industries · Communities' }, zh: { name: '探索', detail: '新加坡 · 自然 · 科技 · 产业 · 社区' } },
+  { mark: '04', es: 'Exchange', en: { name: 'EXCHANGE', detail: 'Singapore Students · School Life · Teamwork · Cross-Cultural Experiences' }, zh: { name: '交流', detail: '新加坡学生 · 校园生活 · 团队合作 · 跨文化交流' } },
 ]
 const realLearning = [
   entry('School Exchange', 'Learn, interact and collaborate with Singapore secondary school students.', '学校交流', '与新加坡中学生互动、合作，体验当地校园生活。'),
@@ -171,25 +171,37 @@ const themes = [
 .junior-section-heading h2 { font-size: clamp(32px, 4vw, 48px); }
 .junior-section-heading > p { max-width: 340px; margin: 0 0 6px; color: #5a6c78; font-size: 14px; line-height: 1.7; }
 .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.theme-card { display: grid; grid-template-columns: 47px 1fr 24px; gap: 16px; min-height: 175px; padding: 23px; border: 1px solid #e7e1da; background: #fff; color: var(--navy); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
-.theme-card:hover { border-color: #f2a07a; box-shadow: 0 14px 28px rgba(31, 57, 71, .09); transform: translateY(-3px); }
-.theme-card > span { color: var(--orange); font-size: 13px; font-weight: 700; }
-.theme-card i { display: inline-block; margin-right: 8px; font-size: 20px; font-style: normal; }
+.theme-card { --accent: #e2683c; position: relative; display: grid; grid-template-columns: 47px 1fr 24px; gap: 16px; min-height: 175px; padding: 23px; border: 1px solid #e7e1da; border-top: 3px solid var(--accent); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, #fff), #fff 58%); color: var(--navy); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.theme-card:nth-child(6n + 2) { --accent: #2f6fb0; }
+.theme-card:nth-child(6n + 3) { --accent: #2e8b6e; }
+.theme-card:nth-child(6n + 4) { --accent: #7a5aa6; }
+.theme-card:nth-child(6n + 5) { --accent: #b98a2f; }
+.theme-card:nth-child(6n + 6) { --accent: #1f7fa6; }
+.theme-card:hover { border-color: var(--accent); box-shadow: 0 16px 30px color-mix(in srgb, var(--accent) 20%, rgba(31, 57, 71, .08)); transform: translateY(-3px); }
+.theme-card > span { color: var(--accent); font-size: 15px; font-weight: 800; opacity: .9; }
+.theme-card i { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-right: 10px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, #fff); font-size: 21px; font-style: normal; }
 .theme-card strong { font-size: 19px; line-height: 1.25; }
-.theme-card small { display: block; margin-top: 8px; color: var(--orange-dark); font-size: 13px; font-weight: 700; }
+.theme-card small { display: block; margin-top: 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
 .theme-card p { margin: 8px 0 0; color: #566b78; font-size: 13px; line-height: 1.55; }
-.theme-card > b { align-self: center; color: var(--orange); font-size: 21px; }
+.theme-card > b { align-self: center; color: var(--accent); font-size: 21px; transition: transform .2s ease; }
+.theme-card:hover > b { transform: translateX(4px); }
 .junior-four-es { display: grid; grid-template-columns: .87fr 1.13fr; gap: 72px; padding-top: 116px; padding-bottom: 118px; }
 .junior-four-es__heading > p:last-child { margin: 22px 0 0; color: var(--orange-dark); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
 .junior-four-es__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #d9e0e2; }
-.junior-four-es__grid div { min-height: 160px; padding: 22px; background: #fff; }
-.junior-four-es__grid b { display: block; color: var(--orange); font-size: 12px; letter-spacing: .1em; }
-.junior-four-es__grid strong { display: block; margin: 26px 0 8px; color: var(--navy); font-size: 15px; }
+.junior-four-es__grid div { --accent: #e2683c; min-height: 160px; padding: 22px; border-top: 3px solid var(--accent); background: #fff; }
+.junior-four-es__grid div:nth-child(2) { --accent: #2f6fb0; }
+.junior-four-es__grid div:nth-child(3) { --accent: #2e8b6e; }
+.junior-four-es__grid div:nth-child(4) { --accent: #7a5aa6; }
+.junior-four-es__grid b { display: block; color: var(--accent); font-size: 12px; letter-spacing: .1em; }
+.junior-four-es__grid em { display: block; margin: 14px 0 0; color: var(--accent); font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 600; font-style: italic; line-height: 1; }
+.junior-four-es__grid strong { display: block; margin: 14px 0 8px; color: var(--navy); font-size: 15px; }
 .junior-four-es__grid span { color: #5b6a74; font-size: 13px; line-height: 1.55; }
 .junior-real { padding: 105px 0 112px; background: #163d5e; color: #fff; }
 .junior-real h2 { color: #fff; }
 .junior-real__grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 50px; border-top: 1px solid rgba(255,255,255,.24); border-left: 1px solid rgba(255,255,255,.24); }
-.junior-real__grid div { min-height: 143px; padding: 20px 23px; border-right: 1px solid rgba(255,255,255,.24); border-bottom: 1px solid rgba(255,255,255,.24); }
+.junior-real__grid div { min-height: 143px; padding: 20px 23px; border-right: 1px solid rgba(255,255,255,.24); border-bottom: 1px solid rgba(255,255,255,.24); transition: background .2s ease; }
+.junior-real__grid div:hover { background: rgba(255,255,255,.07); }
+.junior-real__grid strong::before { content: ''; display: inline-block; width: 18px; height: 3px; margin-right: 9px; vertical-align: 3px; background: #ff9b6c; }
 .junior-real__grid strong { color: #ff9b6c; font-size: 14px; }
 .junior-real__grid p { margin: 11px 0 0; color: #e1ecf2; font-size: 13px; line-height: 1.55; }
 .junior-detail { padding: 95px 0 0; background: #fff; }
@@ -210,8 +222,11 @@ const themes = [
 .junior-detail__section { padding: 62px 0 0; }
 .junior-detail__section h3 { margin: 14px 0 27px; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; letter-spacing: 0; }
 .detail-es { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #d8dfe1; }
-.detail-es div { min-height: 128px; padding: 20px 23px; background: #fff; }
-.detail-es strong { display: block; color: var(--orange-dark); font-size: 13px; }
+.detail-es div { --accent: #e2683c; min-height: 128px; padding: 20px 23px; border-top: 3px solid var(--accent); background: #fff; }
+.detail-es div:nth-child(4n + 2) { --accent: #2f6fb0; }
+.detail-es div:nth-child(4n + 3) { --accent: #2e8b6e; }
+.detail-es div:nth-child(4n + 4) { --accent: #7a5aa6; }
+.detail-es strong { display: block; color: var(--accent); font-size: 13px; }
 .detail-es i { padding: 0 5px; font-style: normal; }
 .detail-es span { display: block; margin-top: 10px; color: #334e61; font-size: 14px; line-height: 1.55; }
 .journey-table { border-top: 2px solid var(--navy); }
@@ -221,8 +236,12 @@ const themes = [
 .journey-table strong { color: var(--navy); font-size: 14px; }
 .journey-table span { color: #4e616e; font-size: 14px; line-height: 1.5; }
 .learning-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #d8dfe1; }
-.learning-grid p { min-height: 138px; margin: 0; padding: 21px 17px; background: #fff; }
-.learning-grid strong { display: block; color: var(--orange-dark); font-size: 12px; letter-spacing: .02em; }
+.learning-grid p { --accent: #e2683c; min-height: 138px; margin: 0; padding: 21px 17px; border-top: 3px solid var(--accent); background: #fff; }
+.learning-grid p:nth-child(5n + 2) { --accent: #2f6fb0; }
+.learning-grid p:nth-child(5n + 3) { --accent: #2e8b6e; }
+.learning-grid p:nth-child(5n + 4) { --accent: #7a5aa6; }
+.learning-grid p:nth-child(5n + 5) { --accent: #b98a2f; }
+.learning-grid strong { display: block; color: var(--accent); font-size: 12px; letter-spacing: .02em; }
 .learning-grid span { display: block; margin-top: 12px; color: #40596a; font-size: 13px; line-height: 1.55; }
 .junior-detail__footer { display: flex; flex-direction: column; align-items: center; margin-top: 83px; padding: 53px 20px; background: var(--navy); color: #fff; text-align: center; }
 .junior-detail__footer strong { color: #ff9b6c; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 600; }

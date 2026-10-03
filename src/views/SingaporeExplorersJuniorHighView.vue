@@ -37,7 +37,7 @@
           <div class="theme-grid">
             <a v-for="(theme, index) in themes" :key="theme.id" :href="`#${theme.id}`" class="theme-card">
               <span>{{ String(index + 1).padStart(2, '0') }}</span>
-              <div><i>{{ theme.icon }}</i><strong>{{ tx(theme.en.title, theme.zh.title) }}</strong><small>{{ tx(theme.en.area, theme.zh.area) }}</small><p>{{ tx(theme.en.explore, theme.zh.explore) }}</p></div>
+              <div><i class="theme-card__icon"><svg class="junior-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="themeIcons[theme.id]" /></i><strong>{{ tx(theme.en.title, theme.zh.title) }}</strong><small>{{ tx(theme.en.area, theme.zh.area) }}</small><p>{{ tx(theme.en.explore, theme.zh.explore) }}</p></div>
               <b aria-hidden="true">→</b>
             </a>
           </div>
@@ -56,12 +56,12 @@
       <article v-for="(theme, index) in themes" :id="theme.id" :key="theme.id" class="junior-detail" :class="`junior-detail--${index + 1}`">
         <div class="junior-shell">
           <div class="junior-detail__top"><span>{{ String(index + 1).padStart(2, '0') }} / 06</span><span>{{ tx('SINGAPORE FUTURE EXPLORERS', '新加坡未来探索系列') }}</span></div>
-          <header class="junior-detail__header"><p>{{ theme.icon }} {{ tx(`JUNIOR HIGH / SECONDARY SCHOOL #${index + 1}`, `初中 / 中学 #${index + 1}`) }}</p><h2>{{ tx(theme.en.title, theme.zh.title) }}</h2><strong>{{ tx(theme.en.category, theme.zh.category) }} · {{ tx('6 Days / 5 Nights', '6 天 5 夜') }}</strong><span>{{ tx(theme.en.tagline, theme.zh.tagline) }}</span><small>{{ tx('Junior High / Secondary | Ages 13-15', '初中 / 中学生｜13-15 岁') }}</small></header>
+          <header class="junior-detail__header"><p><svg class="junior-svg junior-svg--lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="themeIcons[theme.id]" /><span>{{ tx(`JUNIOR HIGH / SECONDARY SCHOOL #${index + 1}`, `初中 / 中学 #${index + 1}`) }}</span></p><h2>{{ tx(theme.en.title, theme.zh.title) }}</h2><strong>{{ tx(theme.en.category, theme.zh.category) }} · {{ tx('6 Days / 5 Nights', '6 天 5 夜') }}</strong><span>{{ tx(theme.en.tagline, theme.zh.tagline) }}</span><small>{{ tx('Junior High / Secondary | Ages 13-15', '初中 / 中学生｜13-15 岁') }}</small></header>
           <img class="junior-detail__image" :src="themeImages[index]" :alt="tx(theme.en.title, theme.zh.title)" />
-          <div class="junior-detail__lead"><strong>{{ theme.icon }} {{ tx(theme.en.lead, theme.zh.lead) }}</strong><p>{{ tx(theme.en.intro, theme.zh.intro) }}</p></div>
+          <div class="junior-detail__lead"><strong>{{ tx(theme.en.lead, theme.zh.lead) }}</strong><p>{{ tx(theme.en.intro, theme.zh.intro) }}</p></div>
           <section class="junior-detail__section"><p class="junior-index">04 / 4Es LEARNING EXPERIENCE</p><h3>4Es {{ tx('Learning Experience', '学习体验') }}</h3><div class="detail-es"><div v-for="item in theme.es" :key="item.key"><strong>{{ item.key }} <i>|</i> {{ tx(item.en.action, item.zh.action) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div></div></section>
           <section class="junior-detail__section"><p class="junior-index">05 / 6 DAYS / 5 NIGHTS</p><h3>{{ tx('6-Day / 5-Night Discovery Journey', '6 天 5 夜探索之旅') }}</h3><div class="journey-table"><div class="journey-table__head"><span>Day</span><span>{{ tx('Exploration Theme', '探索主题') }}</span><span>{{ tx('Highlights', '主要体验') }}</span></div><div v-for="day in theme.days" :key="day.day"><b>{{ day.day }}</b><strong>{{ tx(day.en.theme, day.zh.theme) }}</strong><span>{{ tx(day.en.highlight, day.zh.highlight) }}</span></div></div></section>
-          <section class="junior-detail__section"><p class="junior-index">06 / LEARNING ENVIRONMENTS</p><h3>{{ theme.icon }} {{ tx('Five Real-World Learning Environments', '五大真实学习环境') }}</h3><div class="learning-grid"><p v-for="place in theme.environments" :key="place.en.title"><strong>{{ tx(place.en.title, place.zh.title) }}</strong><span>{{ tx(place.en.detail, place.zh.detail) }}</span></p></div></section>
+          <section class="junior-detail__section"><p class="junior-index">06 / LEARNING ENVIRONMENTS</p><h3 class="junior-detail__env-title"><svg class="junior-svg junior-svg--lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="themeIcons[theme.id]" />{{ tx('Five Real-World Learning Environments', '五大真实学习环境') }}</h3><div class="learning-grid"><p v-for="place in theme.environments" :key="place.en.title"><strong>{{ tx(place.en.title, place.zh.title) }}</strong><span>{{ tx(place.en.detail, place.zh.detail) }}</span></p></div></section>
           <footer class="junior-detail__footer"><strong>{{ tx('More Than a Trip - A Real-World Learning Journey', '不只是一次旅行 · 一场真实世界的学习之旅') }}</strong><span>{{ tx(theme.en.close, theme.zh.close) }}</span><small>{{ tx('6 DAYS · 5 NIGHTS | JUNIOR HIGH / SECONDARY | AGES 13-15', '6 天 5 夜｜初中 / 中学生｜13-15 岁') }}</small></footer>
         </div>
       </article>
@@ -72,18 +72,27 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
-import heroImage from '@/assets/exploreSingapore/探索新加坡-01.png'
-import image01 from '@/assets/exploreSingapore/探索新加坡-03.png'
-import image02 from '@/assets/exploreSingapore/探索新加坡-04.png'
-import image03 from '@/assets/exploreSingapore/探索新加坡-05.png'
-import image04 from '@/assets/exploreSingapore/探索新加坡-06.png'
-import image05 from '@/assets/exploreSingapore/探索新加坡-07.png'
-import image06 from '@/assets/exploreSingapore/探索新加坡-08.png'
+import heroImage from '@/assets/junior-images/hero-marina.webp'
+import image01 from '@/assets/junior-images/theme-biomedical.webp'
+import image02 from '@/assets/junior-images/theme-aviation.webp'
+import image03 from '@/assets/junior-images/theme-sustainable.webp'
+import image04 from '@/assets/junior-images/theme-industry.webp'
+import image05 from '@/assets/junior-images/theme-ocean.webp'
+import image06 from '@/assets/junior-images/theme-ai.webp'
 
 const { lang } = useI18n()
 const isEn = computed(() => lang.value === 'en')
 const tx = (en: string, zh: string) => isEn.value ? en : zh
 const themeImages = [image01, image02, image03, image04, image05, image06]
+/* 六大主题矢量图标（线性风格，继承 accent 颜色） */
+const themeIcons: Record<string, string> = {
+  'young-biomedical-scientists': '<path d="M8 3c0 4.5 8 4.5 8 9s-8 4.5-8 9"/><path d="M16 3c0 4.5-8 4.5-8 9s8 4.5 8 9"/><path d="M9.2 6.6h5.6M9.2 17.4h5.6M8.3 12h7.4"/>',
+  'space-aviation-future-mobility': '<path d="M12 2.5c2.8 1.9 4 5.2 4 8.2l-1.3 5.8H9.3L8 10.7c0-3 1.2-6.3 4-8.2z"/><circle cx="12" cy="9" r="1.7"/><path d="M8.2 12.5 5.6 16.4l3-.5M15.8 12.5l2.6 3.9-3-.5M10.3 19.2c.5.9 1 1.5 1.7 2 .7-.5 1.2-1.1 1.7-2"/>',
+  'smart-sustainable-singapore': '<path d="M5.5 19.5C5.5 10 12.5 4.5 20 4.5c0 8.5-4.5 15-13 15h-1.5z"/><path d="M5.5 19.5c3-5.5 7-9.5 11-11.5"/>',
+  'industry-4-singapore': '<rect x="5" y="8.5" width="14" height="10" rx="2"/><path d="M12 8.5V5.9"/><circle cx="12" cy="4.3" r="1.3"/><circle cx="9.3" cy="12.6" r="1.1"/><circle cx="14.7" cy="12.6" r="1.1"/><path d="M9.5 15.9h5M3 12.5v2.5M21 12.5V15"/>',
+  'earth-ocean-climate': '<circle cx="12" cy="12" r="8.8"/><path d="M3.2 12h17.6"/><path d="M12 3.2c2.8 2.4 2.8 15.2 0 17.6M12 3.2c-2.8 2.4-2.8 15.2 0 17.6"/>',
+  'ai-robotics-smart-nation': '<rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.4" y="10.4" width="3.2" height="3.2" rx=".6"/><path d="M9.5 7V4.2M14.5 7V4.2M9.5 19.8V17M14.5 19.8V17M7 9.5H4.2M7 14.5H4.2M19.8 9.5H17M19.8 14.5H17"/>',
+}
 const pair = (action: string, detail: string) => ({ action, detail })
 const entry = (enTitle: string, enDetail: string, zhTitle: string, zhDetail: string) => ({ en: { title: enTitle, detail: enDetail }, zh: { title: zhTitle, detail: zhDetail } })
 const day = (day: string, enTheme: string, enHighlight: string, zhTheme: string, zhHighlight: string) => ({ day, en: { theme: enTheme, highlight: enHighlight }, zh: { theme: zhTheme, highlight: zhHighlight } })
@@ -149,18 +158,22 @@ const themes = [
 .junior-page { --orange: #ed6d32; --orange-dark: #c84f1d; --navy: #153657; --soft: #f7f4ef; color: #18344c; background: #fff; font-family: 'DM Sans', Arial, sans-serif; }
 .junior-shell { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
 .junior-hero { position: relative; min-height: 650px; overflow: hidden; background: #173d5f; color: #fff; }
-.junior-hero::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(10, 40, 67, .94) 0%, rgba(10, 40, 67, .7) 46%, rgba(10, 40, 67, .12)); }
+.junior-hero::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(9, 36, 61, .95) 0%, rgba(9, 36, 61, .72) 46%, rgba(9, 36, 61, .1)), radial-gradient(52% 68% at 88% 18%, rgba(237, 109, 50, .28), transparent 70%), linear-gradient(0deg, rgba(6, 24, 42, .55) 0%, transparent 32%); }
 .junior-hero__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .junior-hero__content { position: relative; z-index: 1; min-height: 650px; padding: 133px 0 72px; }
 .junior-hero__eyebrow, .junior-index { margin: 0; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
 .junior-hero__meta { position: absolute; top: 136px; right: 0; margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .1em; }
 .junior-hero__copy { max-width: 730px; margin-top: 77px; }
-.junior-chip { display: inline-block; padding: 7px 12px; border: 1px solid rgba(255,255,255,.46); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.junior-chip { display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px; border: 1px solid rgba(255, 255, 255, .38); background: rgba(255, 255, 255, .07); backdrop-filter: blur(4px); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.junior-chip::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #ff9662; box-shadow: 0 0 10px rgba(255, 150, 98, .9); }
 .junior-hero h1 { max-width: 650px; margin: 17px 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(50px, 7vw, 92px); font-weight: 600; line-height: .93; letter-spacing: 0; }
 .junior-hero h1 em, .junior-intro h2 em { color: #ff9662; font-style: normal; }
 .junior-hero__copy > p { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: .08em; }
 .junior-hero__copy small { display: block; margin-top: 17px; color: #d7e6f1; font-size: 14px; }
-.junior-hero__jump { position: absolute; right: 0; bottom: 72px; display: flex; align-items: center; gap: 9px; color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 42px; }
+.junior-hero__jump { position: absolute; right: 0; bottom: 72px; display: flex; align-items: center; gap: 9px; color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 42px; text-decoration: none; transition: color .25s ease, transform .25s ease; }
+.junior-hero__jump:hover { color: #ff9662; transform: translateY(-3px); }
+.junior-hero__jump::after { content: ''; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: linear-gradient(90deg, #ed6d32, transparent); transform: scaleX(.35); transform-origin: left; transition: transform .3s ease; }
+.junior-hero__jump:hover::after { transform: scaleX(1); }
 .junior-hero__jump span { font-family: 'DM Sans', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
 .junior-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; padding-top: 118px; padding-bottom: 112px; }
 .junior-intro h2, .junior-section-heading h2, .junior-four-es h2, .junior-real h2 { margin: 13px 0 0; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: 0; }
@@ -179,7 +192,10 @@ const themes = [
 .theme-card:nth-child(6n + 6) { --accent: #1f7fa6; }
 .theme-card:hover { border-color: var(--accent); box-shadow: 0 16px 30px color-mix(in srgb, var(--accent) 20%, rgba(31, 57, 71, .08)); transform: translateY(-3px); }
 .theme-card > span { color: var(--accent); font-size: 15px; font-weight: 800; opacity: .9; }
-.theme-card i { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-right: 10px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, #fff); font-size: 21px; font-style: normal; }
+.theme-card__icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: 12px; border-radius: 12px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, #fff), color-mix(in srgb, var(--accent) 7%, #fff)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent); font-style: normal; vertical-align: -4px; }
+.junior-svg { width: 24px; height: 24px; display: block; }
+.theme-card__icon .junior-svg { width: 24px; height: 24px; }
+.junior-svg--lead { display: inline-block; width: 20px; height: 20px; vertical-align: -4px; margin-right: 8px; }
 .theme-card strong { font-size: 19px; line-height: 1.25; }
 .theme-card small { display: block; margin-top: 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
 .theme-card p { margin: 8px 0 0; color: #566b78; font-size: 13px; line-height: 1.55; }
@@ -188,7 +204,8 @@ const themes = [
 .junior-four-es { display: grid; grid-template-columns: .87fr 1.13fr; gap: 72px; padding-top: 116px; padding-bottom: 118px; }
 .junior-four-es__heading > p:last-child { margin: 22px 0 0; color: var(--orange-dark); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
 .junior-four-es__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #d9e0e2; }
-.junior-four-es__grid div { --accent: #e2683c; min-height: 160px; padding: 22px; border-top: 3px solid var(--accent); background: #fff; }
+.junior-four-es__grid div { --accent: #e2683c; min-height: 160px; padding: 22px; border-top: 3px solid var(--accent); background: #fff; transition: transform .25s ease, box-shadow .25s ease; }
+.junior-four-es__grid div:hover { transform: translateY(-4px); box-shadow: 0 18px 38px color-mix(in srgb, var(--accent) 16%, rgba(21, 54, 87, .1)); }
 .junior-four-es__grid div:nth-child(2) { --accent: #2f6fb0; }
 .junior-four-es__grid div:nth-child(3) { --accent: #2e8b6e; }
 .junior-four-es__grid div:nth-child(4) { --accent: #7a5aa6; }
@@ -209,20 +226,23 @@ const themes = [
 .junior-detail__top { display: flex; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid #ced9df; color: #5b6c75; font-size: 11px; font-weight: 700; letter-spacing: .1em; }
 .junior-detail__top span:first-child { color: var(--orange); }
 .junior-detail__header { padding: 61px 0 38px; max-width: 840px; }
-.junior-detail__header p { margin: 0; color: var(--orange-dark); font-size: 13px; font-weight: 700; letter-spacing: .06em; }
+.junior-detail__header p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--orange-dark); font-size: 13px; font-weight: 700; letter-spacing: .06em; }
+.junior-detail__env-title { display: flex; align-items: center; gap: 10px; }
+.junior-detail__env-title .junior-svg--lead { color: var(--orange); }
 .junior-detail__header h2 { margin: 13px 0 11px; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(34px, 5vw, 58px); font-weight: 600; line-height: 1.04; letter-spacing: 0; }
 .junior-detail__header strong { color: #3c566a; font-size: 15px; }
 .junior-detail__header span, .junior-detail__header small { display: block; }
 .junior-detail__header span { margin-top: 19px; color: var(--orange-dark); font-size: 15px; font-weight: 700; }
 .junior-detail__header small { margin-top: 9px; color: #64747f; font-size: 13px; font-weight: 700; }
-.junior-detail__image { display: block; width: 100%; height: min(43vw, 450px); object-fit: cover; }
+.junior-detail__image { display: block; width: 100%; height: min(43vw, 450px); object-fit: cover; border-radius: 20px; box-shadow: 0 26px 60px rgba(21, 54, 87, .22); }
 .junior-detail__lead { display: grid; grid-template-columns: .68fr 1.32fr; gap: 50px; padding: 35px 0 71px; border-bottom: 1px solid #ced9df; }
 .junior-detail__lead strong { color: var(--navy); font-size: 21px; line-height: 1.45; }
 .junior-detail__lead p { margin: 0; font-size: 16px; line-height: 1.8; }
 .junior-detail__section { padding: 62px 0 0; }
 .junior-detail__section h3 { margin: 14px 0 27px; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; letter-spacing: 0; }
 .detail-es { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #d8dfe1; }
-.detail-es div { --accent: #e2683c; min-height: 128px; padding: 20px 23px; border-top: 3px solid var(--accent); background: #fff; }
+.detail-es div { --accent: #e2683c; min-height: 128px; padding: 20px 23px; border-top: 3px solid var(--accent); background: #fff; transition: transform .25s ease, box-shadow .25s ease; }
+.detail-es div:hover { transform: translateY(-4px); box-shadow: 0 18px 38px color-mix(in srgb, var(--accent) 16%, rgba(21, 54, 87, .1)); }
 .detail-es div:nth-child(4n + 2) { --accent: #2f6fb0; }
 .detail-es div:nth-child(4n + 3) { --accent: #2e8b6e; }
 .detail-es div:nth-child(4n + 4) { --accent: #7a5aa6; }
@@ -230,9 +250,11 @@ const themes = [
 .detail-es i { padding: 0 5px; font-style: normal; }
 .detail-es span { display: block; margin-top: 10px; color: #334e61; font-size: 14px; line-height: 1.55; }
 .journey-table { border-top: 2px solid var(--navy); }
-.journey-table > div { display: grid; grid-template-columns: 100px minmax(180px, .85fr) minmax(300px, 1.65fr); gap: 20px; padding: 18px; border-bottom: 1px solid #d6dde0; }
+.journey-table > div { display: grid; grid-template-columns: 110px minmax(180px, .85fr) minmax(300px, 1.65fr); gap: 20px; padding: 18px; border-bottom: 1px solid #d6dde0; transition: background .2s ease; }
+.journey-table > div:not(.journey-table__head):hover { background: #f6f9fa; }
+.journey-table b { justify-self: start; padding: 5px 11px; border-radius: 999px; background: rgba(237, 109, 50, .1); color: var(--orange-dark); font-size: 12px; letter-spacing: .04em; white-space: nowrap; }
 .journey-table__head { background: #eaf0f1; color: #355366; font-size: 12px; font-weight: 700; }
-.journey-table b { color: var(--orange-dark); font-size: 13px; }
+.journey-table__head b { padding: 0; background: none; border-radius: 0; }
 .journey-table strong { color: var(--navy); font-size: 14px; }
 .journey-table span { color: #4e616e; font-size: 14px; line-height: 1.5; }
 .learning-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #d8dfe1; }
@@ -243,10 +265,10 @@ const themes = [
 .learning-grid p:nth-child(5n + 5) { --accent: #b98a2f; }
 .learning-grid strong { display: block; color: var(--accent); font-size: 12px; letter-spacing: .02em; }
 .learning-grid span { display: block; margin-top: 12px; color: #40596a; font-size: 13px; line-height: 1.55; }
-.junior-detail__footer { display: flex; flex-direction: column; align-items: center; margin-top: 83px; padding: 53px 20px; background: var(--navy); color: #fff; text-align: center; }
+.junior-detail__footer { display: flex; flex-direction: column; align-items: center; margin-top: 83px; padding: 53px 20px; background: linear-gradient(150deg, #1b4266, #132f4b 68%); border-top: 4px solid #ed6d32; color: #fff; text-align: center; }
 .junior-detail__footer strong { color: #ff9b6c; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 600; }
 .junior-detail__footer span { margin: 16px 0; font-size: 15px; font-weight: 700; }
 .junior-detail__footer small { color: #d7e5eb; font-size: 11px; font-weight: 700; letter-spacing: .07em; }
 .junior-detail:last-child { padding-bottom: 100px; }
-@media (max-width: 760px) { .junior-shell { width: min(100% - 34px, 560px); } .junior-hero, .junior-hero__content { min-height: 600px; } .junior-hero__content { padding-top: 120px; } .junior-hero__meta { top: 88px; right: 0; max-width: 160px; text-align: right; line-height: 1.5; } .junior-hero__copy { margin-top: 66px; } .junior-hero h1 { font-size: 50px; } .junior-hero__copy > p { font-size: 12px; line-height: 1.6; } .junior-hero__jump { bottom: 44px; } .junior-intro, .junior-four-es, .junior-detail__lead { grid-template-columns: 1fr; gap: 24px; } .junior-intro { padding: 72px 0; } .junior-intro__copy { padding: 0; font-size: 15px; } .junior-themes { padding: 70px 0; } .junior-section-heading { display: block; } .junior-section-heading > p { margin-top: 18px; } .theme-grid, .detail-es { grid-template-columns: 1fr; } .theme-card { min-height: 0; } .junior-four-es { padding: 72px 0; } .junior-four-es__grid { margin-top: 12px; } .junior-real { padding: 72px 0; } .junior-real__grid { grid-template-columns: 1fr; margin-top: 35px; } .junior-real__grid div { min-height: 0; } .junior-detail { padding-top: 65px; } .junior-detail__header { padding: 38px 0 25px; } .junior-detail__image { height: 240px; } .junior-detail__lead { padding: 27px 0 48px; } .junior-detail__section { padding-top: 48px; } .junior-detail__section h3 { font-size: 26px; } .journey-table { overflow-x: auto; } .journey-table > div { grid-template-columns: 80px 155px minmax(270px, 1fr); min-width: 530px; } .learning-grid { grid-template-columns: 1fr; } .learning-grid p { min-height: 0; } .junior-detail__footer { margin-top: 58px; padding: 40px 18px; } .junior-detail__footer strong { font-size: 21px; } }
+@media (max-width: 760px) { .junior-shell { width: min(100% - 34px, 560px); } .junior-hero, .junior-hero__content { min-height: 600px; } .junior-hero__content { padding-top: 120px; } .junior-hero__meta { top: 88px; right: 0; max-width: 160px; text-align: right; line-height: 1.5; } .junior-hero__copy { margin-top: 66px; } .junior-hero h1 { font-size: 50px; } .junior-hero__copy > p { font-size: 12px; line-height: 1.6; } .junior-hero__jump { bottom: 44px; } .junior-intro, .junior-four-es, .junior-detail__lead { grid-template-columns: 1fr; gap: 24px; } .junior-intro { padding: 72px 0; } .junior-intro__copy { padding: 0; font-size: 15px; } .junior-themes { padding: 70px 0; } .junior-section-heading { display: block; } .junior-section-heading > p { margin-top: 18px; } .theme-grid, .detail-es { grid-template-columns: 1fr; } .theme-card { min-height: 0; } .junior-four-es { padding: 72px 0; } .junior-four-es__grid { margin-top: 12px; } .junior-real { padding: 72px 0; } .junior-real__grid { grid-template-columns: 1fr; margin-top: 35px; } .junior-real__grid div { min-height: 0; } .junior-detail { padding-top: 65px; } .junior-detail__header { padding: 38px 0 25px; } .junior-detail__image { height: 240px; } .junior-detail__lead { padding: 27px 0 48px; } .junior-detail__section { padding-top: 48px; } .junior-detail__section h3 { font-size: 26px; } .journey-table > .journey-table__head { display: none; } .journey-table > div { grid-template-columns: 1fr; gap: 7px; padding: 15px 4px; } .journey-table strong { font-size: 15px; } .learning-grid { grid-template-columns: 1fr; } .learning-grid p { min-height: 0; } .junior-detail__image { border-radius: 14px; } .junior-detail__footer { margin-top: 58px; padding: 40px 18px; } .junior-detail__footer strong { font-size: 21px; } }
 </style>

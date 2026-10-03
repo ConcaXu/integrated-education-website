@@ -347,6 +347,14 @@
                   :class="{
                     'card-action--orange': key === '教育流动' && section.title === '我们的两大教育项目',
                   }"
+                  to="/singapore-future-learning-series"
+                >
+                  {{ tx(card.action, card.actionEn || card.action) }}
+                  <span aria-hidden="true">→</span>
+                </router-link>
+                <router-link
+                  v-else-if="card.action === '小学课程'"
+                  class="card-action card-action--orange"
                   to="/singapore-explorers"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
@@ -416,7 +424,11 @@
                   (key === '国际合作' && section.action === '联系 APIMTC') ||
                   (key === '联系我们' && section.title === '与我们联系'),
               }"
-              to="/contact"
+              :to="
+                key === '教育流动' && section.action === '探索教育项目'
+                  ? '/singapore-future-learning-series'
+                  : '/contact'
+              "
             >{{ tx(section.action, section.actionEn || section.action) }}</router-link>
             <router-link
               v-if="section.secondaryAction"
@@ -916,6 +928,8 @@ const pages: Record<string, Page> = {
             text: "激发好奇心，探索科学、科技与世界。",
             textEn: "Discover science, technology and the world.",
             icon: "○",
+            action: "小学课程",
+            actionEn: "Primary courses",
           },
           {
             title: "初中 / 中学",

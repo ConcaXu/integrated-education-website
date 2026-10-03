@@ -4,7 +4,7 @@
     <section
       class="industry-hero"
       :style="{
-        backgroundImage: `linear-gradient(90deg, rgba(7, 37, 61, .9), rgba(7, 37, 61, .38)), url(${heroBackground})`,
+        backgroundImage: `linear-gradient(92deg, rgba(7, 30, 52, 0.94) 0%, rgba(7, 30, 52, 0.6) 44%, rgba(7, 30, 52, 0.14) 100%), linear-gradient(180deg, rgba(7, 30, 52, 0.08) 60%, rgba(7, 30, 52, 0.62) 100%), url(${heroBackground})`,
       }"
     >
       <div class="industry-shell industry-hero__inner">
@@ -319,7 +319,7 @@ import executiveIndustryStudy from "@/assets/chineseIndustryInspectionProject-im
 import technologyBenchmarking from "@/assets/chineseIndustryInspectionProject-images/技术标杆学习.png";
 import businessExchange from "@/assets/chineseIndustryInspectionProject-images/商务交流.png";
 import culturalExperience from "@/assets/chineseIndustryInspectionProject-images/文化体验.png";
-import heroBackground from "@/assets/chineseIndustryInspectionProject-images/bj.png";
+import heroBackground from "@/assets/chineseIndustryInspectionProject-images/中国产业考察-hero.png";
 import automotiveProgrammeImage from "@/assets/chineseIndustryInspectionProject-images/中国汽车产业高管商务考察项目.png";
 import newEnergyProgrammeImage from "@/assets/chineseIndustryInspectionProject-images/中国四川新能源高管产业考察与技术交流项目.png";
 import aiManufacturingProgrammeImage from "@/assets/chineseIndustryInspectionProject-images/中国长三角AI与智能制造高管产业考察交流项目.png";
@@ -758,7 +758,7 @@ const programmes = computed(() =>
   padding: 138px 0 92px;
   color: #fff;
   background-color: var(--industry-navy);
-  background-position: center;
+  background-position: center right;
   background-size: cover;
 }
 .industry-eyebrow,
@@ -775,6 +775,8 @@ const programmes = computed(() =>
     600 clamp(48px, 6vw, 84px)/.98 'Playfair Display', Georgia,
     serif;
   letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 6px 28px rgba(4, 18, 32, 0.45);
 }
 .industry-hero p:last-child {
   max-width: 650px;
@@ -827,6 +829,11 @@ const programmes = computed(() =>
   background: #fff;
   color: var(--industry-navy);
   font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.industry-pillar:hover {
+  background: #fffaf6;
+  transform: translateY(-2px);
 }
 .industry-pillar svg {
   width: 23px;
@@ -856,6 +863,7 @@ const programmes = computed(() =>
 .industry-table-wrap {
   overflow-x: auto;
   border: 1px solid #d9e0e2;
+  border-radius: 12px;
   background: #fff;
   box-shadow: 0 16px 32px rgb(31 57 71 / 8%);
 }
@@ -936,6 +944,11 @@ const programmes = computed(() =>
   border: 0;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.industry-table__action button:hover {
+  background: var(--industry-orange-dark);
+  transform: scale(1.08);
 }
 .industry-table__action svg {
   width: 18px;
@@ -951,7 +964,13 @@ const programmes = computed(() =>
   overflow: hidden;
   background: #fff;
   border: 1px solid #e7e1da;
+  border-radius: 10px;
   box-shadow: 0 8px 18px rgb(31 57 71 / 5%);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.industry-gallery figure:hover {
+  box-shadow: 0 16px 32px rgb(31 57 71 / 12%);
+  transform: translateY(-3px);
 }
 .industry-gallery img {
   display: block;
@@ -1019,13 +1038,14 @@ const programmes = computed(() =>
 }
 .programme-visual {
   position: relative;
-  width: min(760px, 78%);
+  width: min(820px, 88%);
   aspect-ratio: 16 / 9;
   margin: 0 auto 38px;
   overflow: hidden;
   background: #0e2f45;
-  border: 1px solid rgb(255 255 255 / 28%);
-  box-shadow: 14px 14px 0 rgb(237 109 50 / 20%);
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 12px;
+  box-shadow: 0 26px 60px rgb(4 18 32 / 45%);
 }
 .programme-visual::before {
   position: absolute;
@@ -1042,6 +1062,10 @@ const programmes = computed(() =>
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.programme-visual:hover img {
+  transform: scale(1.03);
 }
 .programme-facts {
   display: grid;
@@ -1057,6 +1081,10 @@ const programmes = computed(() =>
   gap: 7px;
   border-right: 1px solid rgb(255 255 255 / 23%);
   border-bottom: 1px solid rgb(255 255 255 / 23%);
+  transition: background-color 0.2s ease;
+}
+.programme-facts div:hover {
+  background: rgb(255 255 255 / 6%);
 }
 .programme-facts span {
   color: #a6c3c5;
@@ -1164,7 +1192,12 @@ const programmes = computed(() =>
   line-height: 1.45;
   background: rgb(255 255 255 / 8%);
   border: 1px solid rgb(255 255 255 / 24%);
-  border-radius: 2px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.programme-customization__types span:hover {
+  background: rgb(237 109 50 / 25%);
+  border-color: rgb(255 150 98 / 60%);
 }
 .programme-customization p {
   max-width: 850px;
@@ -1187,6 +1220,10 @@ const programmes = computed(() =>
   min-height: 152px;
   padding: 22px;
   background: rgb(255 255 255 / 7%);
+  transition: background-color 0.2s ease;
+}
+.focus-grid div:hover {
+  background: rgb(255 255 255 / 13%);
 }
 .focus-grid strong {
   color: #efa569;

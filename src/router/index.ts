@@ -102,6 +102,15 @@ const routes = [
       titleEn: "China Industry Study Programmes",
     },
   },
+  {
+    path: "/singapore-future-learning-series",
+    name: "SingaporeFutureLearningSeries",
+    component: () => import("@/views/SingaporeFutureLearningSeriesView.vue"),
+    meta: {
+      titleZh: "新加坡未来学习系列",
+      titleEn: "Singapore Future Learning Series",
+    },
+  },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 

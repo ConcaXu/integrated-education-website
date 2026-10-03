@@ -340,7 +340,7 @@ import theme03 from "@/assets/exploreSingapore/探索新加坡-05.png";
 import theme04 from "@/assets/exploreSingapore/探索新加坡-06.png";
 import theme05 from "@/assets/exploreSingapore/探索新加坡-07.png";
 import theme06 from "@/assets/exploreSingapore/探索新加坡-08.png";
-import heroDestination from "@/assets/exploreSingapore/探索新加坡-01.png";
+import heroDestination from "@/assets/exploreSingapore/探索新加坡-小学-01.png";
 import overviewImage01 from "@/assets/exploreSingapore/探索新加坡-02.png";
 import overviewImage02 from "@/assets/exploreSingapore/探索新加坡-03.png";
 
@@ -1283,6 +1283,7 @@ themes.forEach((theme, index) => {
 .hero-index,
 .hero-meta {
   font-size: 18px;
+  text-shadow: 0 2px 12px rgba(7, 22, 38, 0.75);
 }
 .hero-copy {
   align-self: end;
@@ -1766,35 +1767,24 @@ themes.forEach((theme, index) => {
   content: "";
   position: absolute;
   z-index: -1;
-  border-radius: 50%;
-  filter: blur(18px);
-  opacity: 0.78;
   pointer-events: none;
 }
+/* 左侧压暗渐变，保证标题可读性 */
 .explorers-hero::before {
-  width: 72vw;
-  height: 60vw;
-  right: -20vw;
-  top: -22vw;
-  background: radial-gradient(
-    ellipse,
-    #6df2c0 0%,
-    #18a9b8 38%,
-    transparent 70%
+  inset: 0;
+  background: linear-gradient(
+    92deg,
+    rgba(7, 22, 38, 0.92) 0%,
+    rgba(7, 22, 38, 0.62) 44%,
+    rgba(7, 22, 38, 0.12) 78%,
+    rgba(7, 22, 38, 0.02) 100%
   );
-  transform: rotate(-18deg);
 }
+/* 底部过渡，衔接下方浅色内容区 */
 .explorers-hero::after {
-  width: 62vw;
-  height: 50vw;
-  left: -24vw;
-  bottom: -30vw;
-  background: radial-gradient(
-    ellipse,
-    #b3ee55 0%,
-    #5b66db 48%,
-    transparent 72%
-  );
+  inset: auto 0 0 0;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, rgba(7, 22, 38, 0.55));
 }
 .hero-destination {
   position: absolute;
@@ -1803,8 +1793,8 @@ themes.forEach((theme, index) => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.28;
-  mix-blend-mode: screen;
+  object-position: center 32%;
+  opacity: 1;
 }
 .hero-grid {
   min-height: 490px;
@@ -1825,6 +1815,8 @@ themes.forEach((theme, index) => {
   border-color: #b8e9dc;
   background: #10223899;
   backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(7, 22, 38, 0.35);
 }
 .explorers-index {
   box-shadow: 0 10px 30px #24485c12;
@@ -1973,7 +1965,16 @@ themes.forEach((theme, index) => {
     padding-top: 112px;
   }
   .hero-destination {
-    opacity: 0.2;
+    opacity: 1;
+    object-position: 62% center;
+  }
+  .explorers-hero::before {
+    background: linear-gradient(
+      92deg,
+      rgba(7, 22, 38, 0.94) 0%,
+      rgba(7, 22, 38, 0.78) 52%,
+      rgba(7, 22, 38, 0.28) 100%
+    );
   }
   .destination-mosaic {
     grid-template-columns: 1fr;

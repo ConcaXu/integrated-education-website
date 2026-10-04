@@ -144,7 +144,10 @@
             <p
               v-if="section.intro"
               class="section-intro"
-              :class="{ 'section-intro--wrap': (section.intro || '').includes('\n') }"
+              :class="{
+                'section-intro--wrap': (section.intro || '').includes('\n'),
+                'section-intro--stacked': section.introLayout === 'stacked',
+              }"
             >
               <template v-if="key === '首页' && section.title === 'APIMTC 4E 模型'">
                 <span>{{ lang === 'en' ? section.introEn || section.intro : section.intro }}</span>
@@ -192,7 +195,7 @@
             </p>
           </div>
           <div v-if="section.feature" class="feature-panel">
-            <img :src="section.feature.image" :alt="section.feature.title" />
+            <img :src="section.feature.image" :alt="featureAlt(section.feature)" />
             <div class="feature-panel__copy">
               <p class="section-kicker">{{
                 tx(
@@ -200,7 +203,7 @@
                   section.feature.kickerEn || section.feature.kicker,
                 )
               }}</p>
-              <h3>
+              <h3 v-if="section.feature.title">
                 {{
                   tx(
                     section.feature.title,
@@ -219,13 +222,15 @@
               <router-link
                 v-if="section.feature.action"
                 to="/contact"
-                class="text-link"
+                :class="
+                  section.feature.actionStyle === 'solid' ? 'hero-action' : 'text-link'
+                "
                 >{{
                   tx(
                     section.feature.action,
                     section.feature.actionEn || section.feature.action,
                   )
-                }} <span>+</span></router-link
+                }} <span v-if="section.feature.actionStyle !== 'solid'">+</span></router-link
               >
             </div>
           </div>
@@ -233,14 +238,26 @@
             v-if="key === 'MICE 与商务' && section.title === '不只是一次商务之旅' && section.cards?.length"
             class="mice-advantages-heading"
           >
-            <h3>{{ tx('我们的优势', 'Our advantages') }}</h3>
+            <h3>{{ tx('我们的优势', 'Our Strength') }}</h3>
           </div>
           <div
             v-if="section.cards?.length"
             class="portal-grid"
-            :class="`portal-grid--${section.columns || 3}`"
+            :class="[
+              `portal-grid--${section.columns || 3}`,
+              { 'portal-grid--hierarchy': isBrandHierarchy(section) },
+            ]"
           >
             <template v-for="(card, cardIndex) in section.cards" :key="card.title">
+              <!-- 品牌层级：在相邻两张卡之间插入向下箭头，标示各品牌的先后顺序与层级 -->
+              <div
+                v-if="isBrandHierarchy(section) && cardIndex > 0"
+                class="portal-hierarchy-arrow"
+                aria-hidden="true"
+              >
+                <span class="portal-hierarchy-arrow__line"></span>
+                <span class="portal-hierarchy-arrow__head"></span>
+              </div>
               <div
                 v-if="key === '首页' && section.title === 'APIMTC 4E 模型'"
                 class="four-e-message"
@@ -501,11 +518,14 @@ type Card = {
 type Feature = {
   kicker: string;
   kickerEn?: string;
-  title: string;
+  /** 省略时不再渲染 feature 小标题（用于它与下方 action 文案重复的情况） */
+  title?: string;
   text: string;
   image: string;
   action?: string;
   actionEn?: string;
+  /** "solid"：把 action 渲染成橙色实心按钮；默认渲染为青/蓝色文字链接 */
+  actionStyle?: "solid";
   titleEn?: string;
   textEn?: string;
 };
@@ -515,6 +535,8 @@ type Section = {
   kicker?: string;
   intro?: string;
   introEn?: string;
+  /** "stacked"：intro 里的 \n 逐行断行展示，而不是被压成一行 */
+  introLayout?: "stacked";
   cards?: Card[];
   columns?: number;
   feature?: Feature;
@@ -817,12 +839,13 @@ const pages: Record<string, Page> = {
         },
       },
       {
-        title: "我们的使命",
-        titleEn: "Our Mission",
+        title: "我们的宗旨",
+        titleEn: "Our Purpose",
         intro:
-          "连接人才、城市、教育、产业与机会。\n新加坡是我们的根基。成都是我们的中国门户。世界是我们的合作网络。",
+          "连接人才、城市、教育、产业与机会。\n新加坡是我们的根基。\n成都是我们的中国门户。\n世界是我们的合作网络。",
         introEn:
-          "Connecting people, places, education, industry and opportunity.\nSingapore is our home. Chengdu is our China gateway. The world is our network.",
+          "Connecting people, places, education, industry and opportunity.\nSingapore is our home.\nChengdu is our China gateway.\nThe world is our network.",
+        introLayout: "stacked",
       },
       {
         title: "APIMTC",
@@ -839,7 +862,7 @@ const pages: Record<string, Page> = {
     titleEn: "Beyond borders. Beyond the classroom.",
     lead: "让学习走出课堂，走进大学、产业、科技、文化与真实世界。",
     leadEn:
-      "Take learning beyond the classroom — into universities,  technology, culture, industry and the real world.",
+      "Take learning beyond the classroom — into universities, industry, technology, culture and the real world.",
     description:
       "APIMTC 打造具有国际视野的沉浸式教育项目，连接学生、学校、教育机构与产业。",
     descriptionEn:
@@ -850,8 +873,8 @@ const pages: Record<string, Page> = {
         titleEn: "Our two signature programmes",
         cards: [
           {
-            title: "新加坡未来探索者",
-            titleEn: "Singapore future explorers",
+            title: "新加坡未来学习系列",
+            titleEn: "Singapore Future Learning Series",
             text:
               "中国及全球 → 新加坡\n探索新加坡的教育、科技、产业、文化与未来发展。\n生命与健康 · 太空与航空 · 可持续发展 · 人工智能 · 新兴产业\n探索新加坡",
             textEn:
@@ -887,7 +910,7 @@ const pages: Record<string, Page> = {
           },
           {
             title: "EXPERIENCE · 体验",
-            titleEn: "Experience · Experience",
+            titleEn: "Experience · Immerse",
             text: "走进企业、实验室及真实产业环境。",
             textEn: "See technology, industry and innovation in action.",
             icon: "↗",
@@ -937,27 +960,27 @@ const pages: Record<string, Page> = {
             textEn: "Discover science, technology and the world.",
             icon: "○",
             action: "小学课程",
-            actionEn: "Primary courses",
+            actionEn: "Primary Courses",
           },
           {
             title: "初中 / 中学",
-            titleEn: "Junior high / secondary",
+            titleEn: "Junior High / Secondary",
             text: "连接学术、产业、科技与全球议题。",
             textEn:
               "Connect learning with industry, technology and global issues.",
             icon: "◇",
             action: "初中课程",
-            actionEn: "Junior high courses",
+            actionEn: "Junior High Courses",
           },
           {
             title: "高中 / 初级学院",
-            titleEn: "Senior high / Junior College",
+            titleEn: "Senior High / Junior College",
             text: "聚焦未来、创新、领导力与新兴产业。",
             textEn:
               "Explore innovation, leadership, future industries and deeper learning.",
             icon: "◈",
             action: "高中课程",
-            actionEn: "Senior high courses",
+            actionEn: "Senior High Courses",
           },
         ],
         columns: 3,
@@ -1396,8 +1419,7 @@ const pages: Record<string, Page> = {
         feature: {
           kicker: "走进真实的中国",
           kickerEn: "Experience the real China.",
-          title: "探索中国项目",
-          titleEn: "Explore China programmes",
+          // 小标题与下方按钮文案重复，故省略 title（模板里 h3 由 v-if 控制）
           text:
             "面向新加坡学校及学生，打造融合学习、科技、产业、文化与交流的沉浸式中国教育项目。",
           textEn:
@@ -1405,6 +1427,7 @@ const pages: Record<string, Page> = {
           image: china06,
           action: "探索中国项目",
           actionEn: "Explore China programmes",
+          actionStyle: "solid",
         },
         variant: "portal-section--tint",
       },
@@ -1509,6 +1532,9 @@ const pages: Record<string, Page> = {
 };
 const getCardIcon = (title: string) => {
   const iconMap: Array<[string, string]> = [
+    // 「教育及培训机构」要排在「教育」之前：find 取首个命中，这样只有这一张卡用「授课」图标，
+    // 其余含「教育」的卡片（国际教育流动 / 教育流动 等）仍保持学士帽
+    ["教育及培训", "fa-chalkboard-user"],
     ["教育", "fa-graduation-cap"],
     ["学习", "fa-book-open"],
     ["小学", "fa-child"],
@@ -1523,8 +1549,10 @@ const getCardIcon = (title: string) => {
     ["合作", "fa-handshake"],
     ["伙伴", "fa-handshake"],
     ["学校", "fa-school"],
-    ["大学", "fa-university"],
-    ["职业院校", "fa-building-columns"],
+    // FA6 里 fa-university 是 fa-building-columns 的别名（同一字形），
+    // 与「职业院校」「政府及机构」三张卡撞图，故改用彼此可区分的图标
+    ["大学", "fa-graduation-cap"],
+    ["职业院校", "fa-screwdriver-wrench"],
     ["政府", "fa-landmark"],
     ["企业", "fa-building"],
     ["健康", "fa-heart-pulse"],
@@ -1552,6 +1580,14 @@ const splitPartnerTitle = (card: Card) => {
   const [first, ...rest] = (card.titleEn || card.title).split(" & ");
   return [first, rest.join(" & ")];
 };
+// feature 面板 <img> 的 alt：优先用 title，没有 title 时退回 kicker；两者都跟随当前语言
+const featureAlt = (feature: Feature) =>
+  feature.title
+    ? tx(feature.title, feature.titleEn || feature.title)
+    : tx(feature.kicker, feature.kickerEn || feature.kicker);
+// 「我们的品牌架构」用纵向层级呈现（品牌自上而下 + 箭头连接），其余区块仍用并排网格
+const isBrandHierarchy = (section: Section) =>
+  key.value === "关于 APIMTC" && section.title === "我们的品牌架构";
 const key = computed(() => String(route.meta.titleZh || "首页"));
 const page = computed(() => pages[key.value] || pages.首页);
 const heroImages: Record<string, string> = {
@@ -1904,6 +1940,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .section-intro--wrap {
   white-space: normal;
 }
+/* 逐句换行：按 intro 里的 \n 断行，避免整段被排成水平一行。
+   必须放在 --wrap 之后——两者同为单类选择器，靠源码顺序决定优先级 */
+.section-intro--stacked {
+  white-space: pre-line;
+}
 .china-city-intro__headline {
   color: var(--blue-900);
   font-weight: 800;
@@ -1960,6 +2001,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   line-height: 1.8;
   white-space: pre-line;
 }
+/* feature 区块内的橙色按钮：.text-link 原本自带 margin-top: 20px，
+   换成 .hero-action 后没有外边距，这里补回与正文的间距 */
+.feature-panel__copy .hero-action {
+  margin-top: 20px;
+}
 .text-link {
   display: inline-flex;
   gap: 10px;
@@ -2010,6 +2056,62 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .portal-grid--6 {
   /* 6 列时卡片过窄（约 99px），卡片标题中英文都会折行，改为 3 列保证标题单行 */
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* 「我们的品牌架构」：三张卡并排无法体现先后顺序，改为纵向层级——
+   品牌自上而下排列，之间用向下箭头连接，形成清晰的一条主线 */
+.portal-grid--hierarchy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.portal-grid--hierarchy .portal-card {
+  width: 100%;
+  /* 卡片文字最长一行约 237px，加左右内边距与右侧装饰图标预留后约 349px；
+     520px 使文字约占内容区 58%，与原先三列布局的卡片观感接近，不再是「一排大空卡」 */
+  max-width: 520px;
+}
+.portal-grid--hierarchy .portal-card:hover {
+  /* 纵向排列下卡片间距很小，上浮会让箭头与卡片脱开，改为只做描边/阴影反馈 */
+  transform: none;
+}
+.portal-hierarchy-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 68px;
+  pointer-events: none;
+}
+.portal-hierarchy-arrow__line {
+  width: 3px;
+  height: 38px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(93, 230, 238, 0.14), rgba(93, 230, 238, 1));
+  box-shadow: 0 0 12px rgba(55, 216, 227, 0.55);
+}
+.portal-hierarchy-arrow__head {
+  width: 13px;
+  height: 13px;
+  margin-top: -6px;
+  border-right: 3px solid #5de6ee;
+  border-bottom: 3px solid #5de6ee;
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 7px rgba(55, 216, 227, 0.7));
+}
+@media (max-width: 720px) {
+  .portal-hierarchy-arrow {
+    height: 52px;
+  }
+  .portal-hierarchy-arrow__line {
+    height: 28px;
+  }
+  .portal-hierarchy-arrow__head {
+    width: 11px;
+    height: 11px;
+    margin-top: -5px;
+  }
 }
 .portal-section--partners .portal-card:not(.portal-card--image) .portal-card__body {
   padding-right: 60px;
@@ -2432,6 +2534,10 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   .section-intro {
     white-space: normal;
   }
+  /* 窄屏下 intro 允许折行，但「逐句换行」的区块仍要保留 \n 断行 */
+  .section-intro--stacked {
+    white-space: pre-line;
+  }
   .china-world-heading__content p,
   .china-world-heading__content > strong,
   .api-eduvoyage-heading__lines p,
@@ -2623,11 +2729,13 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   transform: translateY(-42%);
   pointer-events: none;
 }
-.portal-card:not(.portal-card--image):nth-child(2) .portal-card__icon {
+/* 用 nth-of-type 而非 nth-child：卡片是 <article>，层级箭头是 <div>，
+   nth-of-type 只数同为 article 的兄弟节点，因此插入箭头后各卡配色依旧正确 */
+.portal-card:not(.portal-card--image):nth-of-type(2) .portal-card__icon {
   background: linear-gradient(145deg, #9d87f6, #735de0);
   box-shadow: 0 7px 14px rgba(122, 96, 225, 0.23);
 }
-.portal-card:not(.portal-card--image):nth-child(3) .portal-card__icon {
+.portal-card:not(.portal-card--image):nth-of-type(3) .portal-card__icon {
   background: linear-gradient(145deg, #32c6c8, #0aa4ad);
   box-shadow: 0 7px 14px rgba(10, 164, 173, 0.23);
 }

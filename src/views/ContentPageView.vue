@@ -12,7 +12,9 @@
       <div class="portal-shell portal-hero__copy">
         <p class="hero-kicker">{{ tx(page.kicker, page.kickerEn || page.kicker) }}</p>
         <h1>{{ tx(page.title, page.titleEn) }}</h1>
-        <p class="hero-lead">{{ tx(page.lead, page.leadEn) }}</p>
+        <p class="hero-lead" :class="{ 'hero-lead--long': page.leadEn.length > 150 }">{{
+          tx(page.lead, page.leadEn)
+        }}</p>
         <p v-if="page.description" class="hero-description">
           {{ tx(page.description, page.descriptionEn || page.description) }}
         </p>
@@ -139,7 +141,11 @@
               </p>
             </template>
             <h2 v-else>{{ tx(section.title, section.titleEn) }}</h2>
-            <p v-if="section.intro" class="section-intro">
+            <p
+              v-if="section.intro"
+              class="section-intro"
+              :class="{ 'section-intro--wrap': (section.intro || '').includes('\n') }"
+            >
               <template v-if="key === '首页' && section.title === 'APIMTC 4E 模型'">
                 <span>{{ lang === 'en' ? section.introEn || section.intro : section.intro }}</span>
                 <span v-if="lang !== 'en'" class="four-e-intro-en">{{ section.introEn || section.intro }}</span>
@@ -746,14 +752,16 @@ const pages: Record<string, Page> = {
         cards: [
           {
             title: "APIMTC",
-            text: "新加坡\n我们的母公司及国际化平台。\nMICE · 旅游 · 教育 · 商务\n",
+            text:
+              "亚太国际会展与旅游服务中心\n新加坡\n我们的母公司及国际化平台。\nMICE · 旅游 · 教育 · 商务\n",
             textEn:
               "Singapore\nOur parent company and international platform.\nMICE · Travel · Education · Business\n",
             icon: "◈",
           },
           {
             title: "API EduVoyage",
-            text: "中国 · 成都\n我们的中国教育流动平台。\n教育 · 技能 · 学生流动 · 国际交流\n",
+            text:
+              "亚太国际智航\n中国 · 成都\n我们的中国教育流动平台。\n教育 · 技能 · 学生流动 · 国际交流\n",
             textEn:
               "Chengdu, China\nOur China education mobility platform.\nEducation · Skills · Student Mobility · Exchange\n",
             icon: "▣",
@@ -1679,29 +1687,40 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   line-height: 1.4;
 }
 .portal-hero h1 {
-  max-width: 880px;
   margin: 0 0 16px;
   color: #fff;
-  font-size: 56px;
+  font-size: clamp(28px, 4.4vw, 56px);
   line-height: 1.2;
   font-weight: 700;
+  white-space: nowrap;
 }
 .hero-lead {
-  max-width: min(1040px, 100%);
   margin: 0 0 12px;
   color: rgba(255, 255, 255, 0.94);
-  font-size: 20px;
+  font-size: clamp(13px, 1.3vw, 20px);
   font-weight: 600;
   line-height: 1.6;
-  overflow-wrap: break-word;
-  text-wrap: pretty;
+  white-space: nowrap;
+}
+.hero-lead--long {
+  font-size: clamp(13px, 1.02vw, 15px);
+}
+@media (max-width: 1200px) {
+  .hero-lead {
+    white-space: normal;
+  }
 }
 .hero-description {
-  max-width: 820px;
   margin: 0 0 24px;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 16px;
+  font-size: clamp(13px, 1.1vw, 16px);
   line-height: 1.65;
+  white-space: nowrap;
+}
+@media (max-width: 960px) {
+  .hero-description {
+    white-space: normal;
+  }
 }
 .hero-actions {
   display: flex;
@@ -1751,6 +1770,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 800;
   line-height: 1.16;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .api-eduvoyage-heading {
   max-width: 100%;
@@ -1770,13 +1790,15 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .api-eduvoyage-heading__lines p {
   margin: 0;
+  white-space: nowrap;
 }
 .api-eduvoyage-heading__lines strong {
   margin-top: 2px;
   color: var(--blue-900);
-  font-size: 22px;
+  font-size: clamp(16px, 1.6vw, 22px);
   font-weight: 800;
   line-height: 1.35;
+  white-space: nowrap;
 }
 .china-world-heading {
   max-width: 100%;
@@ -1787,21 +1809,24 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   text-transform: uppercase;
 }
 .china-world-heading__content {
-  max-width: 1050px;
+  max-width: 1200px;
   color: #5c7690;
   font-size: 18px;
   line-height: 1.45;
 }
 .china-world-heading__content p {
   margin: 0;
+  font-size: clamp(13px, 1.25vw, 18px);
+  white-space: nowrap;
 }
 .china-world-heading__content > strong {
   display: block;
   margin-top: 2px;
   color: var(--blue-900);
-  font-size: 22px;
+  font-size: clamp(14px, 1.25vw, 18px);
   font-weight: 800;
   line-height: 1.35;
+  white-space: nowrap;
 }
 .china-world-heading__content hr {
   margin: 8px 0 42px;
@@ -1819,6 +1844,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 800;
   line-height: 1.2;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .china-world-heading__action {
   display: inline-block;
@@ -1873,14 +1899,25 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   color: #5c7690;
   font-size: 14px;
   line-height: 1.75;
+  white-space: nowrap;
+}
+.section-intro--wrap {
+  white-space: normal;
 }
 .china-city-intro__headline {
   color: var(--blue-900);
   font-weight: 800;
+  white-space: nowrap;
+}
+.belief-intro__headline {
+  white-space: nowrap;
+}
+.belief-intro__beyond {
+  white-space: nowrap;
 }
 .feature-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
   align-items: stretch;
   margin-bottom: 28px;
   border: 1px solid rgba(255, 255, 255, 0.65);
@@ -1908,8 +1945,9 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .feature-panel__copy h3 {
   margin: 0 0 11px;
   color: var(--blue-900);
-  font-size: 22px;
+  font-size: clamp(14px, 1.5vw, 20px);
   font-weight: 800;
+  white-space: nowrap;
 }
 .portal-section--tint .feature-panel__copy h3,
 .portal-section--tint .feature-panel__copy p:not(.section-kicker) {
@@ -1946,6 +1984,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-size: 20px;
   font-weight: 800;
   line-height: 1.3;
+  white-space: nowrap;
 }
 .mice-advantages-heading h3::after {
   content: "";
@@ -1969,7 +2008,8 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 .portal-grid--6 {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  /* 6 列时卡片过窄（约 99px），卡片标题中英文都会折行，改为 3 列保证标题单行 */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .portal-section--partners .portal-card:not(.portal-card--image) .portal-card__body {
   padding-right: 60px;
@@ -2066,24 +2106,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   top: 14px;
   color: rgba(90, 190, 229, 0.11);
   font-size: 92px;
-  line-height: 1;
-  pointer-events: none;
-}
-.portal-section--business .portal-card::before {
-  content: "›";
-  position: absolute;
-  right: 24px;
-  bottom: 17px;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 27px;
-  height: 27px;
-  border: 1px solid #91c8ef;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.45);
-  color: #178fdf;
-  font-size: 21px;
   line-height: 1;
   pointer-events: none;
 }
@@ -2306,9 +2328,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   transform: none;
 }
 
-.portal-section--mice-provide .portal-card::before {
-  display: none;
-}
 .portal-section--mice-provide .portal-card:nth-child(2) .card-action--orange {
   margin-top: 26px;
 }
@@ -2398,10 +2417,29 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   .portal-hero h1 {
     font-size: 42px;
     line-height: 1.2;
+    white-space: normal;
   }
   .hero-lead {
     font-size: 18px;
     white-space: normal;
+  }
+  .hero-description {
+    white-space: normal;
+  }
+  .portal-heading h2 {
+    white-space: normal;
+  }
+  .section-intro {
+    white-space: normal;
+  }
+  .china-world-heading__content p,
+  .china-world-heading__content > strong,
+  .api-eduvoyage-heading__lines p,
+  .api-eduvoyage-heading__lines strong {
+    white-space: normal;
+  }
+  .why-layout__intro {
+    white-space: pre-line;
   }
   .feature-panel {
     grid-template-columns: 1fr;
@@ -2532,24 +2570,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.86);
   box-shadow: 0 14px 31px rgba(34, 110, 163, 0.1);
-}
-.portal-card:not(.portal-card--image)::before {
-  content: "›";
-  position: absolute;
-  right: 24px;
-  bottom: 17px;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 27px;
-  height: 27px;
-  border: 1px solid #91c8ef;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
-  color: #178fdf;
-  font-size: 21px;
-  line-height: 1;
-  pointer-events: none;
 }
 .portal-card:not(.portal-card--image)::after {
   position: absolute;
@@ -2738,12 +2758,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: var(--home-teal);
 }
 .portal-page--home .portal-section:not(:last-child) .section-intro {
-  max-width: 700px;
+  max-width: none;
   margin-top: 16px;
   color: var(--home-muted);
-  font-size: 16px;
+  font-size: clamp(13px, 1.15vw, 16px);
   line-height: 1.75;
-  white-space: pre-line;
 }
 .portal-page--home .portal-section:first-child {
   padding: 96px 0 88px;
@@ -2754,7 +2773,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   margin-bottom: 0;
 }
 .portal-page--home .portal-section:first-child .portal-heading h2 {
-  max-width: 650px;
   font-size: clamp(32px, 3.8vw, 48px);
 }
 .portal-page--home .portal-section--business {
@@ -2773,17 +2791,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   background: #fff;
   box-shadow: none;
   overflow: visible;
-}
-.portal-page--home .portal-section:not(:last-child) .portal-card::before,
-.portal-page--home .portal-section--business .portal-card::before {
-  right: 20px;
-  bottom: 20px;
-  width: 30px;
-  height: 30px;
-  border-color: #a8c8df;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--home-blue);
 }
 .portal-page--home .portal-section:not(:last-child) .portal-card:hover {
   transform: translateY(-4px);
@@ -2885,6 +2892,7 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 800;
   line-height: 1.32;
   text-shadow: 0 3px 20px rgba(2, 34, 72, 0.38);
+  white-space: nowrap;
 }
 .portal-page--home .portal-section.portal-section--four-e .four-e-heading,
 .portal-page--home .portal-section.portal-section--four-e .four-e-title-en {
@@ -3009,10 +3017,11 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   margin: 0;
   padding-bottom: 18px;
   color: var(--home-ink);
-  font-size: clamp(36px, 4vw, 56px);
+  font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 .why-layout__copy h2::after {
   content: "";
@@ -3027,9 +3036,9 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   max-width: 430px;
   margin: 25px 0 0;
   color: var(--home-muted);
-  font-size: 17px;
+  font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.85;
-  white-space: pre-line;
+  white-space: pre;
 }
 .why-layout__rules {
   display: flex;
@@ -3231,6 +3240,18 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
     right: 14px;
     bottom: 36px;
     font-size: 14px;
+  }
+  .portal-heading h2 {
+    white-space: normal;
+  }
+  .china-world-heading__statements strong {
+    white-space: normal;
+  }
+  .portal-page--home .portal-section.portal-section--four-e .four-e-message h3 {
+    white-space: normal;
+  }
+  .feature-panel__copy h3 {
+    white-space: normal;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -87,7 +87,10 @@
             </p>
           </div>
           <div class="industry-table-wrap">
-            <table class="industry-table">
+            <table
+              class="industry-table"
+              :class="{ 'industry-table--en': isEnglish }"
+            >
               <thead>
                 <tr>
                   <th>{{ isEnglish ? "Programme" : "项目" }}</th>
@@ -767,25 +770,27 @@ const programmes = computed(() =>
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.16em;
+  white-space: nowrap;
 }
 .industry-hero h1 {
-  max-width: 820px;
+  max-width: none;
   margin: 17px 0;
   font:
-    600 clamp(48px, 6vw, 84px)/.98 'Playfair Display', Georgia,
+    600 clamp(30px, 4.4vw, 52px)/0.98 'Playfair Display', Georgia,
     serif;
   letter-spacing: 0;
-  text-wrap: balance;
+  white-space: nowrap;
   text-shadow: 0 6px 28px rgba(4, 18, 32, 0.45);
 }
 .industry-hero p:last-child {
-  max-width: 650px;
+  max-width: none;
   margin: 0;
   color: #d7e6f1;
   font-size: 15px;
   font-weight: 700;
   line-height: 1.7;
   letter-spacing: .06em;
+  white-space: nowrap;
 }
 .industry-intro {
   display: grid;
@@ -801,9 +806,11 @@ const programmes = computed(() =>
     serif;
   color: var(--industry-navy);
   letter-spacing: 0;
+  white-space: nowrap;
 }
 .industry-intro h2 {
   margin: 13px 0 24px;
+  font-size: clamp(26px, 3vw, 36px);
 }
 .industry-intro__copy > p {
   max-width: 650px;
@@ -829,6 +836,7 @@ const programmes = computed(() =>
   background: #fff;
   color: var(--industry-navy);
   font-weight: 700;
+  white-space: nowrap;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .industry-pillar:hover {
@@ -853,12 +861,15 @@ const programmes = computed(() =>
 }
 .section-heading h2 {
   margin: 10px 0 0;
+  font-size: clamp(26px, 3.55vw, 43px);
 }
 .section-heading > p {
-  max-width: 320px;
+  max-width: none;
   margin: 0 0 7px;
   color: #507080;
+  font-size: 13px;
   line-height: 1.65;
+  white-space: nowrap;
 }
 .industry-table-wrap {
   overflow-x: auto;
@@ -922,10 +933,14 @@ const programmes = computed(() =>
   padding: 0;
   color: var(--industry-navy);
   text-align: left;
-  font: 800 16px/1.45 inherit;
+  font: 800 15px/1.45 inherit;
   background: transparent;
   border: 0;
   cursor: pointer;
+}
+/* 中文项目名保持单行（表格布局会自动加宽首列）；英文标题过长，按单词自然换行 */
+.industry-table:not(.industry-table--en) tbody th button span {
+  white-space: nowrap;
 }
 .industry-table tbody th svg {
   width: 23px;
@@ -986,6 +1001,7 @@ const programmes = computed(() =>
   padding: 11px 13px;
   color: #587482;
   font-size: 12px;
+  white-space: nowrap;
 }
 .programme-detail {
   scroll-margin-top: 74px;
@@ -1008,6 +1024,7 @@ const programmes = computed(() =>
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 .programme-header {
   display: flex;
@@ -1027,14 +1044,17 @@ const programmes = computed(() =>
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 .programme-header h2 {
   margin: 0 0 10px;
   color: #fff;
+  font-size: clamp(20px, 2.6vw, 30px);
 }
 .programme-header span {
   color: #c8d8d9;
   line-height: 1.6;
+  white-space: nowrap;
 }
 .programme-visual {
   position: relative;
@@ -1115,6 +1135,7 @@ const programmes = computed(() =>
   font:
     600 27px/1.25 'Playfair Display', Georgia,
     serif;
+  white-space: nowrap;
 }
 .programme-layout p {
   margin: 0;
@@ -1245,8 +1266,9 @@ const programmes = computed(() =>
 .programme-closing-summary h3 {
   margin-bottom: 14px;
   color: #fff;
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(13px, 1.35vw, 16px);
   line-height: 1.35;
+  white-space: nowrap;
 }
 .programme-closing-summary__culture-title {
   margin-top: 32px !important;
@@ -1350,6 +1372,21 @@ const programmes = computed(() =>
   .industry-table th,
   .industry-table td {
     padding: 16px;
+  }
+  .industry-hero h1,
+  .industry-hero p:last-child,
+  .industry-intro h2,
+  .section-heading h2,
+  .section-heading > p,
+  .industry-pillar,
+  .industry-gallery figcaption,
+  .programme-topline,
+  .programme-header p,
+  .programme-header h2,
+  .programme-header span,
+  .programme-detail h3,
+  .programme-closing-summary h3 {
+    white-space: normal;
   }
 }
 </style>

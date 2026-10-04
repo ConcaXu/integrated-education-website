@@ -1,0 +1,47 @@
+- generic [ref=f33e3]:
+  - banner [ref=f33e4]:
+    - generic [ref=f33e5]:
+      - link [ref=f33e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f33e7]
+      - navigation [ref=f33e8]:
+        - link "首页" [ref=f33e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f33e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f33e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f33e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f33e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f33e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f33e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f33e16] [cursor=pointer]
+  - main
+  - contentinfo [ref=f33e17]:
+    - generic [ref=f33e18]:
+      - generic [ref=f33e19]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f33e20]
+        - generic [ref=f33e21]:
+          - generic [ref=f33e22]: APIMTC
+          - paragraph [ref=f33e23]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f33e24]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f33e25]:
+        - heading "探索" [level=4] [ref=f33e26]
+        - link "教育流动" [ref=f33e27] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f33e28] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f33e29] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f33e30]:
+        - heading "联系" [level=4] [ref=f33e31]
+        - link "国际合作" [ref=f33e32] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f33e33] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f33e34]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f33e35]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

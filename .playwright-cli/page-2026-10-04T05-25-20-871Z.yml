@@ -1,0 +1,171 @@
+- generic [ref=f41e3]:
+  - banner [ref=f41e4]:
+    - generic [ref=f41e5]:
+      - link [ref=f41e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f41e7]
+      - navigation [ref=f41e8]:
+        - link "首页" [ref=f41e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f41e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f41e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f41e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f41e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f41e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f41e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f41e16] [cursor=pointer]
+  - main [ref=f41e17]:
+    - generic [ref=f41e18]:
+      - generic [ref=f41e20]:
+        - paragraph [ref=f41e21]: 教育流动
+        - heading "超越国界 · 超越课堂" [level=1] [ref=f41e22]
+        - paragraph [ref=f41e23]: 让学习走出课堂，走进大学、产业、科技、文化与真实世界。
+        - paragraph [ref=f41e24]: APIMTC 打造具有国际视野的沉浸式教育项目，连接学生、学校、教育机构与产业。
+      - main [ref=f41e25]:
+        - generic [ref=f41e27]:
+          - heading "我们的两大教育项目" [level=2] [ref=f41e29]
+          - generic [ref=f41e30]:
+            - article [ref=f41e31]:
+              - img "新加坡未来探索者" [ref=f41e32]
+              - generic [ref=f41e33]:
+                - heading "新加坡未来探索者" [level=3] [ref=f41e34]
+                - paragraph [ref=f41e35]: 中国及全球 → 新加坡 探索新加坡的教育、科技、产业、文化与未来发展。 生命与健康 · 太空与航空 · 可持续发展 · 人工智能 · 新兴产业 探索新加坡
+                - link "探索新加坡" [ref=f41e36] [cursor=pointer]:
+                  - /url: /singapore-future-learning-series
+                  - text: 探索新加坡
+                  - generic [aria-hidden] [ref=f41e37]: →
+            - article [ref=f41e38]:
+              - img "中国课堂之外" [ref=f41e39]
+              - generic [ref=f41e40]:
+                - heading "中国课堂之外" [level=3] [ref=f41e41]
+                - paragraph [ref=f41e42]: 新加坡 → 中国 走进中国的城市、大学、企业、科技与文化，体验真实的中国。 人工智能 · 创新创业 · 智慧城市 · 可持续发展 · 中新合作 探索中国
+                - button "探索中国 (链接待定)" [disabled] [ref=f41e43]:
+                  - text: 探索中国
+                  - generic [aria-hidden] [ref=f41e44]: →
+        - generic [ref=f41e46]:
+          - heading "APIMTC 4E 模型" [level=2] [ref=f41e48]
+          - generic [ref=f41e49]:
+            - article [ref=f41e50]:
+              - text: ›
+              - generic [ref=f41e51]:
+                - generic [aria-hidden] [ref=f41e52]: 
+                - heading "Educate 学习" [level=3] [ref=f41e53]:
+                  - generic [ref=f41e54]: Educate
+                  - generic [ref=f41e55]: 学习
+                - paragraph [ref=f41e56]: 从大学、专家及专业机构获得知识。
+              - generic [aria-hidden]: 
+            - article [ref=f41e57]:
+              - text: ›
+              - generic [ref=f41e58]:
+                - generic [aria-hidden] [ref=f41e59]: 
+                - heading "Experience 体验" [level=3] [ref=f41e60]:
+                  - generic [ref=f41e61]: Experience
+                  - generic [ref=f41e62]: 体验
+                - paragraph [ref=f41e63]: 走进企业、实验室及真实产业环境。
+              - generic [aria-hidden]: 
+            - article [ref=f41e64]:
+              - text: ›
+              - generic [ref=f41e65]:
+                - generic [aria-hidden] [ref=f41e66]: 
+                - heading "Explore 探索" [level=3] [ref=f41e67]:
+                  - generic [ref=f41e68]: Explore
+                  - generic [ref=f41e69]: 探索
+                - paragraph [ref=f41e70]: 了解城市、文化、社会与环境。
+              - generic [aria-hidden]: 
+            - article [ref=f41e71]:
+              - text: ›
+              - generic [ref=f41e72]:
+                - generic [aria-hidden] [ref=f41e73]: 
+                - heading "Exchange 交流" [level=3] [ref=f41e74]:
+                  - generic [ref=f41e75]: Exchange
+                  - generic [ref=f41e76]: 交流
+                - paragraph [ref=f41e77]: 与不同国家的学生及伙伴共同学习。
+              - generic [aria-hidden]: 
+        - generic [ref=f41e79]:
+          - generic [ref=f41e80]:
+            - heading "不只是游学" [level=2] [ref=f41e81]
+            - paragraph [ref=f41e82]: 不只是参观。 不只是学习。 不只是交流。
+          - article [ref=f41e84]:
+            - text: ›
+            - generic [ref=f41e85]:
+              - generic [aria-hidden] [ref=f41e86]: 
+              - heading "学习 · 体验 · 探索 · 交流" [level=3] [ref=f41e87]
+            - generic [aria-hidden]: 
+        - generic [ref=f41e89]:
+          - heading "为不同年龄而设计" [level=2] [ref=f41e91]
+          - generic [ref=f41e92]:
+            - img "定制你的国际学习之旅" [ref=f41e93]
+            - generic [ref=f41e94]:
+              - paragraph [ref=f41e95]: 定制项目
+              - heading "定制你的国际学习之旅" [level=3] [ref=f41e96]
+              - paragraph [ref=f41e97]: 根据年龄、学习目标、主题及学校需求，打造适合每一个团队的国际项目。
+              - link "定制项目 +" [ref=f41e98] [cursor=pointer]:
+                - /url: /contact
+                - text: 定制项目
+                - generic [ref=f41e99]: +
+          - generic [ref=f41e100]:
+            - article [ref=f41e101]:
+              - text: ›
+              - generic [ref=f41e102]:
+                - generic [aria-hidden] [ref=f41e103]: 
+                - heading "小学" [level=3] [ref=f41e104]
+                - paragraph [ref=f41e105]: 激发好奇心，探索科学、科技与世界。
+                - link "小学课程" [ref=f41e106] [cursor=pointer]:
+                  - /url: /singapore-explorers
+                  - text: 小学课程
+                  - generic [aria-hidden] [ref=f41e107]: →
+              - generic [aria-hidden]: 
+            - article [ref=f41e108]:
+              - text: ›
+              - generic [ref=f41e109]:
+                - generic [aria-hidden] [ref=f41e110]: 
+                - heading "初中 / 中学" [level=3] [ref=f41e111]
+                - paragraph [ref=f41e112]: 连接学术、产业、科技与全球议题。
+                - link "初中课程" [ref=f41e113] [cursor=pointer]:
+                  - /url: /singapore-explorers-junior-high
+                  - text: 初中课程
+                  - generic [aria-hidden] [ref=f41e114]: →
+              - generic [aria-hidden]: 
+            - article [ref=f41e115]:
+              - text: ›
+              - generic [ref=f41e116]:
+                - generic [aria-hidden] [ref=f41e117]: 
+                - heading "高中 / 初级学院" [level=3] [ref=f41e118]
+                - paragraph [ref=f41e119]: 聚焦未来、创新、领导力与新兴产业。
+                - link "高中课程" [ref=f41e120] [cursor=pointer]:
+                  - /url: /singapore-future-leaders-senior-high
+                  - text: 高中课程
+                  - generic [aria-hidden] [ref=f41e121]: →
+              - generic [aria-hidden]: 
+          - link "探索教育项目" [ref=f41e123] [cursor=pointer]:
+            - /url: /singapore-future-learning-series
+  - contentinfo [ref=f41e124]:
+    - generic [ref=f41e125]:
+      - generic [ref=f41e126]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f41e127]
+        - generic [ref=f41e128]:
+          - generic [ref=f41e129]: APIMTC
+          - paragraph [ref=f41e130]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f41e131]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f41e132]:
+        - heading "探索" [level=4] [ref=f41e133]
+        - link "教育流动" [ref=f41e134] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f41e135] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f41e136] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f41e137]:
+        - heading "联系" [level=4] [ref=f41e138]
+        - link "国际合作" [ref=f41e139] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f41e140] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f41e141]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f41e142]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

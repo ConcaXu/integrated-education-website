@@ -1,0 +1,806 @@
+- generic [ref=f24e3]:
+  - banner [ref=f24e4]:
+    - generic [ref=f24e5]:
+      - link [ref=f24e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f24e7]
+      - navigation [ref=f24e8]:
+        - link "首页" [ref=f24e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f24e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f24e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f24e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f24e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f24e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f24e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f24e16] [cursor=pointer]
+  - main [ref=f24e17]:
+    - generic [ref=f24e18]:
+      - generic [ref=f24e19]:
+        - img "新加坡未来探索目的地" [ref=f24e20]
+        - generic [ref=f24e21]:
+          - paragraph [ref=f24e22]: APIMTC / 2025–26
+          - paragraph [ref=f24e23]: 小学四至六年级 / 9–12岁
+          - generic [ref=f24e24]:
+            - paragraph [ref=f24e25]: 新加坡未来探索系列
+            - heading "Singapore Discovery Series" [level=1] [ref=f24e26]: SingaporeDiscovery Series
+            - paragraph [ref=f24e27]: 六大主题 · 6天5夜沉浸式学习之旅
+            - paragraph [ref=f24e28]: Explore Singapore · Discover the World · Imagine the Future
+            - link "初中课程" [ref=f24e29] [cursor=pointer]:
+              - /url: /singapore-explorers-junior-high
+              - text: 初中课程
+              - generic [aria-hidden] [ref=f24e30]: →
+          - generic [aria-hidden] [ref=f24e31]: 06 THEMES
+      - main [ref=f24e32]:
+        - generic [ref=f24e33]:
+          - generic [ref=f24e34]: 00 / INTRODUCTION
+          - generic [ref=f24e35]:
+            - heading [level=2] [ref=f24e36]:
+              - text: 不只是一次旅行，
+              - emphasis [ref=f24e37]: 而是一场走进真实世界的探索
+            - generic [ref=f24e38]:
+              - paragraph [ref=f24e39]: 专为国际及海外小学学生设计的 6天5夜新加坡主题教育体验项目。
+              - paragraph [ref=f24e40]: 通过 Educate · Experience · Explore · Exchange，孩子将在真实的新加坡环境中探索科学、科技、健康、自然、可持续发展与未来产业。
+          - region [ref=f24e44]:
+            - generic [ref=f24e45]:
+              - generic [ref=f24e46]:
+                - generic [ref=f24e47]: 01 / SIX THEMES
+                - heading "六大未来探索主题" [level=3] [ref=f24e48]
+                - paragraph [ref=f24e49]: 一览六大主题、学习领域与孩子将探索的内容。
+              - table [ref=f24e51]:
+                - rowgroup [ref=f24e52]:
+                  - row [ref=f24e53]:
+                    - columnheader "#" [ref=f24e54]
+                    - columnheader "主题" [ref=f24e55]
+                    - columnheader "学习领域" [ref=f24e56]
+                    - columnheader "孩子将探索什么？" [ref=f24e57]
+                - rowgroup [ref=f24e58]:
+                  - link "查看奇妙生命主题详情" [ref=f24e59] [cursor=pointer]:
+                    - cell "01" [ref=f24e60]
+                    - cell [ref=f24e65]:
+                      - strong [ref=f24e66]: 奇妙生命
+                    - cell [ref=f24e67]:
+                      - strong [ref=f24e68]: 生命与健康
+                    - cell [ref=f24e69]:
+                      - paragraph [ref=f24e70]: 探索人体、生命科学与健康生活，发现身体如何运作。
+                  - link "查看小小太空探索家主题详情" [ref=f24e71] [cursor=pointer]:
+                    - cell "02" [ref=f24e72]
+                    - cell [ref=f24e76]:
+                      - strong [ref=f24e77]: 小小太空探索家
+                    - cell [ref=f24e78]:
+                      - strong [ref=f24e79]: 太空与航空
+                    - cell [ref=f24e80]:
+                      - paragraph [ref=f24e81]: 从飞机飞行到太空探索，挑战未来的月球／火星任务。
+                  - link "查看绿色新加坡主题详情" [ref=f24e82] [cursor=pointer]:
+                    - cell "03" [ref=f24e83]
+                    - cell [ref=f24e87]:
+                      - strong [ref=f24e88]: 绿色新加坡
+                    - cell [ref=f24e89]:
+                      - strong [ref=f24e90]: 可持续发展
+                    - cell [ref=f24e91]:
+                      - paragraph [ref=f24e92]: 探索水、能源、自然与城市规划，设计未来绿色城市。
+                  - link "查看未来新加坡主题详情" [ref=f24e93] [cursor=pointer]:
+                    - cell "04" [ref=f24e94]
+                    - cell [ref=f24e99]:
+                      - strong [ref=f24e100]: 未来新加坡
+                    - cell [ref=f24e101]:
+                      - strong [ref=f24e102]: 新兴产业
+                    - cell [ref=f24e103]:
+                      - paragraph [ref=f24e104]: 探索机器人、3D打印、智能制造、电动车与未来产业。
+                  - link "查看神奇的地球主题详情" [ref=f24e105] [cursor=pointer]:
+                    - cell "05" [ref=f24e106]
+                    - cell [ref=f24e111]:
+                      - strong [ref=f24e112]: 神奇的地球
+                    - cell [ref=f24e113]:
+                      - strong [ref=f24e114]: 地球科学与自然世界
+                    - cell [ref=f24e115]:
+                      - paragraph [ref=f24e116]: 探索地球、野生动物、海洋与湿地，发现自然世界的联系。
+                  - link "查看AI小小创新家主题详情" [ref=f24e117] [cursor=pointer]:
+                    - cell "06" [ref=f24e118]
+                    - cell [ref=f24e122]:
+                      - strong [ref=f24e123]: AI小小创新家
+                    - cell [ref=f24e124]:
+                      - strong [ref=f24e125]: AI与新兴科技
+                    - cell [ref=f24e126]:
+                      - paragraph [ref=f24e127]: 探索AI、机器人、3D打印与生成式AI，把创意变成作品。
+          - generic [ref=f24e128]:
+            - generic [ref=f24e129]:
+              - generic [ref=f24e130]: "06"
+              - text: 六大未来探索主题
+            - generic [ref=f24e131]:
+              - generic [ref=f24e132]: 4E
+              - text: 每个主题都包含 4Es 学习体验
+            - strong [ref=f24e133]: EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE
+          - generic [ref=f24e134]:
+            - generic [ref=f24e135]:
+              - generic [ref=f24e136]:
+                - generic [ref=f24e137]: "01"
+                - text: 学习
+              - generic [ref=f24e138]: 科学 · STEM · 未来知识
+            - generic [ref=f24e139]:
+              - generic [ref=f24e140]:
+                - generic [ref=f24e141]: "02"
+                - text: 实践
+              - generic [ref=f24e142]: 实验 · 制作 · 挑战 · 创作
+            - generic [ref=f24e143]:
+              - generic [ref=f24e144]:
+                - generic [ref=f24e145]: "03"
+                - text: 探索
+              - generic [ref=f24e146]: 城市 · 自然 · 产业 · 社区
+            - generic [ref=f24e147]:
+              - generic [ref=f24e148]:
+                - generic [ref=f24e149]: "04"
+                - text: 交流
+              - generic [ref=f24e150]: 新加坡学生 · 当地社区 · 跨文化体验
+          - generic [ref=f24e151]:
+            - generic [ref=f24e152]:
+              - generic [ref=f24e153]: REAL SINGAPORE / REAL-WORLD LEARNING
+              - heading "SG 真实的新加坡 · 真实的学习" [level=3] [ref=f24e154]:
+                - generic [ref=f24e155]: SG
+                - text: 真实的新加坡 · 真实的学习
+            - generic [ref=f24e156]:
+              - paragraph [ref=f24e157]:
+                - generic [ref=f24e158]: 学校交流
+                - text: 与新加坡小学生学习、互动与分享
+              - paragraph [ref=f24e159]:
+                - generic [ref=f24e160]: 城市探索
+                - text: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+              - paragraph [ref=f24e161]:
+                - generic [ref=f24e162]: 社区体验
+                - text: HDB · 市场 · 熟食中心 · 公共交通 · 社区设施
+              - paragraph [ref=f24e163]:
+                - generic [ref=f24e164]: 主题场馆
+                - text: 科学 · 科技 · 自然 · 文化 · 产业
+              - paragraph [ref=f24e165]:
+                - generic [ref=f24e166]: 团队挑战
+                - text: 寻宝 · STEM挑战 · 创意任务 · Show & Tell
+              - paragraph [ref=f24e167]:
+                - generic [ref=f24e168]: 欢乐体验
+                - text: 新加坡环球影城
+          - generic [ref=f24e169]:
+            - generic [ref=f24e170]:
+              - generic [ref=f24e171]: "06"
+              - text: 六大主题，一段探索未来的旅程
+            - generic [ref=f24e172]: Learn · Experience · Explore · Exchange
+            - generic [ref=f24e173]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+            - strong [ref=f24e174]: Come to Singapore. Explore the Future.来新加坡，探索未来。
+        - article [ref=f24e175]:
+          - generic [ref=f24e176]:
+            - generic [ref=f24e177]:
+              - generic [ref=f24e178]: 01 / 06
+              - generic [ref=f24e179]: 新加坡未来探索系列
+            - generic [ref=f24e180]:
+              - paragraph [ref=f24e181]: "小学 #1｜奇妙生命"
+              - heading "AMAZING LIFE" [level=2] [ref=f24e185]
+              - paragraph [ref=f24e186]: 生命与健康 · 6天5夜
+              - paragraph [ref=f24e187]: Explore Life · Discover Health · Experience Singapore
+              - paragraph [ref=f24e188]: 小学四至六年级｜9–12岁
+            - img "奇妙生命" [ref=f24e190]
+            - generic [ref=f24e191]:
+              - paragraph [ref=f24e192]:
+                - strong [ref=f24e196]: 探索生命 · 发现健康 · 认识真实的新加坡
+              - paragraph [ref=f24e197]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将在科学、健康、教育、社区与文化的真实场景中学习与探索。"
+            - generic [ref=f24e198]:
+              - generic [ref=f24e199]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e200]:
+                - generic [ref=f24e201]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e202]:
+                - paragraph [ref=f24e203]:
+                  - generic [ref=f24e204]:
+                    - generic [ref=f24e205]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e206]: "|"
+                    - strong [ref=f24e207]: 启发学习
+                  - generic [ref=f24e208]: 生命科学 · 健康 · 新加坡生活
+                - paragraph [ref=f24e209]:
+                  - generic [ref=f24e210]:
+                    - generic [ref=f24e211]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e212]: "|"
+                    - strong [ref=f24e213]: 真实体验
+                  - generic [ref=f24e214]: 科学实验 · 校园 · 企业 · 社区
+                - paragraph [ref=f24e215]:
+                  - generic [ref=f24e216]:
+                    - generic [ref=f24e217]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e218]: "|"
+                    - strong [ref=f24e219]: 主动探索
+                  - generic [ref=f24e220]: 科学挑战 · 城市探索 · 社区寻宝
+                - paragraph [ref=f24e221]:
+                  - generic [ref=f24e222]:
+                    - generic [ref=f24e223]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e224]: "|"
+                    - strong [ref=f24e225]: 国际交流
+                  - generic [ref=f24e226]: 新加坡学生 · 当地社区 · 团队合作
+            - generic [ref=f24e227]:
+              - generic [ref=f24e228]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e229]:
+                - generic [ref=f24e230]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e231]:
+                - generic [ref=f24e232]:
+                  - generic [ref=f24e233]: 日程
+                  - generic [ref=f24e234]: 探索主题
+                  - generic [ref=f24e235]: 精彩体验
+                - paragraph [ref=f24e236]:
+                  - generic [ref=f24e237]: DAY 1
+                  - generic [ref=f24e238]: 认识新加坡
+                  - generic [ref=f24e239]: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - paragraph [ref=f24e240]:
+                  - generic [ref=f24e241]: DAY 2
+                  - generic [ref=f24e242]: 探索人体奥秘
+                  - generic [ref=f24e243]: 科学馆 · 生命科学实验 · 科学挑战
+                - paragraph [ref=f24e244]:
+                  - generic [ref=f24e245]: DAY 3
+                  - generic [ref=f24e246]: 科学与健康生活
+                  - generic [ref=f24e247]: 生命科学工作坊 · 健康生活体验 · 健康挑战
+                - paragraph [ref=f24e248]:
+                  - generic [ref=f24e249]: DAY 4
+                  - generic [ref=f24e250]: 与新加坡学生交流
+                  - generic [ref=f24e251]: 小学校园交流 · 学生互动 · 企业/科学体验
+                - paragraph [ref=f24e252]:
+                  - generic [ref=f24e253]: DAY 5
+                  - generic [ref=f24e254]: 走进新加坡社区
+                  - generic [ref=f24e255]: HDB · 当地学生互动 · 社区寻宝 · Show & Tell
+                - paragraph [ref=f24e256]:
+                  - generic [ref=f24e257]: DAY 6
+                  - generic [ref=f24e258]: 欢乐探索
+                  - generic [ref=f24e259]: 新加坡环球影城 · 团队活动 · 告别新加坡
+              - paragraph [ref=f24e260]: 五大真实学习场景
+              - generic [ref=f24e264]:
+                - paragraph [ref=f24e265]:
+                  - generic [ref=f24e266]: "01"
+                  - text: 科学 生命科学 · 动手实验
+                - paragraph [ref=f24e267]:
+                  - generic [ref=f24e268]: "02"
+                  - text: 健康 营养 · 运动 · 身心健康
+                - paragraph [ref=f24e269]:
+                  - generic [ref=f24e270]: "03"
+                  - text: 教育 新加坡小学 · 同龄人交流
+                - paragraph [ref=f24e271]:
+                  - generic [ref=f24e272]: "04"
+                  - text: 社区 住房 · 食物 · 交通 · 医疗 · 日常生活
+                - paragraph [ref=f24e273]:
+                  - generic [ref=f24e274]: "05"
+                  - text: 文化 城市探索 · 跨文化交流 · 团队合作
+            - generic [ref=f24e275]:
+              - strong [ref=f24e276]: 不只是旅行，而是一场真实世界的学习之旅
+              - generic [ref=f24e277]: Learn · Explore · Connect · Grow
+              - generic [ref=f24e278]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+        - article [ref=f24e279]:
+          - generic [ref=f24e280]:
+            - generic [ref=f24e281]:
+              - generic [ref=f24e282]: 02 / 06
+              - generic [ref=f24e283]: 新加坡未来探索系列
+            - generic [ref=f24e284]:
+              - paragraph [ref=f24e285]: "小学 #2｜小小太空探索家"
+              - heading "YOUNG SPACE EXPLORERS" [level=2] [ref=f24e288]
+              - paragraph [ref=f24e289]: 太空与航空 · 6天5夜
+              - paragraph [ref=f24e290]: Explore Flight · Discover Space · Imagine the Future
+              - paragraph [ref=f24e291]: 小学四至六年级｜9–12岁
+            - img "小小太空探索家" [ref=f24e293]
+            - generic [ref=f24e294]:
+              - paragraph [ref=f24e295]:
+                - strong [ref=f24e298]: 从飞机起飞，到探索太空
+              - paragraph [ref=f24e299]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将探索飞行原理、航空科技、太空科学，并亲手完成未来太空任务挑战。"
+            - generic [ref=f24e300]:
+              - generic [ref=f24e301]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e302]:
+                - generic [ref=f24e303]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e304]:
+                - paragraph [ref=f24e305]:
+                  - generic [ref=f24e306]:
+                    - generic [ref=f24e307]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e308]: "|"
+                    - strong [ref=f24e309]: 启发学习
+                  - generic [ref=f24e310]: 飞行原理 · 太空科学 · 航空科技
+                - paragraph [ref=f24e311]:
+                  - generic [ref=f24e312]:
+                    - generic [ref=f24e313]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e314]: "|"
+                    - strong [ref=f24e315]: 真实体验
+                  - generic [ref=f24e316]: STEM实践 · 航空探索 · 科学馆 · 机场
+                - paragraph [ref=f24e317]:
+                  - generic [ref=f24e318]:
+                    - generic [ref=f24e319]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e320]: "|"
+                    - strong [ref=f24e321]: 主动探索
+                  - generic [ref=f24e322]: 飞机设计 · 太空挑战 · 月球/火星任务
+                - paragraph [ref=f24e323]:
+                  - generic [ref=f24e324]:
+                    - generic [ref=f24e325]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e326]: "|"
+                    - strong [ref=f24e327]: 国际交流
+                  - generic [ref=f24e328]: 新加坡学生 · 当地社区 · 团队合作
+            - generic [ref=f24e329]:
+              - generic [ref=f24e330]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e331]:
+                - generic [ref=f24e332]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e333]:
+                - generic [ref=f24e334]:
+                  - generic [ref=f24e335]: 日程
+                  - generic [ref=f24e336]: 探索主题
+                  - generic [ref=f24e337]: 精彩体验
+                - paragraph [ref=f24e338]:
+                  - generic [ref=f24e339]: DAY 1
+                  - generic [ref=f24e340]: 认识新加坡
+                  - generic [ref=f24e341]: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - paragraph [ref=f24e342]:
+                  - generic [ref=f24e343]: DAY 2
+                  - generic [ref=f24e344]: 动手造飞机
+                  - generic [ref=f24e345]: 探索太空 · 航空STEM · 飞行器设计 · 科学馆 · 太空探索
+                - paragraph [ref=f24e346]:
+                  - generic [ref=f24e347]: DAY 3
+                  - generic [ref=f24e348]: 体验航空
+                  - generic [ref=f24e349]: 航空学习之旅 · 樟宜机场 · 航空科技
+                - paragraph [ref=f24e350]:
+                  - generic [ref=f24e351]: DAY 4
+                  - generic [ref=f24e352]: 学习
+                  - generic [ref=f24e353]: 创造 · 挑战 · 新加坡小学交流 · 太空任务工作坊 · 月球/火星任务
+                - paragraph [ref=f24e354]:
+                  - generic [ref=f24e355]: DAY 5
+                  - generic [ref=f24e356]: 探索
+                  - generic [ref=f24e357]: 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验
+                - paragraph [ref=f24e358]:
+                  - generic [ref=f24e359]: DAY 6
+                  - generic [ref=f24e360]: 探索真实社区
+                  - generic [ref=f24e361]: HDB · 本地学生互动 · 社区寻宝 · Show & Tell
+              - paragraph [ref=f24e362]: 从飞行科学到未来太空任务
+              - generic [ref=f24e365]:
+                - paragraph [ref=f24e366]:
+                  - generic [ref=f24e367]: "01"
+                  - text: Flight 升力 · 推力 · 阻力 · 重力
+                - paragraph [ref=f24e368]:
+                  - generic [ref=f24e369]: "02"
+                  - text: Space 太阳系 · 行星 · 月球 · 太空探索
+                - paragraph [ref=f24e370]:
+                  - generic [ref=f24e371]: "03"
+                  - text: STEM 设计 · 建造 · 实验 · 解决问题
+                - paragraph [ref=f24e372]:
+                  - generic [ref=f24e373]: "04"
+                  - text: Technology 航空 · 卫星 · 太空科技
+                - paragraph [ref=f24e374]:
+                  - generic [ref=f24e375]: "05"
+                  - text: Exchange 新加坡学生 · 跨文化交流 · 团队合作
+            - generic [ref=f24e376]:
+              - strong [ref=f24e377]: 不只是仰望星空，而是亲手探索未来
+              - generic [ref=f24e378]: Learn · Build · Explore · Imagine
+              - generic [ref=f24e379]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+        - article [ref=f24e380]:
+          - generic [ref=f24e381]:
+            - generic [ref=f24e382]:
+              - generic [ref=f24e383]: 03 / 06
+              - generic [ref=f24e384]: 新加坡未来探索系列
+            - generic [ref=f24e385]:
+              - paragraph [ref=f24e386]: "小学 #3｜绿色新加坡"
+              - heading "GREEN SINGAPORE" [level=2] [ref=f24e389]
+              - paragraph [ref=f24e390]: 可持续发展 · 6天5夜
+              - paragraph [ref=f24e391]: Discover Sustainability · Build a Greener Future
+              - paragraph [ref=f24e392]: 小学四至六年级｜9–12岁
+            - img "绿色新加坡" [ref=f24e394]
+            - generic [ref=f24e395]:
+              - paragraph [ref=f24e396]:
+                - strong [ref=f24e399]: 一座城市，如何变得更绿色、更宜居？
+              - paragraph [ref=f24e400]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将探索新加坡如何利用科学、科技、自然与城市规划，建设一个更绿色、更可持续的未来。"
+            - generic [ref=f24e401]:
+              - generic [ref=f24e402]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e403]:
+                - generic [ref=f24e404]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e405]:
+                - paragraph [ref=f24e406]:
+                  - generic [ref=f24e407]:
+                    - generic [ref=f24e408]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e409]: "|"
+                    - strong [ref=f24e410]: 启发学习
+                  - generic [ref=f24e411]: 可持续发展 · 环境 · 城市规划
+                - paragraph [ref=f24e412]:
+                  - generic [ref=f24e413]:
+                    - generic [ref=f24e414]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e415]: "|"
+                    - strong [ref=f24e416]: 真实体验
+                  - generic [ref=f24e417]: STEM实践 · 绿色城市 · 湿地生态
+                - paragraph [ref=f24e418]:
+                  - generic [ref=f24e419]:
+                    - generic [ref=f24e420]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e421]: "|"
+                    - strong [ref=f24e422]: 主动探索
+                  - generic [ref=f24e423]: 水资源 · 能源 · 生物多样性 · 循环经济
+                - paragraph [ref=f24e424]:
+                  - generic [ref=f24e425]:
+                    - generic [ref=f24e426]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e427]: "|"
+                    - strong [ref=f24e428]: 国际交流
+                  - generic [ref=f24e429]: 新加坡学生 · 社区探索 · 团队合作
+            - generic [ref=f24e430]:
+              - generic [ref=f24e431]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e432]:
+                - generic [ref=f24e433]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e434]:
+                - generic [ref=f24e435]:
+                  - generic [ref=f24e436]: 日程
+                  - generic [ref=f24e437]: 探索主题
+                  - generic [ref=f24e438]: 精彩体验
+                - paragraph [ref=f24e439]:
+                  - generic [ref=f24e440]: DAY 1
+                  - generic [ref=f24e441]: 认识绿色城市
+                  - generic [ref=f24e442]: 牛车水 · 鱼尾狮公园 · URA City Gallery
+                - paragraph [ref=f24e443]:
+                  - generic [ref=f24e444]: DAY 2
+                  - generic [ref=f24e445]: 绿色创新
+                  - generic [ref=f24e446]: 可持续发展STEM · 滨海湾花园 · 生态与科技
+                - paragraph [ref=f24e447]:
+                  - generic [ref=f24e448]: DAY 3
+                  - generic [ref=f24e449]: 水资源
+                  - generic [ref=f24e450]: 湿地生态 · Sustainable Singapore Gallery · 水资源探索 · 双溪布洛湿地
+                - paragraph [ref=f24e451]:
+                  - generic [ref=f24e452]: DAY 4
+                  - generic [ref=f24e453]: 学习
+                  - generic [ref=f24e454]: 创造绿色未来 · 新加坡小学交流 · 绿色城市设计挑战
+                - paragraph [ref=f24e455]:
+                  - generic [ref=f24e456]: DAY 5
+                  - generic [ref=f24e457]: 探索
+                  - generic [ref=f24e458]: 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验
+                - paragraph [ref=f24e459]:
+                  - generic [ref=f24e460]: DAY 6
+                  - generic [ref=f24e461]: 发现可持续社区
+                  - generic [ref=f24e462]: HDB · 本地学生互动 · 绿色社区寻宝 · Show & Tell
+              - paragraph [ref=f24e463]: 探索绿色未来的五大主题
+              - generic [ref=f24e466]:
+                - paragraph [ref=f24e467]:
+                  - generic [ref=f24e468]: "01"
+                  - text: 水资源 珍惜水资源 · 水循环 · 气候韧性
+                - paragraph [ref=f24e469]:
+                  - generic [ref=f24e470]: "02"
+                  - text: 能源 可再生能源 · 节能科技
+                - paragraph [ref=f24e471]:
+                  - generic [ref=f24e472]: "03"
+                  - text: 循环经济 减少浪费 · 回收 · 可持续生活
+                - paragraph [ref=f24e473]:
+                  - generic [ref=f24e474]: "04"
+                  - text: 自然生态 生物多样性 · 湿地 · 自然保护
+                - paragraph [ref=f24e475]:
+                  - generic [ref=f24e476]: "05"
+                  - text: 绿色城市 建筑 · 交通 · 社区 · 城市规划
+            - generic [ref=f24e477]:
+              - strong [ref=f24e478]: 从发现问题，到设计未来
+              - generic [ref=f24e479]: Explore · Think · Design · Build
+              - generic [ref=f24e480]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+        - article [ref=f24e481]:
+          - generic [ref=f24e482]:
+            - generic [ref=f24e483]:
+              - generic [ref=f24e484]: 04 / 06
+              - generic [ref=f24e485]: 新加坡未来探索系列
+            - generic [ref=f24e486]:
+              - paragraph [ref=f24e487]: "小学 #4｜未来新加坡"
+              - heading "FUTURE SINGAPORE" [level=2] [ref=f24e491]
+              - paragraph [ref=f24e492]: 新兴产业 · 6天5夜
+              - paragraph [ref=f24e493]: Discover Tomorrow · Create the Future
+              - paragraph [ref=f24e494]: 小学四至六年级｜9–12岁
+            - img "未来新加坡" [ref=f24e496]
+            - generic [ref=f24e497]:
+              - paragraph [ref=f24e498]:
+                - strong [ref=f24e502]: 科技，将如何改变未来的新加坡？
+              - paragraph [ref=f24e503]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将探索机器人、AI与自动化、3D打印、电动车、智能制造及食品科技，发现科技如何从创意变成真实应用。"
+            - generic [ref=f24e504]:
+              - generic [ref=f24e505]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e506]:
+                - generic [ref=f24e507]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e508]:
+                - paragraph [ref=f24e509]:
+                  - generic [ref=f24e510]:
+                    - generic [ref=f24e511]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e512]: "|"
+                    - strong [ref=f24e513]: 启发学习
+                  - generic [ref=f24e514]: 机器人 · 工程 · 智能制造 · 新兴产业
+                - paragraph [ref=f24e515]:
+                  - generic [ref=f24e516]:
+                    - generic [ref=f24e517]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e518]: "|"
+                    - strong [ref=f24e519]: 真实体验
+                  - generic [ref=f24e520]: STEM实践 · 3D打印 · 企业参访 · 科技探索
+                - paragraph [ref=f24e521]:
+                  - generic [ref=f24e522]:
+                    - generic [ref=f24e523]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e524]: "|"
+                    - strong [ref=f24e525]: 主动探索
+                  - generic [ref=f24e526]: 设计 · 编程 · 制造 · 自动化 · 未来交通
+                - paragraph [ref=f24e527]:
+                  - generic [ref=f24e528]:
+                    - generic [ref=f24e529]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e530]: "|"
+                    - strong [ref=f24e531]: 国际交流
+                  - generic [ref=f24e532]: 新加坡学生 · 社区探索 · 团队合作
+            - generic [ref=f24e533]:
+              - generic [ref=f24e534]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e535]:
+                - generic [ref=f24e536]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e537]:
+                - generic [ref=f24e538]:
+                  - generic [ref=f24e539]: 日程
+                  - generic [ref=f24e540]: 探索主题
+                  - generic [ref=f24e541]: 精彩体验
+                - paragraph [ref=f24e542]:
+                  - generic [ref=f24e543]: DAY 1
+                  - generic [ref=f24e544]: 认识未来城市
+                  - generic [ref=f24e545]: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - paragraph [ref=f24e546]:
+                  - generic [ref=f24e547]: DAY 2
+                  - generic [ref=f24e548]: 探索机器人与科技
+                  - generic [ref=f24e549]: LEGO机器人STEM · 编程 · 科学馆
+                - paragraph [ref=f24e550]:
+                  - generic [ref=f24e551]: DAY 3
+                  - generic [ref=f24e552]: 创客
+                  - generic [ref=f24e553]: 制造 · 智能交通 · 3D打印 · 数码制造 · 智能制造 · 电动车
+                - paragraph [ref=f24e554]:
+                  - generic [ref=f24e555]: DAY 4
+                  - generic [ref=f24e556]: 学习
+                  - generic [ref=f24e557]: 连接 · 发现 · 新加坡小学交流 · 食品科技 · 自动化
+                - paragraph [ref=f24e558]:
+                  - generic [ref=f24e559]: DAY 5
+                  - generic [ref=f24e560]: 探索
+                  - generic [ref=f24e561]: 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验
+                - paragraph [ref=f24e562]:
+                  - generic [ref=f24e563]: DAY 6
+                  - generic [ref=f24e564]: 未来社区
+                  - generic [ref=f24e565]: HDB · 本地学生互动 · Future Community寻宝 · Show & Tell
+              - paragraph [ref=f24e566]: 探索未来产业
+              - generic [ref=f24e570]:
+                - paragraph [ref=f24e571]:
+                  - generic [ref=f24e572]: "01"
+                  - text: Robotics 机器人 · 编程 · 自动化
+                - paragraph [ref=f24e573]:
+                  - generic [ref=f24e574]: "02"
+                  - text: Digital Making 3D打印 · 数码设计 · 快速原型
+                - paragraph [ref=f24e575]:
+                  - generic [ref=f24e576]: "03"
+                  - text: Smart Mobility 电动车 · 智能交通
+                - paragraph [ref=f24e577]:
+                  - generic [ref=f24e578]: "04"
+                  - text: Smart Manufacturing 智能工厂 · 先进制造
+                - paragraph [ref=f24e579]:
+                  - generic [ref=f24e580]: "05"
+                  - text: Food Technology 食品科技 · 自动化生产
+            - generic [ref=f24e581]:
+              - strong [ref=f24e582]: 从“想法”到“现实”
+              - generic [ref=f24e583]: Imagine · Build · Test · Innovate
+              - generic [ref=f24e584]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+        - article [ref=f24e585]:
+          - generic [ref=f24e586]:
+            - generic [ref=f24e587]:
+              - generic [ref=f24e588]: 05 / 06
+              - generic [ref=f24e589]: 新加坡未来探索系列
+            - generic [ref=f24e590]:
+              - paragraph [ref=f24e591]: "小学 #5｜神奇的地球"
+              - heading "AMAZING PLANET EARTH" [level=2] [ref=f24e595]
+              - paragraph [ref=f24e596]: 地球科学与自然世界 · 6天5夜
+              - paragraph [ref=f24e597]: Discover Earth · Explore Life · Protect Our Planet
+              - paragraph [ref=f24e598]: 小学四至六年级｜9–12岁
+            - img "神奇的地球" [ref=f24e600]
+            - generic [ref=f24e601]:
+              - paragraph [ref=f24e602]:
+                - strong [ref=f24e606]: 我们的地球是如何运作的？
+              - paragraph [ref=f24e607]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将从地球科学到野生动物、从海洋到湿地，亲身探索地球、生命与自然世界的奇妙联系。"
+            - generic [ref=f24e608]:
+              - generic [ref=f24e609]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e610]:
+                - generic [ref=f24e611]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e612]:
+                - paragraph [ref=f24e613]:
+                  - generic [ref=f24e614]:
+                    - generic [ref=f24e615]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e616]: "|"
+                    - strong [ref=f24e617]: 启发学习
+                  - generic [ref=f24e618]: 地球科学 · 自然历史 · 生态系统
+                - paragraph [ref=f24e619]:
+                  - generic [ref=f24e620]:
+                    - generic [ref=f24e621]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e622]: "|"
+                    - strong [ref=f24e623]: 真实体验
+                  - generic [ref=f24e624]: 博物馆 · 野生动物 · 海洋 · 户外考察
+                - paragraph [ref=f24e625]:
+                  - generic [ref=f24e626]:
+                    - generic [ref=f24e627]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e628]: "|"
+                    - strong [ref=f24e629]: 主动探索
+                  - generic [ref=f24e630]: 观察 · 记录 · 分析 · 发现
+                - paragraph [ref=f24e631]:
+                  - generic [ref=f24e632]:
+                    - generic [ref=f24e633]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e634]: "|"
+                    - strong [ref=f24e635]: 国际交流
+                  - generic [ref=f24e636]: 新加坡学生 · 自然探索 · 社区互动
+            - generic [ref=f24e637]:
+              - generic [ref=f24e638]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e639]:
+                - generic [ref=f24e640]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e641]:
+                - generic [ref=f24e642]:
+                  - generic [ref=f24e643]: 日程
+                  - generic [ref=f24e644]: 探索主题
+                  - generic [ref=f24e645]: 精彩体验
+                - paragraph [ref=f24e646]:
+                  - generic [ref=f24e647]: DAY 1
+                  - generic [ref=f24e648]: 认识新加坡
+                  - generic [ref=f24e649]: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - paragraph [ref=f24e650]:
+                  - generic [ref=f24e651]: DAY 2
+                  - generic [ref=f24e652]: 地球
+                  - generic [ref=f24e653]: 自然历史 · 李光前自然历史博物馆 · 生物多样性 · 科学馆
+                - paragraph [ref=f24e654]:
+                  - generic [ref=f24e655]: DAY 3
+                  - generic [ref=f24e656]: 野生动物
+                  - generic [ref=f24e657]: 海洋 · 万态野生动物世界 · 动物保育 · 新加坡海洋馆
+                - paragraph [ref=f24e658]:
+                  - generic [ref=f24e659]: DAY 4
+                  - generic [ref=f24e660]: 湿地
+                  - generic [ref=f24e661]: 自然探索 · 新加坡小学交流 · 双溪布洛湿地 · 生态观察
+                - paragraph [ref=f24e662]:
+                  - generic [ref=f24e663]: DAY 5
+                  - generic [ref=f24e664]: 探索
+                  - generic [ref=f24e665]: 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验
+                - paragraph [ref=f24e666]:
+                  - generic [ref=f24e667]: DAY 6
+                  - generic [ref=f24e668]: 地球
+                  - generic [ref=f24e669]: 人类 · 社区 · HDB · 本地学生互动 · 社区探索 · Show & Tell
+              - paragraph [ref=f24e670]: 一路探索地球的奇妙联系
+              - generic [ref=f24e674]:
+                - paragraph [ref=f24e675]:
+                  - generic [ref=f24e676]: "01"
+                  - text: Earth 地球科学 · 自然历史
+                - paragraph [ref=f24e677]:
+                  - generic [ref=f24e678]: "02"
+                  - text: Life 生物多样性 · 动物适应
+                - paragraph [ref=f24e679]:
+                  - generic [ref=f24e680]: "03"
+                  - text: Habitats 森林 · 湿地 · 栖息地
+                - paragraph [ref=f24e681]:
+                  - generic [ref=f24e682]: "04"
+                  - text: Ocean 海洋生态 · 海洋保育
+                - paragraph [ref=f24e683]:
+                  - generic [ref=f24e684]: "05"
+                  - text: Science 观察 · 探究 · 发现
+                - paragraph [ref=f24e685]:
+                  - generic [ref=f24e686]: "06"
+                  - text: People 城市 · 社区 · 人与自然
+            - generic [ref=f24e687]:
+              - strong [ref=f24e688]: 从发现自然，到学会守护地球
+              - generic [ref=f24e689]: Observe · Discover · Understand · Protect
+              - generic [ref=f24e690]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+        - article [ref=f24e691]:
+          - generic [ref=f24e692]:
+            - generic [ref=f24e693]:
+              - generic [ref=f24e694]: 06 / 06
+              - generic [ref=f24e695]: 新加坡未来探索系列
+            - generic [ref=f24e696]:
+              - paragraph [ref=f24e697]: "小学 #6｜AI小小创新家"
+              - heading "AI FOR YOUNG INNOVATORS" [level=2] [ref=f24e700]
+              - paragraph [ref=f24e701]: 人工智能 · 机器人 · 3D打印 · 新兴科技 · 6天5夜
+              - paragraph [ref=f24e702]: Explore AI · Create with Technology · Innovate for Tomorrow
+              - paragraph [ref=f24e703]: 小学四至六年级｜9–12岁
+            - img "AI小小创新家" [ref=f24e705]
+            - generic [ref=f24e706]:
+              - paragraph [ref=f24e707]:
+                - strong [ref=f24e710]: AI，不只是未来科技，更是创造未来的工具
+              - paragraph [ref=f24e711]: "通过4Es: Educate · Experience · Explore · Exchange，孩子将探索人工智能、机器人、3D打印与智能科技，并亲手把创意变成作品。"
+              - paragraph [ref=f24e712]: 无需编程或AI经验 · 无需自带电脑
+            - generic [ref=f24e713]:
+              - generic [ref=f24e714]: 04 ES / LEARNING EXPERIENCE
+              - heading "4E 4Es 学习体验" [level=3] [ref=f24e715]:
+                - generic [ref=f24e716]: 4E
+                - text: 4Es 学习体验
+              - generic [ref=f24e717]:
+                - paragraph [ref=f24e718]:
+                  - generic [ref=f24e719]:
+                    - generic [ref=f24e720]: EDUCATE
+                    - generic [aria-hidden] [ref=f24e721]: "|"
+                    - strong [ref=f24e722]: 启发学习
+                  - generic [ref=f24e723]: AI · 机器人 · 数字制造 · 新兴科技
+                - paragraph [ref=f24e724]:
+                  - generic [ref=f24e725]:
+                    - generic [ref=f24e726]: EXPERIENCE
+                    - generic [aria-hidden] [ref=f24e727]: "|"
+                    - strong [ref=f24e728]: 真实体验
+                  - generic [ref=f24e729]: 3D打印 · 科学馆 · 智能工厂 · AI实践
+                - paragraph [ref=f24e730]:
+                  - generic [ref=f24e731]:
+                    - generic [ref=f24e732]: EXPLORE
+                    - generic [aria-hidden] [ref=f24e733]: "|"
+                    - strong [ref=f24e734]: 主动探索
+                  - generic [ref=f24e735]: 感知 · 数据 · 自动化 · AI创作
+                - paragraph [ref=f24e736]:
+                  - generic [ref=f24e737]:
+                    - generic [ref=f24e738]: EXCHANGE
+                    - generic [aria-hidden] [ref=f24e739]: "|"
+                    - strong [ref=f24e740]: 国际交流
+                  - generic [ref=f24e741]: 新加坡学生 · 社区探索 · 团队创新
+            - generic [ref=f24e742]:
+              - generic [ref=f24e743]: 06 DAYS / 05 NIGHTS
+              - heading "06 6天5夜探索之旅" [level=3] [ref=f24e744]:
+                - generic [ref=f24e745]: "06"
+                - text: 6天5夜探索之旅
+              - generic [ref=f24e746]:
+                - generic [ref=f24e747]:
+                  - generic [ref=f24e748]: 日程
+                  - generic [ref=f24e749]: 探索主题
+                  - generic [ref=f24e750]: 精彩体验
+                - paragraph [ref=f24e751]:
+                  - generic [ref=f24e752]: DAY 1
+                  - generic [ref=f24e753]: 探索新加坡
+                  - generic [ref=f24e754]: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - paragraph [ref=f24e755]:
+                  - generic [ref=f24e756]: DAY 2
+                  - generic [ref=f24e757]: 动手制作
+                  - generic [ref=f24e758]: 创造 · 3D打印 · 数字制造 · 科学馆 · 机器人
+                - paragraph [ref=f24e759]:
+                  - generic [ref=f24e760]: DAY 3
+                  - generic [ref=f24e761]: AI走进现实世界
+                  - generic [ref=f24e762]: AI探索 · 智能工厂 · 机器人 · 智慧农业
+                - paragraph [ref=f24e763]:
+                  - generic [ref=f24e764]: DAY 4
+                  - generic [ref=f24e765]: AI小小创新家
+                  - generic [ref=f24e766]: 新加坡小学交流 · Generative AI创作 · 创新挑战
+                - paragraph [ref=f24e767]:
+                  - generic [ref=f24e768]: DAY 5
+                  - generic [ref=f24e769]: 探索
+                  - generic [ref=f24e770]: 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验
+                - paragraph [ref=f24e771]:
+                  - generic [ref=f24e772]: DAY 6
+                  - generic [ref=f24e773]: 探索智慧社区
+                  - generic [ref=f24e774]: HDB · 本地学生互动 · 智慧社区寻宝 · Show & Tell
+              - paragraph [ref=f24e775]: 探索未来科技
+              - generic [ref=f24e778]:
+                - paragraph [ref=f24e779]:
+                  - generic [ref=f24e780]: "01"
+                  - text: AI & Robotics 人工智能 · 机器人 · 自动化
+                - paragraph [ref=f24e781]:
+                  - generic [ref=f24e782]: "02"
+                  - text: Digital Making 3D打印 · 数字设计 · 创客科技
+                - paragraph [ref=f24e783]:
+                  - generic [ref=f24e784]: "03"
+                  - text: Generative AI 创意 · 故事 · 图像 · 构思
+                - paragraph [ref=f24e785]:
+                  - generic [ref=f24e786]: "04"
+                  - text: Smart Technology 智能制造 · 智慧农业 · 未来出行
+                - paragraph [ref=f24e787]:
+                  - generic [ref=f24e788]: "05"
+                  - text: Responsible AI AI伦理 · 事实核查 · 数据与数字安全
+            - generic [ref=f24e789]:
+              - strong [ref=f24e790]: 从动手制作，到创造未来
+              - generic [ref=f24e791]: Make · Explore · Create · Innovate
+              - generic [ref=f24e792]: 6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12
+  - contentinfo [ref=f24e793]:
+    - generic [ref=f24e794]:
+      - generic [ref=f24e795]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f24e796]
+        - generic [ref=f24e797]:
+          - generic [ref=f24e798]: APIMTC
+          - paragraph [ref=f24e799]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f24e800]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f24e801]:
+        - heading "探索" [level=4] [ref=f24e802]
+        - link "教育流动" [ref=f24e803] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f24e804] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f24e805] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f24e806]:
+        - heading "联系" [level=4] [ref=f24e807]
+        - link "国际合作" [ref=f24e808] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f24e809] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f24e810]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f24e811]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

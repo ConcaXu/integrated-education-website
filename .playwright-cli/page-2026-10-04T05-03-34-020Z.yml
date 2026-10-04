@@ -1,0 +1,746 @@
+- generic [ref=f30e3]:
+  - banner [ref=f30e4]:
+    - generic [ref=f30e5]:
+      - link [ref=f30e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f30e7]
+      - navigation [ref=f30e8]:
+        - link "首页" [ref=f30e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f30e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f30e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f30e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f30e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f30e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f30e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f30e16] [cursor=pointer]
+  - main [ref=f30e17]:
+    - main [ref=f30e18]:
+      - generic [ref=f30e21]:
+        - generic [ref=f30e22]:
+          - paragraph [ref=f30e23]: APIMTC / 2025-26
+          - paragraph [ref=f30e24]: 高中 / 初级学院 | 16-18 岁
+        - generic [ref=f30e25]:
+          - generic [ref=f30e26]: 高中课程
+          - heading [level=1] [ref=f30e27]:
+            - text: 新加坡未来
+            - emphasis [ref=f30e28]: 领袖系列
+          - paragraph [ref=f30e29]: 六大主题 · 6 天 5 夜沉浸式学习之旅
+          - generic [ref=f30e30]: 探索新加坡 · 发现无限可能 · 共创未来
+        - link "06 主题" [ref=f30e31] [cursor=pointer]:
+          - /url: "#themes"
+          - generic [ref=f30e32]: "06"
+          - text: 主题
+          - generic [aria-hidden] [ref=f30e33]: ↓
+      - generic [ref=f30e34]:
+        - generic [ref=f30e35]:
+          - paragraph [ref=f30e36]: 00 / 项目宣传册
+          - heading "一场走进未来的学习之旅。" [level=2] [ref=f30e37]
+        - generic [ref=f30e38]:
+          - paragraph [ref=f30e39]: 一项为海外及国际高中 / 初级学院学生特别设计的6天5夜主题式教育体验。通过学习 · 体验 · 探索 · 交流，学生将课堂知识与真实世界连接起来，深入接触生物医学科学、太空科技、未来移动、可持续发展、气候创新、工业4.0、地球系统、人工智能与未来创新。
+          - generic "Programme highlights" [ref=f30e40]:
+            - generic [ref=f30e41]:
+              - strong [ref=f30e42]: "06"
+              - generic [ref=f30e43]: 未来主题
+            - generic [ref=f30e44]:
+              - strong [ref=f30e45]: 6+5
+              - generic [ref=f30e46]: 天 + 夜
+            - generic [ref=f30e47]:
+              - strong [ref=f30e48]: 4E
+              - generic [ref=f30e49]: 学习体验
+      - generic [ref=f30e51]:
+        - generic [ref=f30e52]:
+          - generic [ref=f30e53]:
+            - paragraph [ref=f30e54]: 01 / 六大未来主题
+            - heading "以城市为课堂，走进真实世界。" [level=2] [ref=f30e55]
+          - paragraph [ref=f30e56]: 从生物医学科学到人工智能，每个主题都把课堂知识与新加坡的人、城市和未来连接起来。
+        - generic [ref=f30e57]:
+          - link "生物医学创新与未来医疗 01 生命 / 健康 / 生物医学科学 生物医学创新与未来医疗 人体生物学、生物科技、生物医学创新与医疗健康。 探索人体生物学、生物科技、生物医学创新及医疗，了解科学与科技如何推动未来医疗的发展。" [ref=f30e58] [cursor=pointer]:
+            - /url: "#programme-1"
+            - img "生物医学创新与未来医疗" [ref=f30e60]
+            - generic [ref=f30e61]:
+              - generic [ref=f30e62]: "01"
+              - paragraph [ref=f30e63]: 生命 / 健康 / 生物医学科学
+              - heading "生物医学创新与未来医疗" [level=3] [ref=f30e64]
+              - generic [ref=f30e66]: 人体生物学、生物科技、生物医学创新与医疗健康。
+              - generic [ref=f30e67]: 探索人体生物学、生物科技、生物医学创新及医疗，了解科学与科技如何推动未来医疗的发展。
+          - link "太空科技与未来移动 02 太空 / 航空航天 / 航空 太空科技与未来移动 太空科技、自主系统、航空与新兴交通技术。 探索太空科技、无人机、航空航天及航空业，了解自动化系统、电动车及新兴科技如何塑造未来交通。" [ref=f30e68] [cursor=pointer]:
+            - /url: "#programme-2"
+            - img "太空科技与未来移动" [ref=f30e70]
+            - generic [ref=f30e71]:
+              - generic [ref=f30e72]: "02"
+              - paragraph [ref=f30e73]: 太空 / 航空航天 / 航空
+              - heading "太空科技与未来移动" [level=3] [ref=f30e74]
+              - generic [ref=f30e76]: 太空科技、自主系统、航空与新兴交通技术。
+              - generic [ref=f30e77]: 探索太空科技、无人机、航空航天及航空业，了解自动化系统、电动车及新兴科技如何塑造未来交通。
+          - link "可持续城市与气候创新 03 可持续发展 / 气候 / 绿色科技 可持续城市与气候创新 气候韧性、水资源、生物多样性与宜居城市方案。 探索城市可持续发展、气候韧性、水资源、绿色科技及生物多样性，了解如何建设更可持续、更宜居的城市。" [ref=f30e78] [cursor=pointer]:
+            - /url: "#programme-3"
+            - img "可持续城市与气候创新" [ref=f30e80]
+            - generic [ref=f30e81]:
+              - generic [ref=f30e82]: "03"
+              - paragraph [ref=f30e83]: 可持续发展 / 气候 / 绿色科技
+              - heading "可持续城市与气候创新" [level=3] [ref=f30e84]
+              - generic [ref=f30e86]: 气候韧性、水资源、生物多样性与宜居城市方案。
+              - generic [ref=f30e87]: 探索城市可持续发展、气候韧性、水资源、绿色科技及生物多样性，了解如何建设更可持续、更宜居的城市。
+          - link "工业4.0与未来创新 04 先进制造 / 机器人 / 未来产业 工业4.0与未来创新 3D 打印、机器人、自动化、智能工厂与数字制造。 体验3D打印、机器人、自动化、智能工厂、电动车及数字制造，了解科技如何改变制造业及未来产业。" [ref=f30e88] [cursor=pointer]:
+            - /url: "#programme-4"
+            - img "工业4.0与未来创新" [ref=f30e90]
+            - generic [ref=f30e91]:
+              - generic [ref=f30e92]: "04"
+              - paragraph [ref=f30e93]: 先进制造 / 机器人 / 未来产业
+              - heading "工业4.0与未来创新" [level=3] [ref=f30e94]
+              - generic [ref=f30e96]: 3D 打印、机器人、自动化、智能工厂与数字制造。
+              - generic [ref=f30e97]: 体验3D打印、机器人、自动化、智能工厂、电动车及数字制造，了解科技如何改变制造业及未来产业。
+          - link "行星科学与地球系统 05 地球 / 自然 / 环境 行星科学与地球系统 地球系统、自然历史、生态系统、海洋与气候。 探索地球系统、自然历史、海洋、生态系统及气候，了解科学如何帮助我们认识并保护地球。" [ref=f30e98] [cursor=pointer]:
+            - /url: "#programme-5"
+            - img "行星科学与地球系统" [ref=f30e100]
+            - generic [ref=f30e101]:
+              - generic [ref=f30e102]: "05"
+              - paragraph [ref=f30e103]: 地球 / 自然 / 环境
+              - heading "行星科学与地球系统" [level=3] [ref=f30e104]
+              - generic [ref=f30e106]: 地球系统、自然历史、生态系统、海洋与气候。
+              - generic [ref=f30e107]: 探索地球系统、自然历史、海洋、生态系统及气候，了解科学如何帮助我们认识并保护地球。
+          - link "人工智能、数字创新与未来社会 06 人工智能 / 数字科技 / 创新 人工智能、数字创新与未来社会 人工智能、机器学习、生成式 AI 与智慧系统。 探索生成式AI、机器学习、数字转型及负责任AI，了解智能科技如何创造新的解决方案、产业及机会。" [ref=f30e108] [cursor=pointer]:
+            - /url: "#programme-6"
+            - img "人工智能、数字创新与未来社会" [ref=f30e110]
+            - generic [ref=f30e111]:
+              - generic [ref=f30e112]: "06"
+              - paragraph [ref=f30e113]: 人工智能 / 数字科技 / 创新
+              - heading "人工智能、数字创新与未来社会" [level=3] [ref=f30e114]
+              - generic [ref=f30e116]: 人工智能、机器学习、生成式 AI 与智慧系统。
+              - generic [ref=f30e117]: 探索生成式AI、机器学习、数字转型及负责任AI，了解智能科技如何创造新的解决方案、产业及机会。
+      - generic [ref=f30e118]:
+        - generic [ref=f30e119]:
+          - generic [ref=f30e120]:
+            - paragraph [ref=f30e121]: 02 / 4Es 学习体验
+            - heading "让学习旅程持续推进。" [level=2] [ref=f30e122]
+          - paragraph [ref=f30e123]: 每个主题都通过清晰、协作的学习路径，让学生从知识走向行动。
+        - list [ref=f30e124]:
+          - listitem [ref=f30e125]:
+            - generic [ref=f30e126]: "01"
+            - paragraph [ref=f30e127]: 学习 EDUCATE
+            - heading "建立科学理解" [level=3] [ref=f30e128]
+            - generic [ref=f30e129]: 学术学习 · STEM · 未来知识
+          - listitem [ref=f30e130]:
+            - generic [ref=f30e131]: "02"
+            - paragraph [ref=f30e132]: 体验 EXPERIENCE
+            - heading "动手应用想法" [level=3] [ref=f30e133]
+            - generic [ref=f30e134]: 实践工作坊 · 应用学习 · 科技体验
+          - listitem [ref=f30e135]:
+            - generic [ref=f30e136]: "03"
+            - paragraph [ref=f30e137]: 探索 EXPLORE
+            - heading "连接真实新加坡" [level=3] [ref=f30e138]
+            - generic [ref=f30e139]: 研究 · 创新 · 自然 · 产业
+          - listitem [ref=f30e140]:
+            - generic [ref=f30e141]: "04"
+            - paragraph [ref=f30e142]: 交流 EXCHANGE
+            - heading "与伙伴共同成长" [level=3] [ref=f30e143]
+            - generic [ref=f30e144]: 新加坡学生 · 团队协作 · 跨文化体验
+      - generic [ref=f30e146]:
+        - generic [ref=f30e147]:
+          - generic [ref=f30e148]:
+            - paragraph [ref=f30e149]: 03 / 探索旅程
+            - heading "六天，串联一段面向未来的故事。" [level=2] [ref=f30e150]
+          - paragraph [ref=f30e151]: 均衡的行程连接新加坡的地标、学校、产业与社区。
+        - generic [ref=f30e152]:
+          - article [ref=f30e153]:
+            - generic [ref=f30e154]: "01"
+            - generic [ref=f30e155]:
+              - paragraph [ref=f30e156]: 发现新加坡
+              - heading "抵达与城市导览" [level=3] [ref=f30e157]
+              - text: 牛车水 · 鱼尾狮公园 · 滨海湾花园
+          - article [ref=f30e158]:
+            - generic [ref=f30e159]: "02"
+            - generic [ref=f30e160]:
+              - paragraph [ref=f30e161]: 学习主题
+              - heading "进入主题现场" [level=3] [ref=f30e162]
+              - text: 主题学习体验 · 科学探究
+          - article [ref=f30e163]:
+            - generic [ref=f30e164]: "03"
+            - generic [ref=f30e165]:
+              - paragraph [ref=f30e166]: 体验创新
+              - heading "发现创新实践" [level=3] [ref=f30e167]
+              - text: 应用学习 · 科技 · 产业
+          - article [ref=f30e168]:
+            - generic [ref=f30e169]: "04"
+            - generic [ref=f30e170]:
+              - paragraph [ref=f30e171]: 交流合作
+              - heading "与新加坡学生交流" [level=3] [ref=f30e172]
+              - text: 学校交流 · STEM 活动 · 团队协作
+          - article [ref=f30e173]:
+            - generic [ref=f30e174]: "05"
+            - generic [ref=f30e175]:
+              - paragraph [ref=f30e176]: 探索社区
+              - heading "理解日常城市生活" [level=3] [ref=f30e177]
+              - text: 组屋 · 社区探索 · 与本地学生互动
+          - article [ref=f30e178]:
+            - generic [ref=f30e179]: "06"
+            - generic [ref=f30e180]:
+              - paragraph [ref=f30e181]: 创造回忆
+              - heading "体验新加坡" [level=3] [ref=f30e182]
+              - text: 新加坡环球影城 · 团队活动 · 告别新加坡
+      - generic [ref=f30e183]:
+        - generic [ref=f30e184]:
+          - paragraph [ref=f30e185]: 04 / 真实世界学习
+          - heading "在未来正在发生的地方学习。" [level=2] [ref=f30e186]
+        - generic [ref=f30e187]:
+          - paragraph [ref=f30e188]: 学校交流、大学学习、产业体验、主题场馆与社区挑战，让每个想法都变得真实可感。
+          - link "查看完整课程宣传册" [ref=f30e189] [cursor=pointer]:
+            - /url: "#programme-guide"
+            - text: 查看完整课程宣传册
+            - generic [aria-hidden] [ref=f30e190]: ↗
+        - generic [ref=f30e191]:
+          - generic [ref=f30e192]:
+            - generic [ref=f30e193]: "01"
+            - heading "学校交流" [level=3] [ref=f30e194]
+            - paragraph [ref=f30e195]: 与新加坡中学生学习、互动与协作。
+          - generic [ref=f30e196]:
+            - generic [ref=f30e197]: "02"
+            - heading "大学与应用学习" [level=3] [ref=f30e198]
+            - paragraph [ref=f30e199]: 通过精选学习体验走进新加坡大学与理工学院。
+          - generic [ref=f30e200]:
+            - generic [ref=f30e201]: "03"
+            - heading "产业体验" [level=3] [ref=f30e202]
+            - paragraph [ref=f30e203]: 了解科技、制造与科学领域的真实应用。
+          - generic [ref=f30e204]:
+            - generic [ref=f30e205]: "04"
+            - heading "创新挑战" [level=3] [ref=f30e206]
+            - paragraph [ref=f30e207]: 设计思维、STEM 挑战、原型制作与成果展示。
+          - generic [ref=f30e208]:
+            - generic [ref=f30e209]: "05"
+            - heading "主题学习场景" [level=3] [ref=f30e210]
+            - paragraph [ref=f30e211]: 科学 · 科研 · 科技 · 太空 · 航空 · 工业 · AI · 环境。
+          - generic [ref=f30e212]:
+            - generic [ref=f30e213]: "06"
+            - heading "社区体验" [level=3] [ref=f30e214]
+            - paragraph [ref=f30e215]: HDB公共住宅 · 社区 · 巴刹 · 熟食中心 · 公共交通 · 社区设施。
+          - generic [ref=f30e216]:
+            - generic [ref=f30e217]: "07"
+            - heading "未来与职业探索" [level=3] [ref=f30e218]
+            - paragraph [ref=f30e219]: 将学习体验与未来升学方向、新兴产业、职业发展及个人目标连接起来。
+          - generic [ref=f30e220]:
+            - generic [ref=f30e221]: "08"
+            - heading "休闲体验" [level=3] [ref=f30e222]
+            - paragraph [ref=f30e223]: 新加坡环球影城。
+      - generic [ref=f30e224]:
+        - generic [ref=f30e225]:
+          - paragraph [ref=f30e226]: 02 / 完整课程内容
+          - heading "完整课程内容，一页一页展开。" [level=2] [ref=f30e227]
+        - paragraph [ref=f30e228]: 以下保留完整课程宣传册，包含学习体验、每日行程与真实学习场景。
+      - generic [ref=f30e229]:
+        - article [ref=f30e230]:
+          - generic [ref=f30e231]:
+            - generic [ref=f30e232]:
+              - img "生物医学创新与未来医疗" [ref=f30e233]
+              - generic [ref=f30e234]:
+                - paragraph [ref=f30e235]: 01 / 06
+                - paragraph [ref=f30e236]: 新加坡未来领袖系列
+                - paragraph [ref=f30e237]: 生物医学、医疗健康与生物科技
+                - paragraph [ref=f30e238]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e239]: 6天5夜
+            - 'heading "高中 / 初级学院 #1｜生物医学创新与未来医疗" [level=2] [ref=f30e240]'
+            - paragraph [ref=f30e241]: 探索生物医学 · 发现医疗创新 · 想象未来医学
+            - paragraph [ref=f30e242]: 通过学习 · 体验 · 探索 · 交流，学生将从课本中的生物学知识进一步走向真实世界，了解生物医学、生物科技、医疗健康与创新如何共同推动未来人类健康的发展。
+            - generic [ref=f30e243]:
+              - generic [ref=f30e244]:
+                - paragraph [ref=f30e245]: 学习体验
+                - generic [ref=f30e246]:
+                  - generic [ref=f30e247]:
+                    - emphasis [ref=f30e248]: Educate
+                    - strong [ref=f30e249]: 学习｜建立科学基础
+                    - generic [ref=f30e250]: 人体生物学 · 细胞 · 遗传学 · 微生物学 · 生物医学
+                  - generic [ref=f30e251]:
+                    - emphasis [ref=f30e252]: Explore
+                    - strong [ref=f30e253]: 体验｜应用生物医学知识
+                    - generic [ref=f30e254]: 实验活动 · 科学探究 · 生物医学应用 · 医疗科技
+                  - generic [ref=f30e255]:
+                    - emphasis [ref=f30e256]: Experience
+                    - strong [ref=f30e257]: 探索｜发现未来创新
+                    - generic [ref=f30e258]: 生物科技 · 医疗诊断 · 医疗技术 · 未来医疗
+                  - generic [ref=f30e259]:
+                    - emphasis [ref=f30e260]: Exchange
+                    - strong [ref=f30e261]: 交流｜国际学生交流
+                    - generic [ref=f30e262]: 新加坡学生 · 校园生活 · 团队合作 · 跨文化交流
+              - generic [ref=f30e263]:
+                - paragraph [ref=f30e264]: 五大真实学习环境
+                - generic [ref=f30e265]:
+                  - generic [ref=f30e266]:
+                    - strong [ref=f30e267]: 生物医学科学
+                    - generic [ref=f30e268]: 细胞 · 遗传学 · 微生物学 · 人体生物学
+                  - generic [ref=f30e269]:
+                    - strong [ref=f30e270]: 医疗健康
+                    - generic [ref=f30e271]: 医疗诊断 · 医疗科技 · 医疗创新 · 未来医疗
+                  - generic [ref=f30e272]:
+                    - strong [ref=f30e273]: 生物科技
+                    - generic [ref=f30e274]: 科学研究 · 生物科技应用 · 实验室科学
+                  - generic [ref=f30e275]:
+                    - strong [ref=f30e276]: 教育
+                    - generic [ref=f30e277]: 新加坡学校 · 应用学习 · 同龄人合作
+                  - generic [ref=f30e278]:
+                    - strong [ref=f30e279]: 社区
+                    - generic [ref=f30e280]: 医疗健康 · 住房 · 食物 · 交通 · 日常生活
+            - generic [ref=f30e281]:
+              - generic [ref=f30e282]:
+                - paragraph [ref=f30e283]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e284]
+              - generic [ref=f30e285]:
+                - generic [ref=f30e286]:
+                  - generic [ref=f30e287]: DAY 1
+                  - strong [ref=f30e288]: 探索新加坡
+                  - paragraph [ref=f30e289]: 抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - generic [ref=f30e290]:
+                  - generic [ref=f30e291]: DAY 2
+                  - strong [ref=f30e292]: 探索生物医学科学
+                  - paragraph [ref=f30e293]: 人体生物学 / 生命科学学习体验 · 科学探究 · 新加坡科学馆
+                - generic [ref=f30e294]:
+                  - generic [ref=f30e295]: DAY 3
+                  - strong [ref=f30e296]: 发现生物医学创新
+                  - paragraph [ref=f30e297]: 理工学院 / 生物医学应用学习 · 生物科技 · 细胞 · 遗传学 · 微生物学 · 医疗健康应用
+                - generic [ref=f30e298]:
+                  - generic [ref=f30e299]: DAY 4
+                  - strong [ref=f30e300]: 与新加坡学生交流
+                  - paragraph [ref=f30e301]: 新加坡中学 / 初级学院学生交流 · STEM 活动 · 团队合作 · 文化交流 · 生物医学创新挑战
+                - generic [ref=f30e302]:
+                  - generic [ref=f30e303]: DAY 5
+                  - strong [ref=f30e304]: 了解日常健康与生活
+                  - paragraph [ref=f30e305]: HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 社区探索 · 医疗与日常生活 · 本地学生交流
+                - generic [ref=f30e306]:
+                  - generic [ref=f30e307]: DAY 6
+                  - strong [ref=f30e308]: 体验新加坡
+                  - paragraph [ref=f30e309]: 新加坡环球影城 · 团队活动 · 新加坡告别体验
+            - generic [ref=f30e310]: 不只是游学 — 未来医疗探索之旅
+        - article [ref=f30e311]:
+          - generic [ref=f30e312]:
+            - generic [ref=f30e313]:
+              - img "太空科技与未来移动" [ref=f30e314]
+              - generic [ref=f30e315]:
+                - paragraph [ref=f30e316]: 02 / 06
+                - paragraph [ref=f30e317]: 新加坡未来领袖系列
+                - paragraph [ref=f30e318]: 太空科技、航空航天与未来交通
+                - paragraph [ref=f30e319]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e320]: 6天5夜
+            - 'heading "高中 / 初级学院 #2｜太空科技与未来交通" [level=2] [ref=f30e321]'
+            - paragraph [ref=f30e322]: 探索太空 · 发现航空航天 · 想象未来交通
+            - paragraph [ref=f30e323]: 通过学习 · 体验 · 探索 · 交流，学生深入了解太空科技、航空航天、航空、自主系统与新兴交通技术，探索这些技术如何改变人类探索世界以及未来出行的方式。
+            - generic [ref=f30e324]:
+              - generic [ref=f30e325]:
+                - paragraph [ref=f30e326]: 学习体验
+                - generic [ref=f30e327]:
+                  - generic [ref=f30e328]:
+                    - emphasis [ref=f30e329]: Educate
+                    - strong [ref=f30e330]: 学习｜建立科技基础
+                    - generic [ref=f30e331]: 太空科学 · 航空航天 · 飞行 · 工程 · 交通科技
+                  - generic [ref=f30e332]:
+                    - emphasis [ref=f30e333]: Explore
+                    - strong [ref=f30e334]: 体验｜应用科技
+                    - generic [ref=f30e335]: 无人机 · 航空科技 · 工程实践 · 自主系统
+                  - generic [ref=f30e336]:
+                    - emphasis [ref=f30e337]: Experience
+                    - strong [ref=f30e338]: 探索｜发现未来交通
+                    - generic [ref=f30e339]: 机场 · 航空系统 · 智慧交通 · 未来运输
+                  - generic [ref=f30e340]:
+                    - emphasis [ref=f30e341]: Exchange
+                    - strong [ref=f30e342]: 交流｜国际学生交流
+                    - generic [ref=f30e343]: 新加坡学生 · STEM 合作 · 团队合作 · 跨文化交流
+              - generic [ref=f30e344]:
+                - paragraph [ref=f30e345]: 五大真实学习环境
+                - generic [ref=f30e346]:
+                  - generic [ref=f30e347]:
+                    - strong [ref=f30e348]: 太空与科学
+                    - generic [ref=f30e349]: 太空科学 · 太空探索 · 卫星 · 未来任务
+                  - generic [ref=f30e350]:
+                    - strong [ref=f30e351]: 航空航天
+                    - generic [ref=f30e352]: 飞行 · 飞机 · 工程 · 航空科技
+                  - generic [ref=f30e353]:
+                    - strong [ref=f30e354]: 无人机与自主系统
+                    - generic [ref=f30e355]: 传感器 · 控制系统 · 导航 · 自主科技
+                  - generic [ref=f30e356]:
+                    - strong [ref=f30e357]: 未来交通
+                    - generic [ref=f30e358]: 智慧交通 · 城市移动 · 电动交通 · 自动驾驶科技
+                  - generic [ref=f30e359]:
+                    - strong [ref=f30e360]: 航空生态系统
+                    - generic [ref=f30e361]: 机场 · 航空运营 · 科技 · 全球连接
+            - generic [ref=f30e362]:
+              - generic [ref=f30e363]:
+                - paragraph [ref=f30e364]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e365]
+              - generic [ref=f30e366]:
+                - generic [ref=f30e367]:
+                  - generic [ref=f30e368]: DAY 1
+                  - strong [ref=f30e369]: 探索新加坡
+                  - paragraph [ref=f30e370]: 抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - generic [ref=f30e371]:
+                  - generic [ref=f30e372]: DAY 2
+                  - strong [ref=f30e373]: 了解飞行与航空航天
+                  - paragraph [ref=f30e374]: 航空 / 无人机 STEM 工作坊 · 飞行原理 · 无人机科技 · 航空航天工程 · 新加坡科学馆
+                - generic [ref=f30e375]:
+                  - generic [ref=f30e376]: DAY 3
+                  - strong [ref=f30e377]: 探索航空与未来交通
+                  - paragraph [ref=f30e378]: 理工学院航空航天 / 航空应用学习 · 工程 · 航空系统 · 樟宜机场航空探索
+                - generic [ref=f30e379]:
+                  - generic [ref=f30e380]: DAY 4
+                  - strong [ref=f30e381]: 交流与创造
+                  - paragraph [ref=f30e382]: 新加坡中学 / 初级学院学生交流 · STEM 活动 · 学生互动 · 太空 / 航空 / 未来交通挑战
+                - generic [ref=f30e383]:
+                  - generic [ref=f30e384]: DAY 5
+                  - strong [ref=f30e385]: 探索智慧城市交通
+                  - paragraph [ref=f30e386]: HDB Hub · 城市生活与交通 · 社区探索 · 公共交通 · 本地学生交流 · 未来交通观察挑战
+                - generic [ref=f30e387]:
+                  - generic [ref=f30e388]: DAY 6
+                  - strong [ref=f30e389]: 体验新加坡
+                  - paragraph [ref=f30e390]: 新加坡环球影城 · 团队活动 · 新加坡告别体验
+            - generic [ref=f30e391]: 不只是游学 — 未来交通探索之旅
+        - article [ref=f30e392]:
+          - generic [ref=f30e393]:
+            - generic [ref=f30e394]:
+              - img "可持续城市与气候创新" [ref=f30e395]
+              - generic [ref=f30e396]:
+                - paragraph [ref=f30e397]: 03 / 06
+                - paragraph [ref=f30e398]: 新加坡未来领袖系列
+                - paragraph [ref=f30e399]: 可持续城市、气候科学与绿色科技
+                - paragraph [ref=f30e400]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e401]: 6天5夜
+            - 'heading "高中 / 初级学院 #3｜可持续城市与气候创新" [level=2] [ref=f30e402]'
+            - paragraph [ref=f30e403]: 理解气候 · 探索创新 · 设计可持续城市
+            - paragraph [ref=f30e404]: 通过学习 · 体验 · 探索 · 交流，学生研究气候科学、城市系统、水资源管理、生物多样性与绿色科技如何相互结合，应对未来城市所面对的环境与气候挑战。
+            - generic [ref=f30e405]:
+              - generic [ref=f30e406]:
+                - paragraph [ref=f30e407]: 学习体验
+                - generic [ref=f30e408]:
+                  - generic [ref=f30e409]:
+                    - emphasis [ref=f30e410]: Educate
+                    - strong [ref=f30e411]: 学习｜了解气候与地球系统
+                    - generic [ref=f30e412]: 气候科学 · 环境系统 · 可持续发展 · 水资源
+                  - generic [ref=f30e413]:
+                    - emphasis [ref=f30e414]: Explore
+                    - strong [ref=f30e415]: 体验｜应用绿色科技
+                    - generic [ref=f30e416]: 可持续科技 · 环境工程 · 水资源管理 · 城市解决方案
+                  - generic [ref=f30e417]:
+                    - emphasis [ref=f30e418]: Experience
+                    - strong [ref=f30e419]: 探索｜把新加坡作为“城市实验室”
+                    - generic [ref=f30e420]: 城市规划 · 绿色空间 · 生物多样性 · 气候韧性
+                  - generic [ref=f30e421]:
+                    - emphasis [ref=f30e422]: Exchange
+                    - strong [ref=f30e423]: 交流｜国际学生交流
+                    - generic [ref=f30e424]: 新加坡学生 · 可持续发展项目 · 团队合作 · 跨文化交流
+              - generic [ref=f30e425]:
+                - paragraph [ref=f30e426]: 五大真实学习环境
+                - generic [ref=f30e427]:
+                  - generic [ref=f30e428]:
+                    - strong [ref=f30e429]: 气候科学
+                    - generic [ref=f30e430]: 气候系统 · 环境变化 · 气候韧性 · 可持续发展
+                  - generic [ref=f30e431]:
+                    - strong [ref=f30e432]: 绿色科技
+                    - generic [ref=f30e433]: 可再生能源 · 资源效率 · 环境科技
+                  - generic [ref=f30e434]:
+                    - strong [ref=f30e435]: 水资源系统
+                    - generic [ref=f30e436]: 水资源管理 · 水安全 · 水处理 · 可持续资源
+                  - generic [ref=f30e437]:
+                    - strong [ref=f30e438]: 城市系统
+                    - generic [ref=f30e439]: 城市规划 · 住房 · 交通 · 绿色基础设施
+                  - generic [ref=f30e440]:
+                    - strong [ref=f30e441]: 生物多样性
+                    - generic [ref=f30e442]: 生态系统 · 湿地 · 保护 · 基于自然的解决方案
+            - generic [ref=f30e443]:
+              - generic [ref=f30e444]:
+                - paragraph [ref=f30e445]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e446]
+              - generic [ref=f30e447]:
+                - generic [ref=f30e448]:
+                  - generic [ref=f30e449]: DAY 1
+                  - strong [ref=f30e450]: 探索新加坡
+                  - paragraph [ref=f30e451]: 抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园
+                - generic [ref=f30e452]:
+                  - generic [ref=f30e453]: DAY 2
+                  - strong [ref=f30e454]: 了解可持续城市
+                  - paragraph [ref=f30e455]: 可持续发展与绿色科技应用学习 · 城市系统 · 绿色科技 · 滨海湾花园
+                - generic [ref=f30e456]:
+                  - generic [ref=f30e457]: DAY 3
+                  - strong [ref=f30e458]: 探索气候与水资源系统
+                  - paragraph [ref=f30e459]: 可持续新加坡 / 水资源管理学习体验 · 水科技 · 双溪布洛湿地保护区 · 生态系统与气候韧性
+                - generic [ref=f30e460]:
+                  - generic [ref=f30e461]: DAY 4
+                  - strong [ref=f30e462]: 交流与城市设计
+                  - paragraph [ref=f30e463]: 新加坡中学 / 初级学院学生交流 · 环境 STEM 活动 · 学生互动 · “未来绿色城市”设计挑战
+                - generic [ref=f30e464]:
+                  - generic [ref=f30e465]: DAY 5
+                  - strong [ref=f30e466]: 体验可持续城市生活
+                  - paragraph [ref=f30e467]: HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 可持续住宅 · 城市规划 · 社区探索
+                - generic [ref=f30e468]:
+                  - generic [ref=f30e469]: DAY 6
+                  - strong [ref=f30e470]: 体验新加坡
+                  - paragraph [ref=f30e471]: 新加坡环球影城 · 团队活动 · 新加坡告别体验
+            - generic [ref=f30e472]: 不只是游学 — 未来可持续发展探索之旅
+        - article [ref=f30e473]:
+          - generic [ref=f30e474]:
+            - generic [ref=f30e475]:
+              - img "工业4.0与未来创新" [ref=f30e476]
+              - generic [ref=f30e477]:
+                - paragraph [ref=f30e478]: 04 / 06
+                - paragraph [ref=f30e479]: 新加坡未来领袖系列
+                - paragraph [ref=f30e480]: 智能制造与未来产业
+                - paragraph [ref=f30e481]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e482]: 6天5夜
+            - 'heading "高中 / 初级学院 #4｜新加坡工业4.0与创新" [level=2] [ref=f30e483]'
+            - paragraph [ref=f30e484]: 探索工业4.0 · 体验智能制造 · 发现未来产业
+            - paragraph [ref=f30e485]: 通过4E：教育（Educate）·体验（Experience）·探索（Explore）·交流（Exchange），学生了解机器人、自动化、数字制造、人工智能与智能工厂如何改变现代工业，并思考未来产业需要怎样的人才与技能。
+            - generic [ref=f30e486]:
+              - generic [ref=f30e487]:
+                - paragraph [ref=f30e488]: 学习体验
+                - generic [ref=f30e489]:
+                  - generic [ref=f30e490]:
+                    - emphasis [ref=f30e491]: Educate
+                    - strong [ref=f30e492]: 学习｜建立未来产业知识
+                    - generic [ref=f30e493]: 工业4.0 · 智能制造 · 自动化 · 机器人 · 数字技术
+                  - generic [ref=f30e494]:
+                    - emphasis [ref=f30e495]: Explore
+                    - strong [ref=f30e496]: 体验｜接触真实工业
+                    - generic [ref=f30e497]: 3D打印 · 工程实践 · 智能工厂 · 制造技术 · 企业参访
+                  - generic [ref=f30e498]:
+                    - emphasis [ref=f30e499]: Experience
+                    - strong [ref=f30e500]: 探索｜主动探索创新
+                    - generic [ref=f30e501]: 制造流程 · 自动化系统 · 产品创新 · 工业问题解决
+                  - generic [ref=f30e502]:
+                    - emphasis [ref=f30e503]: Exchange
+                    - strong [ref=f30e504]: 交流｜国际学生交流
+                    - generic [ref=f30e505]: 新加坡学生 · 校园体验 · 团队合作 · 跨文化交流
+              - generic [ref=f30e506]:
+                - paragraph [ref=f30e507]: 五大真实学习环境
+                - generic [ref=f30e508]:
+                  - generic [ref=f30e509]:
+                    - strong [ref=f30e510]: 智能制造
+                    - generic [ref=f30e511]: 智能工厂 · 自动化 · 机器人 · 数字制造
+                  - generic [ref=f30e512]:
+                    - strong [ref=f30e513]: 工程与技术
+                    - generic [ref=f30e514]: 3D打印 · 原型设计 · 工程解决方案 · 产品创新
+                  - generic [ref=f30e515]:
+                    - strong [ref=f30e516]: 未来产业
+                    - generic [ref=f30e517]: 电动车 · 智能系统 · 工业数字化 · 未来职业
+                  - generic [ref=f30e518]:
+                    - strong [ref=f30e519]: 教育
+                    - generic [ref=f30e520]: 应用型学习 · 新加坡学校 · 学生交流
+                  - generic [ref=f30e521]:
+                    - strong [ref=f30e522]: 社区与社会
+                    - generic [ref=f30e523]: 住房 · 交通 · 社区设施 · 日常生活中的科技应用
+            - generic [ref=f30e524]:
+              - generic [ref=f30e525]:
+                - paragraph [ref=f30e526]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e527]
+              - generic [ref=f30e528]:
+                - generic [ref=f30e529]:
+                  - generic [ref=f30e530]: DAY 1
+                  - strong [ref=f30e531]: 认识新加坡
+                  - paragraph [ref=f30e532]: 抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay
+                - generic [ref=f30e533]:
+                  - generic [ref=f30e534]: DAY 2
+                  - strong [ref=f30e535]: 从创意到产品
+                  - paragraph [ref=f30e536]: 3D打印与数字制造工作坊 · 数字设计 · 快速原型 · 制造创新
+                - generic [ref=f30e537]:
+                  - generic [ref=f30e538]: DAY 3
+                  - strong [ref=f30e539]: 体验智能制造
+                  - paragraph [ref=f30e540]: 工业4.0 / 机器人 / 工程应用学习 · Hyundai Motor Group Innovation Center Singapore（HMGICS）· 智能工厂 · 自动化 · 电动车与未来移动
+                - generic [ref=f30e541]:
+                  - generic [ref=f30e542]: DAY 4
+                  - strong [ref=f30e543]: 与新加坡学生交流
+                  - paragraph [ref=f30e544]: 中学交流 · STEM / 工程活动 · 学生互动 · 工业4.0创新挑战
+                - generic [ref=f30e545]:
+                  - generic [ref=f30e546]: DAY 5
+                  - strong [ref=f30e547]: 发现日常生活中的创新
+                  - paragraph [ref=f30e548]: HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 社区探索 · 本地学生互动 · Treasure Hunt · Show & Tell
+                - generic [ref=f30e549]:
+                  - generic [ref=f30e550]: DAY 6
+                  - strong [ref=f30e551]: 欢乐与探索
+                  - paragraph [ref=f30e552]: Universal Studios Singapore · 团队活动 · 新加坡告别
+            - generic [ref=f30e553]: 不只是一次参访，而是一场未来产业学习之旅
+        - article [ref=f30e554]:
+          - generic [ref=f30e555]:
+            - generic [ref=f30e556]:
+              - img "行星科学与地球系统" [ref=f30e557]
+              - generic [ref=f30e558]:
+                - paragraph [ref=f30e559]: 05 / 06
+                - paragraph [ref=f30e560]: 新加坡未来领袖系列
+                - paragraph [ref=f30e561]: 地球科学、自然系统与环境未来
+                - paragraph [ref=f30e562]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e563]: 6天5夜
+            - 'heading "高中 / 初级学院 #5｜行星科学与地球系统" [level=2] [ref=f30e564]'
+            - paragraph [ref=f30e565]: 探索地球 · 理解自然 · 守护未来
+            - paragraph [ref=f30e566]: 通过4E：教育（Educate）·体验（Experience）·探索（Explore）·交流（Exchange），学生从地球科学、自然历史、生态系统、海洋与气候等角度，理解地球如何运作，以及人类如何利用科学应对环境挑战。
+            - generic [ref=f30e567]:
+              - generic [ref=f30e568]:
+                - paragraph [ref=f30e569]: 学习体验
+                - generic [ref=f30e570]:
+                  - generic [ref=f30e571]:
+                    - emphasis [ref=f30e572]: Educate
+                    - strong [ref=f30e573]: 学习｜建立地球科学知识
+                    - generic [ref=f30e574]: 地球科学 · 地质 · 自然历史 · 生态系统 · 气候
+                  - generic [ref=f30e575]:
+                    - emphasis [ref=f30e576]: Explore
+                    - strong [ref=f30e577]: 体验｜走进真实科学环境
+                    - generic [ref=f30e578]: 自然历史博物馆 · 湿地 · 海洋科学 · 环境学习
+                  - generic [ref=f30e579]:
+                    - emphasis [ref=f30e580]: Experience
+                    - strong [ref=f30e581]: 探索｜主动研究我们的星球
+                    - generic [ref=f30e582]: 生物多样性 · 生态观察 · 海洋 · 气候变化 · 保育
+                  - generic [ref=f30e583]:
+                    - emphasis [ref=f30e584]: Exchange
+                    - strong [ref=f30e585]: 交流｜国际学生交流
+                    - generic [ref=f30e586]: 新加坡学生 · 校园体验 · 团队合作 · 跨文化分享
+              - generic [ref=f30e587]:
+                - paragraph [ref=f30e588]: 五大真实学习环境
+                - generic [ref=f30e589]:
+                  - generic [ref=f30e590]:
+                    - strong [ref=f30e591]: 地球科学
+                    - generic [ref=f30e592]: 地球系统 · 地质 · 自然历史 · 气候
+                  - generic [ref=f30e593]:
+                    - strong [ref=f30e594]: 生态与生物多样性
+                    - generic [ref=f30e595]: 生态系统 · 野生动物 · 湿地 · 生物多样性
+                  - generic [ref=f30e596]:
+                    - strong [ref=f30e597]: 海洋科学
+                    - generic [ref=f30e598]: 海洋生态 · 海洋生物 · 海洋保育
+                  - generic [ref=f30e599]:
+                    - strong [ref=f30e600]: 环境与可持续发展
+                    - generic [ref=f30e601]: 气候变化 · 环境挑战 · 保育 · 可持续城市
+                  - generic [ref=f30e602]:
+                    - strong [ref=f30e603]: 教育与社区
+                    - generic [ref=f30e604]: 大学 / 科学机构 · 新加坡学校 · 社区与日常生活
+            - generic [ref=f30e605]:
+              - generic [ref=f30e606]:
+                - paragraph [ref=f30e607]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e608]
+              - generic [ref=f30e609]:
+                - generic [ref=f30e610]:
+                  - generic [ref=f30e611]: DAY 1
+                  - strong [ref=f30e612]: 认识新加坡
+                  - paragraph [ref=f30e613]: 抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay
+                - generic [ref=f30e614]:
+                  - generic [ref=f30e615]: DAY 2
+                  - strong [ref=f30e616]: 认识我们的地球
+                  - paragraph [ref=f30e617]: Earth / Environmental Science Workshop · Science Centre Singapore · 地球科学 · 环境与气候探索
+                - generic [ref=f30e618]:
+                  - generic [ref=f30e619]: DAY 3
+                  - strong [ref=f30e620]: 探索地球生命历史
+                  - paragraph [ref=f30e621]: Lee Kong Chian Natural History Museum, NUS · 生物多样性 · 进化 · 自然历史 · Sungei Buloh Wetland Reserve
+                - generic [ref=f30e622]:
+                  - generic [ref=f30e623]: DAY 4
+                  - strong [ref=f30e624]: 探索海洋与未来
+                  - paragraph [ref=f30e625]: 新加坡中学学生交流 · Singapore Oceanarium · 海洋生态系统 · 海洋科学 · 生物多样性 · 海洋保育挑战
+                - generic [ref=f30e626]:
+                  - generic [ref=f30e627]: DAY 5
+                  - strong [ref=f30e628]: 探索可持续生活
+                  - paragraph [ref=f30e629]: HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 社区探索 · 本地学生互动 · Sustainability Treasure Hunt · Show & Tell
+                - generic [ref=f30e630]:
+                  - generic [ref=f30e631]: DAY 6
+                  - strong [ref=f30e632]: 欢乐与探索
+                  - paragraph [ref=f30e633]: Universal Studios Singapore · 团队活动 · 新加坡告别
+            - generic [ref=f30e634]: 不只是一次旅行，而是一场探索地球的学习之旅
+        - article [ref=f30e635]:
+          - generic [ref=f30e636]:
+            - generic [ref=f30e637]:
+              - img "人工智能、数字创新与未来社会" [ref=f30e638]
+              - generic [ref=f30e639]:
+                - paragraph [ref=f30e640]: 06 / 06
+                - paragraph [ref=f30e641]: 新加坡未来领袖系列
+                - paragraph [ref=f30e642]: 人工智能、数字创新与未来社会
+                - paragraph [ref=f30e643]: 高中 / 初级学院｜16-18 岁
+              - generic [ref=f30e644]: 6天5夜
+            - 'heading "高中 / 初级学院 #6｜生成式AI与未来创新" [level=2] [ref=f30e645]'
+            - paragraph [ref=f30e646]: 探索AI · 学习创新 · 创造未来
+            - paragraph [ref=f30e647]: 通过4E：教育（Educate）·体验（Experience）·探索（Explore）·交流（Exchange），学生认识人工智能、机器学习、生成式AI与智能系统，并进一步学习如何将AI应用于真实问题、创新项目与未来商业。
+            - generic [ref=f30e648]:
+              - generic [ref=f30e649]:
+                - paragraph [ref=f30e650]: 学习体验
+                - generic [ref=f30e651]:
+                  - generic [ref=f30e652]:
+                    - emphasis [ref=f30e653]: Educate
+                    - strong [ref=f30e654]: 学习｜建立AI与数字科技基础
+                    - generic [ref=f30e655]: 人工智能 · 机器学习 · 生成式AI · 数据 · 数字技术
+                  - generic [ref=f30e656]:
+                    - emphasis [ref=f30e657]: Explore
+                    - strong [ref=f30e658]: 体验｜接触真实AI应用
+                    - generic [ref=f30e659]: AI工作坊 · 数字创新 · AI应用案例 · 智能系统
+                  - generic [ref=f30e660]:
+                    - emphasis [ref=f30e661]: Experience
+                    - strong [ref=f30e662]: 探索｜从问题走向创新
+                    - generic [ref=f30e663]: Prompting · AI创意 · Design Thinking · 原型设计 · 创新挑战
+                  - generic [ref=f30e664]:
+                    - emphasis [ref=f30e665]: Exchange
+                    - strong [ref=f30e666]: 交流｜国际学生交流
+                    - generic [ref=f30e667]: 新加坡学生 · 校园体验 · 团队合作 · 跨文化交流
+              - generic [ref=f30e668]:
+                - paragraph [ref=f30e669]: 五大真实学习环境
+                - generic [ref=f30e670]:
+                  - generic [ref=f30e671]:
+                    - strong [ref=f30e672]: 人工智能
+                    - generic [ref=f30e673]: AI · Machine Learning · Computer Vision · Generative AI
+                  - generic [ref=f30e674]:
+                    - strong [ref=f30e675]: 数字创新
+                    - generic [ref=f30e676]: 数据 · 数字技术 · 智能系统 · 数字化转型
+                  - generic [ref=f30e677]:
+                    - strong [ref=f30e678]: 真实产业
+                    - generic [ref=f30e679]: 智能制造 · AI应用 · 机器人 · 智慧城市
+                  - generic [ref=f30e680]:
+                    - strong [ref=f30e681]: 创新与创业
+                    - generic [ref=f30e682]: Design Thinking · 原型设计 · 问题解决 · Future Business
+                  - generic [ref=f30e683]:
+                    - strong [ref=f30e684]: 教育与社会
+                    - generic [ref=f30e685]: 新加坡学校 · 学生交流 · 社区 · Responsible AI
+            - generic [ref=f30e686]:
+              - generic [ref=f30e687]:
+                - paragraph [ref=f30e688]: 6天5夜探索之旅
+                - heading "在新加坡展开一周学习旅程" [level=3] [ref=f30e689]
+              - generic [ref=f30e690]:
+                - generic [ref=f30e691]:
+                  - generic [ref=f30e692]: DAY 1
+                  - strong [ref=f30e693]: 认识智慧新加坡
+                  - paragraph [ref=f30e694]: 抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay · 智慧城市观察
+                - generic [ref=f30e695]:
+                  - generic [ref=f30e696]: DAY 2
+                  - strong [ref=f30e697]: 认识人工智能
+                  - paragraph [ref=f30e698]: AI Discovery Workshop · Machine Learning · Computer Vision · AI应用与案例
+                - generic [ref=f30e699]:
+                  - generic [ref=f30e700]: DAY 3
+                  - strong [ref=f30e701]: AI如何进入真实世界？
+                  - paragraph [ref=f30e702]: AI / Digital Technology Applied Learning · Hyundai Motor Group Innovation Center Singapore（HMGICS）· 智能工厂 · 智能农场 · 机器人与未来移动
+                - generic [ref=f30e703]:
+                  - generic [ref=f30e704]: DAY 4
+                  - strong [ref=f30e705]: 与AI一起创造
+                  - paragraph [ref=f30e706]: 新加坡中学学生交流 · Generative AI Creative Workshop · Prompting · AI创意 · Responsible AI · 团队创新项目
+                - generic [ref=f30e707]:
+                  - generic [ref=f30e708]: DAY 5
+                  - strong [ref=f30e709]: 探索智慧生活
+                  - paragraph [ref=f30e710]: HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 智慧社区 · 本地学生互动 · Digital / Smart Community Treasure Hunt · Show & Tell
+                - generic [ref=f30e711]:
+                  - generic [ref=f30e712]: DAY 6
+                  - strong [ref=f30e713]: 欢乐与探索
+                  - paragraph [ref=f30e714]: Universal Studios Singapore · 团队活动 · 新加坡告别
+            - generic [ref=f30e715]: 不只是学习AI，而是学习如何用AI创造未来
+  - contentinfo [ref=f30e716]:
+    - generic [ref=f30e717]:
+      - generic [ref=f30e718]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f30e719]
+        - generic [ref=f30e720]:
+          - generic [ref=f30e721]: APIMTC
+          - paragraph [ref=f30e722]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f30e723]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f30e724]:
+        - heading "探索" [level=4] [ref=f30e725]
+        - link "教育流动" [ref=f30e726] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f30e727] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f30e728] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f30e729]:
+        - heading "联系" [level=4] [ref=f30e730]
+        - link "国际合作" [ref=f30e731] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f30e732] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f30e733]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f30e734]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

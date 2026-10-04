@@ -18,8 +18,9 @@
               isEn ? "SINGAPORE FUTURE DISCOVERY SERIES" : "新加坡未来探索系列"
             }}
           </p>
-          <h1>
-            Singapore<br /><span>Discovery Series</span>
+          <h1 :class="{ 'hero-title--zh': !isEn }">
+            <template v-if="isEn">Singapore<br /><span>Discovery Series</span></template>
+            <template v-else>新加坡<br /><span>未来探索系列</span></template>
           </h1>
           <p class="hero-sub">
             {{
@@ -1304,7 +1305,7 @@ themes.forEach((theme, index) => {
   color: #d6ff45;
 }
 .hero-sub {
-  font-size: 20px;
+  font-size: clamp(14px, 1.6vw, 20px);
   margin: 0 0 8px;
 }
 .hero-en {
@@ -1361,7 +1362,7 @@ themes.forEach((theme, index) => {
 }
 .overview h2 {
   font:
-    400 clamp(32px, 5vw, 68px)/1.05 "Space Mono",
+    400 clamp(24px, 2.4vw, 29px)/1.05 "Space Mono",
     monospace;
   letter-spacing: -0.06em;
   margin: 0;
@@ -1538,7 +1539,7 @@ themes.forEach((theme, index) => {
   display: flex;
   align-items: center;
   gap: 14px;
-  font: 700 clamp(26px, 3vw, 36px)/1.35 "DM Sans", Arial, sans-serif;
+  font: 700 clamp(15px, 1.8vw, 22px)/1.35 "DM Sans", Arial, sans-serif;
   margin: 0 0 14px;
 }
 .theme-lead .theme-icon {
@@ -1592,7 +1593,7 @@ themes.forEach((theme, index) => {
 }
 .es-heading strong {
   color: #fff;
-  font-size: clamp(26px, 3vw, 36px);
+  font-size: clamp(20px, 2.6vw, 32px);
   font-weight: 700;
 }
 .es-detail {
@@ -1807,6 +1808,14 @@ themes.forEach((theme, index) => {
 .hero-copy h1 span,
 .eyebrow {
   color: #d5ff5b;
+}
+/* 中文主标题：等宽字体不承载汉字，改用无衬线并放宽字距与行高，避免汉字相贴 */
+.hero-copy h1.hero-title--zh {
+  font-family: "DM Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial,
+    sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.14;
 }
 .hero-sub {
   font-weight: 700;
@@ -2154,11 +2163,12 @@ themes.forEach((theme, index) => {
   margin: 0;
 }
 .theme-overview-heading h3 {
-  font: 700 32px/1.1 "Space Mono";
+  font: 700 clamp(20px, 2.4vw, 29px)/1.1 "Space Mono";
   margin: 0;
   color: #155d57;
 }
 .theme-overview-heading p {
+  max-width: 300px;
   margin: 0;
   color: #54716d;
 }
@@ -2193,6 +2203,10 @@ themes.forEach((theme, index) => {
 }
 .theme-table th:nth-child(3) {
   width: 22%;
+}
+/* 学习领域为短语标题，保持单行（表格自动布局会为该列腾出空间） */
+.theme-table td:nth-child(3) strong {
+  white-space: nowrap;
 }
 .theme-table tbody tr:nth-child(even) {
   background: #f1f8f5;
@@ -2327,4 +2341,39 @@ themes.forEach((theme, index) => {
 .junior-course-link span { font-size: 19px; line-height: .7; }
 .junior-course-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
 .junior-course-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
+
+/* 桌面端：所有板块大标题（h1/h2/h3）与“一句话”短句保持单行不折行 */
+@media (min-width: 701px) {
+  /* “真实新加坡”标题改为整行显示，避免在窄列内溢出 */
+  .real-singapore > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .hero-copy h1,
+  .eyebrow,
+  .hero-index,
+  .hero-meta,
+  .hero-en,
+  .junior-course-link,
+  .section-label,
+  .overview h2,
+  .theme-overview-heading h3,
+  .real-singapore h3,
+  .theme-kicker,
+  .theme-tagline,
+  .theme-lead strong,
+  .theme-block h3,
+  .es-heading strong,
+  .journey-title,
+  .theme-footer strong,
+  .theme-footer span,
+  .theme-footer small,
+  .overview-close span,
+  .overview-close b,
+  .overview-close small,
+  .overview-close strong,
+  .four-es b,
+  .real-list b {
+    white-space: nowrap;
+  }
+}
 </style>

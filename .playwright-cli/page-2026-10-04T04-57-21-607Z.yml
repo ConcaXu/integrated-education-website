@@ -1,0 +1,149 @@
+- generic [ref=f22e3]:
+  - banner [ref=f22e4]:
+    - generic [ref=f22e5]:
+      - link [ref=f22e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f22e7]
+      - navigation [ref=f22e8]:
+        - link "首页" [ref=f22e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f22e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f22e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f22e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f22e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f22e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f22e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f22e16] [cursor=pointer]
+  - main [ref=f22e17]:
+    - generic [ref=f22e18]:
+      - generic [ref=f22e20]:
+        - paragraph [ref=f22e21]: 中国门户
+        - heading "成都 · 连接中国" [level=1] [ref=f22e22]
+        - paragraph [ref=f22e23]: 成都，是 APIMTC 连接中国的重要门户。
+        - paragraph [ref=f22e24]: 通过位于成都的 API EduVoyage 亚太国际智航，我们连接中国的教育、技能、产业、文化与国际合作资源。
+      - main [ref=f22e25]:
+        - generic [ref=f22e27]:
+          - generic [ref=f22e28]:
+            - heading "API EDUVOYAGE" [level=2] [ref=f22e29]
+            - generic [ref=f22e30]:
+              - paragraph [ref=f22e31]: 亚太国际智航
+              - paragraph [ref=f22e32]: 中国 · 成都
+              - paragraph [ref=f22e33]: APIMTC 在中国的教育流动平台
+              - strong [ref=f22e34]: 教育流动 · 技能发展 · 学生交流 · 院校合作 · 国际交流
+          - generic [ref=f22e35]:
+            - img "从新加坡，连接中国" [ref=f22e36]
+            - generic [ref=f22e37]:
+              - paragraph [ref=f22e38]: 从新加坡，连接中国
+              - heading "从新加坡，连接中国" [level=3] [ref=f22e39]
+              - paragraph [ref=f22e40]: 我们将新加坡的国际视野与中国不断发展的教育及产业资源连接起来。
+          - generic [ref=f22e41]:
+            - generic [ref=f22e42]: 新加坡
+            - generic [ref=f22e43]: →
+            - generic [ref=f22e44]: 成都
+            - generic [ref=f22e45]: →
+            - generic [ref=f22e46]: 中国各地
+            - generic [ref=f22e47]: →
+            - generic [ref=f22e48]: 世界
+        - generic [ref=f22e50]:
+          - generic [ref=f22e51]:
+            - heading "中国 · 不只是目的地" [level=2] [ref=f22e52]
+            - paragraph [ref=f22e53]:
+              - strong [ref=f22e54]: 每一座城市，都是一间课堂。
+              - text: 我们将中国不同城市转化为具有主题和学习价值的教育目的地。
+          - generic [ref=f22e55]:
+            - article [ref=f22e56]:
+              - img "上海" [ref=f22e57]
+              - generic [ref=f22e58]:
+                - heading "上海" [level=3] [ref=f22e59]
+                - paragraph [ref=f22e60]: AI · 金融 · 创新
+            - article [ref=f22e61]:
+              - img "深圳" [ref=f22e62]
+              - generic [ref=f22e63]:
+                - heading "深圳" [level=3] [ref=f22e64]
+                - paragraph [ref=f22e65]: 科技 · 机器人 · 创新
+            - article [ref=f22e66]:
+              - img "杭州" [ref=f22e67]
+              - generic [ref=f22e68]:
+                - heading "杭州" [level=3] [ref=f22e69]
+                - paragraph [ref=f22e70]: 数字经济 · 创业
+            - article [ref=f22e71]:
+              - img "苏州" [ref=f22e72]
+              - generic [ref=f22e73]:
+                - heading "苏州" [level=3] [ref=f22e74]
+                - paragraph [ref=f22e75]: 智慧城市 · 中新合作
+            - article [ref=f22e76]:
+              - img "北京" [ref=f22e77]
+              - generic [ref=f22e78]:
+                - heading "北京" [level=3] [ref=f22e79]
+                - paragraph [ref=f22e80]: 领导力 · 文化 · 历史
+            - article [ref=f22e81]:
+              - img "西安" [ref=f22e82]
+              - generic [ref=f22e83]:
+                - heading "西安" [level=3] [ref=f22e84]
+                - paragraph [ref=f22e85]: STEM · 丝绸之路 · 文化遗产
+            - article [ref=f22e86]:
+              - img "成都" [ref=f22e87]
+              - generic [ref=f22e88]:
+                - heading "成都" [level=3] [ref=f22e89]
+                - paragraph [ref=f22e90]: 可持续发展 · 四川文化 · 熊猫保护
+            - article [ref=f22e91]:
+              - img "广州" [ref=f22e92]
+              - generic [ref=f22e93]:
+                - heading "广州" [level=3] [ref=f22e94]
+                - paragraph [ref=f22e95]: 国际贸易 · 大湾区
+        - generic [ref=f22e97]:
+          - generic [ref=f22e98]:
+            - heading "CHINA BEYOND THE CLASSROOM" [level=2] [ref=f22e99]
+            - paragraph [ref=f22e100]: 走进真实的中国
+          - generic [ref=f22e101]:
+            - img "探索中国项目" [ref=f22e102]
+            - generic [ref=f22e103]:
+              - paragraph [ref=f22e104]: 走进真实的中国
+              - heading "探索中国项目" [level=3] [ref=f22e105]
+              - paragraph [ref=f22e106]: 面向新加坡学校及学生，打造融合学习、科技、产业、文化与交流的沉浸式中国教育项目。
+              - link "探索中国项目 +" [ref=f22e107] [cursor=pointer]:
+                - /url: /contact
+                - text: 探索中国项目
+                - generic [ref=f22e108]: +
+        - generic [ref=f22e111]:
+          - heading "中国与世界" [level=2] [ref=f22e112]
+          - generic [ref=f22e113]:
+            - paragraph [ref=f22e114]: API EduVoyage 连接中国与全球教育伙伴，共同推动：
+            - strong [ref=f22e115]: 学生流动 · 技能发展 · 院校交流 · 专业学习 · 国际合作
+            - separator [ref=f22e116]
+            - generic [ref=f22e117]:
+              - strong [ref=f22e118]: 新加坡是我们的家。
+              - strong [ref=f22e119]: 成都是我们的中国门户。
+              - strong [ref=f22e120]: 世界是我们的合作网络。
+            - link "与我们合作" [ref=f22e121] [cursor=pointer]:
+              - /url: /contact
+  - contentinfo [ref=f22e122]:
+    - generic [ref=f22e123]:
+      - generic [ref=f22e124]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f22e125]
+        - generic [ref=f22e126]:
+          - generic [ref=f22e127]: APIMTC
+          - paragraph [ref=f22e128]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f22e129]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f22e130]:
+        - heading "探索" [level=4] [ref=f22e131]
+        - link "教育流动" [ref=f22e132] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f22e133] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f22e134] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f22e135]:
+        - heading "联系" [level=4] [ref=f22e136]
+        - link "国际合作" [ref=f22e137] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f22e138] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f22e139]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f22e140]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

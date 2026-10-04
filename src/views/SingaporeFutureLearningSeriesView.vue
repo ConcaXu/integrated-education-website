@@ -99,17 +99,65 @@
             <thead>
               <tr>
                 <th scope="col"><span class="sfls-visually-hidden">Item</span></th>
-                <th scope="col">🌟 {{ isEn ? "PRIMARY" : "小学" }}</th>
-                <th scope="col">🚀 {{ isEn ? "SECONDARY" : "中学" }}</th>
-                <th scope="col">💡 {{ isEn ? "HIGH SCHOOL / JC" : "高中 / JC" }}</th>
+                <th scope="col">
+                  <router-link
+                    class="sfls-th-link"
+                    :to="programmeLinks.primary"
+                    :aria-label="isEn ? 'View Primary programme details' : '查看小学课程详情'"
+                    >🌟 {{ isEn ? "PRIMARY" : "小学" }}</router-link
+                  >
+                </th>
+                <th scope="col">
+                  <router-link
+                    class="sfls-th-link"
+                    :to="programmeLinks.secondary"
+                    :aria-label="isEn ? 'View Junior High programme details' : '查看初中课程详情'"
+                    >🚀 {{ isEn ? "SECONDARY" : "中学" }}</router-link
+                  >
+                </th>
+                <th scope="col">
+                  <router-link
+                    class="sfls-th-link"
+                    :to="programmeLinks.high"
+                    :aria-label="isEn ? 'View Senior High programme details' : '查看高中课程详情'"
+                    >💡 {{ isEn ? "HIGH SCHOOL / JC" : "高中 / 初级学院" }}</router-link
+                  >
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="row in programmesTable" :key="row.labelEn">
                 <th scope="row">{{ isEn ? row.labelEn : row.labelZh }}</th>
-                <td :data-label="isEn ? 'Primary' : '小学'"><strong>{{ isEn ? row.primaryEn : row.primaryZh }}</strong></td>
-                <td :data-label="isEn ? 'Secondary' : '中学'"><strong>{{ isEn ? row.secondaryEn : row.secondaryZh }}</strong></td>
-                <td :data-label="isEn ? 'High School / JC' : '高中 / JC'"><strong>{{ isEn ? row.highEn : row.highZh }}</strong></td>
+                <td :data-label="isEn ? 'Primary' : '小学'" class="sfls-cell--link">
+                  <router-link
+                    class="sfls-cell-link"
+                    :to="programmeLinks.primary"
+                    :aria-label="isEn ? 'View Primary programme details' : '查看小学课程详情'"
+                  >
+                    <strong>{{ isEn ? row.primaryEn : row.primaryZh }}</strong>
+                    <span class="sfls-cell-link__arrow" aria-hidden="true">→</span>
+                  </router-link>
+                </td>
+                <td :data-label="isEn ? 'Secondary' : '中学'" class="sfls-cell--link">
+                  <router-link
+                    class="sfls-cell-link"
+                    :to="programmeLinks.secondary"
+                    :aria-label="isEn ? 'View Junior High programme details' : '查看初中课程详情'"
+                  >
+                    <strong>{{ isEn ? row.secondaryEn : row.secondaryZh }}</strong>
+                    <span class="sfls-cell-link__arrow" aria-hidden="true">→</span>
+                  </router-link>
+                </td>
+                <td :data-label="isEn ? 'High School / JC' : '高中 / 初级学院'" class="sfls-cell--link">
+                  <router-link
+                    class="sfls-cell-link"
+                    :to="programmeLinks.high"
+                    :aria-label="isEn ? 'View Senior High programme details' : '查看高中课程详情'"
+                  >
+                    <strong>{{ isEn ? row.highEn : row.highZh }}</strong>
+                    <span class="sfls-cell-link__arrow" aria-hidden="true">→</span>
+                  </router-link>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -286,7 +334,7 @@ const programmesTable = [
     primaryEn: "Singapore Future Explorers",
     primaryZh: "新加坡未来探索",
     secondaryEn: "Singapore Future Explorers",
-    secondaryZh: "新加坡未来探索",
+    secondaryZh: "新加坡未来探索者",
     highEn: "Singapore Future Leaders",
     highZh: "新加坡未来领袖",
   },
@@ -408,7 +456,7 @@ const ageGroups = [
   {
     key: "high",
     kickerEn: "💡 HIGH SCHOOL / JC · AGES 16–18",
-    kickerZh: "💡 高中 / JC · 16–18岁",
+    kickerZh: "💡 高中 / 初级学院 · 16–18岁",
     titleEn: "SINGAPORE FUTURE LEADERS",
     titleZh: "新加坡未来领袖",
     taglineEn: "Connect Knowledge · Create Possibilities",
@@ -424,6 +472,13 @@ const ageGroups = [
     linkZh: "高中课程",
   },
 ];
+
+// 三大项目表格中，每个年龄层栏目都指向对应的详情页（复用 ageGroups 的 link，避免路由写两遍）
+const programmeLinks = {
+  primary: ageGroups.find((group) => group.key === "primary")?.link ?? "/",
+  secondary: ageGroups.find((group) => group.key === "secondary")?.link ?? "/",
+  high: ageGroups.find((group) => group.key === "high")?.link ?? "/",
+};
 
 const realSingapore = [
   {
@@ -483,7 +538,7 @@ const learningJourney = [
   },
   {
     stageEn: "HIGH SCHOOL / JC",
-    stageZh: "高中 / JC",
+    stageZh: "高中 / 初级学院",
     verbEn: "CREATE",
     verbZh: "创造 CREATE",
     pathEn: "Research → Innovation → Future Pathways",
@@ -557,10 +612,12 @@ const learningJourney = [
   margin: 0 0 34px;
 }
 .sfls-h2 {
-  font-size: clamp(26px, 3.4vw, 42px);
+  font-size: clamp(14px, 3.4vw, 42px); /* 最长 EN 22.3em，全宽 1007px 内可容纳 */
+  white-space: nowrap;
 }
 .sfls-display {
-  font-size: clamp(27px, 3.6vw, 46px);
+  font-size: clamp(15px, 1.5vw, 22px); /* EN 41 字符 ≈ 24em，按加宽后的左列适配 */
+  white-space: nowrap;
 }
 
 /* ---------- Hero ---------- */
@@ -592,14 +649,16 @@ const learningJourney = [
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.1em;
+  white-space: nowrap;
   color: var(--sfls-lime);
   margin: 0 0 20px;
 }
 .sfls-hero h1 {
-  font-size: clamp(38px, 5.6vw, 78px);
+  font-size: clamp(27px, 2.9vw, 42px);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.045em;
+  white-space: nowrap;
   margin: 0 0 24px;
   color: #ffffff;
 }
@@ -607,15 +666,17 @@ const learningJourney = [
   color: var(--sfls-lime);
 }
 .sfls-hero__sub {
-  font-size: clamp(17px, 2vw, 22px);
+  font-size: clamp(13px, 1.05vw, 15px); /* EN 约 30.7em，按左列 ~490px 适配 */
   font-weight: 700;
+  white-space: nowrap;
   color: #eafaf4;
   margin: 0 0 12px;
 }
 .sfls-hero__tagline {
   font-family: var(--sfls-mono);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: clamp(12px, 0.95vw + 3px, 13px); /* EN mono 约 37em，紧贴列宽 */
+  letter-spacing: 0.02em;
+  white-space: nowrap;
   color: #b9dcd2;
   margin: 0 0 34px;
 }
@@ -674,7 +735,7 @@ const learningJourney = [
 }
 .sfls-intro__grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.5fr 1fr; /* 左列加宽，保证 EDUCATE·EXPERIENCE·EXPLORE·EXCHANGE 一行 */
   gap: clamp(32px, 5vw, 72px);
   align-items: start;
 }
@@ -685,6 +746,7 @@ const learningJourney = [
 .sfls-intro__alt {
   font-size: 18px;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--sfls-ink-soft);
   margin: 16px 0 0;
 }
@@ -786,6 +848,75 @@ const learningJourney = [
   background: #f4faf7;
 }
 
+/* ---------- 三大项目表格：年龄层栏目整格可点击，跳转对应详情页 ---------- */
+.sfls-table--programmes thead th .sfls-th-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  outline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.sfls-table--programmes thead th .sfls-th-link:hover,
+.sfls-table--programmes thead th .sfls-th-link:focus-visible {
+  color: var(--sfls-lime);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 单元格内边距交给链接，使整个格子成为可点击区域 */
+.sfls-table--programmes tbody td.sfls-cell--link {
+  padding: 0;
+}
+.sfls-cell-link {
+  display: block;
+  height: 100%;
+  padding: 15px 18px;
+  color: inherit;
+  text-decoration: none;
+  outline-offset: -3px;
+  transition: background 0.2s ease;
+}
+.sfls-cell-link strong {
+  transition: color 0.2s ease;
+}
+.sfls-cell-link__arrow {
+  display: inline-block;
+  margin-left: 7px;
+  color: #0b6e5f;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.sfls-cell-link:hover strong,
+.sfls-cell-link:focus-visible strong {
+  color: #0e3c34;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sfls-cell-link:hover .sfls-cell-link__arrow,
+.sfls-cell-link:focus-visible .sfls-cell-link__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* :has() 让悬停底色铺满整格，而不只是文字那一小块 */
+.sfls-table--programmes tbody td.sfls-cell--link:has(.sfls-cell-link:hover),
+.sfls-table--programmes tbody td.sfls-cell--link:has(.sfls-cell-link:focus-visible) {
+  background: #e6f5ee;
+}
+/* 触屏设备无 hover，箭头常显以示可点 */
+@media (hover: none) {
+  .sfls-cell-link__arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ---------- Programmes overview ---------- */
 .sfls-programmes {
   padding: clamp(80px, 9vw, 108px) 0;
@@ -824,20 +955,23 @@ const learningJourney = [
   font-family: var(--sfls-mono);
   font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
   color: var(--sfls-lime);
   margin: 0 0 16px;
 }
 .sfls-group__header h2 {
-  font-size: clamp(30px, 4.6vw, 58px);
+  font-size: clamp(18px, 2.4vw, 34px); /* 最长 EN "SINGAPORE FUTURE EXPLORERS" ≈ 16.1em，左列 ~551px */
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
+  white-space: nowrap;
   color: #ffffff;
   margin: 0 0 16px;
 }
 .sfls-group__tagline {
-  font-size: clamp(16px, 1.9vw, 20px);
+  font-size: clamp(15px, 1.5vw, 18px); /* 最长 EN 约 23.9em，按左列宽度适配 */
   font-weight: 600;
+  white-space: nowrap;
   color: #d7ece5;
   margin: 0 0 26px;
 }
@@ -873,20 +1007,23 @@ const learningJourney = [
   font-family: var(--sfls-mono);
   font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
   color: var(--sfls-lime);
   margin: 0 0 16px;
 }
 .sfls-group__header h2 {
-  font-size: clamp(30px, 4.6vw, 58px);
+  font-size: clamp(18px, 2.4vw, 34px); /* 最长 EN "SINGAPORE FUTURE EXPLORERS" ≈ 16.1em，左列 ~551px */
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
+  white-space: nowrap;
   color: #ffffff;
   margin: 0 0 16px;
 }
 .sfls-group__tagline {
-  font-size: clamp(16px, 1.9vw, 20px);
+  font-size: clamp(15px, 1.5vw, 18px); /* 最长 EN 约 23.9em，按左列宽度适配 */
   font-weight: 600;
+  white-space: nowrap;
   color: #d7ece5;
   margin: 0 0 26px;
 }
@@ -975,17 +1112,18 @@ const learningJourney = [
 }
 .sfls-real__head {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(24px, 4vw, 56px);
-  align-items: end;
+  grid-template-columns: 1fr; /* 标题与 lead 各占整行，保证各自一行显示 */
+  gap: 14px;
+  align-items: start;
   margin-bottom: 40px;
 }
 .sfls-real__head .sfls-h2 {
   margin-bottom: 0;
 }
 .sfls-real__lead {
-  font-size: 17px;
+  font-size: clamp(13px, 2.5vw, 17px); /* EN 约 35.4em（>30em），随视口缩放 */
   line-height: 1.7;
+  white-space: nowrap;
   color: var(--sfls-ink-soft);
   margin: 0;
 }
@@ -1131,10 +1269,11 @@ const learningJourney = [
   gap: 22px;
 }
 .sfls-close__inner h2 {
-  font-size: clamp(28px, 4vw, 50px);
+  font-size: clamp(13px, 2.4vw, 34px); /* EN 41 字符 ≈ 24em（含字距），max-width 880px 内一行 */
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.1;
+  white-space: nowrap;
   color: #ffffff;
   margin: 0;
 }
@@ -1163,6 +1302,7 @@ const learningJourney = [
   font-size: clamp(22px, 3vw, 34px);
   font-weight: 800;
   letter-spacing: -0.02em;
+  white-space: nowrap;
   color: var(--sfls-lime);
   margin: 10px 0 0;
 }
@@ -1227,6 +1367,18 @@ const learningJourney = [
     border-bottom: 0;
     background: transparent;
   }
+  /* 移动端卡片式布局下，内边距同样交给链接，并保证 44px 触控高度 */
+  .sfls-table--programmes tbody td.sfls-cell--link {
+    padding: 0;
+  }
+  .sfls-cell-link {
+    padding: 11px 16px;
+  }
+  /* 窄屏多为触屏，箭头常显以示可点 */
+  .sfls-cell-link__arrow {
+    opacity: 1;
+    transform: none;
+  }
   .sfls-table--programmes tbody th[scope="row"] {
     padding-bottom: 2px;
   }
@@ -1250,6 +1402,21 @@ const learningJourney = [
   }
   .sfls-table--themes .sfls-theme-no + td {
     padding-top: 4px;
+  }
+}
+
+/* ---------- Tiny screens: 超长英文短句（>30em）在 360px 下即使 12px 也放不下，允许换行 ---------- */
+@media (max-width: 480px) {
+  .sfls-hero__sub,
+  .sfls-hero__tagline,
+  .sfls-real__lead {
+    white-space: normal;
+  }
+  .sfls-display {
+    font-size: 13px;
+  }
+  .sfls-group__tagline {
+    font-size: 13px;
   }
 }
 

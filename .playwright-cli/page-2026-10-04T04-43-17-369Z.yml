@@ -1,0 +1,155 @@
+- generic [ref=f1e3]:
+  - banner [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - link [ref=f1e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f1e7]
+      - navigation [ref=f1e8]:
+        - link "首页" [ref=f1e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f1e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f1e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f1e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f1e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f1e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f1e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f1e16] [cursor=pointer]
+  - main [ref=f1e17]:
+    - generic [ref=f1e18]:
+      - generic [ref=f1e20]:
+        - paragraph [ref=f1e21]: APIMTC
+        - heading "立足新加坡 · 连接全球" [level=1] [ref=f1e22]
+        - paragraph [ref=f1e23]: 教育 · 技能 · 流动 · 交流 · 商务
+        - paragraph [ref=f1e24]: 连接人才、教育与全球发展机遇。
+        - generic [ref=f1e25]:
+          - link "探索项目" [ref=f1e26] [cursor=pointer]:
+            - /url: /contact
+          - link "与我们合作" [ref=f1e27] [cursor=pointer]:
+            - /url: /contact
+      - main [ref=f1e28]:
+        - generic [ref=f1e30]:
+          - generic [ref=f1e31]:
+            - heading "超越国界 · 超越课堂" [level=2] [ref=f1e32]
+            - paragraph [ref=f1e33]: 连接人才 · 教育 · 产业 · 商务的国际项目平台。
+          - generic [ref=f1e34]:
+            - img "从新加坡出发，连接真实世界" [ref=f1e35]
+            - generic [ref=f1e36]:
+              - paragraph [ref=f1e37]: 国际项目平台
+              - heading "从新加坡出发，连接真实世界" [level=3] [ref=f1e38]
+              - paragraph [ref=f1e39]: 我们把学习、交流与产业体验带到课堂之外，连接中国、亚洲与全球机会。
+        - generic [ref=f1e41]:
+          - heading "我们的业务" [level=2] [ref=f1e43]
+          - generic [ref=f1e44]:
+            - article [ref=f1e45]:
+              - text: ›
+              - img "国际教育流动" [ref=f1e46]
+              - generic [ref=f1e47]:
+                - generic [aria-hidden] [ref=f1e48]: 
+                - heading "国际教育流动" [level=3] [ref=f1e49]
+                - paragraph [ref=f1e50]: 走出课堂，探索真实世界。
+            - article [ref=f1e51]:
+              - text: ›
+              - img "MICE 与商务" [ref=f1e52]
+              - generic [ref=f1e53]:
+                - generic [aria-hidden] [ref=f1e54]: 
+                - heading "MICE 与商务" [level=3] [ref=f1e55]
+                - paragraph [ref=f1e56]: 连接产业、人才与商业机会。
+            - article [ref=f1e57]:
+              - text: ›
+              - img "国际合作" [ref=f1e58]
+              - generic [ref=f1e59]:
+                - generic [aria-hidden] [ref=f1e60]: 
+                - heading "国际合作" [level=3] [ref=f1e61]
+                - paragraph [ref=f1e62]: 与全球伙伴建立有意义的连接。
+        - generic [ref=f1e64]:
+          - heading "双向国际流动" [level=2] [ref=f1e66]
+          - generic [ref=f1e67]:
+            - article [ref=f1e68]:
+              - img "新加坡 → 中国" [ref=f1e69]
+              - generic [ref=f1e70]:
+                - generic [aria-hidden] [ref=f1e71]: 
+                - heading "新加坡 → 中国" [level=3] [ref=f1e72]
+                - paragraph [ref=f1e73]: 中国课堂之外 学习 · 体验 · 探索中国
+            - article [ref=f1e74]:
+              - img "中国及全球 → 新加坡" [ref=f1e75]
+              - generic [ref=f1e76]:
+                - generic [aria-hidden] [ref=f1e77]: 
+                - heading "中国及全球 → 新加坡" [level=3] [ref=f1e78]
+                - paragraph [ref=f1e79]: 新加坡未来探索者 学习 · 体验 · 探索新加坡
+        - generic [ref=f1e81]:
+          - generic [ref=f1e82]:
+            - heading "APIMTC 4E 模型" [level=2] [ref=f1e83]
+            - paragraph [ref=f1e84]: Our 4E model
+            - paragraph [ref=f1e85]:
+              - text: 学习 · 体验 · 探索 · 交流
+              - generic [ref=f1e86]: Educate · Experience · Explore · Exchange
+          - heading "不只是参观。更要真正连接。 Don't just visit. Connect." [level=3] [ref=f1e89]:
+            - text: 不只是参观。更要真正连接。
+            - generic [ref=f1e90]: Don't just visit. Connect.
+        - generic [ref=f1e92]:
+          - heading "我们的国际平台" [level=2] [ref=f1e94]
+          - generic [ref=f1e95]:
+            - article [ref=f1e96]:
+              - img "新加坡" [ref=f1e97]
+              - generic [ref=f1e98]:
+                - generic [aria-hidden] [ref=f1e99]: 
+                - heading "新加坡" [level=3] [ref=f1e100]
+                - paragraph [ref=f1e101]: 我们的总部
+            - article [ref=f1e102]:
+              - img "成都" [ref=f1e103]
+              - generic [ref=f1e104]:
+                - generic [aria-hidden] [ref=f1e105]: 
+                - heading "成都" [level=3] [ref=f1e106]
+                - paragraph [ref=f1e107]: 我们的中国门户
+            - article [ref=f1e108]:
+              - img "世界" [ref=f1e109]
+              - generic [ref=f1e110]:
+                - generic [aria-hidden] [ref=f1e111]: 
+                - heading "世界" [level=3] [ref=f1e112]
+                - paragraph [ref=f1e113]: 我们的全球网络
+        - generic [ref=f1e116]:
+          - generic [ref=f1e117]:
+            - paragraph [ref=f1e118]: WHY APIMTC
+            - heading "为什么选择 APIMTC？" [level=2] [ref=f1e119]
+            - paragraph [ref=f1e120]: 立足新加坡 · 连接中国 · 面向全球 教育 + 产业 · 一站式项目执行
+            - generic "APIMTC platform strengths" [ref=f1e121]:
+              - generic [ref=f1e122]: 新加坡总部
+              - generic [ref=f1e123]: 中国门户
+              - generic [ref=f1e124]: 全球网络
+            - link "与我们合作" [ref=f1e125] [cursor=pointer]:
+              - /url: /contact
+              - text: 与我们合作
+              - generic [aria-hidden] [ref=f1e126]: →
+          - generic [ref=f1e127]:
+            - img "APIMTC 国际连接场景" [ref=f1e128]
+            - paragraph [ref=f1e129]: Singapore · Chengdu · World
+  - contentinfo [ref=f1e130]:
+    - generic [ref=f1e131]:
+      - generic [ref=f1e132]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f1e133]
+        - generic [ref=f1e134]:
+          - generic [ref=f1e135]: APIMTC
+          - paragraph [ref=f1e136]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f1e137]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f1e138]:
+        - heading "探索" [level=4] [ref=f1e139]
+        - link "教育流动" [ref=f1e140] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f1e141] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f1e142] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f1e143]:
+        - heading "联系" [level=4] [ref=f1e144]
+        - link "国际合作" [ref=f1e145] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f1e146] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f1e147]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f1e148]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

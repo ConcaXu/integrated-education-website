@@ -1,6 +1,6 @@
 <!-- 新加坡未来领袖系列高中课程宣传册 -->
 <template>
-  <main class="senior-page">
+  <main class="senior-page" :class="{ 'senior-page--en': isEn }">
     <section class="senior-hero">
       <img class="senior-hero__image" :src="heroImage" alt="" />
       <div class="senior-hero__veil" aria-hidden="true"></div>
@@ -214,7 +214,7 @@
     </section>
 
     <section class="senior-proof senior-shell">
-      <div class="senior-proof__lead">
+      <header class="senior-proof__heading">
         <p class="senior-index">
           04 / {{ tx("REAL-WORLD LEARNING", "真实世界学习") }}
         </p>
@@ -226,6 +226,8 @@
             )
           }}
         </h2>
+      </header>
+      <div class="senior-proof__lead">
         <p>
           {{
             tx(
@@ -296,11 +298,6 @@
               <p class="senior-programme__series">
                 {{ tx("SINGAPORE FUTURE LEADERS", "新加坡未来领袖系列") }}
               </p>
-              <h2>{{
-                  tx(titleParts(programme.en.title)[0], titleParts(programme.zh.title)[0])
-                }}<span :class="{ 'senior-programme__name--nowrap': !isEn }">{{
-                  tx(titleParts(programme.en.title)[1], titleParts(programme.zh.title)[1])
-                }}</span></h2>
               <p class="senior-programme__strap">
                 {{ tx(programme.en.strap, programme.zh.strap) }}
               </p>
@@ -317,6 +314,11 @@
               tx("6 DAYS / 5 NIGHTS", "6天5夜")
             }}</span>
           </header>
+          <h2>{{
+              tx(titleParts(programme.en.title)[0], titleParts(programme.zh.title)[0])
+            }}<span :class="{ 'senior-programme__name--nowrap': !isEn }">{{
+              tx(titleParts(programme.en.title)[1], titleParts(programme.zh.title)[1])
+            }}</span></h2>
           <p class="senior-programme__lead">
             {{ tx(programme.en.lead, programme.zh.lead) }}
           </p>
@@ -1574,18 +1576,20 @@ const proofPoints = [
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
+  white-space: nowrap;
 }
 .senior-hero__meta {
   position: absolute;
   top: 136px;
   right: 0;
-  max-width: 400px;
+  max-width: none;
   margin: 0;
   color: #e6f0f4;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-align: right;
+  white-space: nowrap;
 }
 .senior-hero__copy {
   max-width: 730px;
@@ -1626,6 +1630,7 @@ const proofPoints = [
   margin-top: 17px;
   color: #d7e6f1;
   font-size: 14px;
+  white-space: nowrap;
 }
 .senior-hero__jump {
   position: absolute;
@@ -1666,6 +1671,7 @@ const proofPoints = [
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 .senior-intro__copy {
   padding-top: 38px;
@@ -1703,6 +1709,7 @@ const proofPoints = [
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 .senior-themes {
   padding: 96px 0 110px;
@@ -1729,7 +1736,8 @@ const proofPoints = [
 }
 .senior-theme-card {
   display: grid;
-  grid-template-columns: 42% 1fr;
+  /* 加宽文字列，保证中英文主题标题都能单行显示 */
+  grid-template-columns: 36% 1fr;
   overflow: hidden;
   background: #fff;
   border: 1px solid #e7e1da;
@@ -1778,19 +1786,25 @@ const proofPoints = [
 }
 .senior-theme-card__body p {
   margin: 0;
-  max-width: 76%;
+  max-width: none;
   color: var(--orange);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1.45;
+  white-space: nowrap;
 }
 .senior-theme-card h3 {
-  max-width: 86%;
+  max-width: none;
   margin: 12px 0 13px;
   color: var(--navy);
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.28;
+  white-space: nowrap;
+}
+/* 英文标题更长，按最长标题（Biomedical Innovation & Future Healthcare ≈23em）缩小字号保持单行 */
+.senior-page--en .senior-theme-card h3 {
+  font-size: 13.5px;
 }
 .senior-theme-card__line {
   display: block;
@@ -1914,6 +1928,30 @@ const proofPoints = [
     padding-top: 72px;
     padding-bottom: 35px;
   }
+  .senior-hero h1,
+  .senior-hero__copy > p,
+  .senior-hero__copy small,
+  .senior-hero__meta,
+  .senior-intro h2,
+  .senior-section-heading h2,
+  .senior-reading h2,
+  .senior-proof__heading h2,
+  .senior-pipeline__step p,
+  .senior-pipeline__step h3,
+  .senior-timeline__item h3,
+  .senior-proof__item h3,
+  .senior-programme h2,
+  .senior-programme__strap,
+  .senior-programme__ages,
+  .senior-programme__lead,
+  .senior-programme__footer,
+  .senior-programme__experiences strong,
+  .senior-programme__environments strong,
+  .senior-programme__journey h3,
+  .senior-programme__days strong,
+  .senior-theme-card__body p {
+    white-space: normal;
+  }
 }
 
 /* Editorial refinements for the programme guide. */
@@ -1957,13 +1995,15 @@ const proofPoints = [
   margin-top: 88px;
 }
 .senior-hero h1 {
-  max-width: 760px;
-  font-size: clamp(54px, 7.5vw, 104px);
-  line-height: 0.91;
+  max-width: none;
+  font-size: clamp(30px, 4.6vw, 62px);
+  line-height: 1;
+  white-space: nowrap;
 }
 .senior-hero__copy > p {
-  max-width: 560px;
+  max-width: none;
   line-height: 1.6;
+  white-space: nowrap;
 }
 .senior-hero__jump {
   padding: 10px 0 10px 18px;
@@ -1993,8 +2033,8 @@ const proofPoints = [
   background: var(--orange);
 }
 .senior-intro__heading h2 {
-  max-width: 520px;
-  font-size: clamp(36px, 4.5vw, 60px);
+  max-width: none;
+  font-size: clamp(28px, 3.3vw, 39px);
 }
 .senior-intro__copy {
   padding-top: 45px;
@@ -2025,8 +2065,8 @@ const proofPoints = [
   margin-bottom: 52px;
 }
 .senior-section-heading h2 {
-  max-width: 610px;
-  font-size: clamp(35px, 4.4vw, 56px);
+  max-width: none;
+  font-size: clamp(28px, 3.3vw, 39px);
 }
 .senior-section-heading > p {
   max-width: 390px;
@@ -2082,7 +2122,7 @@ const proofPoints = [
   background: var(--orange);
 }
 .senior-reading h2 {
-  font-size: clamp(35px, 4.4vw, 56px);
+  font-size: clamp(26px, 3vw, 35px);
 }
 .senior-reading > p {
   max-width: 410px;
@@ -2214,13 +2254,15 @@ const proofPoints = [
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .senior-pipeline__step h3 {
-  max-width: 170px;
+  max-width: none;
   margin: 0 0 12px;
   color: var(--navy);
   font-size: 22px;
   line-height: 1.15;
+  white-space: nowrap;
 }
 .senior-pipeline__step span,
 .senior-proof__item p {
@@ -2273,6 +2315,7 @@ const proofPoints = [
   color: #fff;
   font-size: 19px;
   line-height: 1.25;
+  white-space: nowrap;
 }
 .senior-timeline__item span {
   color: #b8cdd6;
@@ -2282,17 +2325,20 @@ const proofPoints = [
 .senior-proof {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
-  gap: 90px;
+  gap: 34px 90px;
   padding-top: 124px;
   padding-bottom: 126px;
 }
-.senior-proof__lead h2 {
-  max-width: 510px;
-  margin: 15px 0 20px;
+.senior-proof__heading {
+  grid-column: 1 / -1;
+}
+.senior-proof__heading h2 {
+  margin: 15px 0 0;
   color: var(--navy);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(35px, 4vw, 54px);
+  font-size: clamp(28px, 3.3vw, 39px);
   line-height: 1.08;
+  white-space: nowrap;
 }
 .senior-proof__lead > p:not(.senior-index) {
   max-width: 430px;
@@ -2379,12 +2425,13 @@ const proofPoints = [
   letter-spacing: 0.14em;
 }
 .senior-programme h2 {
-  max-width: 820px;
-  margin: 0;
+  max-width: none;
+  margin: 26px 0 0;
   color: var(--navy);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(32px, 4vw, 58px);
+  font-size: clamp(18px, 1.95vw, 23px);
   line-height: 1.05;
+  white-space: nowrap;
 }
 .senior-programme__name--nowrap {
   white-space: nowrap;
@@ -2394,6 +2441,7 @@ const proofPoints = [
   color: var(--orange-dark);
   font-size: 14px;
   font-weight: 700;
+  white-space: nowrap;
 }
 .senior-programme__ages {
   margin: 8px 0 0;
@@ -2401,6 +2449,7 @@ const proofPoints = [
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 .senior-programme__badge {
   flex: none;
@@ -2410,14 +2459,16 @@ const proofPoints = [
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 .senior-programme__lead {
-  max-width: 760px;
+  max-width: none;
   margin: 30px 0 48px;
   color: var(--ink);
-  font-size: 21px;
+  font-size: clamp(14px, 1.7vw, 20px);
   font-weight: 700;
   line-height: 1.45;
+  white-space: nowrap;
 }
 .senior-programme__context {
   max-width: 840px;
@@ -2458,6 +2509,7 @@ const proofPoints = [
 .senior-programme__environments strong {
   color: var(--navy);
   font-size: 14px;
+  white-space: nowrap;
 }
 .senior-programme__experiences span,
 .senior-programme__environments span {
@@ -2485,6 +2537,7 @@ const proofPoints = [
   font-family: "Playfair Display", Georgia, serif;
   font-size: 31px;
   font-weight: 600;
+  white-space: nowrap;
 }
 .senior-programme__days {
   display: grid;
@@ -2511,6 +2564,7 @@ const proofPoints = [
   color: #fff;
   font-size: 16px;
   line-height: 1.3;
+  white-space: nowrap;
 }
 .senior-programme__days p {
   margin: 0;
@@ -2523,6 +2577,7 @@ const proofPoints = [
   color: var(--orange-dark);
   font-size: 14px;
   font-weight: 800;
+  white-space: nowrap;
 }
 @media (max-width: 900px) {
   .senior-pipeline {

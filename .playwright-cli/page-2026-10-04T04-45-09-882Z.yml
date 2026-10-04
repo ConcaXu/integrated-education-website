@@ -1,0 +1,168 @@
+- generic [ref=f4e3]:
+  - banner [ref=f4e4]:
+    - generic [ref=f4e5]:
+      - link [ref=f4e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=f4e7]
+      - navigation [ref=f4e8]:
+        - link "首页" [ref=f4e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=f4e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=f4e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f4e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=f4e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=f4e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=f4e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=f4e16] [cursor=pointer]
+  - main [ref=f4e17]:
+    - generic [ref=f4e18]:
+      - generic [ref=f4e20]:
+        - paragraph [ref=f4e21]: MICE 与商务
+        - heading "让商务连接真实体验" [level=1] [ref=f4e22]
+        - paragraph [ref=f4e23]: APIMTC 结合 MICE 专业能力、目的地经验及国际合作网络，打造有价值的商务与专业交流项目。
+      - main [ref=f4e24]:
+        - generic [ref=f4e26]:
+          - heading "我们提供" [level=2] [ref=f4e28]
+          - generic [ref=f4e29]:
+            - article [ref=f4e30]:
+              - text: ›
+              - generic [ref=f4e31]:
+                - generic [aria-hidden] [ref=f4e32]: 
+                - heading "MICE" [level=3] [ref=f4e33]
+                - generic [ref=f4e34]:
+                  - strong [ref=f4e35]: 会议 · 奖励旅游 · 大型会议 · 活动
+                  - paragraph [ref=f4e36]: 覆盖新加坡、中国及国际目的地的专业活动与项目执行。
+              - generic [aria-hidden]: 
+            - article [ref=f4e37]:
+              - text: ›
+              - generic [ref=f4e38]:
+                - generic [aria-hidden] [ref=f4e39]: 
+                - heading "专业学习" [level=3] [ref=f4e40]
+                - paragraph [ref=f4e41]: 让商务之旅成为真正的学习体验。
+                - link "中国产业考察项目" [ref=f4e42] [cursor=pointer]:
+                  - /url: /china-industry-study-programmes
+              - generic [aria-hidden]: 
+            - article [ref=f4e43]:
+              - text: ›
+              - generic [ref=f4e44]:
+                - generic [aria-hidden] [ref=f4e45]: 
+                - heading "高管项目" [level=3] [ref=f4e46]
+                - paragraph [ref=f4e47]: 为企业领导者及专业人士打造定制化学习与交流。
+              - generic [aria-hidden]: 
+            - article [ref=f4e48]:
+              - text: ›
+              - generic [ref=f4e49]:
+                - generic [aria-hidden] [ref=f4e50]: 
+                - heading "商务代表团" [level=3] [ref=f4e51]
+                - paragraph [ref=f4e52]: 连接企业、机构、市场及潜在合作伙伴。
+              - generic [aria-hidden]: 
+            - article [ref=f4e53]:
+              - text: ›
+              - generic [ref=f4e54]:
+                - generic [aria-hidden] [ref=f4e55]: 
+                - heading "产业参访" [level=3] [ref=f4e56]
+                - paragraph [ref=f4e57]: 走进科技、创新与产业现场。
+              - generic [aria-hidden]: 
+            - article [ref=f4e58]:
+              - text: ›
+              - generic [ref=f4e59]:
+                - generic [aria-hidden] [ref=f4e60]: 
+                - heading "标杆考察" [level=3] [ref=f4e61]
+                - paragraph [ref=f4e62]: 了解领先企业与优秀实践。
+              - generic [aria-hidden]: 
+            - article [ref=f4e63]:
+              - text: ›
+              - generic [ref=f4e64]:
+                - generic [aria-hidden] [ref=f4e65]: 
+                - heading "商务交流" [level=3] [ref=f4e66]
+                - paragraph [ref=f4e67]: 建立关系、交流观点、探索合作机会。
+              - generic [aria-hidden]: 
+        - generic [ref=f4e69]:
+          - generic [ref=f4e70]:
+            - heading "不只是一次商务之旅" [level=2] [ref=f4e71]
+            - paragraph [ref=f4e72]: 学习 · 连接 · 体验
+          - generic [ref=f4e73]:
+            - img "连接人才、产业、机构与思想" [ref=f4e74]
+            - generic [ref=f4e75]:
+              - paragraph [ref=f4e76]: APIMTC
+              - heading "连接人才、产业、机构与思想" [level=3] [ref=f4e77]
+              - paragraph [ref=f4e78]: 打造有目标的国际交流项目。
+          - heading "我们的优势" [level=3] [ref=f4e80]
+          - generic [ref=f4e81]:
+            - article [ref=f4e82]:
+              - text: ›
+              - generic [ref=f4e83]:
+                - generic [aria-hidden] [ref=f4e84]: 
+                - heading "目的地专业能力" [level=3] [ref=f4e85]
+                - paragraph [ref=f4e86]: 深入了解目的地及当地资源。
+              - generic [aria-hidden]: 
+            - article [ref=f4e87]:
+              - text: ›
+              - generic [ref=f4e88]:
+                - generic [aria-hidden] [ref=f4e89]: 
+                - heading "MICE 项目能力" [level=3] [ref=f4e90]
+                - paragraph [ref=f4e91]: 专业策划与项目执行。
+              - generic [aria-hidden]: 
+            - article [ref=f4e92]:
+              - text: ›
+              - generic [ref=f4e93]:
+                - generic [aria-hidden] [ref=f4e94]: 
+                - heading "国际合作网络" [level=3] [ref=f4e95]
+                - paragraph [ref=f4e96]: 连接教育、商务及产业伙伴。
+              - generic [aria-hidden]: 
+            - article [ref=f4e97]:
+              - text: ›
+              - generic [ref=f4e98]:
+                - generic [aria-hidden] [ref=f4e99]: 
+                - heading "一站式执行" [level=3] [ref=f4e100]
+                - paragraph [ref=f4e101]: 从项目策划、协调到落地执行。
+              - generic [aria-hidden]: 
+        - generic [ref=f4e103]:
+          - generic [ref=f4e104]:
+            - heading "我们服务的伙伴" [level=2] [ref=f4e105]
+            - paragraph [ref=f4e106]: 企业 · 政府 · 教育机构 · 行业协会 · 国际组织
+          - generic [ref=f4e107]:
+            - img "有项目想法？" [ref=f4e108]
+            - generic [ref=f4e109]:
+              - paragraph [ref=f4e110]: APIMTC
+              - heading "有项目想法？" [level=3] [ref=f4e111]
+              - paragraph [ref=f4e112]: 让我们将您的目标，转化为真正有价值的国际体验。
+              - link "与我们洽谈 +" [ref=f4e113] [cursor=pointer]:
+                - /url: /contact
+                - text: 与我们洽谈
+                - generic [ref=f4e114]: +
+          - generic [ref=f4e115]:
+            - link "与 APIMTC 合作" [ref=f4e116] [cursor=pointer]:
+              - /url: /contact
+            - link "中国产业考察项目" [ref=f4e117] [cursor=pointer]:
+              - /url: /china-industry-study-programmes
+  - contentinfo [ref=f4e118]:
+    - generic [ref=f4e119]:
+      - generic [ref=f4e120]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=f4e121]
+        - generic [ref=f4e122]:
+          - generic [ref=f4e123]: APIMTC
+          - paragraph [ref=f4e124]: 立足新加坡 · 连接全球。
+          - paragraph [ref=f4e125]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=f4e126]:
+        - heading "探索" [level=4] [ref=f4e127]
+        - link "教育流动" [ref=f4e128] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=f4e129] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=f4e130] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=f4e131]:
+        - heading "联系" [level=4] [ref=f4e132]
+        - link "国际合作" [ref=f4e133] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=f4e134] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=f4e135]: +65 6618 6503info@apimtravel.com
+    - generic [ref=f4e136]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

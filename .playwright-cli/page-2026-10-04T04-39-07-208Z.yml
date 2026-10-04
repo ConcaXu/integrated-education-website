@@ -1,0 +1,384 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=e7]
+      - navigation [ref=e8]:
+        - link "首页" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=e15] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [ref=e16] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: APIMTC / 2025–26
+          - paragraph [ref=e23]: 新加坡未来学习系列
+          - heading "新加坡 未来学习系列" [level=1] [ref=e24]: 新加坡未来学习系列
+          - paragraph [ref=e25]: 三个年龄层 · 三段学习旅程 · 一个新加坡体验
+          - paragraph [ref=e26]: 探索新加坡 · 发现世界 · 想象未来
+          - generic [ref=e27]:
+            - generic [ref=e28]: 6天5夜
+            - generic [ref=e29]: 国际及海外学校
+        - generic [ref=e30]:
+          - img "新加坡未来学习系列" [ref=e31]
+          - generic [aria-hidden] [ref=e32]:
+            - strong [ref=e33]: 6天5夜
+            - text: 沉浸式学习之旅
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]: 00 / 介绍
+            - heading "EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE" [level=2] [ref=e38]
+            - paragraph [ref=e39]: 学习 · 体验 · 探索 · 交流
+          - generic [ref=e40]:
+            - paragraph [ref=e41]: 一段连接 科学、科技、自然、创新、产业与新加坡社会 的沉浸式教育之旅。通过：
+            - paragraph [ref=e42]: 让学生走出课堂，在真实的场景、真实的人、真实的科技与真实的挑战中学习。
+        - generic [ref=e43]:
+          - figure [ref=e44]
+          - figure [ref=e45]
+      - generic [ref=e47]:
+        - generic [ref=e48]: 01 / 三大项目 · 针对不同年龄
+        - heading "三大项目 · 针对不同年龄" [level=2] [ref=e49]
+        - table [ref=e51]:
+          - rowgroup [ref=e52]:
+            - row [ref=e53]:
+              - columnheader "Item" [ref=e54]
+              - columnheader "🌟 小学" [ref=e56]
+              - columnheader "🚀 中学" [ref=e57]
+              - columnheader "💡 高中 / JC" [ref=e58]
+          - rowgroup [ref=e59]:
+            - row [ref=e60]:
+              - rowheader "项目" [ref=e61]
+              - cell [ref=e62]:
+                - strong [ref=e63]: 新加坡未来探索
+              - cell [ref=e64]:
+                - strong [ref=e65]: 新加坡未来探索
+              - cell [ref=e66]:
+                - strong [ref=e67]: 新加坡未来领袖
+            - row [ref=e68]:
+              - rowheader "年龄" [ref=e69]
+              - cell [ref=e70]:
+                - strong [ref=e71]: 9–12岁
+              - cell [ref=e72]:
+                - strong [ref=e73]: 13–16岁
+              - cell [ref=e74]:
+                - strong [ref=e75]: 16–18岁
+            - row [ref=e76]:
+              - rowheader "核心方向" [ref=e77]
+              - cell [ref=e78]:
+                - strong [ref=e79]: 发现
+              - cell [ref=e80]:
+                - strong [ref=e81]: 探索与应用
+              - cell [ref=e82]:
+                - strong [ref=e83]: 创造与连接
+            - row [ref=e84]:
+              - rowheader "学习重点" [ref=e85]
+              - cell [ref=e86]:
+                - strong [ref=e87]: 科学 · STEM · 自然 · 科技
+              - cell [ref=e88]:
+                - strong [ref=e89]: 科学 · 科技 · 产业 · AI
+              - cell [ref=e90]:
+                - strong [ref=e91]: 科研 · 创新 · 产业 · 未来发展
+            - row [ref=e92]:
+              - rowheader "体验方式" [ref=e93]
+              - cell [ref=e94]:
+                - strong [ref=e95]: 动手探索
+              - cell [ref=e96]:
+                - strong [ref=e97]: 应用学习与挑战
+              - cell [ref=e98]:
+                - strong [ref=e99]: 创新、原型设计与未来路径
+      - article [ref=e100]:
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: 01 / 03
+            - generic [ref=e104]: 新加坡未来学习系列
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - paragraph [ref=e107]: 🧬 小学 · 9–12岁
+              - heading "新加坡未来探索" [level=2] [ref=e108]
+              - paragraph [ref=e109]: 发现世界 · 想象未来
+              - link "小学课程" [ref=e110] [cursor=pointer]:
+                - /url: /singapore-explorers
+                - text: 小学课程
+                - generic [aria-hidden] [ref=e111]: →
+            - img "新加坡未来探索" [ref=e113]
+          - generic [ref=e114]:
+            - table [ref=e116]:
+              - rowgroup [ref=e117]:
+                - row [ref=e118]:
+                  - columnheader "#" [ref=e119]
+                  - columnheader "主题" [ref=e120]
+                  - columnheader "学生将探索" [ref=e121]
+              - rowgroup [ref=e122]:
+                - row [ref=e123]:
+                  - cell "01" [ref=e124]:
+                    - text: "01"
+                    - emphasis [aria-hidden] [ref=e125]: 🧬
+                  - cell [ref=e126]:
+                    - strong [ref=e127]: 奇妙生命
+                  - cell "人体 · 生命科学 · 健康" [ref=e128]
+                - row [ref=e129]:
+                  - cell "02" [ref=e130]:
+                    - text: "02"
+                    - emphasis [aria-hidden] [ref=e131]: 🚀
+                  - cell [ref=e132]:
+                    - strong [ref=e133]: 小小太空探索家
+                  - cell "飞行 · 太空 · 月球 / 火星任务" [ref=e134]
+                - row [ref=e135]:
+                  - cell "03" [ref=e136]:
+                    - text: "03"
+                    - emphasis [aria-hidden] [ref=e137]: 🌱
+                  - cell [ref=e138]:
+                    - strong [ref=e139]: 绿色新加坡
+                  - cell "水资源 · 能源 · 自然 · 绿色城市" [ref=e140]
+                - row [ref=e141]:
+                  - cell "04" [ref=e142]:
+                    - text: "04"
+                    - emphasis [aria-hidden] [ref=e143]: 🤖
+                  - cell [ref=e144]:
+                    - strong [ref=e145]: 未来新加坡
+                  - cell "机器人 · 3D打印 · 智能制造" [ref=e146]
+                - row [ref=e147]:
+                  - cell "05" [ref=e148]:
+                    - text: "05"
+                    - emphasis [aria-hidden] [ref=e149]: 🌏
+                  - cell [ref=e150]:
+                    - strong [ref=e151]: 神奇的地球
+                  - cell "地球 · 野生动物 · 海洋 · 湿地" [ref=e152]
+                - row [ref=e153]:
+                  - cell "06" [ref=e154]:
+                    - text: "06"
+                    - emphasis [aria-hidden] [ref=e155]: 💡
+                  - cell [ref=e156]:
+                    - strong [ref=e157]: AI小小创新家
+                  - cell "AI · 机器人 · 3D打印 · 生成式AI" [ref=e158]
+            - generic [ref=e159]:
+              - heading "学生体验" [level=3] [ref=e160]
+              - paragraph [ref=e161]: 学校交流 · STEM活动 · 城市与社区探索 · 团队挑战 · Show & Tell · 新加坡环球影城
+      - article [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e165]: 02 / 03
+            - generic [ref=e166]: 新加坡未来学习系列
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - paragraph [ref=e169]: 🚀 中学 · 13–16岁
+              - heading "新加坡未来探索" [level=2] [ref=e170]
+              - paragraph [ref=e171]: 探索科技 · 理解真实世界
+              - link "初中课程" [ref=e172] [cursor=pointer]:
+                - /url: /singapore-explorers-junior-high
+                - text: 初中课程
+                - generic [aria-hidden] [ref=e173]: →
+            - img "新加坡未来探索" [ref=e175]
+          - generic [ref=e176]:
+            - table [ref=e178]:
+              - rowgroup [ref=e179]:
+                - row [ref=e180]:
+                  - columnheader "#" [ref=e181]
+                  - columnheader "主题" [ref=e182]
+                  - columnheader "学生将探索" [ref=e183]
+              - rowgroup [ref=e184]:
+                - row [ref=e185]:
+                  - cell "01" [ref=e186]:
+                    - text: "01"
+                    - emphasis [aria-hidden] [ref=e187]: 🧬
+                  - cell [ref=e188]:
+                    - strong [ref=e189]: 青年生物医学科学家
+                  - cell "细胞 · DNA · 微生物 · 生物医学" [ref=e190]
+                - row [ref=e191]:
+                  - cell "02" [ref=e192]:
+                    - text: "02"
+                    - emphasis [aria-hidden] [ref=e193]: 🚀
+                  - cell [ref=e194]:
+                    - strong [ref=e195]: 太空、航空与未来交通
+                  - cell "航空航天 · 无人机 · 自主系统 · 未来交通" [ref=e196]
+                - row [ref=e197]:
+                  - cell "03" [ref=e198]:
+                    - text: "03"
+                    - emphasis [aria-hidden] [ref=e199]: 🌱
+                  - cell [ref=e200]:
+                    - strong [ref=e201]: 智慧与可持续新加坡
+                  - cell "城市 · 水资源 · 气候 · 生物多样性 · 绿色科技" [ref=e202]
+                - row [ref=e203]:
+                  - cell "04" [ref=e204]:
+                    - text: "04"
+                    - emphasis [aria-hidden] [ref=e205]: 🤖
+                  - cell [ref=e206]:
+                    - strong [ref=e207]: 工业4.0新加坡
+                  - cell "机器人 · 自动化 · 3D打印 · 智能制造" [ref=e208]
+                - row [ref=e209]:
+                  - cell "05" [ref=e210]:
+                    - text: "05"
+                    - emphasis [aria-hidden] [ref=e211]: 🌏
+                  - cell [ref=e212]:
+                    - strong [ref=e213]: 地球、海洋与气候
+                  - cell "地球系统 · 海洋 · 生态系统 · 气候" [ref=e214]
+                - row [ref=e215]:
+                  - cell "06" [ref=e216]:
+                    - text: "06"
+                    - emphasis [aria-hidden] [ref=e217]: 💡
+                  - cell [ref=e218]:
+                    - strong [ref=e219]: AI、机器人与智慧国家
+                  - cell "AI · 机器学习 · 计算机视觉 · 生成式AI" [ref=e220]
+            - generic [ref=e221]:
+              - heading "学生体验" [level=3] [ref=e222]
+              - paragraph [ref=e223]: 学校交流 · 理工学院应用学习 · 科技工作坊 · 产业体验 · 设计挑战 · 社区探索 · 新加坡环球影城
+      - article [ref=e224]:
+        - generic [ref=e225]:
+          - generic [ref=e226]:
+            - generic [ref=e227]: 03 / 03
+            - generic [ref=e228]: 新加坡未来学习系列
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - paragraph [ref=e231]: 💡 高中 / JC · 16–18岁
+              - heading "新加坡未来领袖" [level=2] [ref=e232]
+              - paragraph [ref=e233]: 连接知识 · 创造可能
+              - link "高中课程" [ref=e234] [cursor=pointer]:
+                - /url: /singapore-future-leaders-senior-high
+                - text: 高中课程
+                - generic [aria-hidden] [ref=e235]: →
+            - img "新加坡未来领袖" [ref=e237]
+          - generic [ref=e238]:
+            - table [ref=e240]:
+              - rowgroup [ref=e241]:
+                - row [ref=e242]:
+                  - columnheader "#" [ref=e243]
+                  - columnheader "主题" [ref=e244]
+                  - columnheader "学生将探索" [ref=e245]
+              - rowgroup [ref=e246]:
+                - row [ref=e247]:
+                  - cell "01" [ref=e248]:
+                    - text: "01"
+                    - emphasis [aria-hidden] [ref=e249]: 🧬
+                  - cell [ref=e250]:
+                    - strong [ref=e251]: 生物医学创新与未来医疗
+                  - cell "生物科技 · 生物医学创新 · 医疗" [ref=e252]
+                - row [ref=e253]:
+                  - cell "02" [ref=e254]:
+                    - text: "02"
+                    - emphasis [aria-hidden] [ref=e255]: 🚀
+                  - cell [ref=e256]:
+                    - strong [ref=e257]: 太空科技与未来移动
+                  - cell "太空 · 航空航天 · 航空 · 自主系统" [ref=e258]
+                - row [ref=e259]:
+                  - cell "03" [ref=e260]:
+                    - text: "03"
+                    - emphasis [aria-hidden] [ref=e261]: 🌱
+                  - cell [ref=e262]:
+                    - strong [ref=e263]: 可持续城市与气候创新
+                  - cell "气候 · 水资源 · 绿色科技 · 生物多样性" [ref=e264]
+                - row [ref=e265]:
+                  - cell "04" [ref=e266]:
+                    - text: "04"
+                    - emphasis [aria-hidden] [ref=e267]: 🤖
+                  - cell [ref=e268]:
+                    - strong [ref=e269]: 工业4.0与创新
+                  - cell "智能工厂 · 机器人 · 自动化 · 数字制造" [ref=e270]
+                - row [ref=e271]:
+                  - cell "05" [ref=e272]:
+                    - text: "05"
+                    - emphasis [aria-hidden] [ref=e273]: 🌏
+                  - cell [ref=e274]:
+                    - strong [ref=e275]: 行星科学与地球系统
+                  - cell "地球 · 海洋 · 气候 · 环境系统" [ref=e276]
+                - row [ref=e277]:
+                  - cell "06" [ref=e278]:
+                    - text: "06"
+                    - emphasis [aria-hidden] [ref=e279]: 💡
+                  - cell [ref=e280]:
+                    - strong [ref=e281]: 生成式AI与未来创新
+                  - cell "生成式AI · 机器学习 · 数字转型 · 负责任AI" [ref=e282]
+            - generic [ref=e283]:
+              - heading "学生体验" [level=3] [ref=e284]
+              - paragraph [ref=e285]: 学校交流 · 大学与理工学院体验 · 科研与科技体验 · 产业参访 · 设计思维 · 原型设计 · 升学与职业探索 · 新加坡环球影城
+      - generic [ref=e287]:
+        - generic [ref=e288]: 05 / 真实新加坡 · 真实世界学习
+        - generic [ref=e289]:
+          - heading "真实新加坡 · 真实世界学习" [level=2] [ref=e290]
+          - paragraph [ref=e291]: 三大项目都将带领学生从不同年龄层的视角认识新加坡：
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - heading "🏫 教育" [level=3] [ref=e294]
+            - paragraph [ref=e295]: 学校交流 · 学生互动 · 校园体验
+          - generic [ref=e296]:
+            - heading "🔬 科学与科技" [level=3] [ref=e297]
+            - paragraph [ref=e298]: STEM · AI · 机器人 · 生物医学 · 航空航天
+          - generic [ref=e299]:
+            - heading "🏭 产业" [level=3] [ref=e300]
+            - paragraph [ref=e301]: 制造 · 科技 · 创新 · 未来产业
+          - generic [ref=e302]:
+            - heading "🌱 环境" [level=3] [ref=e303]
+            - paragraph [ref=e304]: 自然 · 生物多样性 · 水资源 · 可持续发展
+          - generic [ref=e305]:
+            - heading "🏙️ 社区与城市" [level=3] [ref=e306]
+            - paragraph [ref=e307]: HDB · 巴刹 · 熟食中心 · 公共交通
+          - generic [ref=e308]:
+            - heading "🎯 团队挑战" [level=3] [ref=e309]
+            - paragraph [ref=e310]: STEM挑战 · 设计思维 · 问题解决 · 项目展示
+        - figure [ref=e311]
+      - generic [ref=e313]:
+        - generic [ref=e314]: 06 / 三个年龄层 · 三段学习旅程
+        - heading "三个年龄层 · 三段学习旅程" [level=2] [ref=e315]
+        - list [ref=e316]:
+          - listitem [ref=e317]:
+            - text: "01"
+            - paragraph [ref=e318]: 小学
+            - paragraph [ref=e319]: 发现 DISCOVER
+            - paragraph [ref=e320]: 好奇 → 体验 → 想象
+          - listitem [ref=e321]:
+            - text: "02"
+            - paragraph [ref=e322]: 中学
+            - paragraph [ref=e323]: 探索 EXPLORE
+            - paragraph [ref=e324]: 知识 → 应用 → 解决问题
+          - listitem [ref=e325]:
+            - text: "03"
+            - paragraph [ref=e326]: 高中 / JC
+            - paragraph [ref=e327]: 创造 CREATE
+            - paragraph [ref=e328]: 科研 → 创新 → 未来发展
+      - generic [ref=e330]:
+        - heading "一个目的地 · 三段成长旅程" [level=2] [ref=e331]
+        - paragraph [ref=e332]:
+          - text: 从：
+          - strong [ref=e333]: 生命 → 太空 → 城市 → 工业 → 地球 → AI
+        - paragraph [ref=e334]: 学生将在适合自己年龄与学习阶段的环境中：学习 · 体验 · 探索 · 交流 · 创造
+        - paragraph [ref=e335]: 来新加坡，探索未来。
+        - paragraph [ref=e336]:
+          - strong [ref=e337]: 6天5夜
+          - generic [ref=e338]: 国际及海外学校教育体验项目
+  - contentinfo [ref=e339]:
+    - generic [ref=e340]:
+      - generic [ref=e341]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=e342]
+        - generic [ref=e343]:
+          - generic [ref=e344]: APIMTC
+          - paragraph [ref=e345]: 立足新加坡 · 连接全球。
+          - paragraph [ref=e346]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=e347]:
+        - heading "探索" [level=4] [ref=e348]
+        - link "教育流动" [ref=e349] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=e350] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=e351] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=e352]:
+        - heading "联系" [level=4] [ref=e353]
+        - link "国际合作" [ref=e354] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=e355] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=e356]: +65 6618 6503info@apimtravel.com
+    - generic [ref=e357]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

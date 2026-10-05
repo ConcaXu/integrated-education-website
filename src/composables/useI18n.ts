@@ -221,7 +221,7 @@ const translations: Record<Lang, Record<string, string>> = {
   }
 }
 
-const currentLang = ref<Lang>('zh-CN')
+const currentLang = ref<Lang>('en')
 
 export function useI18n() {
   const t = (key: string): string => {

@@ -1,0 +1,385 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=e7]
+      - navigation [ref=e8]:
+        - link "首页" [ref=e4156] [cursor=pointer]:
+          - /url: /
+        - link "关于 APIMTC" [ref=e4157] [cursor=pointer]:
+          - /url: /about
+        - link "教育流动" [ref=e4158] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=e4159] [cursor=pointer]:
+          - /url: /mice-business
+        - link "国际合作" [ref=e4160] [cursor=pointer]:
+          - /url: /partnerships
+        - link "中国门户" [ref=e4161] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "联系我们" [ref=e4162] [cursor=pointer]:
+          - /url: /contact
+        - button "EN" [active] [ref=e4163] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e3535]:
+      - generic [ref=e3537]:
+        - paragraph [ref=e3538]: APIMTC / EXECUTIVE STUDY MISSIONS
+        - heading "中国产业考察项目系列" [level=1] [ref=e4164]
+        - paragraph [ref=e3540]: 高管产业考察 · 技术标杆学习 · 商务交流 · 文化体验
+      - main [ref=e3541]:
+        - generic [ref=e3542]:
+          - generic [ref=e3543]:
+            - text: 01 / PROGRAMME OVERVIEW
+            - heading "走进中国领先产业的真实现场。" [level=2] [ref=e4165]
+            - paragraph [ref=e3545]: 为国际商业领袖、制造业与科技生态量身打造的一系列 7天6夜高管考察项目。
+          - generic [ref=e3546]:
+            - generic [ref=e4166]:
+              - generic [ref=e4172]: 企业及工厂参访
+              - generic [aria-hidden] [ref=e4173]: "01"
+            - generic [ref=e4174]:
+              - generic [ref=e4179]: 高管及技术交流
+              - generic [aria-hidden] [ref=e4180]: "02"
+            - generic [ref=e4181]:
+              - generic [ref=e4185]: 产业及制造标杆学习
+              - generic [aria-hidden] [ref=e4186]: "03"
+            - generic [ref=e4187]:
+              - generic [ref=e4191]: 国际商务交流与人脉拓展
+              - generic [aria-hidden] [ref=e4192]: "04"
+            - generic [ref=e4193]:
+              - generic [ref=e4197]: 精选文化体验
+              - generic [aria-hidden] [ref=e4198]: "05"
+        - region "Programme experience" [ref=e3580]:
+          - figure "高管产业考察" [ref=e4199]:
+            - img "高管产业考察" [ref=e4200]
+          - figure "技术标杆学习" [ref=e4201]:
+            - img "技术标杆学习" [ref=e4202]
+          - figure "商务交流" [ref=e4203]:
+            - img "商务交流" [ref=e4204]
+          - figure "文化体验" [ref=e4205]:
+            - img "文化体验" [ref=e4206]
+        - generic [ref=e3594]:
+          - generic [ref=e3595]:
+            - generic [ref=e3596]:
+              - text: 02 / SELECT A JOURNEY
+              - heading "三大产业考察项目" [level=2] [ref=e4207]
+            - paragraph [ref=e3598]: 点击相关学习之旅，即可查看对应项目详情。
+          - table [ref=e3600]:
+            - rowgroup [ref=e3601]:
+              - row [ref=e4208]:
+                - columnheader "项目" [ref=e4209]
+                - columnheader "路线" [ref=e4210]
+                - columnheader "重点考察领域" [ref=e4211]
+                - columnheader "适合产业领域" [ref=e4212]
+                - columnheader "查看详情" [ref=e4213]
+            - rowgroup [ref=e3609]:
+              - row [ref=e4214] [cursor=pointer]:
+                - rowheader [ref=e4215]:
+                  - button "查看汽车与先进制造产业考察" [ref=e4216]:
+                    - generic [ref=e3615]: 汽车与先进制造产业考察
+                - cell "成都 → 重庆 → 北京" [ref=e4217]
+                - cell "汽车制造 · 新能源汽车 · 智能工厂 · 汽车零部件 · 电池与动力系统 · 汽车研发 · 智能汽车" [ref=e4218]
+                - cell "汽车OEM · 新能源汽车 · 零部件 · 电池与动力系统 · Tier 1 / Tier 2供应商 · 汽车科技" [ref=e4219]
+                - cell [ref=e4220]:
+                  - button "查看汽车与先进制造产业考察" [ref=e4221]
+              - row [ref=e4222] [cursor=pointer]:
+                - rowheader [ref=e4223]:
+                  - button "查看新能源与能源科技产业考察" [ref=e4224]:
+                    - generic [ref=e3629]: 新能源与能源科技产业考察
+                - cell "成都 → 宜宾 → 成都" [ref=e4225]
+                - cell "光伏 · 储能 · 锂 · 电池材料 · EV电池 · 智能制造 · 绿色制造 · 产业集群" [ref=e4226]
+                - cell "可再生能源 · 光伏 · 电池与储能 · 新能源汽车 · 锂及电池材料 · 先进制造" [ref=e4227]
+                - cell [ref=e4228]:
+                  - button "查看新能源与能源科技产业考察" [ref=e4229]
+              - row [ref=e4230] [cursor=pointer]:
+                - rowheader [ref=e4231]:
+                  - button "查看AI与智能制造产业考察" [ref=e4232]:
+                    - generic [ref=e3643]: AI与智能制造产业考察
+                - cell "上海 → 苏州 → 无锡 → 杭州" [ref=e4233]
+                - cell "AI与数字化 · 医药与医疗器械 · 新能源与光伏 · 矿业与工业装备 · 工业机器人 · 智能制造" [ref=e4234]
+                - cell "医药与医疗器械 · 新能源 · 工业装备 · 机器人 · 自动化 · 先进制造" [ref=e4235]
+                - cell [ref=e4236]:
+                  - button "查看AI与智能制造产业考察" [ref=e4237]
+        - article [ref=e3651]:
+          - generic [ref=e3652]:
+            - generic [ref=e3653]:
+              - generic [ref=e3654]: 01 / 03
+              - generic [ref=e3655]: 中国产业考察项目系列
+            - generic [ref=e3659]:
+              - paragraph [ref=e3660]: AUTOMOTIVE & ADVANCED MANUFACTURING
+              - heading "中国汽车产业高管商务考察项目" [level=2] [ref=e4238]
+              - text: 7天6夜 · 汽车制造 · 新能源汽车 · 智能制造 · 汽车科技
+            - figure [ref=e3662]:
+              - img "中国汽车产业高管商务考察项目" [ref=e4239]
+            - generic [ref=e3664]:
+              - generic [ref=e3665]:
+                - generic [ref=e3666]: 考察路线
+                - strong [ref=e3667]: 成都 → 重庆 → 北京
+              - generic [ref=e3668]:
+                - generic [ref=e3669]: 行程
+                - strong [ref=e3670]: 7天6夜
+              - generic [ref=e3671]:
+                - generic [ref=e3672]: 核心重点
+                - strong [ref=e3673]: 汽车制造 · 新能源汽车 · 智能制造 · 汽车科技
+            - paragraph [ref=e3674]: 为国际汽车行业企业高管量身打造，深入了解中国汽车制造、新能源汽车、智能工厂及汽车科技生态。
+            - generic [ref=e3675]:
+              - generic [ref=e3676]:
+                - heading "项目亮点" [level=3] [ref=e4240]
+                - list [ref=e3678]:
+                  - listitem [ref=e4241]: 汽车企业及工厂参访
+                  - listitem [ref=e4242]: 高管及技术交流
+                  - listitem [ref=e4243]: 汽车制造标杆考察
+                  - listitem [ref=e4244]: 新能源汽车与智能工厂体验
+                  - listitem [ref=e4245]: 商务交流与合作对接
+                  - listitem [ref=e4246]: 精选文化体验
+              - generic [ref=e3685]:
+                - heading "七天产业学习路径" [level=3] [ref=e4247]
+                - paragraph [ref=e3687]: 整车制造 → 新能源转型 → 智能工厂 → 供应链 → 汽车研发 → 智能汽车 → 全球化
+                - generic [ref=e3688]:
+                  - generic [ref=e4248]:
+                    - strong [ref=e4249]: 成都
+                    - generic [ref=e4250]: 整车制造 · 新能源汽车 · 零部件 · 智能制造 · 供应链生态
+                  - generic [ref=e4251]:
+                    - strong [ref=e4252]: 重庆
+                    - generic [ref=e4253]: 智能工厂 · 工业4.0 · 新能源汽车 · 汽车研发 · 智能驾驶
+                  - generic [ref=e4254]:
+                    - strong [ref=e4255]: 北京
+                    - generic [ref=e4256]: 智能汽车 · AI+汽车 · 汽车科技 · 软件与电子 · 创新生态
+            - generic [ref=e3698]:
+              - heading "专为汽车行业领袖定制" [level=3] [ref=e4257]
+              - generic [ref=e3700]:
+                - generic [ref=e4258]: 乘用车OEM
+                - generic [ref=e4259]: 商用车制造商
+                - generic [ref=e4260]: 电动汽车企业
+                - generic [ref=e4261]: 电池与动力总成企业
+                - generic [ref=e4262]: 零部件制造商
+                - generic [ref=e4263]: Tier 1 / Tier 2 供应商
+                - generic [ref=e4264]: 汽车科技企业
+              - paragraph [ref=e3708]: 可根据代表团的业务特点、技术重点及战略需求，定制相应的企业参访安排。
+              - heading "🌏 商务 + 文化体验" [level=3] [ref=e4265]
+              - paragraph [ref=e3710]: 精选成都、重庆及北京的文化体验，让代表团深入感受中国不同地区的地域文化与城市发展，同时为代表团成员提供更加轻松的交流联谊、关系建立及专业交流机会。
+            - generic [ref=e3711]:
+              - heading "重点考察领域" [level=3] [ref=e4266]
+              - generic [ref=e3713]:
+                - generic [ref=e4267]:
+                  - strong [ref=e4268]: 新能源汽车
+                  - paragraph [ref=e4269]: EV平台 · 动力电池 · 电驱系统 · 车辆电子 · 新能源制造
+                - generic [ref=e4270]:
+                  - strong [ref=e4271]: 智能制造
+                  - paragraph [ref=e4272]: 工业机器人 · 数字化工厂 · 自动化 · AI质检 · 智能物流
+                - generic [ref=e4273]:
+                  - strong [ref=e4274]: 汽车供应链
+                  - paragraph [ref=e4275]: Tier 1 / Tier 2 · 本地化 · 战略采购 · 零部件制造 · 供应链协同
+                - generic [ref=e4276]:
+                  - strong [ref=e4277]: 汽车科技
+                  - paragraph [ref=e4278]: 智能驾驶 · 汽车软件 · 智能座舱 · AI · 汽车电子
+            - generic [ref=e3726]:
+              - generic [ref=e3727]:
+                - heading "高管商务与技术交流" [level=3] [ref=e4279]
+                - paragraph [ref=e4280]: 企业介绍 → 技术展示 → 工厂参访 → 高管交流 → 技术问答 → 商务合作洽谈。重点探讨制造效率、新能源转型、智能制造、供应链、技术合作及全球化。
+              - generic [ref=e3730]:
+                - heading "📈 预期成果" [level=3] [ref=e4281]
+                - paragraph [ref=e4282]: 了解中国汽车产业生态 · 学习新能源及智能制造实践 · 考察先进汽车技术与研发 · 寻找供应链及技术合作伙伴 · 探索汽车产业合作机会。
+            - generic [ref=e3733]:
+              - heading "中国汽车制造 · 新能源汽车转型 · 智能工厂 · 汽车技术 · 商务交流" [level=3] [ref=e4283]
+              - paragraph [ref=e3735]: 7天聚焦中国汽车产业转型的高管商务考察，连接制造、技术、供应链与潜在商务合作伙伴。
+            - paragraph [ref=e3736]: 最终企业参访、工厂准入、交流嘉宾及项目内容将以接待企业实际安排及确认为准。
+        - article [ref=e3737]:
+          - generic [ref=e3738]:
+            - generic [ref=e3739]:
+              - generic [ref=e3740]: 02 / 03
+              - generic [ref=e3741]: 中国产业考察项目系列
+            - generic [ref=e3746]:
+              - paragraph [ref=e3747]: NEW ENERGY & ENERGY TECHNOLOGY
+              - heading "中国四川新能源高管产业考察与技术交流项目" [level=2] [ref=e4284]
+              - text: 7天6夜 · 可再生能源 · 锂电池 · 先进制造 · 技术交流
+            - figure [ref=e3749]:
+              - img "中国四川新能源高管产业考察与技术交流项目" [ref=e4285]
+            - generic [ref=e3751]:
+              - generic [ref=e3752]:
+                - generic [ref=e3753]: 考察路线
+                - strong [ref=e3754]: 成都 → 宜宾 → 成都
+              - generic [ref=e3755]:
+                - generic [ref=e3756]: 行程
+                - strong [ref=e3757]: 7天6夜
+              - generic [ref=e3758]:
+                - generic [ref=e3759]: 核心重点
+                - strong [ref=e3760]: 可再生能源 · 锂电池 · 先进制造 · 技术交流
+            - paragraph [ref=e3761]: 为印度能源及工业领域领袖定制的精选高管考察项目，实地深入了解中国可再生能源、锂电池及先进制造一体化产业生态。
+            - generic [ref=e3762]:
+              - generic [ref=e3763]:
+                - heading "项目亮点" [level=3] [ref=e4286]
+                - list [ref=e3765]:
+                  - listitem [ref=e4287]: 可再生能源及光伏产业参访
+                  - listitem [ref=e4288]: 锂电池、电池材料及动力电池制造
+                  - listitem [ref=e4289]: 智能工厂与先进制造标杆学习
+                  - listitem [ref=e4290]: 技术及高管管理交流
+                  - listitem [ref=e4291]: 绿色制造与产业集群洞察
+                  - listitem [ref=e4292]: 专业人脉拓展
+                  - listitem [ref=e4293]: 精选文化与生态体验
+              - generic [ref=e3773]:
+                - heading "⚡ 新能源价值链" [level=3] [ref=e4294]
+                - paragraph [ref=e3775]: 太阳能光伏 → 储能 → 锂电池与电池材料 → 动力电池 → 智能制造 → 绿色制造 → 产业集群
+                - heading "🏭 两大核心产业枢纽" [level=3] [ref=e4295]
+                - generic [ref=e3777]:
+                  - generic [ref=e4296]:
+                    - strong [ref=e4297]: 成都
+                    - generic [ref=e4298]: 光伏 · 储能 · 锂电池 · 科技与研发 · 先进制造
+                  - generic [ref=e4299]:
+                    - strong [ref=e4300]: 宜宾
+                    - generic [ref=e4301]: 动力电池 · 电池材料 · 智能工厂 · 绿色制造 · 产业集群
+            - generic [ref=e3784]:
+              - heading "👥 适合产业领域" [level=3] [ref=e4302]
+              - generic [ref=e3786]:
+                - generic [ref=e4303]: 新能源
+                - generic [ref=e4304]: 光伏
+                - generic [ref=e4305]: 电池与储能
+                - generic [ref=e4306]: 新能源汽车
+                - generic [ref=e4307]: 锂及电池材料
+                - generic [ref=e4308]: 工业科技
+                - generic [ref=e4309]: 先进制造
+                - generic [ref=e4310]: 科研与技术机构
+              - paragraph [ref=e3795]: 可根据代表团的行业背景、技术重点及战略需求定制参访企业与交流内容。
+            - generic [ref=e3796]:
+              - heading "重点考察领域" [level=3] [ref=e4311]
+              - generic [ref=e3798]:
+                - generic [ref=e4312]:
+                  - strong [ref=e4313]: 光伏与可再生能源
+                  - paragraph [ref=e4314]: 高效光伏电池 · 智能生产 · 自动化 · 质量管理
+                - generic [ref=e4315]:
+                  - strong [ref=e4316]: 储能
+                  - paragraph [ref=e4317]: 储能系统 · 安全 · 热管理 · 能源管理 · 综合解决方案
+                - generic [ref=e4318]:
+                  - strong [ref=e4319]: 锂电池与电池材料
+                  - paragraph [ref=e4320]: 锂资源 · 锂化学品 · 电池级材料 · 加工 · 供应链
+                - generic [ref=e4321]:
+                  - strong [ref=e4322]: 动力电池制造
+                  - paragraph [ref=e4323]: 电芯 · 自动化 · 数字化制造 · 质量与安全 · 低碳生产
+            - generic [ref=e3811]:
+              - generic [ref=e3812]:
+                - heading "🤝 高管技术交流" [level=3] [ref=e4324]
+                - paragraph [ref=e3814]: 企业交流可结合：
+                - paragraph [ref=e3815]:
+                  - strong [ref=e3816]: 产业介绍 → 技术展示 → 工厂/设施参访 → 高管交流 → 技术问答 → 专业交流
+                - paragraph [ref=e3817]: 重点主题包括：
+                - paragraph [ref=e3818]:
+                  - strong [ref=e3819]: 技术 · 制造 · 供应链 · 自动化 · 质量 · 绿色制造 · 产业发展
+              - generic [ref=e3820]:
+                - heading "📈 预期成果" [level=3] [ref=e4325]
+                - paragraph [ref=e3822]: 对标中国新能源产业生态 · 了解电池与光伏制造 · 探索智能与绿色制造 · 洞察产业链与供应链 · 发掘技术及商务合作机会 · 深化中印产业交流
+            - generic [ref=e3823]:
+              - heading "🌏 商务 + 文化体验" [level=3] [ref=e4326]
+              - paragraph [ref=e3825]: 精选成都及宜宾的文化与生态体验，让代表团深入了解四川的地域文化、产业发展与绿色转型，同时为代表团成员提供更加轻松的交流联谊、关系建立及专业交流机会。
+              - heading "中国新能源 · 电池技术 · 智能制造 · 工业标杆 · 商务交流" [level=3] [ref=e4327]
+              - paragraph [ref=e3827]: 7天聚焦四川可再生能源与电池产业生态，连接技术、制造、产业集群及潜在中印合作机会。
+            - paragraph [ref=e3828]: 最终接待单位、工厂准入、参会人员及项目内容将以确认情况及接待企业实际安排为准。
+        - article [ref=e3829]:
+          - generic [ref=e3830]:
+            - generic [ref=e3831]:
+              - generic [ref=e3832]: 03 / 03
+              - generic [ref=e3833]: 中国产业考察项目系列
+            - generic [ref=e3838]:
+              - paragraph [ref=e3839]: AI & SMART MANUFACTURING
+              - heading "中国长三角AI与智能制造高管产业考察项目" [level=2] [ref=e4328]
+              - text: 7天6夜 · 先进制造 · 智能制造 · 技术交流
+            - figure [ref=e3841]:
+              - img "中国长三角AI与智能制造高管产业考察项目" [ref=e4329]
+            - generic [ref=e3843]:
+              - generic [ref=e3844]:
+                - generic [ref=e3845]: 考察路线
+                - strong [ref=e3846]: 上海 → 苏州 → 无锡 → 杭州
+              - generic [ref=e3847]:
+                - generic [ref=e3848]: 行程
+                - strong [ref=e3849]: 7天6夜
+              - generic [ref=e3850]:
+                - generic [ref=e3851]: 核心重点
+                - strong [ref=e3852]: 先进制造 · 智能制造 · 技术与创新
+            - paragraph [ref=e3853]: 为国际企业及产业领域高管量身打造，深入了解中国先进制造、智能制造、科技创新及产业生态。
+            - generic [ref=e3854]:
+              - generic [ref=e3855]:
+                - heading "项目亮点" [level=3] [ref=e4330]
+                - list [ref=e3857]:
+                  - listitem [ref=e4331]: 企业及工厂参访
+                  - listitem [ref=e4332]: 高管及技术交流
+                  - listitem [ref=e4333]: 智能制造标杆学习
+                  - listitem [ref=e4334]: 产业及供应链考察
+                  - listitem [ref=e4335]: 商务交流与合作对接
+                  - listitem [ref=e4336]: 精选文化体验
+              - generic [ref=e3864]:
+                - heading "四城产业考察" [level=3] [ref=e4337]
+                - paragraph [ref=e3866]: 上海 → 苏州 → 无锡 → 杭州，连接国际商务、先进制造与创新科技生态。
+                - generic [ref=e3867]:
+                  - generic [ref=e4338]:
+                    - strong [ref=e4339]: 上海
+                    - generic [ref=e4340]: 国际商务 · 医药产业 · 医疗科技
+                  - generic [ref=e4341]:
+                    - strong [ref=e4342]: 苏州
+                    - generic [ref=e4343]: 新能源 · 光伏 · 智能制造
+                  - generic [ref=e4344]:
+                    - strong [ref=e4345]: 无锡
+                    - generic [ref=e4346]: 矿业装备 · 重工业 · 先进制造
+                  - generic [ref=e4347]:
+                    - strong [ref=e4348]: 杭州
+                    - generic [ref=e4349]: 工业机器人 · 医疗器械 · 新能源 · 创新科技
+            - generic [ref=e3880]:
+              - heading "适合产业领域" [level=3] [ref=e4350]
+              - generic [ref=e3882]:
+                - generic [ref=e4351]: 医药与医疗器械
+                - generic [ref=e4352]: 新能源与光伏
+                - generic [ref=e4353]: 矿业与工业装备
+                - generic [ref=e4354]: 工业机器人
+                - generic [ref=e4355]: 智能制造
+                - generic [ref=e4356]: 自动化
+                - generic [ref=e4357]: 工业科技
+                - generic [ref=e4358]: 先进制造
+                - generic [ref=e4359]: 科研与技术机构
+              - paragraph [ref=e3892]: 可根据代表团的行业背景、技术重点及战略需求，定制参访企业、技术交流及商务对接方向。
+            - generic [ref=e3893]:
+              - heading "重点考察领域" [level=3] [ref=e4360]
+              - generic [ref=e3895]:
+                - generic [ref=e4361]:
+                  - strong [ref=e4362]: 医药与医疗器械
+                  - paragraph [ref=e4363]: 医药研发 · CRO/CDMO · 医疗器械 · 精密制造
+                - generic [ref=e4364]:
+                  - strong [ref=e4365]: 新能源与光伏
+                  - paragraph [ref=e4366]: 光伏制造 · 智能生产 · 数字化工厂 · 新能源技术
+                - generic [ref=e4367]:
+                  - strong [ref=e4368]: 矿业与工业装备
+                  - paragraph [ref=e4369]: 矿山机械 · 重型装备 · 工业电气化 · 智能装备
+                - generic [ref=e4370]:
+                  - strong [ref=e4371]: 工业机器人与智能制造
+                  - paragraph [ref=e4372]: 机器人 · 自动化 · 智能感知 · 智慧工厂
+            - generic [ref=e3908]:
+              - generic [ref=e3909]:
+                - heading "高管商务与技术交流" [level=3] [ref=e4373]
+                - paragraph [ref=e3911]: 企业介绍 → 技术展示 → 工厂/研发中心参访 → 管理层交流 → 技术问答 → 商务对接。重点探讨技术合作、供应链、设备采购、本地化制造、联合研发、市场拓展及投资合作。
+              - generic [ref=e3912]:
+                - heading "📈 预期成果" [level=3] [ref=e4374]
+                - paragraph [ref=e3914]: 了解中国先进制造生态 · 探索前沿技术 · 标杆学习智能制造 · 对接供应商与合作伙伴 · 发掘合作机会 · 建立产业商务网络。
+            - generic [ref=e3915]:
+              - heading "中国先进制造 · 智能制造 · 技术创新 · 商务交流 · 中印合作" [level=3] [ref=e4375]
+              - paragraph [ref=e3917]: 7天深入探索中国长三角先进制造生态，连接技术、产业链、供应链及潜在中印合作伙伴。
+            - paragraph [ref=e3918]: 最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团需求及企业实际接待情况确认。
+  - contentinfo [ref=e400]:
+    - generic [ref=e401]:
+      - generic [ref=e402]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=e403]
+        - generic [ref=e404]:
+          - generic [ref=e405]: APIMTC
+          - paragraph [ref=e406]: 立足新加坡 · 连接全球。
+          - paragraph [ref=e407]: 连接人才、教育、产业与跨境发展机遇。
+      - generic [ref=e408]:
+        - heading "探索" [level=4] [ref=e4376]
+        - link "教育流动" [ref=e4377] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE 与商务" [ref=e4378] [cursor=pointer]:
+          - /url: /mice-business
+        - link "中国门户" [ref=e4379] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=e413]:
+        - heading "联系" [level=4] [ref=e4380]
+        - link "国际合作" [ref=e4381] [cursor=pointer]:
+          - /url: /partnerships
+        - link "联系我们" [ref=e4382] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=e417]: +65 6618 6503info@apimtravel.com
+    - generic [ref=e418]: © 2026 APIMTC · 新加坡是我们的根基，成都是我们的中国门户。

@@ -19,8 +19,8 @@
             }}
           </p>
           <h1 :class="{ 'hero-title--zh': !isEn }">
-            <template v-if="isEn">Singapore<br /><span>Discovery Series</span></template>
-            <template v-else>新加坡<br /><span>未来探索系列</span></template>
+            <template v-if="isEn">Singapore<br /><span>Future Learning Series</span></template>
+            <template v-else>新加坡<br /><span>未来学习系列</span></template>
           </h1>
           <p class="hero-sub">
             {{
@@ -34,7 +34,6 @@
           </p>
           <router-link class="junior-course-link" to="/singapore-explorers-junior-high">
             {{ isEn ? "Junior High Courses" : "初中课程" }}
-            <span aria-hidden="true">→</span>
           </router-link>
         </div>
         <div class="hero-stamp" aria-hidden="true">
@@ -2338,7 +2337,6 @@ themes.forEach((theme, index) => {
   line-height: 1;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
-.junior-course-link span { font-size: 19px; line-height: .7; }
 .junior-course-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
 .junior-course-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
 

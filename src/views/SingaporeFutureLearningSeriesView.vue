@@ -186,7 +186,6 @@
             <p class="sfls-group__tagline">{{ isEn ? group.taglineEn : group.taglineZh }}</p>
             <router-link class="sfls-group__link" :to="group.link">
               {{ isEn ? group.linkEn : group.linkZh }}
-              <span aria-hidden="true">→</span>
             </router-link>
           </header>
           <div class="sfls-group__visual">

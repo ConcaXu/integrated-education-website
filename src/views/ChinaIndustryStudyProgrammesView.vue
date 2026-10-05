@@ -39,19 +39,23 @@
           <p>
             {{
               isEnglish
-                ? "Curated 7-day / 6-night executive missions for business leaders and professional delegations. Each journey combines company visits, technical exchange and on-the-ground industry insight to explore meaningful commercial connections."
-                : "为国际企业家、产业高管及专业代表团精心设计的 7天6夜高端产业考察项目。通过企业参访、专业交流与产业标杆学习，深入了解中国领先的产业、制造及科技生态，探索潜在合作机会。"
+                ? "A curated series of 7-day / 6-night executive study missions for international business leaders, manufacturing and technology ecosystems."
+                : "为国际商业领袖、制造业与科技生态量身打造的一系列 7天6夜高管考察项目。"
             }}
           </p>
         </div>
         <div class="industry-pillars">
           <div
-            v-for="pillar in pillars"
+            v-for="(pillar, index) in pillars"
             :key="pillar.title"
             class="industry-pillar"
           >
-            <component :is="pillar.icon" aria-hidden="true" /><span>{{
-              pillar.title
+            <span class="industry-pillar__icon">
+              <component :is="pillar.icon" aria-hidden="true" />
+            </span>
+            <span class="industry-pillar__label">{{ pillar.title }}</span>
+            <span class="industry-pillar__index" aria-hidden="true">{{
+              String(index + 1).padStart(2, "0")
             }}</span>
           </div>
         </div>
@@ -182,14 +186,14 @@
               ><strong>{{ programme.duration }}</strong>
             </div>
             <div>
-              <span>{{ isEnglish ? "Core theme" : "核心主题" }}</span
-              ><strong>{{ programme.shortFocus }}</strong>
+              <span>{{ isEnglish ? "Core focus" : "核心重点" }}</span
+              ><strong>{{ coreFocusOf(programme) }}</strong>
             </div>
           </div>
           <p class="programme-lead">{{ programme.intro }}</p>
           <div class="programme-layout">
             <section>
-              <h3>{{ isEnglish ? "Programme highlights" : "项目亮点" }}</h3>
+              <h3>{{ isEnglish ? "Programme Highlights" : "项目亮点" }}</h3>
               <ul class="check-list">
                 <li v-for="item in programme.highlights" :key="item">
                   {{ item }}
@@ -224,9 +228,15 @@
               </span>
             </div>
             <p>{{ programme.customization.description }}</p>
+            <template v-if="programme.customization.culture">
+              <h3 class="programme-customization__culture-title">
+                {{ programme.customization.culture.title }}
+              </h3>
+              <p>{{ programme.customization.culture.description }}</p>
+            </template>
           </section>
           <section class="focus-section">
-            <h3>{{ isEnglish ? "Key study areas" : "重点考察领域" }}</h3>
+            <h3>{{ isEnglish ? "🏭 Four Priority Industries" : "🏭 四大重点产业" }}</h3>
             <div class="focus-grid">
               <div v-for="area in programme.areas" :key="area.title">
                 <strong>{{ area.title }}</strong>
@@ -259,8 +269,21 @@
               </template>
             </section>
             <section>
-              <h3>{{ isEnglish ? "Expected outcomes" : "预期成果" }}</h3>
-              <p>{{ programme.outcomes }}</p>
+              <template v-if="outcomesDetailsOf(programme)">
+                <h3>{{ outcomesDetailsOf(programme)?.title }}</h3>
+                <ul class="outcome-list">
+                  <li
+                    v-for="item in outcomesDetailsOf(programme)?.items || []"
+                    :key="item"
+                  >
+                    {{ item }}
+                  </li>
+                </ul>
+              </template>
+              <template v-else>
+                <h3>{{ isEnglish ? "🎯 Expected Outcomes" : "🎯 预期成果" }}</h3>
+                <p>{{ programme.outcomes }}</p>
+              </template>
             </section>
           </div>
           <section
@@ -268,27 +291,31 @@
             class="programme-closing-summary"
           >
             <h3 class="programme-closing-summary__culture-title">
-              {{ isEnglish ? "Business + Cultural Experience" : "🌐 商务 + 文化体验" }}
+              {{
+                isEnglish
+                  ? "🌏 Business + Cultural Experience"
+                  : "🌏 商务 + 文化体验"
+              }}
             </h3>
             <p>
               {{
                 isEnglish
-                  ? "Selected cultural and ecological experiences in Chengdu and Yibin offer insight into Sichuan's local culture, industrial development and green transition, while creating relaxed opportunities for networking, relationship building and professional exchange."
-                : "精选成都及宜宾的文化与生态体验，让代表团深入了解四川的地域文化、产业发展与绿色转型，同时为代表团成员提供更加轻松的交流联谊、关系建立及专业交流机会。"
+                  ? "Selected cultural and ecological experiences in Chengdu and Yibin provide opportunities to experience Sichuan's regional culture, industrial development and green transformation, while creating a more relaxed setting for delegation networking, relationship building and professional exchange."
+                  : "精选成都及宜宾的文化与生态体验，让代表团深入了解四川的地域文化、产业发展与绿色转型，同时为代表团成员提供更加轻松的交流联谊、关系建立及专业交流机会。"
               }}
             </p>
             <h3>
               {{
                 isEnglish
-                  ? "China's New Energy · Battery Technology · Smart Manufacturing · Industry Benchmarking · Technical Exchange"
-                  : "中国新能源 · 电池技术 · 智能制造 · 产业标杆 · 技术交流"
+                  ? "China New Energy · Battery Technology · Smart Manufacturing · Industrial Benchmarking · Business Exchange"
+                  : "中国新能源 · 电池技术 · 智能制造 · 工业标杆 · 商务交流"
               }}
             </h3>
             <p>
               {{
                 isEnglish
-                  ? "A seven-day immersion in Sichuan's new-energy heartland, connecting advanced technology, scaled manufacturing, industrial clusters and potential international collaboration opportunities."
-                  : "7天深入四川新能源产业腹地，连接先进技术、规模化制造、产业集群及潜在合作机会。"
+                  ? "A focused 7-day journey through Sichuan's renewable energy and battery ecosystem—connecting technology, manufacturing, industrial clusters and potential China–India cooperation."
+                  : "7天聚焦四川可再生能源与电池产业生态，连接技术、制造、产业集群及潜在中印合作机会。"
               }}
             </p>
           </section>
@@ -298,6 +325,29 @@
           >
             <h3>{{ programme.closingSummary.title }}</h3>
             <p>{{ programme.closingSummary.description }}</p>
+            <template v-if="programme.closingSummary.culture">
+              <h3 class="programme-closing-summary__culture-title">
+                {{ programme.closingSummary.culture.title }}
+              </h3>
+              <p>{{ programme.closingSummary.culture.description }}</p>
+            </template>
+            <template v-if="industryLeadersOf(programme)">
+              <h3 class="programme-closing-summary__industry-title">
+                {{ industryLeadersOf(programme)?.title }}
+              </h3>
+              <div class="programme-customization__types">
+                <span
+                  v-for="companyType in industryLeadersOf(programme)
+                    ?.companyTypes || []"
+                  :key="companyType"
+                >
+                  {{ companyType }}
+                </span>
+              </div>
+              <p class="programme-closing-summary__industry-desc">
+                {{ industryLeadersOf(programme)?.description }}
+              </p>
+            </template>
           </section>
           <p class="programme-note">{{ programme.note }}</p>
         </div>
@@ -309,12 +359,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import {
+  Camera,
   Connection,
   Cpu,
   DataAnalysis,
   Lightning,
-  Promotion as Rocket,
+  OfficeBuilding,
   Right,
+  Share,
   Van,
 } from "@element-plus/icons-vue";
 import { useI18n } from "@/composables/useI18n";
@@ -358,9 +410,11 @@ const images = computed(() => [
     alt: isEnglish.value ? "Cultural experience" : "文化体验",
   },
 ]);
+// 「项目概览」右侧的 5 项能力清单。图标按语义挑选：
+// 楼宇=企业/工厂参访、互联=高管与技术交流、图表=标杆学习、节点网络=商务人脉、相机=文化体验
 const pillars = computed(() => [
   {
-    icon: Van,
+    icon: OfficeBuilding,
     title: isEnglish.value ? "Corporate & factory visits" : "企业及工厂参访",
   },
   {
@@ -374,8 +428,14 @@ const pillars = computed(() => [
     title: isEnglish.value ? "Industry benchmarking" : "产业及制造标杆学习",
   },
   {
-    icon: Rocket,
+    icon: Share,
     title: isEnglish.value ? "Business networking" : "国际商务交流与人脉拓展",
+  },
+  {
+    icon: Camera,
+    title: isEnglish.value
+      ? "Selected cultural experiences"
+      : "精选文化体验",
   },
 ]);
 
@@ -404,18 +464,23 @@ const zhProgrammes = [
       "精选文化体验",
     ],
     customization: {
-      title: "可按企业类型定制",
+      title: "专为汽车行业领袖定制",
       companyTypes: [
         "乘用车OEM",
         "商用车制造商",
-        "新能源汽车企业",
-        "电池/电驱企业",
-        "汽车零部件企业",
-        "Tier 1 / Tier 2",
+        "电动汽车企业",
+        "电池与动力总成企业",
+        "零部件制造商",
+        "Tier 1 / Tier 2 供应商",
         "汽车科技企业",
       ],
       description:
-        "根据代表团的业务重点，可针对性安排相应的企业参访与商务交流。",
+        "可根据代表团的业务特点、技术重点及战略需求，定制相应的企业参访安排。",
+      culture: {
+        title: "🌏 商务 + 文化体验",
+        description:
+          "精选成都、重庆及北京的文化体验，让代表团深入感受中国不同地区的地域文化与城市发展，同时为代表团成员提供更加轻松的交流联谊、关系建立及专业交流机会。",
+      },
     },
     pathwayTitle: "七天产业学习路径",
     pathway:
@@ -458,11 +523,11 @@ const zhProgrammes = [
     outcomes:
       "了解中国汽车产业生态 · 学习新能源及智能制造实践 · 考察先进汽车技术与研发 · 寻找供应链及技术合作伙伴 · 探索汽车产业合作机会。",
     closingSummary: {
-      title: "中国汽车制造标杆 · 新能源转型 · 智能工厂 · 汽车科技 · 商务合作",
+      title: "中国汽车制造 · 新能源汽车转型 · 智能工厂 · 汽车技术 · 商务交流",
       description:
-        "以7天高管考察深入了解中国汽车产业转型，连接制造、技术、供应链与潜在合作伙伴。",
+        "7天聚焦中国汽车产业转型的高管商务考察，连接制造、技术、供应链与潜在商务合作伙伴。",
     },
-    note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团行业背景、战略重点及企业实际接待情况确认。",
+    note: "最终企业参访、工厂准入、交流嘉宾及项目内容将以接待企业实际安排及确认为准。",
   },
   {
     id: "new-energy",
@@ -472,87 +537,104 @@ const zhProgrammes = [
     kicker: "NEW ENERGY & ENERGY TECHNOLOGY",
     route: "成都 → 宜宾 → 成都",
     duration: "7天6夜",
-    shortFocus: "新能源 · 锂电池 · 先进制造 · 技术交流",
+    shortFocus: "可再生能源 · 锂电池 · 先进制造 · 技术交流",
     focus:
-      "光伏 · 储能 · 锂资源 · 电池材料 · 动力电池 · 智能制造 · 绿色制造 · 新能源产业集群",
+      "光伏 · 储能 · 锂 · 电池材料 · EV电池 · 智能制造 · 绿色制造 · 产业集群",
     industries:
       "可再生能源 · 光伏 · 电池与储能 · 新能源汽车 · 锂及电池材料 · 先进制造",
     intro:
-      "为国际能源及工业领域企业高管量身打造，深入了解中国新能源、锂电池及先进制造产业生态。",
+      "为印度能源及工业领域领袖定制的精选高管考察项目，实地深入了解中国可再生能源、锂电池及先进制造一体化产业生态。",
     highlights: [
-      "新能源及光伏企业参访",
-      "锂资源、电池材料及动力电池制造考察",
+      "可再生能源及光伏产业参访",
+      "锂电池、电池材料及动力电池制造",
       "智能工厂与先进制造标杆学习",
-      "技术及高管交流",
-      "绿色制造与产业集群考察",
-      "专业交流与商务对接",
+      "技术及高管管理交流",
+      "绿色制造与产业集群洞察",
+      "专业人脉拓展",
+      "精选文化与生态体验",
     ],
-    pathwayTitle: "新能源产业链",
+    customization: {
+      title: "👥 适合产业领域",
+      companyTypes: [
+        "新能源",
+        "光伏",
+        "电池与储能",
+        "新能源汽车",
+        "锂及电池材料",
+        "工业科技",
+        "先进制造",
+        "科研与技术机构",
+      ],
+      description:
+        "可根据代表团的行业背景、技术重点及战略需求定制参访企业与交流内容。",
+    },
+    pathwayTitle: "⚡ 新能源价值链",
     pathway:
-      "太阳能光伏 → 储能 → 锂资源与电池材料 → 动力电池 → 智能制造 → 绿色制造 → 产业集群",
-    citiesTitle: "🏭 两大产业城市",
+      "太阳能光伏 → 储能 → 锂电池与电池材料 → 动力电池 → 智能制造 → 绿色制造 → 产业集群",
+    citiesTitle: "🏭 两大核心产业枢纽",
     cities: [
-      { name: "成都", detail: "光伏 · 储能 · 锂资源 · 科技研发 · 先进制造" },
+      { name: "成都", detail: "光伏 · 储能 · 锂电池 · 科技与研发 · 先进制造" },
       {
         name: "宜宾",
-        detail: "动力电池 · 电池材料 · 智能工厂 · 绿色制造 · 新能源产业集群",
+        detail: "动力电池 · 电池材料 · 智能工厂 · 绿色制造 · 产业集群",
       },
     ],
     areas: [
       {
-        title: "光伏与新能源",
+        title: "光伏与可再生能源",
         detail: "高效光伏电池 · 智能生产 · 自动化 · 质量管理",
       },
       {
-        title: "储能技术",
-        detail: "储能系统 · 安全技术 · 热管理 · 能源管理 · 综合解决方案",
+        title: "储能",
+        detail: "储能系统 · 安全 · 热管理 · 能源管理 · 综合解决方案",
       },
       {
-        title: "锂资源与电池材料",
-        detail: "锂资源 · 锂化学品 · 电池级材料 · 加工技术 · 产业链",
+        title: "锂电池与电池材料",
+        detail: "锂资源 · 锂化学品 · 电池级材料 · 加工 · 供应链",
       },
       {
         title: "动力电池制造",
-        detail: "电芯生产 · 自动化 · 数字化制造 · 质量与安全 · 低碳生产",
+        detail: "电芯 · 自动化 · 数字化制造 · 质量与安全 · 低碳生产",
       },
     ],
     exchange:
       "产业介绍 → 技术展示 → 工厂/设施参访 → 高管交流 → 技术问答 → 专业交流。重点探讨技术、制造、供应链、自动化、质量管理、绿色制造及产业发展。",
     exchangeDetails: {
-      title: "🤝 高管商务交流",
-      intro: "每次企业交流可结合：",
-      flow: "企业介绍 → 技术展示 → 工厂参访 → 高管交流 → 技术问答 → 商务合作洽谈",
-      focusLabel: "重点探讨：",
-      focus: "制造效率 · 新能源转型 · 智能制造 · 供应链 · 技术合作 · 全球化",
+      title: "🤝 高管技术交流",
+      intro: "企业交流可结合：",
+      flow: "产业介绍 → 技术展示 → 工厂/设施参访 → 高管交流 → 技术问答 → 专业交流",
+      focusLabel: "重点主题包括：",
+      focus: "技术 · 制造 · 供应链 · 自动化 · 质量 · 绿色制造 · 产业发展",
     },
     outcomes:
-      "了解中国新能源产业生态 · 学习光伏及电池制造 · 考察智能与绿色制造 · 深入了解产业链与供应链 · 发掘技术及商务合作机会。",
-    note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据企业接待情况及代表团需求确认。",
+      "对标中国新能源产业生态 · 了解电池与光伏制造 · 探索智能与绿色制造 · 洞察产业链与供应链 · 发掘技术及商务合作机会 · 深化中印产业交流",
+    note: "最终接待单位、工厂准入、参会人员及项目内容将以确认情况及接待企业实际安排为准。",
   },
   {
     id: "ai-manufacturing",
     icon: Cpu,
     title: "AI与智能制造产业考察",
-    detailTitle: "中国长三角AI与智能制造高管产业考察交流项目",
+    detailTitle: "中国长三角AI与智能制造高管产业考察项目",
     kicker: "AI & SMART MANUFACTURING",
     route: "上海 → 苏州 → 无锡 → 杭州",
     duration: "7天6夜",
-    shortFocus: "先进制造 · 智能制造 · 技术交流 · 商务交流",
+    shortFocus: "先进制造 · 智能制造 · 技术交流",
+    coreFocus: "先进制造 · 智能制造 · 技术与创新",
     focus:
       "AI与数字化 · 医药与医疗器械 · 新能源与光伏 · 矿业与工业装备 · 工业机器人 · 智能制造",
     industries:
       "医药与医疗器械 · 新能源 · 工业装备 · 机器人 · 自动化 · 先进制造",
     intro:
-      "为国际企业及产业领域高管量身打造，深入了解中国先进制造、智能制造、科技创新及产业生态。",
+      "为印度企业及产业领域领袖定制的精选高管考察项目，实地深入了解中国先进制造、智能制造、技术及产业生态。",
     highlights: [
       "企业及工厂参访",
       "高管及技术交流",
       "智能制造标杆学习",
-      "产业及供应链考察",
-      "商务交流与合作对接",
+      "产业及供应链洞察",
+      "中印商务人脉拓展",
       "精选文化体验",
     ],
-    pathwayTitle: "四城产业考察",
+    pathwayTitle: "🗺️ 四城产业之旅",
     pathway:
       "上海 → 苏州 → 无锡 → 杭州，连接国际商务、先进制造与创新科技生态。",
     citiesTitle: "",
@@ -564,26 +646,33 @@ const zhProgrammes = [
     ],
     areas: [
       {
-        title: "医药与医疗器械",
+        title: "🧪 医药与医疗器械",
         detail: "医药研发 · CRO/CDMO · 医疗器械 · 精密制造",
       },
       {
-        title: "新能源与光伏",
+        title: "⚡ 新能源与光伏",
         detail: "光伏制造 · 智能生产 · 数字化工厂 · 新能源技术",
       },
       {
-        title: "矿业与工业装备",
+        title: "⛏️ 矿业与工业装备",
         detail: "矿山机械 · 重型装备 · 工业电气化 · 智能装备",
       },
       {
-        title: "工业机器人与智能制造",
+        title: "🤖 工业机器人与智能制造",
         detail: "机器人 · 自动化 · 智能感知 · 智慧工厂",
       },
     ],
     exchange:
       "企业介绍 → 技术展示 → 工厂/研发中心参访 → 管理层交流 → 技术问答 → 商务对接。重点探讨技术合作、供应链、设备采购、本地化制造、联合研发、市场拓展及投资合作。",
+    exchangeDetails: {
+      title: "🤝 高管商务与技术交流",
+      intro: "企业交流可结合：",
+      flow: "企业介绍 → 技术展示 → 工厂/研发中心参访 → 管理层交流 → 技术问答 → 商务交流",
+      focusLabel: "重点探讨主题包括：",
+      focus: "技术合作 · 供应链 · 设备采购 · 本地化 · 联合研发 · 市场拓展 · 投资合作",
+    },
     outcomes:
-      "了解中国先进制造生态 · 探索前沿技术 · 标杆学习智能制造 · 对接供应商与合作伙伴 · 发掘合作机会 · 建立产业商务网络。",
+      "了解中国先进制造生态 · 探索新兴技术 · 标杆学习智能制造 · 对接供应商与合作伙伴 · 发掘中印合作机会 · 建立产业网络",
     customization: {
       title: "适合产业领域",
       companyTypes: [
@@ -601,17 +690,38 @@ const zhProgrammes = [
         "可根据代表团的行业背景、技术重点及战略需求，定制参访企业、技术交流及商务对接方向。",
     },
     closingSummary: {
-      title: "中国先进制造 · 智能制造 · 技术创新 · 商务交流 · 中印合作",
+      title: "先进制造 · 智能制造 · 技术创新 · 商务交流 · 国际合作",
       description:
-        "7天深入探索中国长三角先进制造生态，连接技术、产业链、供应链及潜在中印合作伙伴。",
+        "7天深入探索中国长三角制造生态，连接技术、产业、供应链及潜在国际合作伙伴。",
+      culture: {
+        title: "🌏 商务 + 文化体验",
+        description:
+          "精选上海、苏州及杭州文化体验，深入了解长三角的商业文化、产业发展与创新生态，同时为代表团提供轻松的交流与联谊机会。",
+      },
+      industryLeaders: {
+        title: "👥 适合产业领域",
+        companyTypes: [
+          "医药与医疗器械",
+          "新能源与光伏",
+          "矿业与工业装备",
+          "工业机器人",
+          "智能制造",
+          "自动化",
+          "工业科技",
+          "先进制造",
+          "科研与技术机构",
+        ],
+        description:
+          "可根据代表团的行业背景、技术重点及战略需求，定制参访企业、技术交流及商务对接方向。",
+      },
     },
-    note: "最终参访企业、工厂安排、交流嘉宾及具体内容将根据代表团需求及企业实际接待情况确认。",
+    note: "最终企业参访、工厂准入、参会人员及项目内容将根据代表团需求及接待企业确认情况确定。",
   },
 ];
 const enProgrammeContent = [
   {
     title: "Automotive & Advanced Manufacturing Study Mission",
-    detailTitle: "China Automotive Industry Executive Study Mission",
+    detailTitle: "China Automotive Industry Executive Business Study Programme",
     route: "Chengdu → Chongqing → Beijing",
     duration: "7 Days / 6 Nights",
     shortFocus: "Automotive Manufacturing · New Energy Vehicles · Smart Manufacturing · Automotive Technology",
@@ -620,12 +730,16 @@ const enProgrammeContent = [
     intro: "Designed for executives from the international automotive sector, this programme provides an in-depth view of China's automotive manufacturing, new energy vehicles, smart factories and automotive technology ecosystem.",
     highlights: ["Automotive company and factory visits", "Executive and technical exchanges", "Automotive manufacturing benchmarking", "New energy vehicle and smart factory experiences", "International business exchange and partnership matching", "Selected cultural experiences"],
     customization: {
-      title: "Customisable by company type",
-      companyTypes: ["Passenger vehicle OEMs", "Commercial vehicle manufacturers", "New energy vehicle companies", "Battery and e-drive companies", "Automotive component companies", "Tier 1 / Tier 2 suppliers", "Automotive technology companies"],
-      description: "Company visits and business exchanges can be tailored to the delegation's business priorities.",
+      title: "Tailored for Automotive Leaders",
+      companyTypes: ["Passenger Vehicle OEMs", "Commercial Vehicle Manufacturers", "EV Companies", "Battery & Powertrain Companies", "Component Manufacturers", "Tier 1 / Tier 2 Suppliers", "Automotive Technology Companies"],
+      description: "Corporate visits can be customised according to the delegation's business profile, technology priorities and strategic interests.",
+      culture: {
+        title: "🌏 Business + Cultural Experience",
+        description: "Selected cultural experiences in Chengdu, Chongqing and Beijing provide opportunities to experience China's regional culture and urban development, while creating a more relaxed setting for delegation networking, relationship building and professional exchange.",
+      },
     },
     pathwayTitle: "Seven-day industry learning pathway",
-    pathway: "Vehicle Manufacturing → New Energy Transition → Smart Factories → Supply Chain → Automotive R&D → Intelligent Vehicles → Globalisation",
+    pathway: "Vehicle Manufacturing → New Energy Vehicles Transformation → Smart Factories → Supply Chain → Automotive R&D → Intelligent Vehicles → Globalisation",
     citiesTitle: "",
     cities: [
       { name: "Chengdu", detail: "Vehicle manufacturing · New energy vehicles · Components · Smart manufacturing · Supply-chain ecosystem" },
@@ -633,80 +747,120 @@ const enProgrammeContent = [
       { name: "Beijing", detail: "Intelligent vehicles · AI + automotive · Automotive technology · Software and electronics · Innovation ecosystem" },
     ],
     areas: [
-      { title: "New Energy Vehicles", detail: "EV platforms · Power batteries · E-drive systems · Vehicle electronics · New energy manufacturing" },
+      { title: "New Energy Vehicles", detail: "EV platforms · Power batteries · E-drive systems · Vehicle electronics · New energy vehicle manufacturing" },
       { title: "Smart Manufacturing", detail: "Industrial robots · Digital factories · Automation · AI quality inspection · Smart logistics" },
-      { title: "Automotive Supply Chain", detail: "Tier 1 / Tier 2 · Localisation · Strategic sourcing · Component manufacturing · Supply-chain collaboration" },
+      { title: "Automotive Supply Chain", detail: "Tier 1 / Tier 2 · Localisation · Strategic sourcing · Component manufacturing · Supply-chain integration" },
       { title: "Automotive Technology", detail: "Intelligent driving · Automotive software · Smart cockpits · AI · Automotive electronics" },
     ],
     exchange: "Company introduction → Technology showcase → Factory visit → Executive exchange → Technical Q&A → Business cooperation discussion. Discussions focus on manufacturing efficiency, new energy transition, smart manufacturing, supply chains, technology cooperation and globalisation.",
-    outcomes: "Understand China's automotive industry ecosystem · Learn new energy and smart manufacturing practices · Examine advanced automotive technologies and R&D · Identify supply-chain and technology partners · Explore international automotive cooperation opportunities.",
-    closingSummary: {
-      title: "China Automotive Manufacturing Benchmark · New Energy Transition · Smart Factories · Automotive Technology · Business Cooperation",
-      description: "A seven-day executive study mission to understand China's automotive industry transformation, connecting manufacturing, technology, supply chains and potential partners.",
+    exchangeDetails: {
+      title: "🤝 Executive Business Exchange",
+      intro: "Corporate engagements may combine:",
+      flow: "Company Presentation → Technology Briefing → Factory Visit → Executive Discussion → Technical Q&A → Business Exchange",
+      focusLabel: "Key discussion themes include:",
+      focus: "Manufacturing Excellence · NEV Transformation · Smart Manufacturing · Supply Chain · Technology Cooperation · Globalisation",
     },
-    note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to the delegation's industry background, strategic priorities and host-company availability.",
+    outcomes: "Understand China's automotive industry ecosystem · Learn new energy and smart manufacturing practices · Examine advanced automotive technologies and R&D · Identify supply-chain and technology partners · Explore international automotive cooperation opportunities.",
+    outcomesDetails: {
+      title: "🎯 Expected Outcomes",
+      items: [
+        "Benchmark China's Automotive Ecosystem",
+        "Understand NEV & Smart Manufacturing Transformation",
+        "Explore Advanced Automotive Technologies",
+        "Identify Suppliers & Technology Partners",
+        "Discover China–India Automotive Cooperation Opportunities",
+      ],
+    },
+    closingSummary: {
+      title: "China Automotive Manufacturing · New Energy Vehicles Transformation · Smart Factory · Automotive Technology · Business Exchange",
+      description: "A focused 7-day executive journey into China's automotive transformation—connecting manufacturing, technology, supply chains and potential business partners.",
+    },
+    note: "Final corporate visits, factory access, meeting participants and programme content are subject to host-company availability and confirmation.",
   },
   {
     title: "New Energy & Energy Technology Study Mission",
-    detailTitle: "Sichuan New Energy Executive Study Mission & Technical Exchange",
+    detailTitle: "China Sichuan New Energy Executive Industrial Study & Technology Exchange Programme",
     route: "Chengdu → Yibin → Chengdu",
     duration: "7 Days / 6 Nights",
-    shortFocus: "New Energy · Lithium Batteries · Advanced Manufacturing · Technical Exchange",
-    focus: "Solar PV · Energy Storage · Lithium Resources · Battery Materials · Power Batteries · Smart Manufacturing · Green Manufacturing · New Energy Industry Clusters",
+    shortFocus: "Renewable Energy · Lithium Battery · Advanced Manufacturing · Technology Exchange",
+    focus: "Solar PV · Energy Storage · Lithium · Battery Materials · EV Batteries · Smart Manufacturing · Green Manufacturing · Industrial Clusters",
     industries: "Renewable Energy · Solar PV · Batteries & Energy Storage · New Energy Vehicles · Lithium & Battery Materials · Advanced Manufacturing",
-    intro: "Designed for executives in the international energy and industrial sectors, this programme provides an in-depth view of China's new energy, lithium battery and advanced manufacturing ecosystem.",
-    highlights: ["New energy and solar PV company visits", "Lithium resources, battery materials and power-battery manufacturing visits", "Smart factory and advanced manufacturing benchmarking", "Technical and executive exchanges", "Green manufacturing and industry-cluster study", "Professional exchange and business matching"],
-    pathwayTitle: "New energy industry value chain",
-    pathway: "Solar PV → Energy Storage → Lithium Resources & Battery Materials → Power Batteries → Smart Manufacturing → Green Manufacturing → Industry Clusters",
-    citiesTitle: "🏭 Two industry cities",
+    intro: "A curated executive study mission for Indian energy and industrial leaders to gain first-hand exposure to China's integrated renewable energy, lithium battery and advanced manufacturing ecosystem.",
+    highlights: ["Renewable energy & solar PV industry visits", "Lithium, battery materials & EV battery manufacturing", "Smart factory & advanced manufacturing benchmarking", "Technical and executive management exchanges", "Green manufacturing & industrial-cluster insights", "Professional networking", "Selected cultural and ecological experiences"],
+    customization: {
+      title: "👥 Designed for Industry Leaders",
+      companyTypes: [
+        "Renewable Energy",
+        "Solar",
+        "Battery & Energy Storage",
+        "EV & Automotive",
+        "Lithium & Battery Materials",
+        "Industrial Technology",
+        "Advanced Manufacturing",
+        "R&D & Technology Organisations",
+      ],
+      description:
+        "The programme can be tailored to the delegation's industry profile, technology priorities and strategic interests.",
+    },
+    pathwayTitle: "⚡ New-Energy Value Chain",
+    pathway: "Solar PV → Energy Storage → Lithium & Battery Materials → EV Batteries → Smart Manufacturing → Green Manufacturing → Industrial Clusters",
+    citiesTitle: "🏭 Two Key Industrial Hubs",
     cities: [
-      { name: "Chengdu", detail: "Solar PV · Energy storage · Lithium resources · Technology R&D · Advanced manufacturing" },
-      { name: "Yibin", detail: "Power batteries · Battery materials · Smart factories · Green manufacturing · New energy industry clusters" },
+      { name: "Chengdu", detail: "Solar PV · Energy Storage · Lithium · Technology & R&D · Advanced Manufacturing" },
+      { name: "Yibin", detail: "EV Batteries · Battery Materials · Smart Factories · Green Manufacturing · Industrial Clusters" },
     ],
     areas: [
-      { title: "Solar PV & New Energy", detail: "High-efficiency PV cells · Smart production · Automation · Quality management" },
-      { title: "Energy Storage Technology", detail: "Energy storage systems · Safety technology · Thermal management · Energy management · Integrated solutions" },
-      { title: "Lithium Resources & Battery Materials", detail: "Lithium resources · Lithium chemicals · Battery-grade materials · Processing technology · Value chain" },
-      { title: "Power Battery Manufacturing", detail: "Cell production · Automation · Digital manufacturing · Quality and safety · Low-carbon production" },
+      { title: "Solar PV & Renewable Energy", detail: "High-Efficiency PV Cells · Intelligent Production · Automation · Quality Management" },
+      { title: "Energy Storage", detail: "Storage Systems · Safety · Thermal Management · Energy Management · Integrated Solutions" },
+      { title: "Lithium & Battery Materials", detail: "Lithium Resources · Lithium Chemicals · Battery-Grade Materials · Processing · Supply Chain" },
+      { title: "EV Battery Manufacturing", detail: "Battery Cells · Automation · Digital Manufacturing · Quality & Safety · Low-Carbon Production" },
     ],
     exchange: "Industry introduction → Technology showcase → Factory or facility visit → Executive exchange → Technical Q&A → Professional exchange. Discussions focus on technology, manufacturing, supply chains, automation, quality management, green manufacturing and industry development.",
     exchangeDetails: {
-      title: "🤝 Executive business exchange",
-      intro: "Each company exchange can include:",
-      flow: "Company introduction → Technology showcase → Factory visit → Executive exchange → Technical Q&A → Business cooperation discussion",
-      focusLabel: "Key discussion areas:",
-      focus: "Manufacturing efficiency · New energy transition · Smart manufacturing · Supply chains · Technology cooperation · Globalisation",
+      title: "🤝 Executive Technology Exchange",
+      intro: "Corporate engagements may combine:",
+      flow: "Industry Briefing → Technology Presentation → Factory / Facility Visit → Executive Discussion → Technical Q&A → Professional Exchange",
+      focusLabel: "Key themes include:",
+      focus: "Technology · Manufacturing · Supply Chain · Automation · Quality · Green Manufacturing · Industrial Development",
     },
-    outcomes: "Understand China's new energy ecosystem · Learn about solar PV and battery manufacturing · Examine smart and green manufacturing · Gain insight into industry and supply chains · Identify technology and business cooperation opportunities.",
-    note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to host-company availability and delegation requirements.",
+    outcomes: "Benchmark China's New-Energy Ecosystem · Understand Battery & PV Manufacturing · Explore Smart & Green Manufacturing · Gain Supply-Chain Insights · Identify Technology & Business Opportunities · Strengthen China–India Industry Exchange",
+    note: "Final host organisations, factory access, meeting participants and programme content are subject to confirmation and host-company availability.",
   },
   {
     title: "AI & Smart Manufacturing Study Mission",
-    detailTitle: "Yangtze River Delta AI & Smart Manufacturing Executive Study Mission",
+    detailTitle: "China Yangtze River Delta AI & Smart Manufacturing Executive Industry Study Programme",
     route: "Shanghai → Suzhou → Wuxi → Hangzhou",
     duration: "7 Days / 6 Nights",
-    shortFocus: "Advanced Manufacturing · Smart Manufacturing · Technical Exchange · Business Exchange",
+    shortFocus: "Advanced Manufacturing · Smart Manufacturing · Technology Exchange",
+    coreFocus: "Advanced Manufacturing · Smart Manufacturing · Technology & Innovation",
     focus: "AI & Digitalisation · Pharmaceuticals & Medical Devices · New Energy & Solar PV · Mining & Industrial Equipment · Industrial Robotics · Smart Manufacturing",
     industries: "Pharmaceuticals & Medical Devices · New Energy · Industrial Equipment · Robotics · Automation · Advanced Manufacturing",
-    intro: "Designed for executives from international companies and industry sectors, this programme provides an in-depth view of China's advanced manufacturing, smart manufacturing, technology innovation and industry ecosystem.",
-    highlights: ["Company and factory visits", "Executive and technical exchanges", "Smart manufacturing benchmarking", "Industry and supply-chain study", "International business exchange and partnership matching", "Selected cultural experiences"],
-    pathwayTitle: "Four-city industry study",
+    intro: "A curated executive study mission for Indian business and industry leaders to gain first-hand exposure to China's advanced manufacturing, smart manufacturing, technology and industrial ecosystem.",
+    highlights: ["Corporate & factory visits", "Executive and technology exchanges", "Smart manufacturing benchmarking", "Industry and supply-chain insights", "China–India business networking", "Selected cultural experiences"],
+    pathwayTitle: "🗺️ Four-City Industrial Journey",
     pathway: "Shanghai → Suzhou → Wuxi → Hangzhou, connecting international business, advanced manufacturing and innovation technology ecosystems.",
     citiesTitle: "",
     cities: [
-      { name: "Shanghai", detail: "International business · Pharmaceutical industry · Medical technology" },
-      { name: "Suzhou", detail: "New energy · Solar PV · Smart manufacturing" },
-      { name: "Wuxi", detail: "Mining equipment · Heavy industry · Advanced manufacturing" },
-      { name: "Hangzhou", detail: "Industrial robotics · Medical devices · New energy · Innovation technology" },
+      { name: "Shanghai", detail: "International Business · Pharmaceuticals · Medical Technology" },
+      { name: "Suzhou", detail: "New Energy · Photovoltaics · Smart Manufacturing" },
+      { name: "Wuxi", detail: "Mining Equipment · Heavy Industry · Advanced Manufacturing" },
+      { name: "Hangzhou", detail: "Industrial Robotics · Medical Devices · New Energy · Innovation Technology" },
     ],
     areas: [
-      { title: "Pharmaceuticals & Medical Devices", detail: "Pharmaceutical R&D · CRO/CDMO · Medical devices · Precision manufacturing" },
-      { title: "New Energy & Solar PV", detail: "Solar PV manufacturing · Smart production · Digital factories · New energy technology" },
-      { title: "Mining & Industrial Equipment", detail: "Mining machinery · Heavy equipment · Industrial electrification · Intelligent equipment" },
-      { title: "Industrial Robotics & Smart Manufacturing", detail: "Robotics · Automation · Intelligent sensing · Smart factories" },
+      { title: "🧪 Pharmaceuticals & Medical Devices", detail: "Pharmaceutical R&D · CRO/CDMO · Medical Devices · Precision Manufacturing" },
+      { title: "⚡ New Energy & Photovoltaics", detail: "PV Manufacturing · Intelligent Production · Digital Factories · New-Energy Technology" },
+      { title: "⛏️ Mining & Industrial Equipment", detail: "Mining Machinery · Heavy Equipment · Industrial Electrification · Intelligent Equipment" },
+      { title: "🤖 Industrial Robotics & Smart Manufacturing", detail: "Robotics · Automation · Intelligent Perception · Smart Factories" },
     ],
     exchange: "Company introduction → Technology showcase → Factory or R&D centre visit → Management exchange → Technical Q&A → International business matching. Discussions focus on technology cooperation, supply chains, equipment procurement, localised manufacturing, joint R&D, market expansion and investment cooperation.",
-    outcomes: "Understand China's advanced manufacturing ecosystem · Explore frontier technologies · Benchmark smart manufacturing · Connect with suppliers and partners · Identify international cooperation opportunities · Build an industry and business network.",
+    exchangeDetails: {
+      title: "🤝 Executive Business & Technology Exchange",
+      intro: "Corporate engagements may combine:",
+      flow: "Company Presentation → Technology Briefing → Factory / R&D Visit → Management Discussion → Technical Q&A → Business Exchange",
+      focusLabel: "Key discussion themes:",
+      focus: "Technology Cooperation · Supply Chain · Equipment Procurement · Localisation · Joint R&D · Market Expansion · Investment Cooperation",
+    },
+    outcomes: "Understand China's Advanced Manufacturing Ecosystem · Explore Emerging Technologies · Benchmark Smart Manufacturing · Connect with Suppliers & Partners · Identify China–India Cooperation Opportunities · Build Industry Networks",
     customization: {
       title: "Suitable industries",
       companyTypes: [
@@ -723,10 +877,27 @@ const enProgrammeContent = [
       description: "Company visits, technical exchanges and business-matching directions can be customised according to the delegation's industry background, technology priorities and strategic needs.",
     },
     closingSummary: {
-      title: "China's Advanced Manufacturing · Smart Manufacturing · Technology Innovation · Business Exchange · China-India Cooperation",
-      description: "A seven-day immersion in the Yangtze River Delta's advanced manufacturing ecosystem, connecting technology, industrial chains, supply chains and potential China-India cooperation partners.",
+      title: "Advanced Manufacturing · Smart Manufacturing · Technology Innovation · Business Exchange · International Cooperation",
+      description: "A focused 7-day journey through China's Yangtze River Delta manufacturing ecosystem, connecting technology, industry, supply chains and potential international partners.",
+      culture: {
+        title: "🌏 Business + Cultural Experience",
+        description: "Selected cultural experiences in Shanghai, Suzhou and Hangzhou provide opportunities to understand the Yangtze River Delta's commercial culture, industrial development and innovation ecosystem, while encouraging informal networking among delegation members.",
+      },
+      industryLeaders: {
+        title: "👥 Designed for Industry Leaders",
+        companyTypes: [
+          "Pharmaceutical & Medical Device Companies",
+          "New-Energy & Solar Companies",
+          "Mining & Industrial Equipment Companies",
+          "Robotics & Automation Companies",
+          "Advanced Manufacturing Companies",
+          "Industrial Technology Companies",
+          "R&D & Technology Organisations",
+        ],
+        description: "The programme can be customised according to the delegation's industry background, technology priorities and strategic objectives, including targeted company visits, technical exchanges and business-matching opportunities.",
+      },
     },
-    note: "Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to delegation requirements and host-company availability.",
+    note: "Final corporate visits, factory access, meeting participants and programme content are subject to delegation requirements and host-company confirmation.",
   },
 ];
 const enProgrammes = zhProgrammes.map((programme, index) => ({
@@ -736,6 +907,37 @@ const enProgrammes = zhProgrammes.map((programme, index) => ({
 const programmes = computed(() =>
   isEnglish.value ? enProgrammes : zhProgrammes,
 );
+/** 「预期成果」有两种呈现：结构化列表（outcomesDetails）或单段说明（outcomes）。
+ *  `programme` 在模板里是联合类型，而 outcomesDetails 只声明在部分条目上，
+ *  直接访问会报 TS2339。这里收口成唯一一处断言，模板侧保持声明式写法。 */
+type OutcomesDetails = { title: string; items: string[] };
+const outcomesDetailsOf = (programme: unknown): OutcomesDetails | undefined =>
+  (programme as { outcomesDetails?: OutcomesDetails }).outcomesDetails;
+
+/** 「Core focus / 核心重点」信息条的值。
+ *  默认与标题区副行（`shortFocus`）取同一份文案，但参考稿有时会给两者不同的措辞，
+ *  此时在该项目上单独写 `coreFocus` 覆盖即可（不影响副行）。 */
+const coreFocusOf = (programme: unknown): string => {
+  const p = programme as { coreFocus?: string; shortFocus?: string };
+  return p.coreFocus ?? p.shortFocus ?? "";
+};
+
+/** 收尾区的「适合产业领域」子块（与页面中部的 `customization` 同版式，只是位置不同）。
+ *  同上：`closingSummary` 在模板里是联合类型，直接访问只声明在部分条目上的
+ *  `industryLeaders` 会报 TS2339，这里收口成唯一一处断言。 */
+type IndustryLeaders = {
+  title: string;
+  companyTypes: string[];
+  description: string;
+};
+const industryLeadersOf = (
+  programme: unknown,
+): IndustryLeaders | undefined => {
+  const p = programme as {
+    closingSummary?: { industryLeaders?: IndustryLeaders };
+  };
+  return p.closingSummary?.industryLeaders;
+};
 </script>
 
 <style scoped>
@@ -818,33 +1020,69 @@ const programmes = computed(() =>
   font-size: 16px;
   line-height: 1.85;
 }
+/* 「项目概览」右侧能力清单：纵向 5 行卡片。
+   序号 01–05 呼应左上角的「01 / PROGRAMME OVERVIEW」编号。
+   刻意不写 white-space: nowrap —— 标签允许换行，窄屏（800–1100px 双栏）才不会顶出容器。 */
 .industry-pillars {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid #d9e0e2;
-  border-left: 1px solid #d9e0e2;
+  gap: 9px;
   align-self: center;
 }
 .industry-pillar {
-  min-height: 142px;
-  padding: 23px;
-  display: grid;
-  align-content: center;
-  gap: 12px;
-  border-right: 1px solid #d9e0e2;
-  border-bottom: 1px solid #d9e0e2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 11px 17px;
+  border: 1px solid #ece5dd;
+  border-radius: 14px;
   background: #fff;
   color: var(--industry-navy);
   font-weight: 700;
-  white-space: nowrap;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
 }
 .industry-pillar:hover {
-  background: #fffaf6;
+  border-color: rgba(237, 109, 50, 0.42);
+  box-shadow: 0 12px 24px rgba(21, 54, 87, 0.09);
   transform: translateY(-2px);
 }
-.industry-pillar svg {
-  width: 23px;
+.industry-pillar__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(237, 109, 50, 0.1);
+  color: var(--industry-orange);
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+.industry-pillar__icon svg {
+  width: 21px;
+  height: 21px;
+}
+.industry-pillar:hover .industry-pillar__icon {
+  background: var(--industry-orange);
+  color: #fff;
+}
+.industry-pillar__label {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+}
+.industry-pillar__index {
+  flex: none;
+  color: rgba(237, 109, 50, 0.38);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transition: color 0.22s ease;
+}
+.industry-pillar:hover .industry-pillar__index {
   color: var(--industry-orange);
 }
 .programme-overview {
@@ -1050,6 +1288,10 @@ const programmes = computed(() =>
   margin: 0 0 10px;
   color: #fff;
   font-size: clamp(20px, 2.6vw, 30px);
+  /* 标题可能很长（如「China Sichuan New Energy Executive Industrial Study &
+     Technology Exchange Programme」1242px > 可用宽度），nowrap 会撑出横向滚动条。
+     放开换行：短标题仍单行，长标题自动折行——与移动端既有行为一致。 */
+  white-space: normal;
 }
 .programme-header span {
   color: #c8d8d9;
@@ -1152,6 +1394,21 @@ const programmes = computed(() =>
   color: #fff;
   font-weight: 800;
 }
+/* 「预期成果」列表：与左侧「高管交流」的加粗白字行保持同一强调语气。
+   刻意不加 ::before 圆点 —— 参考稿里这组是纯加粗行，加圆点会和上方
+   「项目亮点」的橙点列表撞风格。 */
+.outcome-list {
+  display: grid;
+  gap: 9px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.outcome-list li {
+  color: #fff;
+  font-weight: 800;
+  line-height: 1.55;
+}
 .check-list {
   display: grid;
   gap: 11px;
@@ -1226,6 +1483,16 @@ const programmes = computed(() =>
   color: #d6e3e1;
   line-height: 1.85;
 }
+/* 「商务 + 文化体验」副标题：跟 closing-summary 的同名标题保持同一套小号字重，
+   需要压过 .programme-detail h3（Playfair 27px），故选择器多带一层 .programme-detail */
+.programme-detail .programme-customization__culture-title {
+  margin: 34px 0 12px;
+  font-family: inherit;
+  font-size: clamp(13px, 1.35vw, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: normal;
+}
 .focus-section {
   margin: 55px 0;
   padding: 41px 0;
@@ -1270,8 +1537,14 @@ const programmes = computed(() =>
   line-height: 1.35;
   white-space: nowrap;
 }
-.programme-closing-summary__culture-title {
+.programme-closing-summary__culture-title,
+.programme-closing-summary__industry-title {
   margin-top: 32px !important;
+}
+/* 收尾区「适合产业领域」子块：标题下接胶囊标签（复用 customization 的标签样式），
+   故描述段需要自己补上边距（`.programme-closing-summary p` 把 margin 归零了）。 */
+.programme-closing-summary__industry-desc {
+  margin-top: 20px !important;
 }
 .programme-closing-summary p {
   max-width: 980px;

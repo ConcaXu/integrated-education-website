@@ -102,7 +102,6 @@
               </div>
               <router-link class="why-layout__action" to="/contact">
                 {{ tx('与我们合作', 'Partner with us') }}
-                <span aria-hidden="true">→</span>
               </router-link>
             </div>
             <div class="why-layout__visual">
@@ -130,9 +129,13 @@
               </template>
             </div>
           </div>
-          <div v-else class="portal-heading">
+          <div
+            v-else
+            class="portal-heading"
+            :class="{ 'purpose-heading': key === '关于 APIMTC' && section.title === '我们的宗旨' }"
+          >
             <p v-if="section.kicker" class="section-kicker">
-              {{ section.kicker }}
+              {{ tx(section.kicker, section.kickerEn || section.kicker) }}
             </p>
             <template v-if="key === '首页' && section.title === 'APIMTC 4E 模型'">
               <h2 class="four-e-heading">{{ lang === 'en' ? section.titleEn : section.title }}</h2>
@@ -272,6 +275,7 @@
                 class="portal-card"
                 :class="{
                   'portal-card--image': card.image,
+                  'portal-card--photo-icon': card.iconImage,
                   'portal-card--platform': card.platform,
                   'portal-card--contact-platform':
                     key === '联系我们' && section.title === '与我们联系',
@@ -279,8 +283,16 @@
               >
               <img v-if="card.image" :src="card.image" :alt="card.title" />
               <div class="portal-card__body">
+                <img
+                  v-if="card.iconImage"
+                  class="portal-card__icon portal-card__icon--photo"
+                  :src="card.iconImage"
+                  :alt="tx(card.title, card.titleEn || card.title)"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <i
-                  v-if="card.icon"
+                  v-else-if="card.icon"
                   class="portal-card__icon"
                   :class="getCardIcon(card.title)"
                   aria-hidden="true"
@@ -362,7 +374,6 @@
                   rel="noopener noreferrer"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </a>
                 <router-link
                   v-if="card.action === '探索新加坡'"
@@ -373,7 +384,6 @@
                   to="/singapore-future-learning-series"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </router-link>
                 <router-link
                   v-else-if="card.action === '小学课程'"
@@ -381,7 +391,6 @@
                   to="/singapore-explorers"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </router-link>
                 <router-link
                   v-else-if="card.action === '初中课程'"
@@ -389,7 +398,6 @@
                   to="/singapore-explorers-junior-high"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </router-link>
                 <router-link
                   v-else-if="card.action === '高中课程'"
@@ -397,7 +405,6 @@
                   to="/singapore-future-leaders-senior-high"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </router-link>
                 <button
                   v-else-if="card.action"
@@ -410,12 +417,12 @@
                   :aria-label="`${tx(card.action, card.actionEn || card.action)} (${tx('链接待定', 'Link to be confirmed')})`"
                 >
                   {{ tx(card.action, card.actionEn || card.action) }}
-                  <span aria-hidden="true">→</span>
                 </button>
               </div>
               <i
                 v-if="
                   card.icon &&
+                  !card.iconImage &&
                   !card.platform &&
                   !(key === '首页' && ['我们的业务', '双向国际流动'].includes(section.title))
                 "
@@ -503,11 +510,18 @@ import cityXiAn from "@/assets/city-images/西安.png";
 import cityChengdu from "@/assets/city-images/成都.png";
 import cityGuangzhou from "@/assets/city-images/广州.png";
 import modelBackground from "@/assets/images/细长横图.png";
+// 「您想探索什么？」卡片用图：从已有图库照片裁出的方形缩略图（见 explore-images/）
+import exploreEducation from "@/assets/explore-images/教育流动.webp";
+import exploreMice from "@/assets/explore-images/MICE 与商务.webp";
+import explorePartnership from "@/assets/explore-images/国际合作.webp";
+import exploreChina from "@/assets/explore-images/中国项目.webp";
 type Card = {
   title: string;
   text: string;
   icon?: string;
   image?: string;
+  /** 用图片取代左侧图标位（与 image 不同：不改变卡片结构，仅替换图标本身） */
+  iconImage?: string;
   platform?: boolean;
   action?: string;
   actionEn?: string;
@@ -532,7 +546,9 @@ type Feature = {
 type Section = {
   title: string;
   titleEn: string;
+  /** 大标题上方的小字引言 */
   kicker?: string;
+  kickerEn?: string;
   intro?: string;
   introEn?: string;
   /** "stacked"：intro 里的 \n 逐行断行展示，而不是被压成一行 */
@@ -830,8 +846,7 @@ const pages: Record<string, Page> = {
         feature: {
           kicker: "我们的使命",
           kickerEn: "Our Mission",
-          title: "连接，创造更多可能",
-          titleEn: "Connection creates opportunity.",
+          // 「连接，创造更多可能」已上移至「我们的宗旨」板块，作为其上方的小字引言
           text: "让人才、机构与产业相互连接，创造真正有价值的国际体验。",
           textEn:
             "We bring people, institutions and industry together to create meaningful international experiences.",
@@ -841,6 +856,9 @@ const pages: Record<string, Page> = {
       {
         title: "我们的宗旨",
         titleEn: "Our Purpose",
+        // 小字引言置于大标题之上（原为「我们相信」图文卡片的标题）
+        kicker: "连接，创造更多可能",
+        kickerEn: "Connection creates opportunity.",
         intro:
           "连接人才、城市、教育、产业与机会。\n新加坡是我们的根基。\n成都是我们的中国门户。\n世界是我们的合作网络。",
         introEn:
@@ -876,9 +894,9 @@ const pages: Record<string, Page> = {
             title: "新加坡未来学习系列",
             titleEn: "Singapore Future Learning Series",
             text:
-              "中国及全球 → 新加坡\n探索新加坡的教育、科技、产业、文化与未来发展。\n生命与健康 · 太空与航空 · 可持续发展 · 人工智能 · 新兴产业\n探索新加坡",
+              "中国及全球 → 新加坡\n探索新加坡的教育、科技、产业、文化与未来发展。",
             textEn:
-              "China & the world → Singapore\nDiscover Singapore through education, technology, industry, culture and future-focused experiences.\nLife & Health · Space & Aviation · Sustainability · AI · Emerging Industries\nExplore Singapore",
+              "China & the world → Singapore\nDiscover Singapore through education, technology, industry, culture and future-focused experiences.",
             image: mobility01,
             action: "探索新加坡",
             actionEn: "Explore Singapore",
@@ -887,9 +905,9 @@ const pages: Record<string, Page> = {
             title: "中国课堂之外",
             titleEn: "China beyond the classroom",
             text:
-              "新加坡 → 中国\n走进中国的城市、大学、企业、科技与文化，体验真实的中国。\n人工智能 · 创新创业 · 智慧城市 · 可持续发展 · 中新合作\n探索中国",
+              "新加坡 → 中国\n走进中国的城市、大学、企业、科技与文化，体验真实的中国。",
             textEn:
-              "Singapore → China\nExperience China's cities, universities, technology, industries and culture beyond the classroom.\nAI · Innovation · Smart Cities · Sustainability · China–Singapore Cooperation\nExplore China",
+              "Singapore → China\nExperience China's cities, universities, technology, industries and culture beyond the classroom.",
             image: mobility02,
             action: "探索中国",
             actionEn: "Explore China",
@@ -1462,6 +1480,7 @@ const pages: Record<string, Page> = {
             text: "国际学生项目、学校交流及沉浸式学习。",
             textEn: "Student programmes, school exchange and immersive learning.",
             icon: "◇",
+            iconImage: exploreEducation,
           },
           {
             title: "MICE 与商务",
@@ -1469,6 +1488,7 @@ const pages: Record<string, Page> = {
             text: "会议、活动、商务代表团及产业参访。",
             textEn: "Meetings, events, business delegations and industry visits.",
             icon: "▣",
+            iconImage: exploreMice,
           },
           {
             title: "国际合作",
@@ -1477,6 +1497,7 @@ const pages: Record<string, Page> = {
             textEn:
               "Collaboration with schools, institutions, companies and organisations.",
             icon: "♧",
+            iconImage: explorePartnership,
           },
           {
             title: "中国项目",
@@ -1484,6 +1505,7 @@ const pages: Record<string, Page> = {
             text: "通过成都平台连接中国教育与产业资源。",
             textEn: "Connect with China through our Chengdu platform.",
             icon: "▤",
+            iconImage: exploreChina,
           },
         ],
         columns: 4,
@@ -1721,6 +1743,18 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-weight: 800;
   letter-spacing: 0.16em;
   line-height: 1.4;
+}
+/* 「我们的宗旨」：小字引言 + 大字标题。
+   引言「连接，创造更多可能」原为「我们相信」图文卡片的标题（20px），
+   上移后按 kicker 处理并收小；「我们的宗旨」较默认标题再放大一档。
+   中文不宜用西文那么大的字距，故 0.16em → 0.08em。 */
+.portal-heading.purpose-heading .section-kicker {
+  margin-bottom: 8px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+.portal-heading.purpose-heading h2 {
+  font-size: clamp(30px, 3.6vw, 44px);
 }
 .portal-hero h1 {
   margin: 0 0 16px;
@@ -2381,10 +2415,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
     transform 0.2s ease;
 }
-.card-action span {
-  font-size: 16px;
-  line-height: 1;
-}
 .card-action:hover {
   border-color: var(--blue-500);
   background: var(--blue-500);
@@ -2729,6 +2759,15 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   transform: translateY(-42%);
   pointer-events: none;
 }
+/* 「图标换图片」：图片落在原图标的位置上（卡片结构、网格与文字位置不变），
+   并隐去纯装饰性的水印字形图标，避免照片与字形图标混用。 */
+.portal-card--photo-icon::after {
+  content: none !important;
+}
+/* 去掉水印图标后，右侧不再需要预留 82px，改为左右等距，卡片更平衡 */
+.portal-card:not(.portal-card--image).portal-card--photo-icon .portal-card__body {
+  padding: 18px 30px;
+}
 /* 用 nth-of-type 而非 nth-child：卡片是 <article>，层级箭头是 <div>，
    nth-of-type 只数同为 article 的兄弟节点，因此插入箭头后各卡配色依旧正确 */
 .portal-card:not(.portal-card--image):nth-of-type(2) .portal-card__icon {
@@ -2738,6 +2777,25 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 .portal-card:not(.portal-card--image):nth-of-type(3) .portal-card__icon {
   background: linear-gradient(145deg, #32c6c8, #0aa4ad);
   box-shadow: 0 7px 14px rgba(10, 164, 173, 0.23);
+}
+/* 照片图标规则必须排在上面 :nth-of-type(n) 之后（两者选择器权重相同），
+   否则卡片 2/3 会残留紫/青色的图标投影；统一为蓝色调，
+   原「按卡片区分蓝/紫/青」的配色随图标一起退役。 */
+.portal-card:not(.portal-card--image).portal-card--photo-icon .portal-card__icon--photo {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 14px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 16px;
+  background: #e6f1fb;
+  box-shadow:
+    0 0 0 1px rgba(126, 188, 234, 0.45),
+    0 6px 16px rgba(39, 144, 229, 0.22);
+}
+.portal-card:hover .portal-card__icon--photo {
+  transform: translateY(-2px);
 }
 .portal-card:not(.portal-card--image) h3 {
   margin: 0 0 5px;
@@ -3185,11 +3243,6 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
   font-size: 14px;
   font-weight: 800;
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-.why-layout__action span {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
 }
 .why-layout__action:hover {
   background: #0b7566;

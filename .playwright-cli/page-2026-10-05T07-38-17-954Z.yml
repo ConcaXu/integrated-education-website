@@ -1,0 +1,383 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "APIMTC" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "About APIMTC" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "Education Mobility" [ref=e11] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE & Business" [ref=e12] [cursor=pointer]:
+          - /url: /mice-business
+        - link "Partnerships" [ref=e13] [cursor=pointer]:
+          - /url: /partnerships
+        - link "China Gateway" [ref=e14] [cursor=pointer]:
+          - /url: /china-gateway
+        - link "Contact Us" [ref=e15] [cursor=pointer]:
+          - /url: /contact
+        - button "中" [ref=e16] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: APIMTC / EXECUTIVE STUDY MISSIONS
+        - heading "China Industry Study Programmes" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Executive industry study · Technology benchmarking · Business exchange · Cultural experience
+      - main [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - text: 01 / PROGRAMME OVERVIEW
+            - heading "See China's industry in motion." [level=2] [ref=e27]
+            - paragraph [ref=e28]: A curated series of 7-day / 6-night executive study missions for international business leaders, manufacturing and technology ecosystems.
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - generic [ref=e36]: Corporate & factory visits
+              - generic [aria-hidden] [ref=e37]: "01"
+            - generic [ref=e38]:
+              - generic [ref=e43]: Executive & technical exchange
+              - generic [aria-hidden] [ref=e44]: "02"
+            - generic [ref=e45]:
+              - generic [ref=e49]: Industry benchmarking
+              - generic [aria-hidden] [ref=e50]: "03"
+            - generic [ref=e51]:
+              - generic [ref=e55]: Business networking
+              - generic [aria-hidden] [ref=e56]: "04"
+            - generic [ref=e57]:
+              - generic [ref=e61]: Selected cultural experiences
+              - generic [aria-hidden] [ref=e62]: "05"
+        - region "Programme experience" [ref=e63]:
+          - figure "Executive industry study" [ref=e64]:
+            - img "Executive industry study" [ref=e65]
+          - figure "Technology benchmarking" [ref=e67]:
+            - img "Technology benchmarking" [ref=e68]
+          - figure "Business exchange" [ref=e70]:
+            - img "Business exchange" [ref=e71]
+          - figure "Cultural experience" [ref=e73]:
+            - img "Cultural experience" [ref=e74]
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - text: 02 / SELECT A JOURNEY
+              - heading "Three executive industry studies" [level=2] [ref=e80]
+            - paragraph [ref=e81]: Select a programme to move directly to its full study brief.
+          - table [ref=e83]:
+            - rowgroup [ref=e84]:
+              - row [ref=e85]:
+                - columnheader "Programme" [ref=e86]
+                - columnheader "Route" [ref=e87]
+                - columnheader "Study focus" [ref=e88]
+                - columnheader "Suitable industries" [ref=e89]
+                - columnheader "View details" [ref=e90]
+            - rowgroup [ref=e92]:
+              - row [ref=e93] [cursor=pointer]:
+                - rowheader [ref=e94]:
+                  - button "View details for Automotive & Advanced Manufacturing Study Mission" [ref=e95]:
+                    - generic [ref=e98]: Automotive & Advanced Manufacturing Study Mission
+                - cell "Chengdu → Chongqing → Beijing" [ref=e99]
+                - cell "Automotive Manufacturing · New Energy Vehicles · Smart Factories · Automotive Components · Batteries & Power Systems · Automotive R&D · Intelligent Vehicles" [ref=e100]
+                - cell "Automotive OEMs · New Energy Vehicles · Components · Batteries & Power Systems · Tier 1 / Tier 2 Suppliers · Automotive Technology" [ref=e101]
+                - cell [ref=e102]:
+                  - button "View details for Automotive & Advanced Manufacturing Study Mission" [ref=e103]
+              - row [ref=e106] [cursor=pointer]:
+                - rowheader [ref=e107]:
+                  - button "View details for New Energy & Energy Technology Study Mission" [ref=e108]:
+                    - generic [ref=e112]: New Energy & Energy Technology Study Mission
+                - cell "Chengdu → Yibin → Chengdu" [ref=e113]
+                - cell "Solar PV · Energy Storage · Lithium · Battery Materials · EV Batteries · Smart Manufacturing · Green Manufacturing · Industrial Clusters" [ref=e114]
+                - cell "Renewable Energy · Solar PV · Batteries & Energy Storage · New Energy Vehicles · Lithium & Battery Materials · Advanced Manufacturing" [ref=e115]
+                - cell [ref=e116]:
+                  - button "View details for New Energy & Energy Technology Study Mission" [ref=e117]
+              - row [ref=e120] [cursor=pointer]:
+                - rowheader [ref=e121]:
+                  - button "View details for AI & Smart Manufacturing Study Mission" [ref=e122]:
+                    - generic [ref=e126]: AI & Smart Manufacturing Study Mission
+                - cell "Shanghai → Suzhou → Wuxi → Hangzhou" [ref=e127]
+                - cell "AI & Digitalisation · Pharmaceuticals & Medical Devices · New Energy & Solar PV · Mining & Industrial Equipment · Industrial Robotics · Smart Manufacturing" [ref=e128]
+                - cell "Pharmaceuticals & Medical Devices · New Energy · Industrial Equipment · Robotics · Automation · Advanced Manufacturing" [ref=e129]
+                - cell [ref=e130]:
+                  - button "View details for AI & Smart Manufacturing Study Mission" [ref=e131]
+        - article [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - generic [ref=e137]: 01 / 03
+              - generic [ref=e138]: CHINA INDUSTRY STUDY PROGRAMMES
+            - generic [ref=e142]:
+              - paragraph [ref=e143]: AUTOMOTIVE & ADVANCED MANUFACTURING
+              - heading "China Automotive Industry Executive Business Study Programme" [level=2] [ref=e144]
+              - text: 7 Days / 6 Nights · Automotive Manufacturing · New Energy Vehicles · Smart Manufacturing · Automotive Technology
+            - figure [ref=e145]:
+              - img "China Automotive Industry Executive Business Study Programme" [ref=e146]
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - generic [ref=e149]: Route
+                - strong [ref=e150]: Chengdu → Chongqing → Beijing
+              - generic [ref=e151]:
+                - generic [ref=e152]: Duration
+                - strong [ref=e153]: 7 Days / 6 Nights
+              - generic [ref=e154]:
+                - generic [ref=e155]: Core focus
+                - strong [ref=e156]: Automotive Manufacturing · New Energy Vehicles · Smart Manufacturing · Automotive Technology
+            - paragraph [ref=e157]: Designed for executives from the international automotive sector, this programme provides an in-depth view of China's automotive manufacturing, new energy vehicles, smart factories and automotive technology ecosystem.
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - heading "Programme highlights" [level=3] [ref=e160]
+                - list [ref=e161]:
+                  - listitem [ref=e162]: Automotive company and factory visits
+                  - listitem [ref=e163]: Executive and technical exchanges
+                  - listitem [ref=e164]: Automotive manufacturing benchmarking
+                  - listitem [ref=e165]: New energy vehicle and smart factory experiences
+                  - listitem [ref=e166]: International business exchange and partnership matching
+                  - listitem [ref=e167]: Selected cultural experiences
+              - generic [ref=e168]:
+                - heading "Seven-day industry learning pathway" [level=3] [ref=e169]
+                - paragraph [ref=e170]: Vehicle Manufacturing → New Energy Vehicles Transformation → Smart Factories → Supply Chain → Automotive R&D → Intelligent Vehicles → Globalisation
+                - generic [ref=e171]:
+                  - generic [ref=e172]:
+                    - strong [ref=e173]: Chengdu
+                    - generic [ref=e174]: Vehicle manufacturing · New energy vehicles · Components · Smart manufacturing · Supply-chain ecosystem
+                  - generic [ref=e175]:
+                    - strong [ref=e176]: Chongqing
+                    - generic [ref=e177]: Smart factories · Industry 4.0 · New energy vehicles · Automotive R&D · Intelligent driving
+                  - generic [ref=e178]:
+                    - strong [ref=e179]: Beijing
+                    - generic [ref=e180]: Intelligent vehicles · AI + automotive · Automotive technology · Software and electronics · Innovation ecosystem
+            - generic [ref=e181]:
+              - heading "Tailored for Automotive Leaders" [level=3] [ref=e182]
+              - generic [ref=e183]:
+                - generic [ref=e184]: Passenger Vehicle OEMs
+                - generic [ref=e185]: Commercial Vehicle Manufacturers
+                - generic [ref=e186]: EV Companies
+                - generic [ref=e187]: Battery & Powertrain Companies
+                - generic [ref=e188]: Component Manufacturers
+                - generic [ref=e189]: Tier 1 / Tier 2 Suppliers
+                - generic [ref=e190]: Automotive Technology Companies
+              - paragraph [ref=e191]: Corporate visits can be customised according to the delegation's business profile, technology priorities and strategic interests.
+              - heading "🌏 Business + Cultural Experience" [level=3] [ref=e192]
+              - paragraph [ref=e193]: Selected cultural experiences in Chengdu, Chongqing and Beijing provide opportunities to experience China's regional culture and urban development, while creating a more relaxed setting for delegation networking, relationship building and professional exchange.
+            - generic [ref=e194]:
+              - heading "Key Study Areas" [level=3] [ref=e195]
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - strong [ref=e198]: New Energy Vehicles
+                  - paragraph [ref=e199]: EV platforms · Power batteries · E-drive systems · Vehicle electronics · New energy vehicle manufacturing
+                - generic [ref=e200]:
+                  - strong [ref=e201]: Smart Manufacturing
+                  - paragraph [ref=e202]: Industrial robots · Digital factories · Automation · AI quality inspection · Smart logistics
+                - generic [ref=e203]:
+                  - strong [ref=e204]: Automotive Supply Chain
+                  - paragraph [ref=e205]: Tier 1 / Tier 2 · Localisation · Strategic sourcing · Component manufacturing · Supply-chain integration
+                - generic [ref=e206]:
+                  - strong [ref=e207]: Automotive Technology
+                  - paragraph [ref=e208]: Intelligent driving · Automotive software · Smart cockpits · AI · Automotive electronics
+            - generic [ref=e209]:
+              - generic [ref=e210]:
+                - heading "🤝 Executive Business Exchange" [level=3] [ref=e211]
+                - paragraph [ref=e212]: "Corporate engagements may combine:"
+                - paragraph [ref=e213]:
+                  - strong [ref=e214]: Company Presentation → Technology Briefing → Factory Visit → Executive Discussion → Technical Q&A → Business Exchange
+                - paragraph [ref=e215]: "Key discussion themes include:"
+                - paragraph [ref=e216]:
+                  - strong [ref=e217]: Manufacturing Excellence · NEV Transformation · Smart Manufacturing · Supply Chain · Technology Cooperation · Globalisation
+              - generic [ref=e218]:
+                - heading "📈 Expected Outcomes" [level=3] [ref=e219]
+                - list [ref=e220]:
+                  - listitem [ref=e221]: Benchmark China's Automotive Ecosystem
+                  - listitem [ref=e222]: Understand NEV & Smart Manufacturing Transformation
+                  - listitem [ref=e223]: Explore Advanced Automotive Technologies
+                  - listitem [ref=e224]: Identify Suppliers & Technology Partners
+                  - listitem [ref=e225]: Discover China–India Automotive Cooperation Opportunities
+            - generic [ref=e226]:
+              - heading "China Automotive Manufacturing · New Energy Vehicles Transformation · Smart Factory · Automotive Technology · Business Exchange" [level=3] [ref=e227]
+              - paragraph [ref=e228]: A focused 7-day executive journey into China's automotive transformation—connecting manufacturing, technology, supply chains and potential business partners.
+            - paragraph [ref=e229]: Final corporate visits, factory access, meeting participants and programme content are subject to host-company availability and confirmation.
+        - article [ref=e230]:
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - generic [ref=e233]: 02 / 03
+              - generic [ref=e234]: CHINA INDUSTRY STUDY PROGRAMMES
+            - generic [ref=e239]:
+              - paragraph [ref=e240]: NEW ENERGY & ENERGY TECHNOLOGY
+              - heading "China Sichuan New Energy Executive Industrial Study & Technology Exchange Programme" [level=2] [ref=e241]
+              - text: 7 Days / 6 Nights · Renewable Energy · Lithium Battery · Advanced Manufacturing · Technology Exchange
+            - figure [ref=e242]:
+              - img "China Sichuan New Energy Executive Industrial Study & Technology Exchange Programme" [ref=e243]
+            - generic [ref=e244]:
+              - generic [ref=e245]:
+                - generic [ref=e246]: Route
+                - strong [ref=e247]: Chengdu → Yibin → Chengdu
+              - generic [ref=e248]:
+                - generic [ref=e249]: Duration
+                - strong [ref=e250]: 7 Days / 6 Nights
+              - generic [ref=e251]:
+                - generic [ref=e252]: Core focus
+                - strong [ref=e253]: Renewable Energy · Lithium Battery · Advanced Manufacturing · Technology Exchange
+            - paragraph [ref=e254]: A curated executive study mission for Indian energy and industrial leaders to gain first-hand exposure to China's integrated renewable energy, lithium battery and advanced manufacturing ecosystem.
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - heading "Programme highlights" [level=3] [ref=e257]
+                - list [ref=e258]:
+                  - listitem [ref=e259]: Renewable energy & solar PV industry visits
+                  - listitem [ref=e260]: Lithium, battery materials & EV battery manufacturing
+                  - listitem [ref=e261]: Smart factory & advanced manufacturing benchmarking
+                  - listitem [ref=e262]: Technical and executive management exchanges
+                  - listitem [ref=e263]: Green manufacturing & industrial-cluster insights
+                  - listitem [ref=e264]: Professional networking
+                  - listitem [ref=e265]: Selected cultural and ecological experiences
+              - generic [ref=e266]:
+                - heading "⚡ New-Energy Value Chain" [level=3] [ref=e267]
+                - paragraph [ref=e268]: Solar PV → Energy Storage → Lithium & Battery Materials → EV Batteries → Smart Manufacturing → Green Manufacturing → Industrial Clusters
+                - heading "🏭 Two Key Industrial Hubs" [level=3] [ref=e269]
+                - generic [ref=e270]:
+                  - generic [ref=e271]:
+                    - strong [ref=e272]: Chengdu
+                    - generic [ref=e273]: Solar PV · Energy Storage · Lithium · Technology & R&D · Advanced Manufacturing
+                  - generic [ref=e274]:
+                    - strong [ref=e275]: Yibin
+                    - generic [ref=e276]: EV Batteries · Battery Materials · Smart Factories · Green Manufacturing · Industrial Clusters
+            - generic [ref=e277]:
+              - heading "Key Study Areas" [level=3] [ref=e278]
+              - generic [ref=e279]:
+                - generic [ref=e280]:
+                  - strong [ref=e281]: Solar PV & Renewable Energy
+                  - paragraph [ref=e282]: High-Efficiency PV Cells · Intelligent Production · Automation · Quality Management
+                - generic [ref=e283]:
+                  - strong [ref=e284]: Energy Storage
+                  - paragraph [ref=e285]: Storage Systems · Safety · Thermal Management · Energy Management · Integrated Solutions
+                - generic [ref=e286]:
+                  - strong [ref=e287]: Lithium & Battery Materials
+                  - paragraph [ref=e288]: Lithium Resources · Lithium Chemicals · Battery-Grade Materials · Processing · Supply Chain
+                - generic [ref=e289]:
+                  - strong [ref=e290]: EV Battery Manufacturing
+                  - paragraph [ref=e291]: Battery Cells · Automation · Digital Manufacturing · Quality & Safety · Low-Carbon Production
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - heading "🤝 Executive Technology Exchange" [level=3] [ref=e294]
+                - paragraph [ref=e295]: "Corporate engagements may combine:"
+                - paragraph [ref=e296]:
+                  - strong [ref=e297]: Industry Briefing → Technology Presentation → Factory / Facility Visit → Executive Discussion → Technical Q&A → Professional Exchange
+                - paragraph [ref=e298]: "Key themes include:"
+                - paragraph [ref=e299]:
+                  - strong [ref=e300]: Technology · Manufacturing · Supply Chain · Automation · Quality · Green Manufacturing · Industrial Development
+              - generic [ref=e301]:
+                - heading "Expected outcomes" [level=3] [ref=e302]
+                - paragraph [ref=e303]: Understand China's new energy ecosystem · Learn about solar PV and battery manufacturing · Examine smart and green manufacturing · Gain insight into industry and supply chains · Identify technology and business cooperation opportunities.
+            - generic [ref=e304]:
+              - heading "🌏 Business + Cultural Experience" [level=3] [ref=e305]
+              - paragraph [ref=e306]: Selected cultural and ecological experiences in Chengdu and Yibin provide opportunities to experience Sichuan's regional culture, industrial development and green transformation, while creating a more relaxed setting for delegation networking, relationship building and professional exchange.
+              - heading "China's New Energy · Battery Technology · Smart Manufacturing · Industry Benchmarking · Technical Exchange" [level=3] [ref=e307]
+              - paragraph [ref=e308]: A seven-day immersion in Sichuan's new-energy heartland, connecting advanced technology, scaled manufacturing, industrial clusters and potential international collaboration opportunities.
+            - paragraph [ref=e309]: Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to host-company availability and delegation requirements.
+        - article [ref=e310]:
+          - generic [ref=e311]:
+            - generic [ref=e312]:
+              - generic [ref=e313]: 03 / 03
+              - generic [ref=e314]: CHINA INDUSTRY STUDY PROGRAMMES
+            - generic [ref=e319]:
+              - paragraph [ref=e320]: AI & SMART MANUFACTURING
+              - heading "Yangtze River Delta AI & Smart Manufacturing Executive Study Mission" [level=2] [ref=e321]
+              - text: 7 Days / 6 Nights · Advanced Manufacturing · Smart Manufacturing · Technical Exchange · Business Exchange
+            - figure [ref=e322]:
+              - img "Yangtze River Delta AI & Smart Manufacturing Executive Study Mission" [ref=e323]
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - generic [ref=e326]: Route
+                - strong [ref=e327]: Shanghai → Suzhou → Wuxi → Hangzhou
+              - generic [ref=e328]:
+                - generic [ref=e329]: Duration
+                - strong [ref=e330]: 7 Days / 6 Nights
+              - generic [ref=e331]:
+                - generic [ref=e332]: Core focus
+                - strong [ref=e333]: Advanced Manufacturing · Smart Manufacturing · Technical Exchange · Business Exchange
+            - paragraph [ref=e334]: Designed for executives from international companies and industry sectors, this programme provides an in-depth view of China's advanced manufacturing, smart manufacturing, technology innovation and industry ecosystem.
+            - generic [ref=e335]:
+              - generic [ref=e336]:
+                - heading "Programme highlights" [level=3] [ref=e337]
+                - list [ref=e338]:
+                  - listitem [ref=e339]: Company and factory visits
+                  - listitem [ref=e340]: Executive and technical exchanges
+                  - listitem [ref=e341]: Smart manufacturing benchmarking
+                  - listitem [ref=e342]: Industry and supply-chain study
+                  - listitem [ref=e343]: International business exchange and partnership matching
+                  - listitem [ref=e344]: Selected cultural experiences
+              - generic [ref=e345]:
+                - heading "Four-city industry study" [level=3] [ref=e346]
+                - paragraph [ref=e347]: Shanghai → Suzhou → Wuxi → Hangzhou, connecting international business, advanced manufacturing and innovation technology ecosystems.
+                - generic [ref=e348]:
+                  - generic [ref=e349]:
+                    - strong [ref=e350]: Shanghai
+                    - generic [ref=e351]: International business · Pharmaceutical industry · Medical technology
+                  - generic [ref=e352]:
+                    - strong [ref=e353]: Suzhou
+                    - generic [ref=e354]: New energy · Solar PV · Smart manufacturing
+                  - generic [ref=e355]:
+                    - strong [ref=e356]: Wuxi
+                    - generic [ref=e357]: Mining equipment · Heavy industry · Advanced manufacturing
+                  - generic [ref=e358]:
+                    - strong [ref=e359]: Hangzhou
+                    - generic [ref=e360]: Industrial robotics · Medical devices · New energy · Innovation technology
+            - generic [ref=e361]:
+              - heading "Suitable industries" [level=3] [ref=e362]
+              - generic [ref=e363]:
+                - generic [ref=e364]: Pharmaceuticals & Medical Devices
+                - generic [ref=e365]: New Energy & Solar PV
+                - generic [ref=e366]: Mining & Industrial Equipment
+                - generic [ref=e367]: Industrial Robotics
+                - generic [ref=e368]: Smart Manufacturing
+                - generic [ref=e369]: Automation
+                - generic [ref=e370]: Industrial Technology
+                - generic [ref=e371]: Advanced Manufacturing
+                - generic [ref=e372]: Research & Technical Institutions
+              - paragraph [ref=e373]: Company visits, technical exchanges and business-matching directions can be customised according to the delegation's industry background, technology priorities and strategic needs.
+            - generic [ref=e374]:
+              - heading "Key Study Areas" [level=3] [ref=e375]
+              - generic [ref=e376]:
+                - generic [ref=e377]:
+                  - strong [ref=e378]: Pharmaceuticals & Medical Devices
+                  - paragraph [ref=e379]: Pharmaceutical R&D · CRO/CDMO · Medical devices · Precision manufacturing
+                - generic [ref=e380]:
+                  - strong [ref=e381]: New Energy & Solar PV
+                  - paragraph [ref=e382]: Solar PV manufacturing · Smart production · Digital factories · New energy technology
+                - generic [ref=e383]:
+                  - strong [ref=e384]: Mining & Industrial Equipment
+                  - paragraph [ref=e385]: Mining machinery · Heavy equipment · Industrial electrification · Intelligent equipment
+                - generic [ref=e386]:
+                  - strong [ref=e387]: Industrial Robotics & Smart Manufacturing
+                  - paragraph [ref=e388]: Robotics · Automation · Intelligent sensing · Smart factories
+            - generic [ref=e389]:
+              - generic [ref=e390]:
+                - heading "Executive exchange" [level=3] [ref=e391]
+                - paragraph [ref=e392]: Company introduction → Technology showcase → Factory or R&D centre visit → Management exchange → Technical Q&A → International business matching. Discussions focus on technology cooperation, supply chains, equipment procurement, localised manufacturing, joint R&D, market expansion and investment cooperation.
+              - generic [ref=e393]:
+                - heading "Expected outcomes" [level=3] [ref=e394]
+                - paragraph [ref=e395]: Understand China's advanced manufacturing ecosystem · Explore frontier technologies · Benchmark smart manufacturing · Connect with suppliers and partners · Identify international cooperation opportunities · Build an industry and business network.
+            - generic [ref=e396]:
+              - heading "China's Advanced Manufacturing · Smart Manufacturing · Technology Innovation · Business Exchange · China-India Cooperation" [level=3] [ref=e397]
+              - paragraph [ref=e398]: A seven-day immersion in the Yangtze River Delta's advanced manufacturing ecosystem, connecting technology, industrial chains, supply chains and potential China-India cooperation partners.
+            - paragraph [ref=e399]: Final company and factory visits, exchange speakers and detailed arrangements will be confirmed according to delegation requirements and host-company availability.
+  - contentinfo [ref=e400]:
+    - generic [ref=e401]:
+      - generic [ref=e402]:
+        - img "Asia Pacific International Exchange (Singapore)" [ref=e403]
+        - generic [ref=e404]:
+          - generic [ref=e405]: APIMTC
+          - paragraph [ref=e406]: Singapore-Based. Globally Connected.
+          - paragraph [ref=e407]: Connecting people, education, industry and opportunity across borders.
+      - generic [ref=e408]:
+        - heading "Explore" [level=4] [ref=e409]
+        - link "Education Mobility" [ref=e410] [cursor=pointer]:
+          - /url: /mobility
+        - link "MICE & Business" [ref=e411] [cursor=pointer]:
+          - /url: /mice-business
+        - link "China Gateway" [ref=e412] [cursor=pointer]:
+          - /url: /china-gateway
+      - generic [ref=e413]:
+        - heading "Connect" [level=4] [ref=e414]
+        - link "International Partnerships" [ref=e415] [cursor=pointer]:
+          - /url: /partnerships
+        - link "Contact APIMTC" [ref=e416] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=e417]: +65 6618 6503info@apimtravel.com
+    - generic [ref=e418]: © 2026 APIMTC · Singapore is our home. Chengdu is our China gateway.

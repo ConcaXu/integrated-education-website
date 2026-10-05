@@ -10,7 +10,7 @@
       <div class="hero-grid">
         <p class="hero-index">APIMTC / 2025–26</p>
         <p class="hero-meta">
-          {{ isEn ? "PRIMARY 4–6 / AGES 9–12" : "小学四至六年级 / 9–12岁" }}
+          {{ isEn ? "PRIMARY 4–6 / AGES 10 TO 12" : "小学四至六年级 / 10至12岁" }}
         </p>
         <div class="hero-copy">
           <p class="eyebrow">
@@ -32,9 +32,14 @@
           <p class="hero-en">
             Explore Singapore · Discover the World · Imagine the Future
           </p>
-          <router-link class="junior-course-link" to="/singapore-explorers-junior-high">
-            {{ isEn ? "Junior High Courses" : "初中课程" }}
-          </router-link>
+          <div class="hero-programme-actions">
+            <router-link class="hero-programme-link" to="/singapore-explorers-junior-high">
+              {{ isEn ? "Junior High School Programmes" : "初中项目" }}
+            </router-link>
+            <router-link class="hero-programme-link" to="/singapore-future-leaders-senior-high">
+              {{ isEn ? "Senior High School Programmes" : "高中项目" }}
+            </router-link>
+          </div>
         </div>
         <div class="hero-stamp" aria-hidden="true">
           06<br /><small>THEMES</small>
@@ -78,7 +83,7 @@
               <div class="section-label">01 / SIX THEMES</div>
               <h3 id="theme-overview-title">
                 {{
-                  isEn ? "Six Future Exploration Themes" : "六大未来探索主题"
+                  isEn ? "Six Future Discovery Themes" : "六大未来探索主题"
                 }}
               </h3>
               <p>
@@ -150,7 +155,7 @@
           <span
             ><i class="info-icon">06</i
             >{{
-              isEn ? "SIX FUTURE EXPLORATION THEMES" : "六大未来探索主题"
+              isEn ? "SIX FUTURE DISCOVERY THEMES" : "六大未来探索主题"
             }}</span
           ><span
             ><i class="info-icon">4E</i
@@ -199,7 +204,7 @@
                 : "六大主题，一段探索未来的旅程"
             }}</span
           ><b>Learn · Experience · Explore · Exchange</b
-          ><small>6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12</small
+          ><small>6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 10 TO 12</small
           ><strong
             >Come to Singapore. Explore the Future.<br />来新加坡，探索未来。</strong
           >
@@ -238,7 +243,7 @@
             </p>
             <p class="theme-tagline">{{ theme.tagline }}</p>
             <p class="theme-age">
-              {{ isEn ? "Primary 4–6 | Ages 9–12" : "小学四至六年级｜9–12岁" }}
+              {{ isEn ? "Primary 4–6 | Ages 10 to 12" : "小学四至六年级｜10至12岁" }}
             </p>
           </header>
           <div class="theme-visual">
@@ -315,7 +320,7 @@
           <footer class="theme-footer">
             <strong>{{ isEn ? theme.close.en : theme.close.zh }}</strong
             ><span>{{ theme.close.enSub }}</span
-            ><small>6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 9–12</small>
+            ><small>6 DAYS · 5 NIGHTS | PRIMARY 4–6 | AGES 10 TO 12</small>
           </footer>
         </div>
       </article>
@@ -1365,6 +1370,8 @@ themes.forEach((theme, index) => {
     monospace;
   letter-spacing: -0.06em;
   margin: 0;
+  /* 英文标题较长、需允许折行；pretty 避免末行只剩一个单词（如 “World”） */
+  text-wrap: pretty;
 }
 .overview h2 em {
   font-style: normal;
@@ -2321,12 +2328,17 @@ themes.forEach((theme, index) => {
   font-size: 32px;
 }
 
-.junior-course-link {
+/* Hero 双 CTA：初中项目 / 高中项目，均为橙色按钮 */
+.hero-programme-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.hero-programme-link {
   display: inline-flex;
   align-items: center;
-  gap: 15px;
   min-height: 42px;
-  margin-top: 26px;
   padding: 11px 20px;
   border-radius: 8px;
   background: #ff8147;
@@ -2337,8 +2349,8 @@ themes.forEach((theme, index) => {
   line-height: 1;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
-.junior-course-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
-.junior-course-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
+.hero-programme-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
+.hero-programme-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
 
 /* 桌面端：所有板块大标题（h1/h2/h3）与“一句话”短句保持单行不折行 */
 @media (min-width: 701px) {
@@ -2351,9 +2363,8 @@ themes.forEach((theme, index) => {
   .hero-index,
   .hero-meta,
   .hero-en,
-  .junior-course-link,
+  .hero-programme-link,
   .section-label,
-  .overview h2,
   .theme-overview-heading h3,
   .real-singapore h3,
   .theme-kicker,

@@ -340,8 +340,8 @@ const programmesTable = [
   {
     labelEn: "Age",
     labelZh: "年龄",
-    primaryEn: "9–12",
-    primaryZh: "9–12岁",
+    primaryEn: "10–12",
+    primaryZh: "10至12岁",
     secondaryEn: "13–16",
     secondaryZh: "13–16岁",
     highEn: "16–18",
@@ -418,8 +418,8 @@ const highThemes: ThemeRow[] = [
 const ageGroups = [
   {
     key: "primary",
-    kickerEn: "🧬 PRIMARY · AGES 9–12",
-    kickerZh: "🧬 小学 · 9–12岁",
+    kickerEn: "🧬 PRIMARY · AGES 10 TO 12",
+    kickerZh: "🧬 小学 · 10至12岁",
     titleEn: "SINGAPORE FUTURE EXPLORERS",
     titleZh: "新加坡未来探索",
     taglineEn: "Discover the World · Imagine the Future",

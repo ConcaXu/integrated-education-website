@@ -155,7 +155,7 @@
           <span
             ><i class="info-icon">06</i
             >{{
-              isEn ? "SIX FUTURE DISCOVERY THEMES" : "六大未来探索主题"
+              isEn ? "Six Future Discovery Themes" : "六大未来探索主题"
             }}</span
           ><span
             ><i class="info-icon">4E</i
@@ -294,7 +294,7 @@
             <div class="schedule-list">
               <div class="schedule-heading">
                 <span>{{ isEn ? "Day" : "日程" }}</span>
-                <span>{{ isEn ? "Exploration Theme" : "探索主题" }}</span>
+                <span>{{ isEn ? "Discovery Theme" : "探索主题" }}</span>
                 <span>{{ isEn ? "Highlights" : "精彩体验" }}</span>
               </div>
               <p v-for="day in theme.schedule" :key="day.day">
@@ -615,23 +615,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "科学　生命科学 · 动手实验",
-        en: "SCIENCE Life Sciences · Hands-On Experiments",
+        en: "SCIENCE：Life Sciences · Hands-On Experiments",
       },
       {
         zh: "健康　营养 · 运动 · 身心健康",
-        en: "HEALTH Nutrition · Physical Activity · Physical & Mental Well-Being",
+        en: "HEALTH：Nutrition · Physical Activity · Physical & Mental Well-Being",
       },
       {
         zh: "教育　新加坡小学 · 同龄人交流",
-        en: "EDUCATION Singapore Primary Schools · Peer Interaction",
+        en: "EDUCATION：Singapore Primary Schools · Peer Interaction",
       },
       {
         zh: "社区　住房 · 食物 · 交通 · 医疗 · 日常生活",
-        en: "COMMUNITY Housing · Food · Transport · Healthcare · Everyday Life",
+        en: "COMMUNITY：Housing · Food · Transport · Healthcare · Everyday Life",
       },
       {
         zh: "文化　城市探索 · 跨文化交流 · 团队合作",
-        en: "CULTURE City Exploration · Cross-Cultural Exchange · Teamwork",
+        en: "CULTURE：City Exploration · Cross-Cultural Exchange · Teamwork",
       },
     ],
     schedule: schedules([
@@ -717,23 +717,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "Flight　升力 · 推力 · 阻力 · 重力",
-        en: "FLIGHT Lift · Thrust · Drag · Gravity",
+        en: "FLIGHT：Lift · Thrust · Drag · Gravity",
       },
       {
         zh: "Space　太阳系 · 行星 · 月球 · 太空探索",
-        en: "SPACE Solar System · Planets · Moon · Space Exploration",
+        en: "SPACE：Solar System · Planets · Moon · Space Exploration",
       },
       {
         zh: "STEM　设计 · 建造 · 实验 · 解决问题",
-        en: "STEM Design · Build · Experiment · Problem-Solving",
+        en: "STEM：Design · Build · Experiment · Problem-Solving",
       },
       {
         zh: "Technology　航空 · 卫星 · 太空科技",
-        en: "TECHNOLOGY Aviation · Satellites · Space Technology",
+        en: "TECHNOLOGY：Aviation · Satellites · Space Technology",
       },
       {
         zh: "Exchange　新加坡学生 · 跨文化交流 · 团队合作",
-        en: "EXCHANGE Singapore Students · Cross-Cultural Exchange · Teamwork",
+        en: "EXCHANGE：Singapore Students · Cross-Cultural Exchange · Teamwork",
       },
     ],
     schedule: [],
@@ -789,23 +789,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "水资源　珍惜水资源 · 水循环 · 气候韧性",
-        en: "Water Resources Water Conservation · Water Cycle · Climate Resilience",
+        en: "Water Resources：Water Conservation · Water Cycle · Climate Resilience",
       },
       {
         zh: "能源　可再生能源 · 节能科技",
-        en: "Energy Renewable Energy · Energy-Saving Technologies",
+        en: "Energy：Renewable Energy · Energy-Saving Technologies",
       },
       {
         zh: "循环经济　减少浪费 · 回收 · 可持续生活",
-        en: "Circular Economy Waste Reduction · Recycling · Sustainable Living",
+        en: "Circular Economy：Waste Reduction · Recycling · Sustainable Living",
       },
       {
         zh: "自然生态　生物多样性 · 湿地 · 自然保护",
-        en: "Nature & Ecosystems Biodiversity · Wetlands · Nature Conservation",
+        en: "Nature & Ecosystems：Biodiversity · Wetlands · Nature Conservation",
       },
       {
         zh: "绿色城市　建筑 · 交通 · 社区 · 城市规划",
-        en: "Green Cities Buildings · Transport · Communities · Urban Planning",
+        en: "Green Cities：Buildings · Transport · Communities · Urban Planning",
       },
     ],
     schedule: [],
@@ -861,23 +861,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "Robotics　机器人 · 编程 · 自动化",
-        en: "Robotics Robotics · Coding · Automation",
+        en: "Robotics：Robotics · Coding · Automation",
       },
       {
         zh: "Digital Making　3D打印 · 数码设计 · 快速原型",
-        en: "Digital Making 3D Printing · Digital Design · Rapid Prototyping",
+        en: "Digital Making：3D Printing · Digital Design · Rapid Prototyping",
       },
       {
         zh: "Smart Mobility　电动车 · 智能交通",
-        en: "Smart Mobility Electric Vehicles · Smart Transportation",
+        en: "Smart Mobility：Electric Vehicles · Smart Transportation",
       },
       {
         zh: "Smart Manufacturing　智能工厂 · 先进制造",
-        en: "Smart Manufacturing Smart Factories · Advanced Manufacturing",
+        en: "Smart Manufacturing：Smart Factories · Advanced Manufacturing",
       },
       {
         zh: "Food Technology　食品科技 · 自动化生产",
-        en: "Food Technology Food Technology · Automated Production",
+        en: "Food Technology：Food Technology · Automated Production",
       },
     ],
     schedule: [],
@@ -933,27 +933,27 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "Earth　地球科学 · 自然历史",
-        en: "Earth Earth Science · Natural History",
+        en: "Earth：Earth Science · Natural History",
       },
       {
         zh: "Life　生物多样性 · 动物适应",
-        en: "Life Biodiversity · Animal Adaptations",
+        en: "Life：Biodiversity · Animal Adaptations",
       },
       {
         zh: "Habitats　森林 · 湿地 · 栖息地",
-        en: "Habitats Forests · Wetlands · Habitats",
+        en: "Habitats：Forests · Wetlands · Habitats",
       },
       {
         zh: "Ocean　海洋生态 · 海洋保育",
-        en: "Ocean Marine Ecosystems · Ocean Conservation",
+        en: "Ocean：Marine Ecosystems · Ocean Conservation",
       },
       {
         zh: "Science　观察 · 探究 · 发现",
-        en: "Science Observation · Inquiry · Discovery",
+        en: "Science：Observation · Inquiry · Discovery",
       },
       {
         zh: "People　城市 · 社区 · 人与自然",
-        en: "People Cities · Communities · People & Nature",
+        en: "People：Cities · Communities · People & Nature",
       },
     ],
     schedule: [],
@@ -1015,23 +1015,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "AI & Robotics　人工智能 · 机器人 · 自动化",
-        en: "AI & Robotics Artificial Intelligence · Robotics · Automation",
+        en: "AI & Robotics：Artificial Intelligence · Robotics · Automation",
       },
       {
         zh: "Digital Making　3D打印 · 数字设计 · 创客科技",
-        en: "Digital Making 3D Printing · Digital Design · Maker Technology",
+        en: "Digital Making：3D Printing · Digital Design · Maker Technology",
       },
       {
         zh: "Generative AI　创意 · 故事 · 图像 · 构思",
-        en: "Generative AI Creativity · Storytelling · Image Creation · Ideation",
+        en: "Generative AI：Creativity · Storytelling · Image Creation · Ideation",
       },
       {
         zh: "Smart Technology　智能制造 · 智慧农业 · 未来出行",
-        en: "Smart Technology Smart Manufacturing · Smart Farming · Future Mobility",
+        en: "Smart Technology：Smart Manufacturing · Smart Farming · Future Mobility",
       },
       {
         zh: "Responsible AI　AI伦理 · 事实核查 · 数据与数字安全",
-        en: "Responsible AI AI Ethics · Fact-Checking · Data & Digital Safety",
+        en: "Responsible AI：AI Ethics · Fact-Checking · Data & Digital Safety",
       },
     ],
     schedule: [],
@@ -1449,6 +1449,10 @@ themes.forEach((theme, index) => {
   font-family: "Space Mono";
   font-size: 13px;
   margin-bottom: 6px;
+  /* 条目标题改为全大写并加粗，使其在描述文字上方更醒目
+     （reset.css 把 b 的 font-weight 归零，需显式声明；中文不受 uppercase 影响） */
+  text-transform: uppercase;
+  font-weight: 700;
 }
 .overview-close {
   text-align: center;
@@ -2210,9 +2214,10 @@ themes.forEach((theme, index) => {
 .theme-table th:nth-child(3) {
   width: 22%;
 }
-/* 学习领域为短语标题，保持单行（表格自动布局会为该列腾出空间） */
+/* 学习领域为短语标题，允许在本列内换行，避免溢出到下一列 */
 .theme-table td:nth-child(3) strong {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .theme-table tbody tr:nth-child(even) {
   background: #f1f8f5;

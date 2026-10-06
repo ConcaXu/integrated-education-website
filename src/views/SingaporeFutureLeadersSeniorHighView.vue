@@ -136,7 +136,7 @@
     </section>
 
     <section class="senior-framework senior-shell">
-        <div class="senior-section-heading senior-section-heading--compact">
+      <div class="senior-section-heading senior-section-heading--compact">
         <div>
           <p class="senior-index">
             02 / {{ tx("THE 4Es LEARNING EXPERIENCE", "4Es 学习体验") }}
@@ -314,11 +314,19 @@
               tx("6 DAYS / 5 NIGHTS", "6天5夜")
             }}</span>
           </header>
-          <h2>{{
-              tx(titleParts(programme.en.title)[0], titleParts(programme.zh.title)[0])
+          <h2>
+            {{
+              tx(
+                titleParts(programme.en.title)[0],
+                titleParts(programme.zh.title)[0],
+              )
             }}<span :class="{ 'senior-programme__name--nowrap': !isEn }">{{
-              tx(titleParts(programme.en.title)[1], titleParts(programme.zh.title)[1])
-            }}</span></h2>
+              tx(
+                titleParts(programme.en.title)[1],
+                titleParts(programme.zh.title)[1],
+              )
+            }}</span>
+          </h2>
           <p class="senior-programme__lead">
             {{ tx(programme.en.lead, programme.zh.lead) }}
           </p>
@@ -411,8 +419,11 @@ const isEn = computed(() => lang.value === "en");
 const tx = (en: string, zh: string) => (isEn.value ? en : zh);
 // 拆分标题：前缀（高中 / 初级学院 #N｜）+ 项目名称，保证项目名称不断行
 const titleParts = (title: string): [string, string] => {
-  const idx = title.indexOf("｜") >= 0 ? title.indexOf("｜") : title.indexOf("|");
-  return idx >= 0 ? [title.slice(0, idx + 1), title.slice(idx + 1)] : [title, ""];
+  const idx =
+    title.indexOf("｜") >= 0 ? title.indexOf("｜") : title.indexOf("|");
+  return idx >= 0
+    ? [title.slice(0, idx + 1), title.slice(idx + 1)]
+    : [title, ""];
 };
 const experience = (
   enTitle: string,
@@ -1189,109 +1200,109 @@ const programmes = [
 const themes = [
   {
     image: image01,
-      en: {
-        title: "Biomedical Innovation & Future Healthcare",
-        area: "LIFE / HEALTH / BIOMEDICAL SCIENCE",
-        detail:
-          "Human biology, biotechnology, biomedical innovation and healthcare.",
-        explore:
-          "Explore human biology, biotechnology, biomedical innovation and healthcare, and discover how science and technology are transforming the future of medicine.",
-      },
-      zh: {
-        title: "生物医学创新与未来医疗",
-        area: "生命 / 健康 / 生物医学科学",
-        detail: "人体生物学、生物科技、生物医学创新与医疗健康。",
-        explore:
-          "探索人体生物学、生物科技、生物医学创新及医疗，了解科学与科技如何推动未来医疗的发展。",
-      },
+    en: {
+      title: "Biomedical Innovation & Future Healthcare",
+      area: "LIFE / HEALTH / BIOMEDICAL SCIENCE",
+      detail:
+        "Human biology, biotechnology, biomedical innovation and healthcare.",
+      explore:
+        "Explore human biology, biotechnology, biomedical innovation and healthcare, and discover how science and technology are transforming the future of medicine.",
+    },
+    zh: {
+      title: "生物医学创新与未来医疗",
+      area: "生命 / 健康 / 生物医学科学",
+      detail: "人体生物学、生物科技、生物医学创新与医疗健康。",
+      explore:
+        "探索人体生物学、生物科技、生物医学创新及医疗，了解科学与科技如何推动未来医疗的发展。",
+    },
   },
   {
     image: image02,
-      en: {
-        title: "Space Technology & Future Mobility",
-        area: "SPACE / AEROSPACE / AVIATION",
-        detail:
-          "Space technology, autonomous systems, aviation and emerging mobility.",
-        explore:
-          "Explore space technology, drones, aerospace and aviation, and discover how autonomous systems, electric vehicles and emerging technologies are shaping future mobility.",
-      },
+    en: {
+      title: "Space Technology & Future Mobility",
+      area: "SPACE / AEROSPACE / AVIATION",
+      detail:
+        "Space technology, autonomous systems, aviation and emerging mobility.",
+      explore:
+        "Explore space technology, drones, aerospace and aviation, and discover how autonomous systems, electric vehicles and emerging technologies are shaping future mobility.",
+    },
     zh: {
-        title: "太空科技与未来移动",
-        area: "太空 / 航空航天 / 航空",
-        detail: "太空科技、自主系统、航空与新兴交通技术。",
-        explore:
-          "探索太空科技、无人机、航空航天及航空业，了解自动化系统、电动车及新兴科技如何塑造未来交通。",
+      title: "太空科技与未来移动",
+      area: "太空 / 航空航天 / 航空",
+      detail: "太空科技、自主系统、航空与新兴交通技术。",
+      explore:
+        "探索太空科技、无人机、航空航天及航空业，了解自动化系统、电动车及新兴科技如何塑造未来交通。",
     },
   },
   {
     image: image03,
-      en: {
+    en: {
       title: "Sustainable Cities & Climate Innovation",
       area: "SUSTAINABILITY / CLIMATE / GREEN TECH",
-        detail:
-          "Climate resilience, water, biodiversity and liveable city solutions.",
-        explore:
-          "Investigate urban sustainability, climate resilience, water, green technology and biodiversity, and explore how cities can become more sustainable and liveable.",
+      detail:
+        "Climate resilience, water, biodiversity and liveable city solutions.",
+      explore:
+        "Investigate urban sustainability, climate resilience, water, green technology and biodiversity, and explore how cities can become more sustainable and liveable.",
     },
     zh: {
       title: "可持续城市与气候创新",
       area: "可持续发展 / 气候 / 绿色科技",
-        detail: "气候韧性、水资源、生物多样性与宜居城市方案。",
-        explore:
-          "探索城市可持续发展、气候韧性、水资源、绿色科技及生物多样性，了解如何建设更可持续、更宜居的城市。",
+      detail: "气候韧性、水资源、生物多样性与宜居城市方案。",
+      explore:
+        "探索城市可持续发展、气候韧性、水资源、绿色科技及生物多样性，了解如何建设更可持续、更宜居的城市。",
     },
   },
   {
     image: image04,
-      en: {
+    en: {
       title: "Industry 4.0 & Future Innovation",
       area: "ADVANCED INDUSTRY / ROBOTICS",
-        detail:
-          "3D printing, robotics, automation, smart factories and digital making.",
-        explore:
-          "Experience 3D printing, robotics, automation, smart factories, electric vehicles and digital manufacturing, and examine how technology is transforming industry.",
+      detail:
+        "3D printing, robotics, automation, smart factories and digital making.",
+      explore:
+        "Experience 3D printing, robotics, automation, smart factories, electric vehicles and digital manufacturing, and examine how technology is transforming industry.",
     },
     zh: {
       title: "工业4.0与未来创新",
       area: "先进制造 / 机器人 / 未来产业",
-        detail: "3D 打印、机器人、自动化、智能工厂与数字制造。",
-        explore:
-          "体验3D打印、机器人、自动化、智能工厂、电动车及数字制造，了解科技如何改变制造业及未来产业。",
+      detail: "3D 打印、机器人、自动化、智能工厂与数字制造。",
+      explore:
+        "体验3D打印、机器人、自动化、智能工厂、电动车及数字制造，了解科技如何改变制造业及未来产业。",
     },
   },
   {
     image: image05,
-      en: {
+    en: {
       title: "Planetary Science & Earth Systems",
       area: "EARTH / NATURE / ENVIRONMENT",
-        detail: "Earth systems, natural history, ecosystems, oceans and climate.",
-        explore:
-          "Investigate Earth systems, natural history, oceans, ecosystems and climate, and explore how scientific knowledge helps us understand and protect our planet.",
+      detail: "Earth systems, natural history, ecosystems, oceans and climate.",
+      explore:
+        "Investigate Earth systems, natural history, oceans, ecosystems and climate, and explore how scientific knowledge helps us understand and protect our planet.",
     },
     zh: {
       title: "行星科学与地球系统",
       area: "地球 / 自然 / 环境",
-        detail: "地球系统、自然历史、生态系统、海洋与气候。",
-        explore:
-          "探索地球系统、自然历史、海洋、生态系统及气候，了解科学如何帮助我们认识并保护地球。",
+      detail: "地球系统、自然历史、生态系统、海洋与气候。",
+      explore:
+        "探索地球系统、自然历史、海洋、生态系统及气候，了解科学如何帮助我们认识并保护地球。",
     },
   },
   {
     image: image06,
-      en: {
+    en: {
       title: "AI, Digital Innovation & Future Society",
       area: "AI / DIGITAL TECHNOLOGY / INNOVATION",
-        detail:
-          "Artificial intelligence, machine learning, generative AI and smart systems.",
-        explore:
-          "Explore Generative AI, machine learning, digital transformation and responsible AI, and discover how intelligent technologies can create new solutions, industries and opportunities.",
+      detail:
+        "Artificial intelligence, machine learning, generative AI and smart systems.",
+      explore:
+        "Explore Generative AI, machine learning, digital transformation and responsible AI, and discover how intelligent technologies can create new solutions, industries and opportunities.",
     },
     zh: {
       title: "人工智能、数字创新与未来社会",
       area: "人工智能 / 数字科技 / 创新",
-        detail: "人工智能、机器学习、生成式 AI 与智慧系统。",
-        explore:
-          "探索生成式AI、机器学习、数字转型及负责任AI，了解智能科技如何创造新的解决方案、产业及机会。",
+      detail: "人工智能、机器学习、生成式 AI 与智慧系统。",
+      explore:
+        "探索生成式AI、机器学习、数字转型及负责任AI，了解智能科技如何创造新的解决方案、产业及机会。",
     },
   },
 ];
@@ -1474,7 +1485,8 @@ const proofPoints = [
     icon: "05",
     en: {
       title: "Themed learning venues",
-      detail: "Science, research, technology, space, aviation, industry, AI and environment.",
+      detail:
+        "Science, research, technology, space, aviation, industry, AI and environment.",
     },
     zh: {
       title: "主题学习场景",
@@ -1485,7 +1497,8 @@ const proofPoints = [
     icon: "06",
     en: {
       title: "Community experiences",
-      detail: "HDB, neighbourhoods, markets, hawker centres, public transport and community facilities.",
+      detail:
+        "HDB, neighbourhoods, markets, hawker centres, public transport and community facilities.",
     },
     zh: {
       title: "社区体验",
@@ -1496,11 +1509,13 @@ const proofPoints = [
     icon: "07",
     en: {
       title: "Future & career exploration",
-      detail: "Connect learning experiences with future study pathways, emerging industries, careers and personal aspirations.",
+      detail:
+        "Connect learning experiences with future study pathways, emerging industries, careers and personal aspirations.",
     },
     zh: {
       title: "未来与职业探索",
-      detail: "将学习体验与未来升学方向、新兴产业、职业发展及个人目标连接起来。",
+      detail:
+        "将学习体验与未来升学方向、新兴产业、职业发展及个人目标连接起来。",
     },
   },
   {

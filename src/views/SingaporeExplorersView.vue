@@ -261,7 +261,7 @@
               /><strong>{{ isEn ? theme.enLead : theme.zhLead }}</strong>
             </p>
             <p class="theme-intro-copy">
-              <span class="theme-intro-prefix">{{ isEn ? "Through" : "通过" }}</span>
+              <span class="theme-intro-prefix">{{ isEn ? "Through the" : "通过" }}</span>
               <b>4Es: Educate · Experience · Explore · Exchange</b>
               <span>{{ isEn ? theme.enIntroAfter4Es : theme.zhIntroAfter4Es }}</span>
             </p>
@@ -544,17 +544,33 @@ const esActions = {
 const baseEs = (rows: [string, string, string, string][]) =>
   rows.map(([, labelEn, zh, en]) => {
     const action = esActions[labelEn as keyof typeof esActions];
+    // 原文若用「｜」显式分隔「动作词｜详情」，则以此为准（用于动作词与全局 esActions 不同的主题）；
+    // 否则回退到按 esActions 剥离前缀。
+    const splitAction = (value: string, fallback: string) => {
+      const at = value.indexOf("｜");
+      if (at !== -1) {
+        return { action: value.slice(0, at), detail: value.slice(at + 1) };
+      }
+      return {
+        action: fallback,
+        detail: value.replace(`${fallback}s`, "").replace(fallback, ""),
+      };
+    };
+    const zhParts = splitAction(zh, action.zh);
+    const enParts = splitAction(en, action.en);
     return {
       labelEn,
-      actionZh: action.zh,
-      actionEn: action.en,
-      zh: zh.replace(action.zh, ""),
-      en: en.replace(`${action.en}s`, "").replace(action.en, ""),
+      actionZh: zhParts.action,
+      actionEn: enParts.action,
+      zh: zhParts.detail,
+      en: enParts.detail,
     };
   });
 const splitSchedule = (entry: string) => {
-  const [theme, ...highlights] = entry.split(" · ");
-  return { theme, highlights: highlights.join(" · ") };
+  // "｜" 显式标记「探索主题 / 精彩体验」两栏的分界；未使用该符号的行沿用首个 " · " 作为分界。
+  const sep = entry.includes("｜") ? "｜" : " · ";
+  const [theme, ...highlights] = entry.split(sep);
+  return { theme: theme.trim(), highlights: highlights.join(" · ").trim() };
 };
 const schedules = (rows: [string, string, string][]) =>
   rows.map(([day, zh, en]) => {
@@ -716,11 +732,11 @@ const themes: Theme[] = [
     },
     journey: [
       {
-        zh: "Flight　升力 · 推力 · 阻力 · 重力",
+        zh: "飞行　升力 · 推力 · 阻力 · 重力",
         en: "FLIGHT：Lift · Thrust · Drag · Gravity",
       },
       {
-        zh: "Space　太阳系 · 行星 · 月球 · 太空探索",
+        zh: "太空　太阳系 · 行星 · 月球 · 太空探索",
         en: "SPACE：Solar System · Planets · Moon · Space Exploration",
       },
       {
@@ -728,11 +744,11 @@ const themes: Theme[] = [
         en: "STEM：Design · Build · Experiment · Problem-Solving",
       },
       {
-        zh: "Technology　航空 · 卫星 · 太空科技",
+        zh: "科技　航空 · 卫星 · 太空科技",
         en: "TECHNOLOGY：Aviation · Satellites · Space Technology",
       },
       {
-        zh: "Exchange　新加坡学生 · 跨文化交流 · 团队合作",
+        zh: "交流　新加坡学生 · 跨文化交流 · 团队合作",
         en: "EXCHANGE：Singapore Students · Cross-Cultural Exchange · Teamwork",
       },
     ],
@@ -789,23 +805,23 @@ const themes: Theme[] = [
     journey: [
       {
         zh: "水资源　珍惜水资源 · 水循环 · 气候韧性",
-        en: "Water Resources：Water Conservation · Water Cycle · Climate Resilience",
+        en: "WATER RESOURCES：Water Conservation · Water Cycle · Climate Resilience",
       },
       {
         zh: "能源　可再生能源 · 节能科技",
-        en: "Energy：Renewable Energy · Energy-Saving Technologies",
+        en: "ENERGY：Renewable Energy · Energy-Saving Technologies",
       },
       {
         zh: "循环经济　减少浪费 · 回收 · 可持续生活",
-        en: "Circular Economy：Waste Reduction · Recycling · Sustainable Living",
+        en: "CIRCULAR ECONOMY：Waste Reduction · Recycling · Sustainable Living",
       },
       {
         zh: "自然生态　生物多样性 · 湿地 · 自然保护",
-        en: "Nature & Ecosystems：Biodiversity · Wetlands · Nature Conservation",
+        en: "NATURE & ECOSYSTEMS：Biodiversity · Wetlands · Nature Conservation",
       },
       {
         zh: "绿色城市　建筑 · 交通 · 社区 · 城市规划",
-        en: "Green Cities：Buildings · Transport · Communities · Urban Planning",
+        en: "GREEN CITIES：Buildings · Transport · Communities · Urban Planning",
       },
     ],
     schedule: [],
@@ -860,24 +876,24 @@ const themes: Theme[] = [
     },
     journey: [
       {
-        zh: "Robotics　机器人 · 编程 · 自动化",
-        en: "Robotics：Robotics · Coding · Automation",
+        zh: "机器人技术　机器人 · 编程 · 自动化",
+        en: "ROBOTICS：Robotics · Coding · Automation",
       },
       {
-        zh: "Digital Making　3D打印 · 数码设计 · 快速原型",
-        en: "Digital Making：3D Printing · Digital Design · Rapid Prototyping",
+        zh: "数字创客　3D打印 · 数码设计 · 快速原型",
+        en: "DIGITAL MAKING：3D Printing · Digital Design · Rapid Prototyping",
       },
       {
-        zh: "Smart Mobility　电动车 · 智能交通",
-        en: "Smart Mobility：Electric Vehicles · Smart Transportation",
+        zh: "智慧出行　电动车 · 智能交通",
+        en: "SMART MOBILITY：Electric Vehicles · Smart Transportation",
       },
       {
-        zh: "Smart Manufacturing　智能工厂 · 先进制造",
-        en: "Smart Manufacturing：Smart Factories · Advanced Manufacturing",
+        zh: "智能制造　智能工厂 · 先进制造",
+        en: "SMART MANUFACTURING：Smart Factories · Advanced Manufacturing",
       },
       {
-        zh: "Food Technology　食品科技 · 自动化生产",
-        en: "Food Technology：Food Technology · Automated Production",
+        zh: "食品科技　食品科技 · 自动化生产",
+        en: "FOOD TECHNOLOGY：Food Technology · Automated Production",
       },
     ],
     schedule: [],
@@ -932,28 +948,28 @@ const themes: Theme[] = [
     },
     journey: [
       {
-        zh: "Earth　地球科学 · 自然历史",
-        en: "Earth：Earth Science · Natural History",
+        zh: "地球　地球科学 · 自然历史",
+        en: "EARTH：Earth Science · Natural History",
       },
       {
-        zh: "Life　生物多样性 · 动物适应",
-        en: "Life：Biodiversity · Animal Adaptations",
+        zh: "生命　生物多样性 · 动物适应",
+        en: "LIFE：Biodiversity · Animal Adaptations",
       },
       {
-        zh: "Habitats　森林 · 湿地 · 栖息地",
-        en: "Habitats：Forests · Wetlands · Habitats",
+        zh: "栖息地　森林 · 湿地 · 栖息地",
+        en: "HABITATS：Forests · Wetlands · Habitats",
       },
       {
-        zh: "Ocean　海洋生态 · 海洋保育",
-        en: "Ocean：Marine Ecosystems · Ocean Conservation",
+        zh: "海洋　海洋生态 · 海洋保育",
+        en: "OCEAN：Marine Ecosystems · Ocean Conservation",
       },
       {
-        zh: "Science　观察 · 探究 · 发现",
-        en: "Science：Observation · Inquiry · Discovery",
+        zh: "科学　观察 · 探究 · 发现",
+        en: "SCIENCE：Observation · Inquiry · Discovery",
       },
       {
-        zh: "People　城市 · 社区 · 人与自然",
-        en: "People：Cities · Communities · People & Nature",
+        zh: "人类　城市 · 社区 · 人与自然",
+        en: "PEOPLE：Cities · Communities · People & Nature",
       },
     ],
     schedule: [],
@@ -987,25 +1003,25 @@ const themes: Theme[] = [
         "学习",
         "EDUCATE",
         "启发学习AI · 机器人 · 数字制造 · 新兴科技",
-        "Inspire & LearnAI · Robotics · Digital Fabrication · Emerging Technology",
+        "Inspire & Learn｜AI · Robotics · Digital Fabrication · Emerging Technology",
       ],
       [
         "实践",
         "EXPERIENCE",
         "真实体验3D打印 · 科学馆 · 智能工厂 · AI实践",
-        "Experience Technology in the Real World3D Printing · Science Centre · Smart Factory · Hands-On AI",
+        "Experience Technology in the Real World｜3D Printing · Science Centre · Smart Factory · Hands-On AI",
       ],
       [
         "探索",
         "EXPLORE",
         "主动探索感知 · 数据 · 自动化 · AI创作",
-        "Discover Through ExplorationSensing · Data · Automation · AI Creativity",
+        "Discover Through Exploration｜Sensing · Data · Automation · AI Creativity",
       ],
       [
         "交流",
         "EXCHANGE",
         "国际交流新加坡学生 · 社区探索 · 团队创新",
-        "Connect & CollaborateSingapore Students · Community Exploration · Team Innovation",
+        "Connect & Collaborate｜Singapore Students · Community Exploration · Team Innovation",
       ],
     ]),
     journeyTitle: {
@@ -1014,24 +1030,24 @@ const themes: Theme[] = [
     },
     journey: [
       {
-        zh: "AI & Robotics　人工智能 · 机器人 · 自动化",
-        en: "AI & Robotics：Artificial Intelligence · Robotics · Automation",
+        zh: "AI与机器人　人工智能 · 机器人 · 自动化",
+        en: "AI & ROBOTICS：Artificial Intelligence · Robotics · Automation",
       },
       {
-        zh: "Digital Making　3D打印 · 数字设计 · 创客科技",
-        en: "Digital Making：3D Printing · Digital Design · Maker Technology",
+        zh: "数字创作　3D打印 · 数字设计 · 创客科技",
+        en: "DIGITAL MAKING：3D Printing · Digital Design · Maker Technology",
       },
       {
-        zh: "Generative AI　创意 · 故事 · 图像 · 构思",
-        en: "Generative AI：Creativity · Storytelling · Image Creation · Ideation",
+        zh: "生成式人工智能　创意 · 故事 · 图像 · 构思",
+        en: "GENERATIVE AI：Creativity · Storytelling · Image Creation · Ideation",
       },
       {
-        zh: "Smart Technology　智能制造 · 智慧农业 · 未来出行",
-        en: "Smart Technology：Smart Manufacturing · Smart Farming · Future Mobility",
+        zh: "智能科技　智能制造 · 智慧农业 · 未来出行",
+        en: "SMART TECHNOLOGY：Smart Manufacturing · Smart Farming · Future Mobility",
       },
       {
-        zh: "Responsible AI　AI伦理 · 事实核查 · 数据与数字安全",
-        en: "Responsible AI：AI Ethics · Fact-Checking · Data & Digital Safety",
+        zh: "负责任的AI　AI 伦理 · 事实核查 · 数据与数字安全",
+        en: "RESPONSIBLE AI：AI Ethics · Fact-Checking · Data & Digital Safety",
       },
     ],
     schedule: [],
@@ -1083,8 +1099,8 @@ const scheduleRows: [string, string, string][][] = [
     ],
     [
       "DAY 2",
-      "动手造飞机 · 探索太空 · 航空STEM · 飞行器设计 · 科学馆 · 太空探索",
-      "Build & Fly · Explore Space · Aviation STEM · Aircraft Design · Science Centre · Space Exploration",
+      "动手造飞机 · 航空STEM · 飞行器设计 · 科学馆",
+      "Build & Fly · Aviation STEM · Aircraft Design · Science Centre",
     ],
     [
       "DAY 3",
@@ -1093,13 +1109,13 @@ const scheduleRows: [string, string, string][][] = [
     ],
     [
       "DAY 4",
-      "学习 · 创造 · 挑战 · 新加坡小学交流 · 太空任务工作坊 · 月球/火星任务",
-      "Learn · Create · Challenge · Singapore Primary School Exchange · Space Mission Workshop · Moon / Mars Mission",
+      "学习 · 创造 · 挑战｜新加坡小学交流 · 太空任务工作坊 · 月球/火星任务",
+      "Learn · Create · Challenge｜Singapore Primary School Exchange · Space Mission Workshop · Moon / Mars Mission",
     ],
     [
       "DAY 5",
-      "探索 · 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验",
-      "Explore · Have Fun · Universal Studios Singapore · Team Interaction · Fun & Adventure",
+      "探索 · 欢乐时光｜新加坡环球影城 · 团队互动 · 欢乐体验",
+      "Explore · Have Fun｜Universal Studios Singapore · Team Interaction · Fun & Adventure",
     ],
     [
       "DAY 6",
@@ -1120,18 +1136,18 @@ const scheduleRows: [string, string, string][][] = [
     ],
     [
       "DAY 3",
-      "水资源 · 湿地生态 · Sustainable Singapore Gallery · 水资源探索 · 双溪布洛湿地",
-      "Water Resources · Wetland Ecology · Sustainable Singapore Gallery · Water Exploration · Sungei Buloh Wetland Reserve",
+      "水资源 · 湿地生态｜Sustainable Singapore Gallery · 水资源探索 · 双溪布洛湿地",
+      "Water Resources · Wetland Ecology｜Sustainable Singapore Gallery · Water Exploration · Sungei Buloh Wetland Reserve",
     ],
     [
       "DAY 4",
-      "学习 · 创造绿色未来 · 新加坡小学交流 · 绿色城市设计挑战",
-      "Learn · Create a Green Future · Singapore Primary School Exchange · Green City Design Challenge",
+      "学习 · 创造绿色未来｜新加坡小学交流 · 绿色城市设计挑战",
+      "Learn · Create a Green Future｜Singapore Primary School Exchange · Green City Design Challenge",
     ],
     [
       "DAY 5",
-      "探索 · 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验",
-      "Explore · Have Fun · Universal Studios Singapore · Team Interaction · Fun Experiences",
+      "探索 · 欢乐时光｜新加坡环球影城 · 团队互动 · 欢乐体验",
+      "Explore · Have Fun｜Universal Studios Singapore · Team Interaction · Fun Experiences",
     ],
     [
       "DAY 6",
@@ -1152,18 +1168,18 @@ const scheduleRows: [string, string, string][][] = [
     ],
     [
       "DAY 3",
-      "创客 · 制造 · 智能交通 · 3D打印 · 数码制造 · 智能制造 · 电动车",
-      "Makers · Manufacturing · Smart Mobility · 3D Printing · Digital Fabrication · Smart Manufacturing · Electric Vehicles",
+      "创客 · 制造 · 智能交通｜3D打印 · 数码制造 · 智能制造 · 电动车",
+      "Makers · Manufacturing · Smart Mobility｜3D Printing · Digital Fabrication · Smart Manufacturing · Electric Vehicles",
     ],
     [
       "DAY 4",
-      "学习 · 连接 · 发现 · 新加坡小学交流 · 食品科技 · 自动化",
-      "Learn · Connect · Discover · Singapore Primary School Exchange · Food Technology · Automation",
+      "学习 · 连接 · 发现｜新加坡小学交流 · 食品科技 · 自动化",
+      "Learn · Connect · Discover｜Singapore Primary School Exchange · Food Technology · Automation",
     ],
     [
       "DAY 5",
-      "探索 · 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验",
-      "Explore · Have Fun · Universal Studios Singapore · Team Interaction · Fun Experiences",
+      "探索 · 欢乐时光｜新加坡环球影城 · 团队互动 · 欢乐体验",
+      "Explore · Have Fun｜Universal Studios Singapore · Team Interaction · Fun Experiences",
     ],
     [
       "DAY 6",
@@ -1179,28 +1195,28 @@ const scheduleRows: [string, string, string][][] = [
     ],
     [
       "DAY 2",
-      "地球 · 自然历史 · 李光前自然历史博物馆 · 生物多样性 · 科学馆",
-      "Earth · Natural History · Lee Kong Chian Natural History Museum · Biodiversity · Science Centre Singapore",
+      "地球 · 自然历史｜李光前自然历史博物馆 · 生物多样性 · 科学馆",
+      "Earth · Natural History｜Lee Kong Chian Natural History Museum · Biodiversity · Science Centre Singapore",
     ],
     [
       "DAY 3",
-      "野生动物 · 海洋 · 万态野生动物世界 · 动物保育 · 新加坡海洋馆",
-      "Wildlife · Oceans · Mandai Wildlife Reserve · Wildlife Conservation · Singapore Oceanarium",
+      "野生动物 · 海洋｜万态野生动物世界 · 动物保育 · 新加坡海洋馆",
+      "Wildlife · Oceans｜Mandai Wildlife Reserve · Wildlife Conservation · Singapore Oceanarium",
     ],
     [
       "DAY 4",
-      "湿地 · 自然探索 · 新加坡小学交流 · 双溪布洛湿地 · 生态观察",
-      "Wetlands · Nature Exploration · Singapore Primary School Exchange · Sungei Buloh Wetland Reserve · Ecological Observation",
+      "湿地 · 自然探索｜新加坡小学交流 · 双溪布洛湿地 · 生态观察",
+      "Wetlands · Nature Exploration｜Singapore Primary School Exchange · Sungei Buloh Wetland Reserve · Ecological Observation",
     ],
     [
       "DAY 5",
-      "探索 · 欢乐时光 · 新加坡环球影城 · 团队互动 · 欢乐体验",
-      "Explore · Have Fun · Universal Studios Singapore · Team Interaction · Fun Experiences",
+      "探索 · 欢乐时光｜新加坡环球影城 · 团队互动 · 欢乐体验",
+      "Explore · Have Fun｜Universal Studios Singapore · Team Interaction · Fun Experiences",
     ],
     [
       "DAY 6",
-      "地球 · 人类 · 社区 · HDB · 本地学生互动 · 社区探索 · Show & Tell",
-      "Earth · People · Communities · HDB · Interaction with Local Students · Community Exploration · Show & Tell",
+      "地球 · 人类 · 社区｜HDB · 本地学生互动 · 社区探索 · Show & Tell",
+      "Earth · People · Communities｜HDB · Interaction with Local Students · Community Exploration · Show & Tell",
     ],
   ],
   [

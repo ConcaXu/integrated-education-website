@@ -1,4 +1,4 @@
-<!-- 新加坡未来探索系列初中课程宣传册 -->
+<!-- 新加坡未来探索者系列初中项目宣传册 -->
 <template>
   <div class="junior-page">
     <section class="junior-hero">
@@ -7,10 +7,14 @@
         <p class="junior-hero__eyebrow">APIMTC / 2025-26</p>
         <p class="junior-hero__meta">{{ tx('JUNIOR HIGH / SECONDARY | AGES 13-15', '初中 / 中学生｜13-15 岁') }}</p>
         <div class="junior-hero__copy">
-          <span class="junior-chip">{{ tx('JUNIOR HIGH PROGRAMME', '初中课程') }}</span>
-          <h1>{{ tx('Singapore Future', '新加坡未来') }} <em>{{ tx('Explorers', '探索系列') }}</em></h1>
+          <span class="junior-chip">{{ tx('JUNIOR HIGH PROGRAMME', '初中项目') }}</span>
+          <h1>{{ tx('Singapore Future', '新加坡未来') }} <em>{{ tx('Explorers', '探索者系列') }}</em></h1>
           <p>{{ tx('SIX THEMES · 6 DAYS / 5 NIGHTS OF IMMERSIVE LEARNING', '六大主题 · 6 天 5 夜沉浸式学习之旅') }}</p>
           <small>Explore Singapore · Discover the World · Imagine the Future</small>
+          <div class="hero-programme-actions">
+            <router-link class="hero-programme-link" to="/singapore-explorers">{{ tx('Primary School Programmes', '小学项目') }}</router-link>
+            <router-link class="hero-programme-link" to="/singapore-future-leaders-senior-high">{{ tx('Senior High School Programmes', '高中项目') }}</router-link>
+          </div>
         </div>
         <a class="junior-hero__jump" href="#themes">06 <span>{{ tx('THEMES', '主题') }}</span></a>
       </div>
@@ -47,7 +51,7 @@
       <section class="junior-four-es junior-shell">
         <div class="junior-four-es__heading"><p class="junior-index">02 / 4Es</p><h2>{{ tx('Every Theme Includes the 4Es Learning Experience', '每个主题都融入 4Es 学习体验') }}</h2><p>EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE</p></div>
         <div class="junior-four-es__grid">
-          <div v-for="item in overviewEs" :key="item.en.name"><b>{{ item.mark }}</b><em>{{ item.es }}</em><strong>{{ tx(item.en.name, item.zh.name) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div>
+          <div v-for="item in overviewEs" :key="item.mark"><b>{{ item.mark }}</b><em>{{ item.es }}</em><strong v-if="item.en.name">{{ tx(item.en.name, item.zh.name) }}</strong><span>{{ tx(item.en.detail, item.zh.detail) }}</span></div>
         </div>
       </section>
 
@@ -65,6 +69,17 @@
           <footer class="junior-detail__footer"><strong>{{ tx('More Than a Trip - A Real-World Learning Journey', '不只是一次旅行 · 一场真实世界的学习之旅') }}</strong><span>{{ tx(theme.en.close, theme.zh.close) }}</span><small>{{ tx('6 DAYS · 5 NIGHTS | JUNIOR HIGH / SECONDARY | AGES 13-15', '6 天 5 夜｜初中 / 中学生｜13-15 岁') }}</small></footer>
         </div>
       </article>
+
+      <section class="junior-summary">
+        <div class="junior-shell">
+          <h2 class="junior-summary__title"><span class="junior-summary__spark" aria-hidden="true">✨</span>{{ tx('Six Themes. One Journey into the Future.', '六大主题 · 一场通往未来的学习之旅') }}</h2>
+          <p class="junior-summary__chain">{{ tx('LIFE → SPACE → CITY → INDUSTRY → PLANET → AI', '生命 → 太空 → 城市 → 工业 → 地球 → AI') }}</p>
+          <p class="junior-summary__es">{{ tx('Learn · Experience · Explore · Exchange', '学习 · 体验 · 探索 · 交流') }}</p>
+          <p class="junior-summary__meta">{{ tx('6 DAYS · 5 NIGHTS | JUNIOR HIGH / SECONDARY | AGES 13–16', '6 天 5 夜 | 初中 / 中学生 | 13–16 岁') }}</p>
+          <p class="junior-summary__close">{{ tx('Come to Singapore. Explore the Future.', '来新加坡，探索未来。') }}</p>
+          <p v-if="!isEn" class="junior-summary__close-en">Come to Singapore. Explore the Future.</p>
+        </div>
+      </section>
     </main>
   </div>
 </template>
@@ -97,14 +112,14 @@ const pair = (action: string, detail: string) => ({ action, detail })
 const entry = (enTitle: string, enDetail: string, zhTitle: string, zhDetail: string) => ({ en: { title: enTitle, detail: enDetail }, zh: { title: zhTitle, detail: zhDetail } })
 const day = (day: string, enTheme: string, enHighlight: string, zhTheme: string, zhHighlight: string) => ({ day, en: { theme: enTheme, highlight: enHighlight }, zh: { theme: zhTheme, highlight: zhHighlight } })
 const overviewEs = [
-  { mark: '01', es: 'Educate', en: { name: 'LEARN', detail: 'STEM · Science · Technology · Future Knowledge' }, zh: { name: '学习', detail: 'STEM · 科学 · 科技 · 未来知识' } },
-  { mark: '02', es: 'Explore', en: { name: 'EXPERIENCE', detail: 'Experiments · Workshops · Applied Learning · Industry' }, zh: { name: '体验', detail: '科学实验 · 专题工作坊 · 应用型学习 · 产业体验' } },
-  { mark: '03', es: 'Experience', en: { name: 'EXPLORE', detail: 'Singapore · Nature · Technology · Industries · Communities' }, zh: { name: '探索', detail: '新加坡 · 自然 · 科技 · 产业 · 社区' } },
+  { mark: '01', es: 'Educate', en: { name: '', detail: 'STEM · Science · Technology · Future Knowledge' }, zh: { name: '', detail: 'STEM · 科学 · 科技 · 未来知识' } },
+  { mark: '02', es: 'Explore', en: { name: '', detail: 'Singapore · Nature · Technology · Industries · Communities' }, zh: { name: '', detail: '新加坡 · 自然 · 科技 · 产业 · 社区' } },
+  { mark: '03', es: 'Explore', en: { name: '', detail: 'Experiments · Workshops · Applied Learning · Industry' }, zh: { name: '', detail: '科学实验 · 专题工作坊 · 应用型学习 · 产业体验' } },
   { mark: '04', es: 'Exchange', en: { name: 'EXCHANGE', detail: 'Singapore Students · School Life · Teamwork · Cross-Cultural Experiences' }, zh: { name: '交流', detail: '新加坡学生 · 校园生活 · 团队合作 · 跨文化交流' } },
 ]
 const realLearning = [
   entry('School Exchange', 'Learn, interact and collaborate with Singapore secondary school students.', '学校交流', '与新加坡中学生互动、合作，体验当地校园生活。'),
-  entry('Applied Learning', 'Experience Singapore polytechnics through hands-on lessons and technology-based learning.', '应用型学习', '走进新加坡理工学院，通过实践课程接触真实的科技与专业学习环境。'),
+  entry('Applied Learning', 'Experience Singapore’s polytechnics through hands-on lessons and technology-based learning.', '应用型学习', '走进新加坡理工学院，通过实践课程接触真实的科技与专业学习环境。'),
   entry('Industry Experiences', 'Discover real-world applications through selected technology, manufacturing, aviation and other industry visits.', '产业体验', '通过精选的科技、智能制造、航空及其他产业参访，了解科技如何应用于真实行业。'),
   entry('Themed Learning Venues', 'Science · Technology · Nature · Space · Aviation · Industry · AI', '主题学习场景', '科学 · 科技 · 自然 · 太空 · 航空 · 工业 · AI'),
   entry('Community Experiences', 'HDB · Neighbourhoods · Markets · Hawker Centres · Public Transport · Community Facilities', '社区体验', 'HDB · 邻里社区 · 菜市场 · 熟食中心 · 公共交通 · 社区设施'),
@@ -175,6 +190,11 @@ const themes = [
 .junior-hero__jump::after { content: ''; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: linear-gradient(90deg, #ed6d32, transparent); transform: scaleX(.35); transform-origin: left; transition: transform .3s ease; }
 .junior-hero__jump:hover::after { transform: scaleX(1); }
 .junior-hero__jump span { font-family: 'DM Sans', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+/* Hero 双 CTA：小学项目 / 高中项目，样式与「新加坡未来学习系列」页保持一致 */
+.hero-programme-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.hero-programme-link { display: inline-flex; align-items: center; min-height: 42px; padding: 11px 20px; border-radius: 8px; background: #ff8147; box-shadow: 0 12px 23px rgba(255, 129, 71, .26); color: #fff; font-size: 14px; font-weight: 700; line-height: 1; text-decoration: none; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.hero-programme-link:hover { background: #ee6c33; box-shadow: 0 15px 26px rgba(255, 129, 71, .34); transform: translateY(-2px); }
+.hero-programme-link:focus-visible { outline: 3px solid #ffbd9e; outline-offset: 3px; }
 .junior-intro { display: grid; grid-template-columns: 1.15fr .85fr; gap: 90px; padding-top: 118px; padding-bottom: 112px; }
 .junior-intro h2, .junior-section-heading h2, .junior-four-es h2, .junior-real h2 { margin: 13px 0 0; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: 0; }
 .junior-intro h2 { font-size: clamp(22px, 2.6vw, 37px); }
@@ -215,6 +235,7 @@ const themes = [
 .junior-four-es__grid em { display: block; margin: 14px 0 0; color: var(--accent); font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 600; font-style: italic; line-height: 1; }
 .junior-four-es__grid strong { display: block; margin: 14px 0 8px; color: var(--navy); font-size: 15px; }
 .junior-four-es__grid span { color: #5b6a74; font-size: 13px; line-height: 1.55; }
+.junior-four-es__grid em + span { display: block; margin-top: 14px; }
 .junior-real { padding: 105px 0 112px; background: #163d5e; color: #fff; }
 .junior-real h2 { color: #fff; }
 .junior-real__grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 50px; border-top: 1px solid rgba(255,255,255,.24); border-left: 1px solid rgba(255,255,255,.24); }
@@ -271,7 +292,19 @@ const themes = [
 .junior-detail__footer strong { color: #ff9b6c; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 600; }
 .junior-detail__footer span { margin: 16px 0; font-size: 15px; font-weight: 700; }
 .junior-detail__footer small { color: #d7e5eb; font-size: 11px; font-weight: 700; letter-spacing: .07em; }
-.junior-detail:last-child { padding-bottom: 100px; }
+.junior-detail:last-of-type { padding-bottom: 100px; }
+
+/* 收尾总结板块：六大主题 · 一场通往未来的学习之旅 */
+.junior-summary { position: relative; overflow: hidden; padding: 104px 0 112px; background: var(--soft); }
+.junior-summary::before { position: absolute; top: 0; left: 0; right: 0; height: 4px; content: ''; background: linear-gradient(90deg, #ed6d32, #ffb27f 45%, transparent); }
+.junior-summary .junior-shell { position: relative; }
+.junior-summary__title { margin: 0; max-width: 980px; color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(28px, 3.6vw, 46px); font-weight: 600; line-height: 1.2; letter-spacing: 0; }
+.junior-summary__spark { margin-right: 10px; }
+.junior-summary__chain { margin: 32px 0 0; color: var(--orange-dark); font-size: clamp(14px, 1.4vw, 18px); font-weight: 700; letter-spacing: .08em; }
+.junior-summary__es { margin: 16px 0 0; color: var(--navy); font-size: 15px; font-weight: 700; letter-spacing: .06em; }
+.junior-summary__meta { margin: 16px 0 0; color: #6b7c88; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.junior-summary__close { margin: 48px 0 0; padding-top: 36px; border-top: 1px solid rgba(21, 54, 87, .16); color: var(--navy); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(24px, 3vw, 38px); font-weight: 600; line-height: 1.2; }
+.junior-summary__close-en { margin: 14px 0 0; color: #6b7c88; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
 
 /* 桌面端：所有板块大标题（h1/h2/h3）与“一句话”短句保持单行不折行 */
 @media (min-width: 761px) {
@@ -305,5 +338,7 @@ const themes = [
     white-space: nowrap;
   }
 }
-@media (max-width: 760px) { .junior-shell { width: min(100% - 34px, 560px); } .junior-hero, .junior-hero__content { min-height: 600px; } .junior-hero__content { padding-top: 120px; } .junior-hero__meta { top: 88px; right: 0; max-width: 160px; text-align: right; line-height: 1.5; } .junior-hero__copy { margin-top: 66px; } .junior-hero h1 { font-size: 50px; } .junior-hero__copy > p { font-size: 12px; line-height: 1.6; } .junior-hero__jump { bottom: 44px; } .junior-intro, .junior-four-es, .junior-detail__lead { grid-template-columns: 1fr; gap: 24px; } .junior-intro { padding: 72px 0; } .junior-intro__copy { padding: 0; font-size: 15px; } .junior-themes { padding: 70px 0; } .junior-section-heading { display: block; } .junior-section-heading > p { margin-top: 18px; } .theme-grid, .detail-es { grid-template-columns: 1fr; } .theme-card { min-height: 0; } .junior-four-es { padding: 72px 0; } .junior-four-es__grid { margin-top: 12px; } .junior-real { padding: 72px 0; } .junior-real__grid { grid-template-columns: 1fr; margin-top: 35px; } .junior-real__grid div { min-height: 0; } .junior-detail { padding-top: 65px; } .junior-detail__header { padding: 38px 0 25px; } .junior-detail__image { height: 240px; } .junior-detail__lead { padding: 27px 0 48px; } .junior-detail__section { padding-top: 48px; } .junior-detail__section h3 { font-size: 26px; } .journey-table > .journey-table__head { display: none; } .journey-table > div { grid-template-columns: 1fr; gap: 7px; padding: 15px 4px; } .journey-table strong { font-size: 15px; } .learning-grid { grid-template-columns: 1fr; } .learning-grid p { min-height: 0; } .junior-detail__image { border-radius: 14px; } .junior-detail__footer { margin-top: 58px; padding: 40px 18px; } .junior-detail__footer strong { font-size: 21px; } }
+@media (max-width: 760px) { .junior-shell { width: min(100% - 34px, 560px); } .junior-hero, .junior-hero__content { min-height: 600px; } .junior-hero__content { padding-top: 120px; } .junior-hero__meta { top: 88px; right: 0; max-width: 160px; text-align: right; line-height: 1.5; } .junior-hero__copy { margin-top: 66px; } .junior-hero h1 { font-size: 50px; } .junior-hero__copy > p { font-size: 12px; line-height: 1.6; } .junior-hero__jump { bottom: 44px; } .junior-intro, .junior-four-es, .junior-detail__lead { grid-template-columns: 1fr; gap: 24px; } .junior-intro { padding: 72px 0; } .junior-intro__copy { padding: 0; font-size: 15px; } .junior-themes { padding: 70px 0; } .junior-section-heading { display: block; } .junior-section-heading > p { margin-top: 18px; } .theme-grid, .detail-es { grid-template-columns: 1fr; } .theme-card { min-height: 0; } .junior-four-es { padding: 72px 0; } .junior-four-es__grid { margin-top: 12px; } .junior-real { padding: 72px 0; } .junior-real__grid { grid-template-columns: 1fr; margin-top: 35px; } .junior-real__grid div { min-height: 0; } .junior-detail { padding-top: 65px; } .junior-detail__header { padding: 38px 0 25px; } .junior-detail__image { height: 240px; } .junior-detail__lead { padding: 27px 0 48px; } .junior-detail__section { padding-top: 48px; } .junior-detail__section h3 { font-size: 26px; } .journey-table > .journey-table__head { display: none; } .journey-table > div { grid-template-columns: 1fr; gap: 7px; padding: 15px 4px; } .journey-table strong { font-size: 15px; } .learning-grid { grid-template-columns: 1fr; } .learning-grid p { min-height: 0; } .junior-detail__image { border-radius: 14px; } .junior-detail__footer { margin-top: 58px; padding: 40px 18px; }   .junior-detail__footer strong { font-size: 21px; } }
+/* 移动端：为右下角「06 主题」跳转留出空间，避免与双 CTA 按钮重叠 */
+@media (max-width: 760px) { .junior-hero__content { padding-bottom: 120px; } .junior-summary { padding: 72px 0 80px; } .junior-summary__chain { letter-spacing: .04em; } }
 </style>

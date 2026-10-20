@@ -132,6 +132,49 @@
             </div>
           </a>
         </div>
+        <div class="senior-manifest">
+          <p class="senior-manifest__title">
+            <span class="senior-manifest__spark" aria-hidden="true">✨</span>
+            {{
+              tx(
+                "Six Themes. One Journey into the Future.",
+                "六大主题 · 一场未来学习之旅",
+              )
+            }}
+          </p>
+          <p class="senior-manifest__line">
+            {{
+              tx(
+                "LIFE → SPACE → CITY → INDUSTRY → PLANET → AI",
+                "生命 → 太空 → 城市 → 工业 → 地球 → AI",
+              )
+            }}
+          </p>
+          <p class="senior-manifest__line">
+            {{
+              tx(
+                "Learn · Experience · Explore · Exchange · Create",
+                "学习 · 体验 · 探索 · 交流 · 创造",
+              )
+            }}
+          </p>
+          <p class="senior-manifest__meta">
+            {{
+              tx(
+                "6 DAYS · 5 NIGHTS | SENIOR HIGH / JC | AGES 16–18",
+                "6 天 5 夜 | 高中 / JC | 16–18 岁",
+              )
+            }}
+          </p>
+          <p class="senior-manifest__tagline">
+            {{
+              tx(
+                "Come to Singapore. Explore Possibilities. Shape the Future.",
+                "来到新加坡 · 探索无限可能 · 共创未来",
+              )
+            }}
+          </p>
+        </div>
       </div>
     </section>
 
@@ -475,7 +518,7 @@ const programmes = [
       strap: "Biomedical Science, Healthcare & Biotechnology",
       lead: "Explore Biomedical Science · Discover Healthcare Innovation · Imagine Future Medicine",
       context:
-        "Through Learn · Experience · Explore · Exchange, students move beyond textbook biology to explore how biomedical science, biotechnology, healthcare and innovation are shaping the future of human health.",
+        "Through Educate · Experience · Explore · Exchange, students move beyond textbook biology to explore how biomedical science, biotechnology, healthcare and innovation are shaping the future of human health.",
       close: "More Than a Study Tour — A Future Healthcare Learning Journey",
     },
     {
@@ -488,25 +531,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Build Scientific Understanding",
+        "Learn | Build Scientific Understanding",
         "Human Biology · Genetics · Cells · Microbiology · Biomedical Science",
         "学习｜建立科学基础",
         "人体生物学 · 细胞 · 遗传学 · 微生物学 · 生物医学",
       ),
       experience(
-        "EXPERIENCE | Applied Biomedical Learning",
+        "Immerse | Applied Biomedical Learning",
         "Laboratory Activities · Scientific Investigation · Biomedical Applications · Healthcare",
         "体验｜应用生物医学知识",
         "实验活动 · 科学探究 · 生物医学应用 · 医疗科技",
       ),
       experience(
-        "EXPLORE | Discover Innovation",
+        "Navigate | Discover Innovation",
         "Biotechnology · Diagnostics · Medical Technology · Future Healthcare",
         "探索｜发现未来创新",
         "生物科技 · 医疗诊断 · 医疗技术 · 未来医疗",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · School Life · Teamwork · Cross-Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · 校园生活 · 团队合作 · 跨文化交流",
@@ -562,9 +605,9 @@ const programmes = [
       [
         "DAY 3",
         "Discover Biomedical Innovation",
-        "Biomedical / Life Sciences Applied Learning · Biotechnology · Cells · Genetics · Microbiology · Healthcare Applications",
+        "Polytechnic Aerospace / Aviation Applied Learning · Engineering · Aviation Systems · Changi Airport Aviation Discovery",
         "发现生物医学创新",
-        "理工学院 / 生物医学应用学习 · 生物科技 · 细胞 · 遗传学 · 微生物学 · 医疗健康应用",
+        "理工学院航空航天 / 航空应用学习 · 工程 · 航空系统 · 樟宜机场航空探索",
       ],
       [
         "DAY 4",
@@ -576,9 +619,9 @@ const programmes = [
       [
         "DAY 5",
         "Understand Health in Everyday Life",
-        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · Community Exploration · Healthcare · Local Student Interaction",
+        "HDB Hub · Urban Living & Transport · Community Exploration · Public Transport · Local Student Interaction · Mobility Observation Challenge",
         "了解日常健康与生活",
-        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 社区探索 · 医疗与日常生活 · 本地学生交流",
+        "HDB Hub · 城市生活与交通 · 社区探索 · 公共交通 · 本地学生交流 · 未来交通观察挑战",
       ],
       [
         "DAY 6",
@@ -596,7 +639,7 @@ const programmes = [
       strap: "Space Technology, Aerospace & Future Mobility",
       lead: "Explore Space · Discover Aerospace · Imagine the Future of Mobility",
       context:
-        "Through Learn · Experience · Explore · Exchange, students investigate how space technology, aerospace, aviation, autonomous systems and emerging mobility technologies are transforming how humans explore and move through the world.",
+        "Through Educate · Experience · Explore · Exchange, students investigate how space technology, aerospace, aviation, autonomous systems and emerging mobility technologies are transforming how humans explore and move through the world.",
       close: "More Than a Study Tour — A Future Mobility Learning Journey",
     },
     {
@@ -609,25 +652,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Build Technical Understanding",
+        "Learn | Build Technical Understanding",
         "Space Science · Aerospace · Flight · Engineering · Mobility",
         "学习｜建立科技基础",
         "太空科学 · 航空航天 · 飞行 · 工程 · 交通科技",
       ),
       experience(
-        "EXPERIENCE | Applied Technology",
+        "Immerse | Applied Technology",
         "Drones · Aviation Technology · Engineering Activities · Autonomous Systems",
         "体验｜应用科技",
         "无人机 · 航空科技 · 工程实践 · 自主系统",
       ),
       experience(
-        "EXPLORE | Discover Future Mobility",
+        "Navigate | Discover Future Mobility",
         "Airports · Aerospace Systems · Smart Mobility · Future Transportation",
         "探索｜发现未来交通",
         "机场 · 航空系统 · 智慧交通 · 未来运输",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · STEM Collaboration · Teamwork · Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · STEM 合作 · 团队合作 · 跨文化交流",
@@ -683,7 +726,7 @@ const programmes = [
       [
         "DAY 3",
         "Explore Aviation & Mobility",
-        "Polytechnic Aerospace / Aviation Applied Learning · Engineering · Aviation Systems · Changi Airport",
+        "Polytechnic Aerospace / Aviation Applied Learning · Engineering · Aviation Systems · Changi Airport Aviation Discovery",
         "探索航空与未来交通",
         "理工学院航空航天 / 航空应用学习 · 工程 · 航空系统 · 樟宜机场航空探索",
       ],
@@ -697,7 +740,7 @@ const programmes = [
       [
         "DAY 5",
         "Explore Mobility in a Smart City",
-        "HDB Hub · Urban Living & Transport · Community Exploration · Public Transport · Local Student Interaction",
+        "HDB Hub · Urban Living & Transport · Community Exploration · Public Transport · Local Student Interaction · Mobility Observation Challenge",
         "探索智慧城市交通",
         "HDB Hub · 城市生活与交通 · 社区探索 · 公共交通 · 本地学生交流 · 未来交通观察挑战",
       ],
@@ -717,7 +760,7 @@ const programmes = [
       strap: "Sustainable Cities, Climate Science & Green Technology",
       lead: "Understand Climate · Explore Innovation · Design Sustainable Cities",
       context:
-        "Through Learn · Experience · Explore · Exchange, students examine how climate science, urban systems, water management, biodiversity and green technology can work together to address the challenges facing future cities.",
+        "Through Educate · Experience · Explore · Exchange, students examine how climate science, urban systems, water management, biodiversity and green technology can work together to address the challenges facing future cities.",
       close:
         "More Than a Study Tour — A Future Sustainability Learning Journey",
     },
@@ -731,25 +774,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Understand Climate & Earth Systems",
+        "Learn | Understand Climate & Earth Systems",
         "Climate Science · Environmental Systems · Sustainability · Water",
         "学习｜了解气候与地球系统",
         "气候科学 · 环境系统 · 可持续发展 · 水资源",
       ),
       experience(
-        "EXPERIENCE | Applied Green Technology",
+        "Immerse | Applied Green Technology",
         "Sustainable Technology · Environmental Engineering · Water Management · Urban Solutions",
         "体验｜应用绿色科技",
         "可持续科技 · 环境工程 · 水资源管理 · 城市解决方案",
       ),
       experience(
-        "EXPLORE | Study Singapore as a Living Laboratory",
+        "Navigate | Study Singapore as a Living Laboratory",
         "Urban Planning · Green Spaces · Biodiversity · Climate Resilience",
         "探索｜把新加坡作为“城市实验室”",
         "城市规划 · 绿色空间 · 生物多样性 · 气候韧性",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · Sustainability Projects · Teamwork · Cross-Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · 可持续发展项目 · 团队合作 · 跨文化交流",
@@ -839,7 +882,7 @@ const programmes = [
       strap: "Smart Manufacturing, Robotics & Future Industry",
       lead: "Explore Industry 4.0 · Discover Smart Manufacturing · Imagine Future Industry",
       context:
-        "Through Learn · Experience · Explore · Exchange, students discover how robotics, automation, digitalisation, artificial intelligence and advanced manufacturing are transforming the way products are designed, made and delivered.",
+        "Through Educate · Experience · Explore · Exchange, students discover how robotics, automation, digitalisation, artificial intelligence and advanced manufacturing are transforming the way products are designed, made and delivered.",
       close: "More Than a Study Tour — A Future Industry Learning Journey",
     },
     {
@@ -852,25 +895,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Understand Industry 4.0",
+        "Learn | Understand Industry 4.0",
         "Smart Manufacturing · Robotics · Automation · Digitalisation · Industry 4.0",
         "学习｜建立未来产业知识",
         "工业4.0 · 智能制造 · 自动化 · 机器人 · 数字技术",
       ),
       experience(
-        "EXPERIENCE | Applied Technology",
+        "Immerse | Applied Technology",
         "3D Printing · Robotics · Engineering · Prototyping · Manufacturing Technology",
         "体验｜接触真实工业",
         "3D打印 · 工程实践 · 智能工厂 · 制造技术 · 企业参访",
       ),
       experience(
-        "EXPLORE | Discover Future Industry",
+        "Navigate | Discover Future Industry",
         "Smart Factories · Electric Vehicles · Automation · Digital Production",
         "探索｜主动探索创新",
         "制造流程 · 自动化系统 · 产品创新 · 工业问题解决",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · STEM Collaboration · Teamwork · Cross-Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · 校园体验 · 团队合作 · 跨文化交流",
@@ -960,7 +1003,7 @@ const programmes = [
       strap: "Planetary Science, Earth Systems & Climate",
       lead: "Understand Earth · Explore Planetary Systems · Investigate Our Future",
       context:
-        "Through Learn · Experience · Explore · Exchange, students investigate how Earth's atmosphere, oceans, geology, ecosystems and climate interact, while exploring the broader scientific questions that connect Earth to planetary science and the future of our planet.",
+        "Through Educate · Experience · Explore · Exchange, students investigate how Earth's atmosphere, oceans, geology, ecosystems and climate interact, while exploring the broader scientific questions that connect Earth to planetary science and the future of our planet.",
       close: "More Than a Study Tour — A Planetary Science Learning Journey",
     },
     {
@@ -973,25 +1016,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Understand Earth & Planetary Systems",
+        "Learn | Understand Earth & Planetary Systems",
         "Earth Science · Geology · Atmosphere · Oceans · Climate · Planetary Science",
         "学习｜建立地球科学知识",
         "地球科学 · 地质 · 自然历史 · 生态系统 · 气候",
       ),
       experience(
-        "EXPERIENCE | Scientific Investigation",
+        "Immerse | Scientific Investigation",
         "Field Observation · Environmental Science · Natural History · Data & Evidence",
         "体验｜走进真实科学环境",
         "自然历史博物馆 · 湿地 · 海洋科学 · 环境学习",
       ),
       experience(
-        "EXPLORE | Discover Earth Systems",
+        "Navigate | Discover Earth Systems",
         "Biodiversity · Ecosystems · Wetlands · Marine Systems · Climate Change",
         "探索｜主动研究我们的星球",
         "生物多样性 · 生态观察 · 海洋 · 气候变化 · 保育",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · Environmental Projects · Teamwork · Cross-Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · 校园体验 · 团队合作 · 跨文化分享",
@@ -1081,7 +1124,7 @@ const programmes = [
       strap: "Generative AI, Digital Innovation & Future Business",
       lead: "Explore AI · Learn to Innovate · Create the Future",
       context:
-        "Through Learn · Experience · Explore · Exchange, students explore how Generative AI, machine learning, digital technologies and human creativity are transforming education, business, industry and society. The programme connects AI literacy with innovation, design thinking, entrepreneurship and responsible technology, encouraging students to move from understanding AI to creating meaningful solutions.",
+        "Through Educate · Experience · Explore · Exchange, students explore how Generative AI, machine learning, digital technologies and human creativity are transforming education, business, industry and society. The programme connects AI literacy with innovation, design thinking, entrepreneurship and responsible technology, encouraging students to move from understanding AI to creating meaningful solutions.",
       close: "More Than a Study Tour — A Future Innovation Learning Journey",
     },
     {
@@ -1094,25 +1137,25 @@ const programmes = [
     },
     [
       experience(
-        "LEARN | Understand Artificial Intelligence",
+        "Learn | Understand Artificial Intelligence",
         "Generative AI · Machine Learning · Large Language Models · AI Applications",
         "学习｜建立AI与数字科技基础",
         "人工智能 · 机器学习 · 生成式AI · 数据 · 数字技术",
       ),
       experience(
-        "EXPERIENCE | Create with AI",
+        "Immerse | Create with AI",
         "Prompting · AI-Assisted Creation · Digital Prototyping · AI Workflows",
         "体验｜接触真实AI应用",
         "AI工作坊 · 数字创新 · AI应用案例 · 智能系统",
       ),
       experience(
-        "EXPLORE | Discover Future Innovation",
+        "Navigate | Discover Future Innovation",
         "AI in Business · Smart Cities · Industry · Education · Healthcare",
         "探索｜从问题走向创新",
         "Prompting · AI创意 · Design Thinking · 原型设计 · 创新挑战",
       ),
       experience(
-        "EXCHANGE | International Learning",
+        "Interact | International Learning",
         "Singapore Students · Collaborative Projects · Teamwork · Cross-Cultural Exchange",
         "交流｜国际学生交流",
         "新加坡学生 · 校园体验 · 团队合作 · 跨文化交流",
@@ -1203,15 +1246,14 @@ const themes = [
     en: {
       title: "Biomedical Innovation & Future Healthcare",
       area: "LIFE / HEALTH / BIOMEDICAL SCIENCE",
-      detail:
-        "Human biology, biotechnology, biomedical innovation and healthcare.",
+      detail: "Biomedical Science, Biotechnology & Healthcare",
       explore:
         "Explore human biology, biotechnology, biomedical innovation and healthcare, and discover how science and technology are transforming the future of medicine.",
     },
     zh: {
       title: "生物医学创新与未来医疗",
       area: "生命 / 健康 / 生物医学科学",
-      detail: "人体生物学、生物科技、生物医学创新与医疗健康。",
+      detail: "生物医学、生物科技与医疗。",
       explore:
         "探索人体生物学、生物科技、生物医学创新及医疗，了解科学与科技如何推动未来医疗的发展。",
     },
@@ -1221,15 +1263,14 @@ const themes = [
     en: {
       title: "Space Technology & Future Mobility",
       area: "SPACE / AEROSPACE / AVIATION",
-      detail:
-        "Space technology, autonomous systems, aviation and emerging mobility.",
+      detail: "Space, Aerospace, Aviation & Mobility",
       explore:
         "Explore space technology, drones, aerospace and aviation, and discover how autonomous systems, electric vehicles and emerging technologies are shaping future mobility.",
     },
     zh: {
       title: "太空科技与未来移动",
       area: "太空 / 航空航天 / 航空",
-      detail: "太空科技、自主系统、航空与新兴交通技术。",
+      detail: "太空、航空航天、航空与未来交通。",
       explore:
         "探索太空科技、无人机、航空航天及航空业，了解自动化系统、电动车及新兴科技如何塑造未来交通。",
     },
@@ -1239,15 +1280,14 @@ const themes = [
     en: {
       title: "Sustainable Cities & Climate Innovation",
       area: "SUSTAINABILITY / CLIMATE / GREEN TECH",
-      detail:
-        "Climate resilience, water, biodiversity and liveable city solutions.",
+      detail: "Sustainable Cities, Climate & Green Technology",
       explore:
         "Investigate urban sustainability, climate resilience, water, green technology and biodiversity, and explore how cities can become more sustainable and liveable.",
     },
     zh: {
       title: "可持续城市与气候创新",
       area: "可持续发展 / 气候 / 绿色科技",
-      detail: "气候韧性、水资源、生物多样性与宜居城市方案。",
+      detail: "可持续城市、气候与绿色科技。",
       explore:
         "探索城市可持续发展、气候韧性、水资源、绿色科技及生物多样性，了解如何建设更可持续、更宜居的城市。",
     },
@@ -1257,15 +1297,14 @@ const themes = [
     en: {
       title: "Industry 4.0 & Future Innovation",
       area: "ADVANCED INDUSTRY / ROBOTICS",
-      detail:
-        "3D printing, robotics, automation, smart factories and digital making.",
+      detail: "Advanced Manufacturing, Robotics & Future Industry",
       explore:
         "Experience 3D printing, robotics, automation, smart factories, electric vehicles and digital manufacturing, and examine how technology is transforming industry.",
     },
     zh: {
       title: "工业4.0与未来创新",
       area: "先进制造 / 机器人 / 未来产业",
-      detail: "3D 打印、机器人、自动化、智能工厂与数字制造。",
+      detail: "先进制造、机器人与未来产业。",
       explore:
         "体验3D打印、机器人、自动化、智能工厂、电动车及数字制造，了解科技如何改变制造业及未来产业。",
     },
@@ -1275,14 +1314,14 @@ const themes = [
     en: {
       title: "Planetary Science & Earth Systems",
       area: "EARTH / NATURE / ENVIRONMENT",
-      detail: "Earth systems, natural history, ecosystems, oceans and climate.",
+      detail: "Earth Science, Oceans, Climate & Environmental Systems",
       explore:
         "Investigate Earth systems, natural history, oceans, ecosystems and climate, and explore how scientific knowledge helps us understand and protect our planet.",
     },
     zh: {
       title: "行星科学与地球系统",
       area: "地球 / 自然 / 环境",
-      detail: "地球系统、自然历史、生态系统、海洋与气候。",
+      detail: "地球科学、海洋、气候与环境系统。",
       explore:
         "探索地球系统、自然历史、海洋、生态系统及气候，了解科学如何帮助我们认识并保护地球。",
     },
@@ -1292,15 +1331,14 @@ const themes = [
     en: {
       title: "AI, Digital Innovation & Future Society",
       area: "AI / DIGITAL TECHNOLOGY / INNOVATION",
-      detail:
-        "Artificial intelligence, machine learning, generative AI and smart systems.",
+      detail: "AI, Digital Transformation, Innovation & Future Business",
       explore:
         "Explore Generative AI, machine learning, digital transformation and responsible AI, and discover how intelligent technologies can create new solutions, industries and opportunities.",
     },
     zh: {
       title: "人工智能、数字创新与未来社会",
       area: "人工智能 / 数字科技 / 创新",
-      detail: "人工智能、机器学习、生成式 AI 与智慧系统。",
+      detail: "人工智能、数字转型、创新与未来商业。",
       explore:
         "探索生成式AI、机器学习、数字转型及负责任AI，了解智能科技如何创造新的解决方案、产业及机会。",
     },
@@ -1445,20 +1483,24 @@ const proofPoints = [
     en: {
       title: "School exchange",
       detail:
-        "Learn, interact and collaborate with Singapore secondary school students.",
+        "Learn, interact and collaborate with Singapore secondary school students, gaining insight into local education and student life.",
     },
-    zh: { title: "学校交流", detail: "与新加坡中学生学习、互动与协作。" },
+    zh: {
+      title: "学校交流",
+      detail:
+        "与新加坡中学生学习、互动及合作，认识新加坡的教育体系及学生生活。",
+    },
   },
   {
     icon: "02",
     en: {
       title: "University & applied learning",
       detail:
-        "Experience Singapore universities and polytechnics through selected learning.",
+        "Experience Singapore's universities and polytechnics through selected academic, applied learning and technology experiences.",
     },
     zh: {
-      title: "大学与应用学习",
-      detail: "通过精选学习体验走进新加坡大学与理工学院。",
+      title: "大学与应用型学习",
+      detail: "通过精选的学术、应用学习及科技体验，认识新加坡的大学及理工学院。",
     },
   },
   {
@@ -1466,19 +1508,24 @@ const proofPoints = [
     en: {
       title: "Industry experiences",
       detail:
-        "See real-world applications across technology, manufacturing and science.",
+        "Discover real-world applications through selected technology, manufacturing, biomedical, aviation, mobility and other industry experiences.",
     },
-    zh: { title: "产业体验", detail: "了解科技、制造与科学领域的真实应用。" },
+    zh: {
+      title: "产业体验",
+      detail:
+        "通过精选的科技、制造、生物医学、航空、未来移动及其他产业体验，了解知识如何应用于真实产业。",
+    },
   },
   {
     icon: "04",
     en: {
       title: "Innovation challenges",
-      detail: "Design thinking, STEM challenges, prototyping and pitching.",
+      detail:
+        "Design thinking, STEM challenges, innovation tasks, problem solving, prototyping and pitching.",
     },
     zh: {
       title: "创新挑战",
-      detail: "设计思维、STEM 挑战、原型制作与成果展示。",
+      detail: "设计思维、STEM 挑战、创新任务、问题解决、原型设计、项目展示。",
     },
   },
   {
@@ -2120,6 +2167,71 @@ const proofPoints = [
   top: 22px;
   right: 23px;
   font-size: 35px;
+}
+
+/* 六大主题总结带：六大主题 · 一场未来学习之旅 */
+.senior-manifest {
+  margin-top: 26px;
+  padding: 34px 42px 36px;
+  border: 1px solid #dbe4e2;
+  border-left: 3px solid var(--orange);
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(25, 61, 71, 0.035);
+}
+.senior-manifest__title {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--navy);
+  font-size: clamp(19px, 2.1vw, 25px);
+  font-weight: 800;
+  line-height: 1.32;
+  letter-spacing: 0.01em;
+}
+.senior-manifest__spark {
+  flex: none;
+  margin-top: 0.06em;
+  font-size: 0.92em;
+  line-height: 1.32;
+}
+.senior-manifest__line {
+  margin-top: 16px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+.senior-manifest__meta {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e6ecea;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+}
+.senior-manifest__tagline {
+  margin-top: 14px;
+  color: var(--orange-dark);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 760px) {
+  .senior-manifest {
+    padding: 26px 22px 28px;
+  }
+  .senior-manifest__title {
+    gap: 8px;
+    font-size: 19px;
+  }
+  .senior-manifest__line,
+  .senior-manifest__meta {
+    font-size: 13px;
+  }
 }
 
 .senior-reading {

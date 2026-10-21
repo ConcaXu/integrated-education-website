@@ -7,7 +7,7 @@
         <div class="sfls-hero__copy">
           <p class="sfls-hero__meta">APIMTC / 2025–26</p>
           <p class="sfls-hero__eyebrow">{{
-            isEn ? "SINGAPORE FUTURE LEARNING SERIES" : "新加坡未来学习系列"
+            isEn ? "SINGAPORE LEARNING JOURNEY" : "新加坡研学之旅"
           }}</p>
           <h1>
             {{ isEn ? "Singapore" : "新加坡" }}<br /><span>{{
@@ -48,11 +48,15 @@
 
     <!-- Introduction -->
     <section class="sfls-intro">
-      <div class="sfls-shell sfls-intro__grid">
+      <div
+        class="sfls-shell sfls-intro__grid"
+        :class="{ 'sfls-intro__grid--en': isEn }"
+      >
         <div>
           <div class="sfls-label">00 / {{ isEn ? "INTRODUCTION" : "介绍" }}</div>
-          <h2 class="sfls-display">EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE</h2>
-          <p class="sfls-intro__alt" v-if="!isEn">学习 · 体验 · 探索 · 交流</p>
+          <h2 class="sfls-display" v-if="!isEn">
+            EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE
+          </h2>
         </div>
         <div class="sfls-intro__copy">
           <p>
@@ -60,6 +64,13 @@
               isEn
                 ? "A progressive educational journey designed to connect students with science, technology, nature, innovation, industry and Singapore society through:"
                 : "一段连接 科学、科技、自然、创新、产业与新加坡社会 的沉浸式教育之旅。通过："
+            }}
+          </p>
+          <p class="sfls-intro__alt">
+            {{
+              isEn
+                ? "EDUCATE · EXPERIENCE · EXPLORE · EXCHANGE"
+                : "学习 · 体验 · 探索 · 交流"
             }}
           </p>
           <p>
@@ -330,7 +341,7 @@ const programmesTable = [
   {
     labelEn: "Programme",
     labelZh: "项目",
-    primaryEn: "Singapore Future Explorers",
+    primaryEn: "Singapore Future Discovery",
     primaryZh: "新加坡未来探索",
     secondaryEn: "Singapore Future Explorers",
     secondaryZh: "新加坡未来探索者",
@@ -342,8 +353,8 @@ const programmesTable = [
     labelZh: "年龄",
     primaryEn: "10–12",
     primaryZh: "10至12岁",
-    secondaryEn: "13–16",
-    secondaryZh: "13–16岁",
+    secondaryEn: "13–15",
+    secondaryZh: "13–15 岁",
     highEn: "16–18",
     highZh: "16–18岁",
   },
@@ -420,7 +431,7 @@ const ageGroups = [
     key: "primary",
     kickerEn: "🧬 PRIMARY · AGES 10 TO 12",
     kickerZh: "🧬 小学 · 10至12岁",
-    titleEn: "SINGAPORE FUTURE EXPLORERS",
+    titleEn: "SINGAPORE FUTURE DISCOVERY",
     titleZh: "新加坡未来探索",
     taglineEn: "Discover the World · Imagine the Future",
     taglineZh: "发现世界 · 想象未来",
@@ -436,8 +447,8 @@ const ageGroups = [
   },
   {
     key: "secondary",
-    kickerEn: "🚀 SECONDARY · AGES 13–16",
-    kickerZh: "🚀 中学 · 13–16岁",
+    kickerEn: "🚀 SECONDARY · AGES 13–15",
+    kickerZh: "🚀 中学 · 13–15 岁",
     titleEn: "SINGAPORE FUTURE EXPLORERS",
     titleZh: "新加坡未来探索",
     taglineEn: "Explore Technology · Understand the Real World",
@@ -520,7 +531,7 @@ const realSingapore = [
 
 const learningJourney = [
   {
-    stageEn: "PRIMARY",
+    stageEn: "Primary",
     stageZh: "小学",
     verbEn: "DISCOVER",
     verbZh: "发现 DISCOVER",
@@ -528,7 +539,7 @@ const learningJourney = [
     pathZh: "好奇 → 体验 → 想象",
   },
   {
-    stageEn: "SECONDARY",
+    stageEn: "Junior High/ Secondary",
     stageZh: "中学",
     verbEn: "EXPLORE",
     verbZh: "探索 EXPLORE",
@@ -536,7 +547,7 @@ const learningJourney = [
     pathZh: "知识 → 应用 → 解决问题",
   },
   {
-    stageEn: "HIGH SCHOOL / JC",
+    stageEn: "Senior High/ Junior College",
     stageZh: "高中 / 初级学院",
     verbEn: "CREATE",
     verbZh: "创造 CREATE",
@@ -738,16 +749,20 @@ const learningJourney = [
   gap: clamp(32px, 5vw, 72px);
   align-items: start;
 }
+/* 英文版 4E 已在正文中，左栏只放序号标签，收窄左栏让正文更宽 */
+.sfls-intro__grid--en {
+  grid-template-columns: 0.4fr 1.6fr;
+}
 .sfls-intro__grid .sfls-display {
   color: var(--sfls-brand);
   margin-bottom: 0;
 }
-.sfls-intro__alt {
-  font-size: 18px;
-  font-weight: 600;
+.sfls-intro__copy .sfls-intro__alt {
+  font-size: 19px;
+  font-weight: 700;
   white-space: nowrap;
-  color: var(--sfls-ink-soft);
-  margin: 16px 0 0;
+  color: var(--sfls-brand);
+  margin: 0 0 22px;
 }
 .sfls-intro__copy p {
   font-size: 17px;
@@ -1216,9 +1231,9 @@ const learningJourney = [
 }
 .sfls-journey__stage {
   font-family: var(--sfls-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--sfls-muted);
   margin: 12px 0 8px;
 }
@@ -1430,6 +1445,11 @@ const learningJourney = [
   .sfls-real__head {
     grid-template-columns: 1fr;
     gap: 26px;
+  }
+  /* 窄屏下 4E 关键词行允许折行，避免 nowrap 撑破容器 */
+  .sfls-intro__copy .sfls-intro__alt {
+    white-space: normal;
+    font-size: 17px;
   }
   .sfls-group__head {
     grid-template-columns: 1fr;

@@ -978,7 +978,7 @@ const pages: Record<string, Page> = {
             textEn: "Discover science, technology and the world.",
             icon: "○",
             action: "小学课程",
-            actionEn: "Primary Courses",
+            actionEn: "Primary School Programmes",
           },
           {
             title: "初中 / 中学",
@@ -988,7 +988,7 @@ const pages: Record<string, Page> = {
               "Connect learning with industry, technology and global issues.",
             icon: "◇",
             action: "初中课程",
-            actionEn: "Junior High Courses",
+            actionEn: "Junior High School Programmes",
           },
           {
             title: "高中 / 初级学院",
@@ -998,7 +998,7 @@ const pages: Record<string, Page> = {
               "Explore innovation, leadership, future industries and deeper learning.",
             icon: "◈",
             action: "高中课程",
-            actionEn: "Senior High Courses",
+            actionEn: "Senior High School Programmes",
           },
         ],
         columns: 3,
@@ -2458,6 +2458,17 @@ const heroImage = computed(() => heroImages[key.value] || homeHero);
 }
 .card-action--orange:disabled:hover {
   transform: none;
+}
+
+/* 三个「School Programmes」按钮文案较长，允许按钮随文案增高，避免窄屏折行溢出 */
+.card-action--orange[href="/singapore-explorers"],
+.card-action--orange[href="/singapore-explorers-junior-high"],
+.card-action--orange[href="/singapore-future-leaders-senior-high"] {
+  height: auto;
+  min-height: 42px;
+  padding: 10px 18px;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .portal-section--mice-provide .portal-card:nth-child(2) .card-action--orange {

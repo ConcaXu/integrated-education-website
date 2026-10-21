@@ -38,6 +38,16 @@
               "探索新加坡 · 发现无限可能 · 共创未来",
             )
           }}</small>
+          <div class="senior-hero__actions">
+            <router-link class="senior-hero__cta" to="/singapore-explorers">{{
+              tx("Primary School Programmes", "小学项目")
+            }}</router-link>
+            <router-link
+              class="senior-hero__cta"
+              to="/singapore-explorers-junior-high"
+              >{{ tx("Junior High School Programmes", "初中项目") }}</router-link
+            >
+          </div>
         </div>
         <a class="senior-hero__jump" href="#themes"
           ><span>06</span>{{ tx("THEMES", "主题") }}
@@ -398,7 +408,12 @@
             </section>
             <section>
               <p class="senior-index">
-                {{ tx("REAL-WORLD LEARNING ENVIRONMENTS", "五大真实学习环境") }}
+                {{
+                  tx(
+                    "FIVE REAL-WORLD LEARNING ENVIRONMENTS",
+                    "五大真实学习环境",
+                  )
+                }}
               </p>
               <div class="senior-programme__environments">
                 <div
@@ -957,7 +972,7 @@ const programmes = [
         "Discover Singapore",
         "Arrival & Orientation · Chinatown · Merlion Park · Gardens by the Bay",
         "认识新加坡",
-        "抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay",
+        "抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园",
       ],
       [
         "DAY 2",
@@ -985,14 +1000,14 @@ const programmes = [
         "Understand Technology in Everyday Life",
         "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · Smart Living · Urban Technology · Community Exploration · Local Student Interaction",
         "发现日常生活中的创新",
-        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 智慧生活 · 城市科技 · 社区探索 · 本地学生互动",
+        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 可持续住宅 · 城市规划 · 社区探索",
       ],
       [
         "DAY 6",
         "Experience Singapore",
         "Universal Studios Singapore · Team Activities · Singapore Farewell",
         "欢乐与探索",
-        "Universal Studios Singapore · 团队活动 · 新加坡告别",
+        "新加坡环球影城 · 团队活动 · 新加坡告别体验",
       ],
     ]),
   ),
@@ -1009,7 +1024,7 @@ const programmes = [
     {
       title: "高中 / 初级学院 #5｜行星科学与地球系统",
       strap: "地球科学、自然系统与环境未来",
-      lead: "理解地球 · 探索行星科学 · 探究塑造我们世界的系统",
+      lead: "探索地球 · 理解地球系统 · 思考我们的未来",
       context:
         "通过4E：教育（Educate）·体验（Experience）·探索（Explore）·交流（Exchange），学生从地球科学、自然历史、生态系统、海洋与气候等角度，理解地球如何运作，以及人类如何利用科学应对环境挑战。",
       close: "不只是一次旅行，而是一场探索地球的学习之旅",
@@ -1078,42 +1093,42 @@ const programmes = [
         "Discover Singapore",
         "Arrival & Orientation · Chinatown · Merlion Park · Gardens by the Bay",
         "认识新加坡",
-        "抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay",
+        "抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园",
       ],
       [
         "DAY 2",
         "Understand Earth Systems",
         "Earth / Environmental Science Learning Experience · Science Centre Singapore · Earth Systems · Climate · Natural Science",
         "认识我们的地球",
-        "Earth / Environmental Science Learning Experience · Science Centre Singapore · 地球科学 · 气候 · 自然科学",
+        "地球与环境科学工作坊 · 新加坡科学馆 · 地球科学 · 环境与气候探索",
       ],
       [
         "DAY 3",
         "Explore Earth's History",
         "Lee Kong Chian Natural History Museum, NUS · Evolution · Biodiversity · Geology / Natural History · Sungei Buloh Wetland Reserve",
         "探索地球生命历史",
-        "Lee Kong Chian Natural History Museum, NUS · 生物多样性 · 进化 · 自然历史 · Sungei Buloh Wetland Reserve",
+        "国大学李光前自然历史博物馆 · 生物多样性 · 进化 · 自然历史 · 双溪布洛湿地保护区",
       ],
       [
         "DAY 4",
         "Investigate Oceans & Climate",
         "Singapore Secondary School / Junior College Exchange · Environmental STEM Activity · Singapore Oceanarium · Marine Conservation Challenge",
         "探索海洋与未来",
-        "新加坡中学学生交流 · Singapore Oceanarium · 海洋生态系统 · 海洋科学 · 生物多样性 · 海洋保育挑战",
+        "新加坡中学学生交流 · 新加坡海洋生态馆 · 海洋生态系统 · 海洋科学 · 生物多样性 · 海洋保育挑战",
       ],
       [
         "DAY 5",
         "Study Human–Earth Systems",
         "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · Sustainable Urban Living · Community & Environmental Systems · Local Student Interaction",
         "探索可持续生活",
-        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 可持续城市生活 · 社区与环境系统 · 本地学生互动",
+        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 可持续住宅 · 城市规划 · 社区探索",
       ],
       [
         "DAY 6",
         "Experience Singapore",
         "Universal Studios Singapore · Team Activities · Singapore Farewell",
         "欢乐与探索",
-        "Universal Studios Singapore · 团队活动 · 新加坡告别",
+        "新加坡环球影城 · 团队活动 · 新加坡告别体验",
       ],
     ]),
   ),
@@ -1152,7 +1167,7 @@ const programmes = [
         "Navigate | Discover Future Innovation",
         "AI in Business · Smart Cities · Industry · Education · Healthcare",
         "探索｜从问题走向创新",
-        "Prompting · AI创意 · Design Thinking · 原型设计 · 创新挑战",
+        "提示词工程 · AI创意 · 设计思维 · 原型设计 · 创新挑战",
       ),
       experience(
         "Interact | International Learning",
@@ -1164,33 +1179,33 @@ const programmes = [
     [
       experience(
         "ARTIFICIAL INTELLIGENCE",
-        "AI · Machine Learning · Computer Vision · Generative AI",
+        "Machine Learning · Generative AI · Computer Vision · AI Applications",
         "人工智能",
-        "AI · Machine Learning · Computer Vision · Generative AI",
+        "人工智能 · 机器学习 · 计算机视觉 · 生成式人工智能",
       ),
       experience(
-        "DIGITAL INNOVATION",
-        "Data · Digital Technologies · Intelligent Systems · Digital Transformation",
-        "数字创新",
-        "数据 · 数字技术 · 智能系统 · 数字化转型",
+        "DIGITAL TECHNOLOGY",
+        "Data · Automation · Digital Transformation · Smart Systems",
+        "数字科技",
+        "数据 · 自动化 · 数字化转型 · 智能系统",
       ),
       experience(
-        "REAL-WORLD INDUSTRIES",
-        "Smart Manufacturing · AI Applications · Robotics · Smart Cities",
-        "真实产业",
-        "智能制造 · AI应用 · 机器人 · 智慧城市",
+        "CREATIVE TECHNOLOGY",
+        "Prompting · AI-Assisted Creation · Digital Content · Prototyping",
+        "创意科技",
+        "提示工程 · AI 辅助创作 · 数字内容 · 原型设计",
       ),
       experience(
         "INNOVATION & ENTREPRENEURSHIP",
-        "Design Thinking · Prototyping · Problem Solving · Future Business",
+        "Design Thinking · Problem Solving · Ideation · Future Business",
         "创新与创业",
-        "Design Thinking · 原型设计 · 问题解决 · Future Business",
+        "设计思维 · 问题解决 · 创意构思 · 未来商业",
       ),
       experience(
-        "EDUCATION & SOCIETY",
-        "Singapore Schools · Student Exchange · Community · Responsible AI",
-        "教育与社会",
-        "新加坡学校 · 学生交流 · 社区 · Responsible AI",
+        "RESPONSIBLE AI",
+        "Privacy · Bias · Accuracy · Human Oversight · Responsible Innovation",
+        "负责任 AI",
+        "隐私 · 偏见 · 准确性 · 人类监督 · 负责任的创新",
       ),
     ],
     programmeDays([
@@ -1199,42 +1214,42 @@ const programmes = [
         "Discover Singapore",
         "Arrival & Orientation · Chinatown · Merlion Park · Gardens by the Bay · Smart City Observation",
         "认识智慧新加坡",
-        "抵达与迎新 · Chinatown · Merlion Park · Gardens by the Bay · 智慧城市观察",
+        "抵达与迎新 · 牛车水 · 鱼尾狮公园 · 滨海湾花园 · 智慧城市观察",
       ],
       [
         "DAY 2",
         "Understand AI & Digital Technology",
         "AI Discovery Workshop · Machine Learning · Computer Vision · AI Applications · Digital Technology Experience",
         "认识人工智能",
-        "AI Discovery Workshop · Machine Learning · Computer Vision · AI 应用 · 数字科技体验",
+        "AI探索工作坊 · 机器学习 · 计算机视觉 · AI应用与案例",
       ],
       [
         "DAY 3",
         "Create with Generative AI",
         "Generative AI / Future Innovation Workshop · Prompting · AI-Assisted Creation · Responsible AI · Digital Prototyping",
         "AI如何进入真实世界？",
-        "生成式AI / 未来创新工作坊 · 提示工程 · AI 辅助创作 · 负责任 AI · 数字原型",
+        "AI / 数字技术应用学习 · 现代汽车集团新加坡创新中心 · 智能工厂 · 智能农场 · 机器人与未来移动",
       ],
       [
         "DAY 4",
         "Connect & Innovate",
         "Singapore Secondary School / JC Exchange · Student Interaction · AI / STEM Activity · Generative AI Innovation Challenge",
         "与AI一起创造",
-        "新加坡中学 / 初级学院学生交流 · 学生互动 · AI / STEM 活动 · 生成式AI创新挑战",
+        "新加坡中学学生交流 · 生成式AI创意工作坊 · 提示词工程 · AI创意 · 负责任的AI · 团队创新项目",
       ],
       [
         "DAY 5",
         "Explore AI in Everyday Life",
         "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · Smart Living · Digital Services · Community Exploration · Local Student Interaction",
         "探索智慧生活",
-        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 智慧生活 · 数字服务 · 社区探索 · 本地学生互动",
+        "HDB Hub · HDB LIVINGSPACE Gallery + MyNiceHome Gallery · 可持续住宅 · 城市规划 · 社区探索",
       ],
       [
         "DAY 6",
         "Experience Singapore",
         "Universal Studios Singapore · Team Activities · Singapore Farewell",
         "欢乐与探索",
-        "Universal Studios Singapore · 团队活动 · 新加坡告别",
+        "新加坡环球影城 · 团队活动 · 新加坡告别体验",
       ],
     ]),
   ),
@@ -1694,6 +1709,40 @@ const proofPoints = [
   font-size: 14px;
   white-space: nowrap;
 }
+/* Hero 双 CTA：小学项目 / 初中项目，均为橙色按钮 */
+.senior-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.senior-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  background: var(--orange);
+  box-shadow: 0 12px 23px rgba(237, 109, 50, 0.28);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.senior-hero__cta:hover {
+  background: var(--orange-dark);
+  box-shadow: 0 15px 26px rgba(237, 109, 50, 0.36);
+  transform: translateY(-2px);
+}
+.senior-hero__cta:focus-visible {
+  outline: 3px solid #ffbd9e;
+  outline-offset: 3px;
+}
 .senior-hero__jump {
   position: absolute;
   right: 0;
@@ -1935,6 +1984,14 @@ const proofPoints = [
   }
   .senior-hero__copy {
     margin-top: 66px;
+  }
+  .senior-hero__actions {
+    margin-top: 22px;
+    gap: 10px;
+  }
+  .senior-hero__cta {
+    padding: 10px 16px;
+    font-size: 13px;
   }
   .senior-hero h1 {
     font-size: 50px;

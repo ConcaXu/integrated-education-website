@@ -224,7 +224,11 @@
               </p>
               <router-link
                 v-if="section.feature.action"
-                to="/contact"
+                :to="
+                  section.feature.action === '探索中国项目'
+                    ? '/china-unlocked'
+                    : '/contact'
+                "
                 :class="
                   section.feature.actionStyle === 'solid' ? 'hero-action' : 'text-link'
                 "

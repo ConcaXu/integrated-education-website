@@ -103,6 +103,15 @@ const routes = [
     },
   },
   {
+    path: "/china-unlocked",
+    name: "ChinaUnlocked",
+    component: () => import("@/views/ChinaUnlockedView.vue"),
+    meta: {
+      titleZh: "CHINA UNLOCKED 解锁中国 · 国际青少年探索系列",
+      titleEn: "CHINA UNLOCKED International Youth Discovery Series",
+    },
+  },
+  {
     path: "/singapore-future-learning-series",
     name: "SingaporeFutureLearningSeries",
     component: () => import("@/views/SingaporeFutureLearningSeriesView.vue"),

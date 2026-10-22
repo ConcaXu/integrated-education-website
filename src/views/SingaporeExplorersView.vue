@@ -20,7 +20,7 @@
           </p>
           <h1 :class="{ 'hero-title--zh': !isEn }">
             <template v-if="isEn">Singapore<br /><span>Future Discovery Series</span></template>
-            <template v-else>新加坡<br /><span>未来学习系列</span></template>
+            <template v-else>现学现卖<br /><span>新加坡未来探索系列</span></template>
           </h1>
           <p class="hero-sub">
             {{
